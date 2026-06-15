@@ -1,7 +1,14 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 import { DictionaryTerm } from "@/lib/content/dictionary";
 
-export default function TermPage({ term }: { term: DictionaryTerm }) {
+export default function TermPage({
+  term,
+  diagram,
+}: {
+  term: DictionaryTerm;
+  diagram?: ReactNode;
+}) {
   return (
     <article className="max-w-content mx-auto px-6 py-14">
       <p className="font-mono text-xs uppercase tracking-widest text-quantum mb-2">
@@ -22,6 +29,12 @@ export default function TermPage({ term }: { term: DictionaryTerm }) {
         <p className="font-mono text-sm bg-surface border border-line rounded-lg p-4">
           {term.technicalDefinition}
         </p>
+
+        {diagram && (
+          <div className="rounded-xl border border-line bg-surface p-6 my-8">
+            {diagram}
+          </div>
+        )}
 
         <h2>Visual Explanation: An Analogy</h2>
         <blockquote>{term.analogy}</blockquote>
