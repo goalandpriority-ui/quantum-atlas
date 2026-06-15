@@ -467,4 +467,26 @@ export default function QuantumGuidePage() {
         </p>
         <h3>Can I use a quantum computer today?</h3>
         <p>
-          Yes — several companies offer cloud access to real quantum 
+          Yes — several companies offer cloud access to real quantum hardware,
+          allowing developers and researchers to run experiments on actual
+          quantum processors over the internet.
+        </p>
+        <h3>Will quantum computers break all encryption?</h3>
+        <p>
+          Not immediately, and not all encryption. Quantum computers capable
+          of running Shor's Algorithm at scale could break certain widely-used
+          methods (like RSA), which is why "post-quantum" cryptographic
+          standards are being developed and adopted.
+        </p>
+        <h3>What's the difference between "quantum supremacy" and "quantum advantage"?</h3>
+        <p>
+          "Quantum supremacy" refers to a quantum computer performing any
+          calculation faster than a classical computer, even if not useful.
+          "Quantum advantage" refers to solving a genuinely useful, real-world
+          problem faster than the best classical methods — a milestone the
+          field is still working toward.
+        </p>
+      </div>
+    </article>
+  );
+}
