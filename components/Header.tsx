@@ -6,8 +6,11 @@ const nav = [
   { href: "/dictionary", label: "Dictionary" },
   { href: "/companies", label: "Companies" },
   { href: "/hardware", label: "Hardware" },
+  { href: "/timeline", label: "Timeline" },
   { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
+  { href: "/future", label: "Future" },
   { href: "/news", label: "News" },
+  { href: "/courses", label: "Courses" },
   { href: "/tools", label: "Tools" },
 ];
 
@@ -22,12 +25,12 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-ink/80 overflow-x-auto scrollbar-none">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-quantum transition-colors"
+              className="hover:text-quantum transition-colors whitespace-nowrap shrink-0"
             >
               {item.label}
             </Link>
@@ -36,10 +39,25 @@ export default function Header() {
 
         <Link
           href="/dictionary"
-          className="hidden sm:inline-flex items-center rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-ink/70 hover:border-quantum hover:text-quantum transition-colors"
+          className="hidden sm:inline-flex items-center rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-ink/70 hover:border-quantum hover:text-quantum transition-colors shrink-0"
         >
           Search |ψ⟩
         </Link>
+      </div>
+
+      {/* Mobile nav - horizontal scroll */}
+      <div className="md:hidden border-t border-line">
+        <nav className="max-w-content mx-auto px-6 py-2.5 flex items-center gap-5 text-sm font-medium text-ink/80 overflow-x-auto scrollbar-none">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="hover:text-quantum transition-colors whitespace-nowrap shrink-0"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );
