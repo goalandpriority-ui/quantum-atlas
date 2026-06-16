@@ -108,3 +108,12 @@ button:focus-visible {
 .prose-quantum strong {
   font-weight: 600;
 }
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
