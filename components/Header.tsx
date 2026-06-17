@@ -12,6 +12,7 @@ const nav = [
   { href: "/research", label: "Research" },
   { href: "/timeline", label: "Timeline" },
   { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
+  { href: "/quantum-vs-ai", label: "Quantum vs AI" },
   { href: "/future", label: "Future" },
   { href: "/news", label: "News" },
   { href: "/courses", label: "Courses" },
@@ -67,4 +68,3 @@ export default function Header() {
     </header>
   );
 }
-
