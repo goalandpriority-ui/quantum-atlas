@@ -15,6 +15,7 @@ const nav = [
   { href: "/future", label: "Future" },
   { href: "/news", label: "News" },
   { href: "/courses", label: "Courses" },
+  { href: "/jobs", label: "Jobs" },
   { href: "/tools", label: "Tools" },
 ];
 
@@ -66,3 +67,4 @@ export default function Header() {
     </header>
   );
 }
+
