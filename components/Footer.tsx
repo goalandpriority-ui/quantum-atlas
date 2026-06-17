@@ -1,0 +1,86 @@
+import Link from "next/link";
+import BlochMark from "./BlochMark";
+
+const columns = [
+  {
+    title: "Learn",
+    links: [
+      { href: "/learn", label: "Learning Center" },
+      { href: "/guide/quantum-computing-complete-guide", label: "Complete Guide" },
+      { href: "/dictionary", label: "Dictionary" },
+      { href: "/algorithms", label: "Algorithms" },
+      { href: "/myths", label: "Myths Debunked" },
+    ],
+  },
+  {
+    title: "Database",
+    links: [
+      { href: "/companies", label: "Companies" },
+      { href: "/hardware", label: "Hardware" },
+      { href: "/compare", label: "Compare Processors" },
+      { href: "/research", label: "Research Papers" },
+      { href: "/timeline", label: "Timeline" },
+    ],
+  },
+  {
+    title: "Insights",
+    links: [
+      { href: "/industries", label: "By Industry" },
+      { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
+      { href: "/quantum-vs-ai", label: "Quantum vs AI" },
+      { href: "/future", label: "Future Predictions" },
+    ],
+  },
+  {
+    title: "More",
+    links: [
+      { href: "/news", label: "News" },
+      { href: "/jobs", label: "Jobs" },
+      { href: "/courses", label: "Courses" },
+      { href: "/tools", label: "Calculators" },
+    ],
+  },
+];
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-line mt-24">
+      <div className="max-w-content mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-10">
+        <div className="col-span-2">
+          <div className="flex items-center gap-2.5 mb-3">
+            <BlochMark size={26} animated={false} />
+            <span className="font-serif text-lg font-semibold">
+              Quantum<span className="text-quantum">Atlas</span>
+            </span>
+          </div>
+          <p className="text-sm text-ink-muted leading-relaxed max-w-xs">
+            The open encyclopedia of quantum computing — news, research,
+            companies, hardware, and interactive learning, all in one place.
+          </p>
+        </div>
+
+        {columns.map((col) => (
+          <div key={col.title}>
+            <h3 className="text-sm font-semibold text-ink mb-3">{col.title}</h3>
+            <ul className="space-y-2">
+              {col.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-ink-muted hover:text-quantum transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="max-w-content mx-auto px-6 py-6 border-t border-line text-xs text-ink-soft flex flex-col sm:flex-row justify-between gap-2">
+        <span>© {new Date().getFullYear()} QuantumAtlas. Built for curious minds.</span>
+        <span className="font-mono">|0⟩ + |1⟩</span>
+      </div>
+    </footer>
+  );
+}
