@@ -3,10 +3,11 @@ import BlochMark from "./BlochMark";
 
 const nav = [
   { href: "/learn", label: "Learning Center" },
-  { href: "/algorithms", label: "Algorithms" },
   { href: "/dictionary", label: "Dictionary" },
+  { href: "/algorithms", label: "Algorithms" },
   { href: "/companies", label: "Companies" },
   { href: "/hardware", label: "Hardware" },
+  { href: "/research", label: "Research" },
   { href: "/timeline", label: "Timeline" },
   { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
   { href: "/future", label: "Future" },
