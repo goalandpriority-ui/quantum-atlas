@@ -7,6 +7,7 @@ const nav = [
   { href: "/algorithms", label: "Algorithms" },
   { href: "/companies", label: "Companies" },
   { href: "/hardware", label: "Hardware" },
+  { href: "/industries", label: "Industries" },
   { href: "/research", label: "Research" },
   { href: "/timeline", label: "Timeline" },
   { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
