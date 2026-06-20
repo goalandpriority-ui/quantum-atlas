@@ -1,5 +1,5 @@
 import CoursePage from "@/components/CoursePage";
-import { getCourseBySlug } from "@/lib/content/courses-new";
+import { getCourseBySlug } from "@/lib/content/courses";
 import { notFound } from "next/navigation";
 
 export default function Page() {
@@ -7,4 +7,3 @@ export default function Page() {
   if (!course) return notFound();
   return <CoursePage course={course} />;
 }
-
