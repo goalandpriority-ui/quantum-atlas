@@ -10,6 +10,7 @@ const columns = [
       { href: "/dictionary", label: "Dictionary" },
       { href: "/algorithms", label: "Algorithms" },
       { href: "/myths", label: "Myths Debunked" },
+      { href: "/faq", label: "FAQ" },
     ],
   },
   {
@@ -20,6 +21,7 @@ const columns = [
       { href: "/compare", label: "Compare Processors" },
       { href: "/research", label: "Research Papers" },
       { href: "/timeline", label: "Timeline" },
+      { href: "/people", label: "Quantum Pioneers" },
     ],
   },
   {
@@ -29,6 +31,7 @@ const columns = [
       { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
       { href: "/quantum-vs-ai", label: "Quantum vs AI" },
       { href: "/future", label: "Future Predictions" },
+      { href: "/countries", label: "By Country" },
     ],
   },
   {
@@ -38,8 +41,20 @@ const columns = [
       { href: "/jobs", label: "Jobs" },
       { href: "/courses", label: "Courses" },
       { href: "/tools", label: "Calculators" },
+      { href: "/circuit-builder", label: "Circuit Builder" },
+      { href: "/quiz", label: "Quantum Readiness Quiz" },
+      { href: "/salary", label: "Salary Heatmap" },
+      { href: "/search", label: "Search" },
     ],
   },
+];
+
+const legalLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-of-service", label: "Terms of Service" },
+  { href: "/disclaimer", label: "Disclaimer" },
 ];
 
 export default function Footer() {
@@ -77,8 +92,15 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <div className="max-w-content mx-auto px-6 py-6 border-t border-line text-xs text-ink-soft flex flex-col sm:flex-row justify-between gap-2">
+      <div className="max-w-content mx-auto px-6 py-6 border-t border-line text-xs text-ink-soft flex flex-col sm:flex-row justify-between gap-3">
         <span>© {new Date().getFullYear()} QuantumAtlas. Built for curious minds.</span>
+        <nav className="flex flex-wrap gap-x-4 gap-y-1">
+          {legalLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-quantum transition-colors">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
         <span className="font-mono">|0⟩ + |1⟩</span>
       </div>
     </footer>
