@@ -123,7 +123,7 @@ export default function LinearAlgebraPage() {
           measuring how much they overlap or align. In quantum computing,
           inner products are used to calculate measurement probabilities,
           and they're the mathematical foundation behind tools like the{" "}
-          <Link href="/dictionary/swap-test" className="text-quantum hover:underline">
+          <Link href="/algorithms/swap-test" className="text-quantum hover:underline">
             SWAP test
           </Link>
           , which estimates how similar two quantum states are.
