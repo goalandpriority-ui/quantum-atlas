@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,25 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: "#FAF7F1",
-        surface: "#FFFFFF",
+        paper: "rgb(var(--color-paper) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
         ink: {
-          DEFAULT: "#1B1B2F",
-          muted: "#6B6F8A",
-          soft: "#9296AC",
+          DEFAULT: "rgb(var(--color-ink) / <alpha-value>)",
+          muted: "rgb(var(--color-ink-muted) / <alpha-value>)",
+          soft: "rgb(var(--color-ink-soft) / <alpha-value>)",
         },
-        line: "#E4DFD3",
+        line: "rgb(var(--color-line) / <alpha-value>)",
         quantum: {
-          DEFAULT: "#3454D1",
-          50: "#EEF1FC",
-          100: "#D6DEF8",
-          600: "#3454D1",
-          700: "#2A41A8",
+          DEFAULT: "rgb(var(--color-quantum) / <alpha-value>)",
+          50: "rgb(var(--color-quantum-50) / <alpha-value>)",
+          100: "rgb(var(--color-quantum-100) / <alpha-value>)",
+          600: "rgb(var(--color-quantum) / <alpha-value>)",
+          700: "rgb(var(--color-quantum-700) / <alpha-value>)",
         },
         collapse: {
-          DEFAULT: "#E8542E",
-          50: "#FDEEE9",
-          600: "#E8542E",
+          DEFAULT: "rgb(var(--color-collapse) / <alpha-value>)",
+          50: "rgb(var(--color-collapse-50) / <alpha-value>)",
+          600: "rgb(var(--color-collapse) / <alpha-value>)",
         },
       },
       fontFamily: {
@@ -40,3 +41,4 @@ module.exports = {
   },
   plugins: [],
 };
+                
