@@ -35,6 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/tools", priority: 0.8, changeFrequency: "monthly" as const },
     { url: "/compare", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/search", priority: 0.5, changeFrequency: "monthly" as const },
+    { url: "/glossary", priority: 0.7, changeFrequency: "monthly" as const },
+    { url: "/pop-culture", priority: 0.6, changeFrequency: "monthly" as const },
+    { url: "/hype-cycle", priority: 0.6, changeFrequency: "monthly" as const },
+    { url: "/quantum-vs-supercomputers", priority: 0.7, changeFrequency: "monthly" as const },
+    { url: "/quantum-vs-blockchain", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/people", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/countries", priority: 0.7, changeFrequency: "monthly" as const },
     { url: "/faq", priority: 0.8, changeFrequency: "monthly" as const },
@@ -132,4 +137,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...coursePages,
     ...peoplePages,
   ];
-}
+     }
+    
