@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "QuantumAtlas — The Encyclopedia of Quantum Computing",
   description:
     "News, research, companies, hardware, and interactive learning for quantum computing — all in one place.",
+  other: {
+    "google-adsense-account": "ca-pub-1202355754527023",
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +38,7 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-LVNT6GWPGK"
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
