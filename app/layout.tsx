@@ -22,6 +22,14 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
 
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1202355754527023"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-LVNT6GWPGK"
