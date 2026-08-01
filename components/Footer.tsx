@@ -50,6 +50,7 @@ const columns = [
     links: [
       { href: "/interview-questions", label: "Interview Questions" },
       { href: "/frameworks", label: "Frameworks Compared" },
+      { href: "/quantum-escape", label: "Quantum Escape 🔐" },
       { href: "/daily-challenge", label: "Daily Challenge 🧩" },
       { href: "/badges", label: "Badges & Achievements" },
       { href: "/qubit-defender", label: "Qubit Defender 🎮" },
