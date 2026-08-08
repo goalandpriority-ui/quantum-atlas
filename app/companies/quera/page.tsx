@@ -1,19 +1,15 @@
-import { processors } from "@/lib/content/hardware";
-import HardwarePage from "@/components/HardwarePage";
+import { companies } from "@/lib/content/companies";
+import CompanyPage from "@/components/CompanyPage";
 import { notFound } from "next/navigation";
 
 export default function Page() {
-  const proc = processors.find((p) => p.slug === "quera-aquila");
-  if (!proc) return notFound();
-  return <HardwarePage processor={proc} />;
+  const company = companies.find((c) => c.slug === "quera");
+  if (!company) return notFound();
+  return <CompanyPage company={company} />;
 }
 
 export async function generateMetadata() {
-  const proc = processors.find((p) => p.slug === "quera-aquila");
-  if (!proc) return {};
-  return {
-    title: proc.name,
-    description: proc.summary,
-  };
+  const company = companies.find((c) => c.slug === "quera");
+  if (!company) return {};
+  return { title: company.name, description: company.summary };
 }
-
