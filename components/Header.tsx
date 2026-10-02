@@ -51,8 +51,8 @@ const nav: NavItem[] = [
     label: "Hardware",
     dropdown: [
       [
-        { href: "/hardware", label: "Hardware Database", desc: "14 processors profiled" },
-        { href: "/companies", label: "Companies", desc: "10 companies covered" },
+        { href: "/hardware", label: "Hardware Database", desc: "20 processors profiled" },
+        { href: "/companies", label: "Companies", desc: "20 companies covered" },
         { href: "/compare", label: "Compare Processors" },
         { href: "/vendor-comparison", label: "Vendor Comparison" },
         { href: "/people", label: "Quantum Pioneers" },
