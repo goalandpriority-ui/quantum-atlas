@@ -41,7 +41,7 @@ const nav: NavItem[] = [
     dropdown: [
       [
         { href: "/dictionary", label: "Full Dictionary", desc: "50 terms explained" },
-        { href: "/algorithms", label: "Algorithms", desc: "51 quantum algorithms" },
+        { href: "/algorithms", label: "Algorithms", desc: "63 quantum algorithms" },
         { href: "/glossary", label: "Acronym Glossary", desc: "NISQ, QEC, VQE…" },
       ],
     ],
