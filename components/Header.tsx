@@ -78,7 +78,7 @@ const nav: NavItem[] = [
     label: "Insights",
     dropdown: [
       [
-        { href: "/industries", label: "By Industry", desc: "10 sectors covered" },
+        { href: "/industries", label: "By Industry", desc: "14 sectors covered" },
         { href: "/countries", label: "By Country", desc: "Global quantum landscape" },
         { href: "/quantum-vs-classical", label: "Quantum vs Classical" },
         { href: "/quantum-vs-ai", label: "Quantum vs AI" },
