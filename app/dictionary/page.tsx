@@ -3,35 +3,43 @@ import { Card } from "@/components/Section";
 
 export const metadata = {
   title: "Quantum Dictionary | QuantumAtlas",
-  description: "1000+ quantum computing terms, defined simply and rigorously.",
+  description:
+    "100 quantum computing terms explained with plain-language definitions, technical definitions, analogies, key facts, and FAQs.",
 };
 
 export default function DictionaryIndexPage() {
+  const categories = Array.from(new Set(dictionaryTerms.map((t) => t.category)));
+
   return (
     <div className="max-w-content mx-auto px-6 py-14">
       <p className="font-mono text-xs uppercase tracking-widest text-quantum mb-2">
-        1000+ Terms · Growing Daily
+        {dictionaryTerms.length} Terms · {categories.length} Categories
       </p>
       <h1 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-3">
         Quantum Dictionary
       </h1>
       <p className="text-ink-muted max-w-2xl mb-10">
-        Every quantum computing term, explained with a plain-language
-        definition, a technical definition, an analogy, and real-world use
-        cases. New terms are added every week.
+        Quantum computing terms explained with a plain-language definition, a technical definition, an
+        analogy, key facts, real-world use cases, common misconceptions, and answers to frequent questions.
+        Entries link to the related algorithms, hardware, and industries in our other databases.
       </p>
 
-      <div className="grid sm:grid-cols-2 gap-5">
-        {dictionaryTerms.map((t) => (
-          <Card key={t.slug} href={`/dictionary/${t.slug}`}>
-            <p className="font-mono text-[11px] uppercase tracking-wide text-quantum mb-2">
-              {t.category}
-            </p>
-            <h2 className="font-serif text-xl font-semibold text-ink mb-2">{t.term}</h2>
-            <p className="text-sm text-ink-muted leading-relaxed">{t.shortDefinition}</p>
-          </Card>
-        ))}
-      </div>
+      {categories.map((category) => (
+        <section key={category} className="mb-12">
+          <h2 className="font-serif text-2xl font-semibold text-ink mb-5">{category}</h2>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {dictionaryTerms
+              .filter((t) => t.category === category)
+              .sort((a, b) => a.term.localeCompare(b.term))
+              .map((t) => (
+                <Card key={t.slug} href={`/dictionary/${t.slug}`}>
+                  <h3 className="font-serif text-xl font-semibold text-ink mb-2">{t.term}</h3>
+                  <p className="text-sm text-ink-muted leading-relaxed">{t.shortDefinition}</p>
+                </Card>
+              ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }
