@@ -1,3 +1,5 @@
+export type DictionaryFaq = { q: string; a: string };
+
 export type DictionaryTerm = {
   slug: string;
   term: string;
@@ -9,21 +11,27 @@ export type DictionaryTerm = {
   useCases: string[];
   relatedTerms: { slug: string; term: string }[];
   misconceptions?: string[];
+  // Optional long-form fields. Pages render each section only when present.
+  lastUpdated?: string;
+  inDepth?: string[];
+  keyFacts?: { label: string; value: string }[];
+  history?: string;
+  comparison?: string[];
+  faq?: DictionaryFaq[];
+  relatedAlgorithms?: string[];
+  relatedHardware?: string[];
+  relatedIndustries?: string[];
 };
 
 export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "qubit",
     term: "Qubit",
-    shortDefinition:
-      "The basic unit of quantum information, capable of existing in a superposition of 0 and 1.",
+    shortDefinition: "The basic unit of quantum information, capable of existing in a superposition of 0 and 1.",
     category: "Fundamentals",
-    definition:
-      "A qubit (quantum bit) is the fundamental unit of information in a quantum computer. Unlike a classical bit, which must be either 0 or 1, a qubit can exist in a superposition — a combination of both states at once, described by probabilities.",
-    technicalDefinition:
-      "Mathematically, a qubit's state is represented as |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex numbers called probability amplitudes, and |α|² + |β|² = 1. Measuring the qubit collapses it to |0⟩ with probability |α|² or |1⟩ with probability |β|².",
-    analogy:
-      "Imagine a spinning coin in the air. While it's spinning, it isn't simply 'heads' or 'tails' — it's in a blend of both possibilities. Only when it lands (is measured) does it settle into one definite state. A qubit behaves similarly until it is measured.",
+    definition: "A qubit (quantum bit) is the fundamental unit of information in a quantum computer. Unlike a classical bit, which must be either 0 or 1, a qubit can exist in a superposition — a combination of both states at once, described by probabilities.",
+    technicalDefinition: "Mathematically, a qubit's state is represented as |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex numbers called probability amplitudes, and |α|² + |β|² = 1. Measuring the qubit collapses it to |0⟩ with probability |α|² or |1⟩ with probability |β|².",
+    analogy: "Imagine a spinning coin in the air. While it's spinning, it isn't simply 'heads' or 'tails' — it's in a blend of both possibilities. Only when it lands (is measured) does it settle into one definite state. A qubit behaves similarly until it is measured.",
     useCases: [
       "Storing and processing information in quantum algorithms like Shor's and Grover's",
       "Representing molecular states in quantum chemistry simulations",
@@ -42,15 +50,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "entanglement",
     term: "Entanglement",
-    shortDefinition:
-      "A quantum phenomenon where two or more qubits become linked, so the state of one instantly correlates with the state of another.",
+    shortDefinition: "A quantum phenomenon where two or more qubits become linked, so the state of one instantly correlates with the state of another.",
     category: "Core Principles",
-    definition:
-      "Entanglement is a uniquely quantum phenomenon in which two or more particles become correlated in such a way that the quantum state of each particle cannot be described independently of the others — even when separated by large distances.",
-    technicalDefinition:
-      "An entangled two-qubit state, such as |Φ+⟩ = (1/√2)(|00⟩ + |11⟩), cannot be written as a product of two individual single-qubit states. Measuring one qubit instantly determines the measurement outcome of the other, a correlation stronger than any possible in classical physics.",
-    analogy:
-      "Picture two coins that always land on opposite faces no matter how far apart they are flipped — flip one in Tokyo and get heads, and the other in New York instantly shows tails, even though neither coin 'knew' the result in advance. Entanglement produces correlations like this, though it cannot be used to send information faster than light.",
+    definition: "Entanglement is a uniquely quantum phenomenon in which two or more particles become correlated in such a way that the quantum state of each particle cannot be described independently of the others — even when separated by large distances.",
+    technicalDefinition: "An entangled two-qubit state, such as |Φ+⟩ = (1/√2)(|00⟩ + |11⟩), cannot be written as a product of two individual single-qubit states. Measuring one qubit instantly determines the measurement outcome of the other, a correlation stronger than any possible in classical physics.",
+    analogy: "Picture two coins that always land on opposite faces no matter how far apart they are flipped — flip one in Tokyo and get heads, and the other in New York instantly shows tails, even though neither coin 'knew' the result in advance. Entanglement produces correlations like this, though it cannot be used to send information faster than light.",
     useCases: [
       "Enabling quantum teleportation protocols (transferring quantum states, not matter)",
       "Powering quantum key distribution for ultra-secure communication",
@@ -69,15 +73,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "superposition",
     term: "Superposition",
-    shortDefinition:
-      "The quantum principle that a qubit can exist in a combination of 0 and 1 simultaneously, until it is measured.",
+    shortDefinition: "The quantum principle that a qubit can exist in a combination of 0 and 1 simultaneously, until it is measured.",
     category: "Core Principles",
-    definition:
-      "Superposition is the quantum mechanical principle that a system can exist in multiple states at the same time, each with an associated probability amplitude. For a qubit, this means existing as a blend of |0⟩ and |1⟩ simultaneously — not secretly one or the other, but genuinely both, until a measurement forces it into one definite outcome.",
-    technicalDefinition:
-      "A qubit in superposition has state |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex probability amplitudes. The key insight is that these amplitudes can interfere with each other — adding constructively or destructively — which is what allows quantum algorithms to amplify correct answers and suppress incorrect ones.",
-    analogy:
-      "Think of a sound wave that's a combination of two notes played at once. Before you 'measure' (listen to) a single note, both are genuinely present. A qubit in superposition is similar: both 0 and 1 are genuinely present as possibilities, and the probabilities only 'resolve' when measured.",
+    definition: "Superposition is the quantum mechanical principle that a system can exist in multiple states at the same time, each with an associated probability amplitude. For a qubit, this means existing as a blend of |0⟩ and |1⟩ simultaneously — not secretly one or the other, but genuinely both, until a measurement forces it into one definite outcome.",
+    technicalDefinition: "A qubit in superposition has state |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex probability amplitudes. The key insight is that these amplitudes can interfere with each other — adding constructively or destructively — which is what allows quantum algorithms to amplify correct answers and suppress incorrect ones.",
+    analogy: "Think of a sound wave that's a combination of two notes played at once. Before you 'measure' (listen to) a single note, both are genuinely present. A qubit in superposition is similar: both 0 and 1 are genuinely present as possibilities, and the probabilities only 'resolve' when measured.",
     useCases: [
       "Enabling quantum parallelism — processing many possible inputs simultaneously in algorithms",
       "The starting point of almost every quantum algorithm, via the Hadamard gate",
@@ -97,15 +97,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-gate",
     term: "Quantum Gate",
-    shortDefinition:
-      "A basic operation applied to qubits that transforms their quantum state — the quantum equivalent of a classical logic gate.",
+    shortDefinition: "A basic operation applied to qubits that transforms their quantum state — the quantum equivalent of a classical logic gate.",
     category: "Gates & Circuits",
-    definition:
-      "A quantum gate is a mathematical operation — represented as a unitary matrix — that transforms the state of one or more qubits. Quantum gates are the building blocks of quantum circuits and quantum algorithms, analogous to logic gates (AND, OR, NOT) in classical computing. Unlike most classical gates, all quantum gates are reversible.",
-    technicalDefinition:
-      "A single-qubit gate is a 2×2 unitary matrix U applied to a qubit's state vector. A two-qubit gate is a 4×4 unitary matrix. The Hadamard gate H = (1/√2)[[1,1],[1,-1]] puts a qubit into equal superposition. The CNOT gate flips a target qubit if and only if the control qubit is |1⟩, and is the primary way entanglement is created in quantum circuits.",
-    analogy:
-      "Think of a quantum gate like a precise physical transformation — similar to how rotating a compass needle by exactly 90 degrees changes where it points. The gate specifies exactly how the qubit's 'direction' in an abstract mathematical space changes.",
+    definition: "A quantum gate is a mathematical operation — represented as a unitary matrix — that transforms the state of one or more qubits. Quantum gates are the building blocks of quantum circuits and quantum algorithms, analogous to logic gates (AND, OR, NOT) in classical computing. Unlike most classical gates, all quantum gates are reversible.",
+    technicalDefinition: "A single-qubit gate is a 2×2 unitary matrix U applied to a qubit's state vector. A two-qubit gate is a 4×4 unitary matrix. The Hadamard gate H = (1/√2)[[1,1],[1,-1]] puts a qubit into equal superposition. The CNOT gate flips a target qubit if and only if the control qubit is |1⟩, and is the primary way entanglement is created in quantum circuits.",
+    analogy: "Think of a quantum gate like a precise physical transformation — similar to how rotating a compass needle by exactly 90 degrees changes where it points. The gate specifies exactly how the qubit's 'direction' in an abstract mathematical space changes.",
     useCases: [
       "Creating superposition with the Hadamard gate",
       "Creating entanglement with the CNOT gate",
@@ -123,15 +119,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "bloch-sphere",
     term: "Bloch Sphere",
-    shortDefinition:
-      "A geometric representation of a single qubit's state as a point on the surface of a sphere.",
+    shortDefinition: "A geometric representation of a single qubit's state as a point on the surface of a sphere.",
     category: "Fundamentals",
-    definition:
-      "The Bloch sphere is a mathematical visualization tool used to represent the state of a single qubit. Every possible pure state of a qubit corresponds to a unique point on the surface of a unit sphere. The north pole represents |0⟩, the south pole represents |1⟩, and every other point on the sphere represents a different superposition of the two.",
-    technicalDefinition:
-      "A qubit state |ψ⟩ = cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩ is parameterized by two angles: θ (the polar angle from the north pole, 0 to π) and φ (the azimuthal angle around the equator, 0 to 2π). Single-qubit gates correspond to rotations of this sphere around various axes.",
-    analogy:
-      "Imagine a globe: the North Pole is '0,' the South Pole is '1,' and every other point on the surface — London, Tokyo, the middle of the Pacific — represents a different superposition. Applying a gate is like rotating the entire globe.",
+    definition: "The Bloch sphere is a mathematical visualization tool used to represent the state of a single qubit. Every possible pure state of a qubit corresponds to a unique point on the surface of a unit sphere. The north pole represents |0⟩, the south pole represents |1⟩, and every other point on the sphere represents a different superposition of the two.",
+    technicalDefinition: "A qubit state |ψ⟩ = cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩ is parameterized by two angles: θ (the polar angle from the north pole, 0 to π) and φ (the azimuthal angle around the equator, 0 to 2π). Single-qubit gates correspond to rotations of this sphere around various axes.",
+    analogy: "Imagine a globe: the North Pole is '0,' the South Pole is '1,' and every other point on the surface — London, Tokyo, the middle of the Pacific — represents a different superposition. Applying a gate is like rotating the entire globe.",
     useCases: [
       "Visualizing the effect of single-qubit gates as rotations",
       "Understanding and teaching qubit states intuitively",
@@ -149,15 +141,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "decoherence",
     term: "Decoherence",
-    shortDefinition:
-      "The process by which a qubit loses its quantum properties through unwanted interactions with its environment.",
+    shortDefinition: "The process by which a qubit loses its quantum properties through unwanted interactions with its environment.",
     category: "Hardware & Errors",
-    definition:
-      "Decoherence is the process by which a quantum system loses its superposition and entanglement properties through interactions with its surrounding environment. Even tiny disturbances — stray electromagnetic fields, temperature fluctuations, or vibrations — can cause a qubit to 'forget' its quantum state and behave like a classical bit. Decoherence is one of the primary engineering challenges in building useful quantum computers.",
-    technicalDefinition:
-      "Decoherence can be described in terms of two timescales: T₁ (the relaxation time — how long before a qubit in |1⟩ decays to |0⟩) and T₂ (the dephasing time — how long before the qubit's phase relationship is lost). Both timescales are crucial for determining how many gate operations can be performed before errors dominate.",
-    analogy:
-      "Imagine trying to balance a pencil perfectly upright on its tip. Any tiny vibration knocks it over — the longer you wait, the more likely it is to fall. A qubit in superposition is similarly fragile: the longer you wait or the more it interacts with its environment, the more likely it is to 'fall' into a definite classical state.",
+    definition: "Decoherence is the process by which a quantum system loses its superposition and entanglement properties through interactions with its surrounding environment. Even tiny disturbances — stray electromagnetic fields, temperature fluctuations, or vibrations — can cause a qubit to 'forget' its quantum state and behave like a classical bit. Decoherence is one of the primary engineering challenges in building useful quantum computers.",
+    technicalDefinition: "Decoherence can be described in terms of two timescales: T₁ (the relaxation time — how long before a qubit in |1⟩ decays to |0⟩) and T₂ (the dephasing time — how long before the qubit's phase relationship is lost). Both timescales are crucial for determining how many gate operations can be performed before errors dominate.",
+    analogy: "Imagine trying to balance a pencil perfectly upright on its tip. Any tiny vibration knocks it over — the longer you wait, the more likely it is to fall. A qubit in superposition is similarly fragile: the longer you wait or the more it interacts with its environment, the more likely it is to 'fall' into a definite classical state.",
     useCases: [
       "Understanding why quantum computers need extreme isolation (cooling, shielding)",
       "Motivating quantum error correction — to work faster than decoherence destroys information",
@@ -175,15 +163,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "bell-state",
     term: "Bell State",
-    shortDefinition:
-      "One of four maximally entangled two-qubit states, serving as a fundamental resource in quantum information.",
+    shortDefinition: "One of four maximally entangled two-qubit states, serving as a fundamental resource in quantum information.",
     category: "Core Principles",
-    definition:
-      "A Bell state is one of four specific quantum states of two qubits that represent maximum entanglement — the strongest possible correlation between two quantum systems. Named after physicist John Bell, they are the simplest examples of entangled states and serve as fundamental building blocks in quantum communication, quantum cryptography, and quantum teleportation protocols.",
-    technicalDefinition:
-      "The four Bell states are: |Φ+⟩ = (1/√2)(|00⟩ + |11⟩), |Φ-⟩ = (1/√2)(|00⟩ - |11⟩), |Ψ+⟩ = (1/√2)(|01⟩ + |10⟩), |Ψ-⟩ = (1/√2)(|01⟩ - |10⟩). Each is created by a Hadamard gate followed by a CNOT gate. They form a complete orthonormal basis for the two-qubit state space.",
-    analogy:
-      "Think of a Bell state as two dice that are perfectly correlated: whenever you roll them, they always show the same number (or always show different numbers, depending on which Bell state). No matter how far apart the dice are, the outcome of rolling one instantly tells you the outcome of the other.",
+    definition: "A Bell state is one of four specific quantum states of two qubits that represent maximum entanglement — the strongest possible correlation between two quantum systems. Named after physicist John Bell, they are the simplest examples of entangled states and serve as fundamental building blocks in quantum communication, quantum cryptography, and quantum teleportation protocols.",
+    technicalDefinition: "The four Bell states are: |Φ+⟩ = (1/√2)(|00⟩ + |11⟩), |Φ-⟩ = (1/√2)(|00⟩ - |11⟩), |Ψ+⟩ = (1/√2)(|01⟩ + |10⟩), |Ψ-⟩ = (1/√2)(|01⟩ - |10⟩). Each is created by a Hadamard gate followed by a CNOT gate. They form a complete orthonormal basis for the two-qubit state space.",
+    analogy: "Think of a Bell state as two dice that are perfectly correlated: whenever you roll them, they always show the same number (or always show different numbers, depending on which Bell state). No matter how far apart the dice are, the outcome of rolling one instantly tells you the outcome of the other.",
     useCases: [
       "Quantum teleportation — transferring a quantum state using a Bell state as a resource",
       "Quantum key distribution protocols (like E91)",
@@ -198,15 +182,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-circuit",
     term: "Quantum Circuit",
-    shortDefinition:
-      "A sequence of quantum gates applied to a set of qubits — the quantum equivalent of a program.",
+    shortDefinition: "A sequence of quantum gates applied to a set of qubits — the quantum equivalent of a program.",
     category: "Gates & Circuits",
-    definition:
-      "A quantum circuit is a model for quantum computation in which a fixed number of qubits are acted on by a sequence of quantum gates, followed by measurements. It is the standard way of describing and visualizing quantum algorithms — analogous to a classical program or flowchart, but for quantum operations.",
-    technicalDefinition:
-      "A quantum circuit is drawn as a set of horizontal wires (one per qubit, representing the passage of time from left to right) with gate symbols placed along the wires. Single-qubit gates appear as labeled boxes on a single wire; multi-qubit gates connect multiple wires. The 'depth' of a circuit (the longest path from input to output) determines how long the computation takes and how much decoherence it is exposed to.",
-    analogy:
-      "A quantum circuit is like a musical score: the horizontal lines are the instruments (qubits), the notes along each line are the operations (gates) to be performed, and reading left to right tells you the order in which things happen.",
+    definition: "A quantum circuit is a model for quantum computation in which a fixed number of qubits are acted on by a sequence of quantum gates, followed by measurements. It is the standard way of describing and visualizing quantum algorithms — analogous to a classical program or flowchart, but for quantum operations.",
+    technicalDefinition: "A quantum circuit is drawn as a set of horizontal wires (one per qubit, representing the passage of time from left to right) with gate symbols placed along the wires. Single-qubit gates appear as labeled boxes on a single wire; multi-qubit gates connect multiple wires. The 'depth' of a circuit (the longest path from input to output) determines how long the computation takes and how much decoherence it is exposed to.",
+    analogy: "A quantum circuit is like a musical score: the horizontal lines are the instruments (qubits), the notes along each line are the operations (gates) to be performed, and reading left to right tells you the order in which things happen.",
     useCases: [
       "Representing and communicating quantum algorithms (Shor's, Grover's, etc.)",
       "Input format for quantum computing frameworks like Qiskit and Cirq",
@@ -221,15 +201,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "nisq",
     term: "NISQ",
-    shortDefinition:
-      "Noisy Intermediate-Scale Quantum — the current era of quantum computing, characterized by machines with 50–1000 qubits but significant error rates.",
+    shortDefinition: "Noisy Intermediate-Scale Quantum — the current era of quantum computing, characterized by machines with 50–1000 qubits but significant error rates.",
     category: "Industry & Era",
-    definition:
-      "NISQ stands for Noisy Intermediate-Scale Quantum. The term, coined by physicist John Preskill in 2018, describes the current generation of quantum computers: machines with enough qubits to be interesting and potentially useful, but with error rates too high and coherence times too short to run full quantum error correction. NISQ devices operate in a regime between simple proof-of-concept experiments and the fully fault-tolerant quantum computers of the future.",
-    technicalDefinition:
-      "A NISQ device typically has 50 to a few thousand physical qubits with gate error rates on the order of 0.1–1% per gate. At these error rates, computations are limited to relatively shallow circuits (low depth) before noise dominates. Algorithms designed for the NISQ era — like VQE (Variational Quantum Eigensolver) and QAOA (Quantum Approximate Optimization Algorithm) — are specifically designed to extract useful results within these constraints.",
-    analogy:
-      "The NISQ era is like the early days of classical computing, when computers filled rooms and could only run limited programs before overheating or breaking down — powerful enough to hint at the future, but not yet the transformative technology they'd become.",
+    definition: "NISQ stands for Noisy Intermediate-Scale Quantum. The term, coined by physicist John Preskill in 2018, describes the current generation of quantum computers: machines with enough qubits to be interesting and potentially useful, but with error rates too high and coherence times too short to run full quantum error correction. NISQ devices operate in a regime between simple proof-of-concept experiments and the fully fault-tolerant quantum computers of the future.",
+    technicalDefinition: "A NISQ device typically has 50 to a few thousand physical qubits with gate error rates on the order of 0.1–1% per gate. At these error rates, computations are limited to relatively shallow circuits (low depth) before noise dominates. Algorithms designed for the NISQ era — like VQE (Variational Quantum Eigensolver) and QAOA (Quantum Approximate Optimization Algorithm) — are specifically designed to extract useful results within these constraints.",
+    analogy: "The NISQ era is like the early days of classical computing, when computers filled rooms and could only run limited programs before overheating or breaking down — powerful enough to hint at the future, but not yet the transformative technology they'd become.",
     useCases: [
       "Running near-term quantum algorithms (VQE, QAOA) for chemistry and optimization",
       "Exploring quantum advantage on specific, carefully chosen problems",
@@ -244,15 +220,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-supremacy",
     term: "Quantum Supremacy",
-    shortDefinition:
-      "The milestone at which a quantum computer performs a specific task faster than any classical computer could.",
+    shortDefinition: "The milestone at which a quantum computer performs a specific task faster than any classical computer could.",
     category: "Industry & Era",
-    definition:
-      "Quantum supremacy (also called quantum advantage in some contexts) refers to the point at which a quantum computer demonstrates the ability to perform a specific computation faster than the best available classical computers or supercomputers. The term was popularized after Google's 2019 announcement that its Sycamore processor had achieved this milestone for a specific mathematical sampling task.",
-    technicalDefinition:
-      "Google's 2019 claim involved random circuit sampling — a task with no direct practical application, but one that is believed to be exponentially hard for classical computers. The Sycamore chip's result was later challenged and partially rebutted by improved classical simulations, illustrating that 'supremacy' claims for specific tasks are often contested and that the boundary between 'hard for classical' and 'achievable quantumly' is still being defined.",
-    analogy:
-      "Quantum supremacy is like a new type of runner completing a specific kind of race faster than any human — impressive and significant, but not the same as being better at all races. The task may be specially chosen to suit the quantum runner's strengths.",
+    definition: "Quantum supremacy (also called quantum advantage in some contexts) refers to the point at which a quantum computer demonstrates the ability to perform a specific computation faster than the best available classical computers or supercomputers. The term was popularized after Google's 2019 announcement that its Sycamore processor had achieved this milestone for a specific mathematical sampling task.",
+    technicalDefinition: "Google's 2019 claim involved random circuit sampling — a task with no direct practical application, but one that is believed to be exponentially hard for classical computers. The Sycamore chip's result was later challenged and partially rebutted by improved classical simulations, illustrating that 'supremacy' claims for specific tasks are often contested and that the boundary between 'hard for classical' and 'achievable quantumly' is still being defined.",
+    analogy: "Quantum supremacy is like a new type of runner completing a specific kind of race faster than any human — impressive and significant, but not the same as being better at all races. The task may be specially chosen to suit the quantum runner's strengths.",
     useCases: [
       "Marking a historical milestone in quantum computing development",
       "Motivating further investment and research in quantum hardware",
@@ -271,15 +243,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "post-quantum-cryptography",
     term: "Post-Quantum Cryptography",
-    shortDefinition:
-      "Encryption methods designed to be secure against attacks from both classical and quantum computers.",
+    shortDefinition: "Encryption methods designed to be secure against attacks from both classical and quantum computers.",
     category: "Applications",
-    definition:
-      "Post-quantum cryptography (PQC) refers to cryptographic algorithms that are believed to be secure against attacks by large-scale quantum computers, particularly Shor's Algorithm, which could break widely-used encryption schemes like RSA. These new algorithms are based on mathematical problems believed to be hard even for quantum computers.",
-    technicalDefinition:
-      "The main families of post-quantum cryptographic algorithms include: lattice-based cryptography (based on problems like Learning With Errors), hash-based signatures, code-based cryptography, and multivariate polynomial cryptography. NIST (the US National Institute of Standards and Technology) completed a multi-year standardization process in 2024, selecting several algorithms — including CRYSTALS-Kyber for key exchange and CRYSTALS-Dilithium for digital signatures — as the first post-quantum standards.",
-    analogy:
-      "Imagine current internet encryption as a lock whose key can be copied by a powerful enough machine (a quantum computer). Post-quantum cryptography replaces it with a fundamentally different type of lock — one whose key-copying mechanism simply doesn't work on the new design, even with a quantum machine.",
+    definition: "Post-quantum cryptography (PQC) refers to cryptographic algorithms that are believed to be secure against attacks by large-scale quantum computers, particularly Shor's Algorithm, which could break widely-used encryption schemes like RSA. These new algorithms are based on mathematical problems believed to be hard even for quantum computers.",
+    technicalDefinition: "The main families of post-quantum cryptographic algorithms include: lattice-based cryptography (based on problems like Learning With Errors), hash-based signatures, code-based cryptography, and multivariate polynomial cryptography. NIST (the US National Institute of Standards and Technology) completed a multi-year standardization process in 2024, selecting several algorithms — including CRYSTALS-Kyber for key exchange and CRYSTALS-Dilithium for digital signatures — as the first post-quantum standards.",
+    analogy: "Imagine current internet encryption as a lock whose key can be copied by a powerful enough machine (a quantum computer). Post-quantum cryptography replaces it with a fundamentally different type of lock — one whose key-copying mechanism simply doesn't work on the new design, even with a quantum machine.",
     useCases: [
       "Securing internet communications (HTTPS) against future quantum attacks",
       "Protecting government and military communications long-term",
@@ -297,15 +265,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "coherence-time",
     term: "Coherence Time",
-    shortDefinition:
-      "The duration a qubit can maintain its quantum state before decoherence causes it to lose quantum information.",
+    shortDefinition: "The duration a qubit can maintain its quantum state before decoherence causes it to lose quantum information.",
     category: "Hardware & Errors",
-    definition:
-      "Coherence time describes how long a qubit can preserve its quantum properties — superposition and phase relationships — before environmental noise causes it to decay into a classical-like state. Longer coherence times allow more operations to be performed before errors accumulate.",
-    technicalDefinition:
-      "Two specific coherence times are commonly measured: T₁ (relaxation time, how long before a qubit in |1⟩ decays toward |0⟩) and T₂ (dephasing time, how long phase information is preserved). T₂ is always less than or equal to twice T₁ in standard models.",
-    analogy:
-      "Think of coherence time like how long a spinning top keeps spinning before friction and air resistance slow it down and it falls over — the longer it spins, the more 'useful time' you have before it loses its special spinning state.",
+    definition: "Coherence time describes how long a qubit can preserve its quantum properties — superposition and phase relationships — before environmental noise causes it to decay into a classical-like state. Longer coherence times allow more operations to be performed before errors accumulate.",
+    technicalDefinition: "Two specific coherence times are commonly measured: T₁ (relaxation time, how long before a qubit in |1⟩ decays toward |0⟩) and T₂ (dephasing time, how long phase information is preserved). T₂ is always less than or equal to twice T₁ in standard models.",
+    analogy: "Think of coherence time like how long a spinning top keeps spinning before friction and air resistance slow it down and it falls over — the longer it spins, the more 'useful time' you have before it loses its special spinning state.",
     useCases: [
       "A key benchmark for comparing different quantum hardware platforms",
       "Determines how many gate operations can realistically be performed in a circuit",
@@ -320,15 +284,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "gate-fidelity",
     term: "Gate Fidelity",
-    shortDefinition:
-      "A measure of how accurately a quantum gate performs its intended operation, expressed as a percentage close to 100%.",
+    shortDefinition: "A measure of how accurately a quantum gate performs its intended operation, expressed as a percentage close to 100%.",
     category: "Hardware & Errors",
-    definition:
-      "Gate fidelity quantifies how closely a real, physically implemented quantum gate matches its theoretically perfect operation. A fidelity of 99.9% means the gate introduces an error roughly 0.1% of the time it's used — a critical metric since errors compound across the many gates in a real circuit.",
-    technicalDefinition:
-      "Fidelity is typically measured using randomized benchmarking, which applies long sequences of random gates and measures how the output distribution decays from the ideal expected result, isolating gate error from state preparation and measurement error.",
-    analogy:
-      "Think of gate fidelity like the accuracy of a skilled craftsperson repeating the same precise cut thousands of times — even a tiny, consistent imprecision adds up to a noticeably flawed result after enough repetitions.",
+    definition: "Gate fidelity quantifies how closely a real, physically implemented quantum gate matches its theoretically perfect operation. A fidelity of 99.9% means the gate introduces an error roughly 0.1% of the time it's used — a critical metric since errors compound across the many gates in a real circuit.",
+    technicalDefinition: "Fidelity is typically measured using randomized benchmarking, which applies long sequences of random gates and measures how the output distribution decays from the ideal expected result, isolating gate error from state preparation and measurement error.",
+    analogy: "Think of gate fidelity like the accuracy of a skilled craftsperson repeating the same precise cut thousands of times — even a tiny, consistent imprecision adds up to a noticeably flawed result after enough repetitions.",
     useCases: [
       "The primary metric used to compare hardware quality across different quantum processors",
       "Determines how many gates can be chained together before a circuit becomes unreliable",
@@ -343,41 +303,35 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "logical-qubit",
     term: "Logical Qubit",
-    shortDefinition:
-      "An error-protected qubit built by combining many physical qubits using quantum error correction.",
+    shortDefinition: "An error-protected qubit built by combining many physical qubits using quantum error correction.",
     category: "Hardware & Errors",
-    definition:
-      "A logical qubit is a unit of fault-tolerant quantum information, built by encoding the state of one 'ideal' qubit across many real, error-prone physical qubits using a quantum error-correcting code. The redundancy allows errors to be detected and corrected without directly measuring (and destroying) the protected information.",
-    technicalDefinition:
-      "The number of physical qubits required per logical qubit depends on the error-correcting code used and the target logical error rate; surface code implementations often cited in research require on the order of hundreds to over a thousand physical qubits per logical qubit at useful error rates.",
-    analogy:
-      "Think of a logical qubit like a single important message sent multiple times through a noisy phone line using different phrasings — if most copies arrive correctly, the receiver can confidently reconstruct the original message even if a few copies got garbled.",
+    definition: "A logical qubit is a unit of fault-tolerant quantum information, built by encoding the state of one 'ideal' qubit across many real, error-prone physical qubits using a quantum error-correcting code. The redundancy allows errors to be detected and corrected without directly measuring (and destroying) the protected information.",
+    technicalDefinition: "The number of physical qubits required per logical qubit depends on the error-correcting code used and the target logical error rate; surface code implementations often cited in research require on the order of hundreds to over a thousand physical qubits per logical qubit at useful error rates.",
+    analogy: "Think of a logical qubit like a single important message sent multiple times through a noisy phone line using different phrasings — if most copies arrive correctly, the receiver can confidently reconstruct the original message even if a few copies got garbled.",
     useCases: [
       "Required for running large, complex algorithms like Shor's Algorithm reliably",
       "The central goal of quantum error correction research",
       "Google's Willow processor notably demonstrated logical error rates decreasing as more physical qubits were added",
     ],
     relatedTerms: [
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
       { slug: "decoherence", term: "Decoherence" },
       { slug: "nisq", term: "NISQ" },
     ],
     misconceptions: [
       "A logical qubit is not just a 'better' physical qubit — it's an entirely different kind of unit built from many physical qubits working together.",
     ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
   },
   {
     slug: "quantum-advantage",
     term: "Quantum Advantage",
-    shortDefinition:
-      "The point at which a quantum computer solves a useful, practical problem faster than the best classical methods.",
+    shortDefinition: "The point at which a quantum computer solves a useful, practical problem faster than the best classical methods.",
     category: "Industry & Era",
-    definition:
-      "Quantum advantage refers to a quantum computer demonstrably outperforming classical computers on a problem with genuine practical value — distinct from 'quantum supremacy,' which often refers to artificially chosen benchmark tasks with no real-world application.",
-    technicalDefinition:
-      "Unlike supremacy claims based on sampling problems, quantum advantage claims are generally held to a higher bar: the problem should have practical relevance, and ideally the classical comparison should use the best known classical algorithms and hardware, not weaker baselines.",
-    analogy:
-      "If quantum supremacy is winning a deliberately unusual race designed to favor one runner, quantum advantage is winning a race that people actually care about and were already trying to win.",
+    definition: "Quantum advantage refers to a quantum computer demonstrably outperforming classical computers on a problem with genuine practical value — distinct from 'quantum supremacy,' which often refers to artificially chosen benchmark tasks with no real-world application.",
+    technicalDefinition: "Unlike supremacy claims based on sampling problems, quantum advantage claims are generally held to a higher bar: the problem should have practical relevance, and ideally the classical comparison should use the best known classical algorithms and hardware, not weaker baselines.",
+    analogy: "If quantum supremacy is winning a deliberately unusual race designed to favor one runner, quantum advantage is winning a race that people actually care about and were already trying to win.",
     useCases: [
       "The actual long-term goal most quantum computing investment is aimed at, more so than supremacy",
       "Candidate areas include quantum chemistry simulation and certain optimization and sampling problems",
@@ -393,15 +347,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "trapped-ion-qubit",
     term: "Trapped-Ion Qubit",
-    shortDefinition:
-      "A qubit implemented using individual charged atoms (ions) suspended and controlled by electromagnetic fields.",
+    shortDefinition: "A qubit implemented using individual charged atoms (ions) suspended and controlled by electromagnetic fields.",
     category: "Hardware & Errors",
-    definition:
-      "Trapped-ion qubits use individual ions (electrically charged atoms) held in place by electromagnetic fields in a vacuum chamber, with their internal energy states used to represent quantum information. Lasers are typically used to manipulate and read out the ions' states.",
-    technicalDefinition:
-      "Trapped-ion systems often achieve all-to-all qubit connectivity (any qubit can interact with any other) and notably long coherence times compared to superconducting alternatives, though gate operations are typically slower, on the order of microseconds rather than nanoseconds.",
-    analogy:
-      "Think of trapped ions like marbles held in place by an invisible magnetic force field, arranged in a row — lasers act like precise tools that can be aimed at any individual marble (or pair of marbles) to perform an operation.",
+    definition: "Trapped-ion qubits use individual ions (electrically charged atoms) held in place by electromagnetic fields in a vacuum chamber, with their internal energy states used to represent quantum information. Lasers are typically used to manipulate and read out the ions' states.",
+    technicalDefinition: "Trapped-ion systems often achieve all-to-all qubit connectivity (any qubit can interact with any other) and notably long coherence times compared to superconducting alternatives, though gate operations are typically slower, on the order of microseconds rather than nanoseconds.",
+    analogy: "Think of trapped ions like marbles held in place by an invisible magnetic force field, arranged in a row — lasers act like precise tools that can be aimed at any individual marble (or pair of marbles) to perform an operation.",
     useCases: [
       "Used by companies like IonQ and Quantinuum",
       "Particularly well suited to algorithms requiring high connectivity between qubits",
@@ -416,15 +366,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "superconducting-qubit",
     term: "Superconducting Qubit",
-    shortDefinition:
-      "A qubit implemented using tiny superconducting electrical circuits cooled to near absolute zero.",
+    shortDefinition: "A qubit implemented using tiny superconducting electrical circuits cooled to near absolute zero.",
     category: "Hardware & Errors",
-    definition:
-      "Superconducting qubits encode quantum information in the behavior of electrical current in specially designed circuits made from superconducting materials, which must be cooled to extremely low temperatures (near absolute zero) to exhibit their quantum properties.",
-    technicalDefinition:
-      "The most common type, the transmon qubit, uses a Josephson junction (a thin insulating barrier between two superconductors) to create the nonlinear behavior needed to isolate two specific energy levels representing |0⟩ and |1⟩.",
-    analogy:
-      "Think of a superconducting qubit like a tiny, precisely tuned electrical circuit that behaves according to quantum rules only when cooled to temperatures colder than outer space — similar to how some materials only become superconducting (carry electricity with zero resistance) at extremely low temperatures.",
+    definition: "Superconducting qubits encode quantum information in the behavior of electrical current in specially designed circuits made from superconducting materials, which must be cooled to extremely low temperatures (near absolute zero) to exhibit their quantum properties.",
+    technicalDefinition: "The most common type, the transmon qubit, uses a Josephson junction (a thin insulating barrier between two superconductors) to create the nonlinear behavior needed to isolate two specific energy levels representing |0⟩ and |1⟩.",
+    analogy: "Think of a superconducting qubit like a tiny, precisely tuned electrical circuit that behaves according to quantum rules only when cooled to temperatures colder than outer space — similar to how some materials only become superconducting (carry electricity with zero resistance) at extremely low temperatures.",
     useCases: [
       "The most widely used qubit technology today, used by IBM, Google, and Rigetti",
       "Benefits from manufacturing techniques similar to existing semiconductor chip fabrication",
@@ -439,15 +385,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "neutral-atom-qubit",
     term: "Neutral Atom Qubit",
-    shortDefinition:
-      "A qubit implemented using individual uncharged atoms held in place by tightly focused laser beams.",
+    shortDefinition: "A qubit implemented using individual uncharged atoms held in place by tightly focused laser beams.",
     category: "Hardware & Errors",
-    definition:
-      "Neutral atom qubits use individual atoms (without an electric charge, unlike trapped ions) held in precise positions using focused laser beams called optical tweezers. The arrangement of atoms can be reconfigured between experiments, offering programmable connectivity.",
-    technicalDefinition:
-      "Because neutral atoms lack charge, they don't repel each other the way ions do, allowing denser packing. Two-qubit interactions are typically achieved by temporarily exciting atoms to highly excited 'Rydberg states,' which interact strongly with nearby atoms.",
-    analogy:
-      "Think of neutral atom qubits like marbles held in a custom, rearrangeable grid using tiny spotlights — unlike a fixed pegboard, you can move the spotlights to create whatever pattern of connections a specific problem needs.",
+    definition: "Neutral atom qubits use individual atoms (without an electric charge, unlike trapped ions) held in precise positions using focused laser beams called optical tweezers. The arrangement of atoms can be reconfigured between experiments, offering programmable connectivity.",
+    technicalDefinition: "Because neutral atoms lack charge, they don't repel each other the way ions do, allowing denser packing. Two-qubit interactions are typically achieved by temporarily exciting atoms to highly excited 'Rydberg states,' which interact strongly with nearby atoms.",
+    analogy: "Think of neutral atom qubits like marbles held in a custom, rearrangeable grid using tiny spotlights — unlike a fixed pegboard, you can move the spotlights to create whatever pattern of connections a specific problem needs.",
     useCases: [
       "Used by companies like Pasqal",
       "Particularly well suited to quantum simulation problems with natural geometric structure",
@@ -456,66 +398,60 @@ export const dictionaryTerms: DictionaryTerm[] = [
     relatedTerms: [
       { slug: "trapped-ion-qubit", term: "Trapped-Ion Qubit" },
       { slug: "superconducting-qubit", term: "Superconducting Qubit" },
-      { slug: "qram-architecture", term: "QRAM" },
+    ],
+    relatedAlgorithms: [
+      "qram-architecture",
     ],
   },
   {
     slug: "photonic-qubit",
     term: "Photonic Qubit",
-    shortDefinition:
-      "A qubit implemented using properties of individual particles of light (photons), often operable near room temperature.",
+    shortDefinition: "A qubit implemented using properties of individual particles of light (photons), often operable near room temperature.",
     category: "Hardware & Errors",
-    definition:
-      "Photonic qubits encode quantum information using properties of light particles (photons), such as polarization or path. Unlike most other qubit types, photonic systems often don't require extreme cryogenic cooling for the qubits themselves, though some supporting components still need cooling.",
-    technicalDefinition:
-      "Some photonic platforms use discrete photon counting (true qubits), while others, like Xanadu's systems, use continuous-variable encoding with 'squeezed' states of light, representing information differently than the discrete |0⟩/|1⟩ framework used elsewhere in this dictionary.",
-    analogy:
-      "Think of photonic qubits like sending information using the specific 'angle' or timing of beams of light through a maze of mirrors and optical components, rather than using electrical signals or trapped particles.",
+    definition: "Photonic qubits encode quantum information using properties of light particles (photons), such as polarization or path. Unlike most other qubit types, photonic systems often don't require extreme cryogenic cooling for the qubits themselves, though some supporting components still need cooling.",
+    technicalDefinition: "Some photonic platforms use discrete photon counting (true qubits), while others, like Xanadu's systems, use continuous-variable encoding with 'squeezed' states of light, representing information differently than the discrete |0⟩/|1⟩ framework used elsewhere in this dictionary.",
+    analogy: "Think of photonic qubits like sending information using the specific 'angle' or timing of beams of light through a maze of mirrors and optical components, rather than using electrical signals or trapped particles.",
     useCases: [
       "Used by companies like Xanadu and in experiments like China's Jiuzhang boson sampling demonstrations",
       "Naturally suited to quantum networking since photons already travel through fiber optic cables",
       "Can operate largely at room temperature, simplifying some infrastructure requirements",
     ],
     relatedTerms: [
-      { slug: "boson-sampling", term: "Boson Sampling" },
       { slug: "trapped-ion-qubit", term: "Trapped-Ion Qubit" },
+    ],
+    relatedAlgorithms: [
+      "boson-sampling",
     ],
   },
   {
     slug: "ancilla-qubit",
     term: "Ancilla Qubit",
-    shortDefinition:
-      "An auxiliary qubit used as a temporary tool to assist a computation, without holding the final result itself.",
+    shortDefinition: "An auxiliary qubit used as a temporary tool to assist a computation, without holding the final result itself.",
     category: "Gates & Circuits",
-    definition:
-      "An ancilla qubit (sometimes spelled 'ancillary') is an extra qubit used as a helper during a quantum computation — for example, to detect errors, perform measurements, or enable certain gate operations — without directly storing the information the algorithm ultimately cares about.",
-    technicalDefinition:
-      "Ancilla qubits are commonly used in error correction syndrome extraction (where they're measured to reveal information about errors without revealing the protected data) and in techniques like the SWAP test for comparing quantum states.",
-    analogy:
-      "Think of an ancilla qubit like a scratch pad or whiteboard used during a calculation — it helps you work through the problem, but the final answer doesn't live on the scratch pad itself.",
+    definition: "An ancilla qubit (sometimes spelled 'ancillary') is an extra qubit used as a helper during a quantum computation — for example, to detect errors, perform measurements, or enable certain gate operations — without directly storing the information the algorithm ultimately cares about.",
+    technicalDefinition: "Ancilla qubits are commonly used in error correction syndrome extraction (where they're measured to reveal information about errors without revealing the protected data) and in techniques like the SWAP test for comparing quantum states.",
+    analogy: "Think of an ancilla qubit like a scratch pad or whiteboard used during a calculation — it helps you work through the problem, but the final answer doesn't live on the scratch pad itself.",
     useCases: [
       "Essential for quantum error correction syndrome measurement",
       "Used in the SWAP test to compare quantum states without fully measuring them",
       "A standard resource counted when estimating total qubit requirements for an algorithm",
     ],
     relatedTerms: [
-      { slug: "swap-test", term: "SWAP Test" },
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
       { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    relatedAlgorithms: [
+      "swap-test",
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "hadamard-gate",
     term: "Hadamard Gate",
-    shortDefinition:
-      "A fundamental single-qubit gate that creates an equal superposition of |0⟩ and |1⟩.",
+    shortDefinition: "A fundamental single-qubit gate that creates an equal superposition of |0⟩ and |1⟩.",
     category: "Gates & Circuits",
-    definition:
-      "The Hadamard gate is one of the most widely used quantum gates, transforming a qubit in a definite state (|0⟩ or |1⟩) into an equal superposition of both. It's typically the very first gate applied in many quantum algorithms, including Grover's Algorithm and Shor's Algorithm.",
-    technicalDefinition:
-      "Mathematically, the Hadamard gate is represented by the matrix H = (1/√2)[[1,1],[1,-1]]. Applied to |0⟩, it produces (1/√2)(|0⟩ + |1⟩); applied to |1⟩, it produces (1/√2)(|0⟩ - |1⟩).",
-    analogy:
-      "Think of the Hadamard gate like flipping a fair coin that starts perfectly balanced on one edge — after the 'flip,' it has an exactly equal chance of landing heads or tails, representing the equal superposition created.",
+    definition: "The Hadamard gate is one of the most widely used quantum gates, transforming a qubit in a definite state (|0⟩ or |1⟩) into an equal superposition of both. It's typically the very first gate applied in many quantum algorithms, including Grover's Algorithm and Shor's Algorithm.",
+    technicalDefinition: "Mathematically, the Hadamard gate is represented by the matrix H = (1/√2)[[1,1],[1,-1]]. Applied to |0⟩, it produces (1/√2)(|0⟩ + |1⟩); applied to |1⟩, it produces (1/√2)(|0⟩ - |1⟩).",
+    analogy: "Think of the Hadamard gate like flipping a fair coin that starts perfectly balanced on one edge — after the 'flip,' it has an exactly equal chance of landing heads or tails, representing the equal superposition created.",
     useCases: [
       "The standard way to initialize qubits into superposition at the start of an algorithm",
       "Used repeatedly throughout the Quantum Fourier Transform",
@@ -530,15 +466,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "cnot-gate",
     term: "CNOT Gate",
-    shortDefinition:
-      "A two-qubit gate that flips a target qubit only if a control qubit is in state |1⟩, the primary way entanglement is created.",
+    shortDefinition: "A two-qubit gate that flips a target qubit only if a control qubit is in state |1⟩, the primary way entanglement is created.",
     category: "Gates & Circuits",
-    definition:
-      "The CNOT (Controlled-NOT) gate is a fundamental two-qubit gate: it flips the state of a 'target' qubit if and only if a 'control' qubit is in state |1⟩, leaving it unchanged if the control is |0⟩. Applied to qubits in superposition, it's the standard method for generating entanglement.",
-    technicalDefinition:
-      "Combined with the Hadamard gate, CNOT forms a universal set of operations sufficient (along with arbitrary single-qubit rotations) to construct any quantum circuit — making it one of the most important two-qubit gates in quantum computing theory and practice.",
-    analogy:
-      "Think of the CNOT gate like a light switch (the target) wired to only respond if a separate sensor (the control) detects 'on' — when the control qubit is in superposition, the resulting entanglement links the two qubits' fates together.",
+    definition: "The CNOT (Controlled-NOT) gate is a fundamental two-qubit gate: it flips the state of a 'target' qubit if and only if a 'control' qubit is in state |1⟩, leaving it unchanged if the control is |0⟩. Applied to qubits in superposition, it's the standard method for generating entanglement.",
+    technicalDefinition: "Combined with the Hadamard gate, CNOT forms a universal set of operations sufficient (along with arbitrary single-qubit rotations) to construct any quantum circuit — making it one of the most important two-qubit gates in quantum computing theory and practice.",
+    analogy: "Think of the CNOT gate like a light switch (the target) wired to only respond if a separate sensor (the control) detects 'on' — when the control qubit is in superposition, the resulting entanglement links the two qubits' fates together.",
     useCases: [
       "The standard method for creating Bell states and other entangled states",
       "Used throughout virtually every quantum algorithm that requires entanglement",
@@ -553,15 +485,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "pauli-gates",
     term: "Pauli Gates (X, Y, Z)",
-    shortDefinition:
-      "A set of three fundamental single-qubit gates — X (bit flip), Y, and Z (phase flip) — named after physicist Wolfgang Pauli.",
+    shortDefinition: "A set of three fundamental single-qubit gates — X (bit flip), Y, and Z (phase flip) — named after physicist Wolfgang Pauli.",
     category: "Gates & Circuits",
-    definition:
-      "The Pauli gates are three of the most basic single-qubit quantum gates. The X gate acts like a classical NOT gate, flipping |0⟩ and |1⟩. The Z gate flips the sign of the |1⟩ amplitude without changing measurement probabilities directly. The Y gate combines aspects of both.",
-    technicalDefinition:
-      "Represented as 2×2 matrices, X = [[0,1],[1,0]], Z = [[1,0],[0,-1]], and Y = [[0,-i],[i,0]]. Together with the identity matrix, these four matrices form a basis that can describe any single-qubit operation and are foundational to describing quantum error types (bit-flip and phase-flip errors).",
-    analogy:
-      "Think of the X gate like flipping a coin from heads to tails, while the Z gate is more subtle — like marking the 'tails' side with an invisible minus sign that doesn't change what you see when you look at the coin, but does change how it interacts in further calculations.",
+    definition: "The Pauli gates are three of the most basic single-qubit quantum gates. The X gate acts like a classical NOT gate, flipping |0⟩ and |1⟩. The Z gate flips the sign of the |1⟩ amplitude without changing measurement probabilities directly. The Y gate combines aspects of both.",
+    technicalDefinition: "Represented as 2×2 matrices, X = [[0,1],[1,0]], Z = [[1,0],[0,-1]], and Y = [[0,-i],[i,0]]. Together with the identity matrix, these four matrices form a basis that can describe any single-qubit operation and are foundational to describing quantum error types (bit-flip and phase-flip errors).",
+    analogy: "Think of the X gate like flipping a coin from heads to tails, while the Z gate is more subtle — like marking the 'tails' side with an invisible minus sign that doesn't change what you see when you look at the coin, but does change how it interacts in further calculations.",
     useCases: [
       "X gates and Z gates describe the two fundamental error types in quantum error correction (bit-flip and phase-flip errors)",
       "Used throughout quantum circuit constructions as basic building blocks",
@@ -570,44 +498,40 @@ export const dictionaryTerms: DictionaryTerm[] = [
     relatedTerms: [
       { slug: "quantum-gate", term: "Quantum Gate" },
       { slug: "hadamard-gate", term: "Hadamard Gate" },
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "no-cloning-theorem",
     term: "No-Cloning Theorem",
-    shortDefinition:
-      "A fundamental law of quantum mechanics stating that an unknown quantum state cannot be perfectly copied.",
+    shortDefinition: "A fundamental law of quantum mechanics stating that an unknown quantum state cannot be perfectly copied.",
     category: "Core Principles",
-    definition:
-      "The no-cloning theorem proves that it's impossible to create an identical copy of an arbitrary, unknown quantum state without disturbing the original. This is a fundamental consequence of quantum mechanics, not a current technological limitation that might someday be overcome.",
-    technicalDefinition:
-      "Proven by Wootters, Zurek, and Dieks in 1982, the theorem follows directly from the linearity of quantum mechanics — no unitary operation can map an arbitrary unknown state and a blank state to two copies of the original for all possible input states simultaneously.",
-    analogy:
-      "Imagine trying to perfectly photocopy a photograph, but the act of looking closely enough to copy it accurately always slightly smudges the original — quantum states behave similarly, where 'reading' them precisely enough to copy disturbs them.",
+    definition: "The no-cloning theorem proves that it's impossible to create an identical copy of an arbitrary, unknown quantum state without disturbing the original. This is a fundamental consequence of quantum mechanics, not a current technological limitation that might someday be overcome.",
+    technicalDefinition: "Proven by Wootters, Zurek, and Dieks in 1982, the theorem follows directly from the linearity of quantum mechanics — no unitary operation can map an arbitrary unknown state and a blank state to two copies of the original for all possible input states simultaneously.",
+    analogy: "Imagine trying to perfectly photocopy a photograph, but the act of looking closely enough to copy it accurately always slightly smudges the original — quantum states behave similarly, where 'reading' them precisely enough to copy disturbs them.",
     useCases: [
       "The theoretical foundation underlying the security of quantum cryptography protocols like BB84",
       "Explains why quantum teleportation must destroy the original state to create a copy elsewhere",
       "A key reason quantum error correction can't simply 'copy' a qubit's state for backup, unlike classical error correction",
     ],
     relatedTerms: [
-      { slug: "quantum-teleportation-protocol", term: "Quantum Teleportation" },
-      { slug: "bb84-protocol", term: "BB84 Protocol" },
       { slug: "qubit", term: "Qubit" },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
+      "bb84-protocol",
     ],
   },
   {
     slug: "quantum-interference",
     term: "Quantum Interference",
-    shortDefinition:
-      "The phenomenon where probability amplitudes combine constructively or destructively, central to how quantum algorithms gain their advantage.",
+    shortDefinition: "The phenomenon where probability amplitudes combine constructively or destructively, central to how quantum algorithms gain their advantage.",
     category: "Core Principles",
-    definition:
-      "Quantum interference occurs when the probability amplitudes of different computational paths combine — adding together (constructive interference) to boost certain outcomes' likelihood, or canceling out (destructive interference) to suppress others. This is the actual mechanism quantum algorithms use to amplify correct answers.",
-    technicalDefinition:
-      "Because amplitudes are complex numbers, they can have different 'phases' that cause them to add or subtract when combined, unlike classical probabilities which can only add. This phase-dependent combination is what gives quantum computation its distinctive power, separate from superposition alone.",
-    analogy:
-      "Think of quantum interference like sound waves: two speakers playing the same note can combine to sound louder (constructive interference) or, if precisely out of sync, can cancel out to create silence (destructive interference) — quantum algorithms engineer this same kind of cancellation to eliminate wrong answers.",
+    definition: "Quantum interference occurs when the probability amplitudes of different computational paths combine — adding together (constructive interference) to boost certain outcomes' likelihood, or canceling out (destructive interference) to suppress others. This is the actual mechanism quantum algorithms use to amplify correct answers.",
+    technicalDefinition: "Because amplitudes are complex numbers, they can have different 'phases' that cause them to add or subtract when combined, unlike classical probabilities which can only add. This phase-dependent combination is what gives quantum computation its distinctive power, separate from superposition alone.",
+    analogy: "Think of quantum interference like sound waves: two speakers playing the same note can combine to sound louder (constructive interference) or, if precisely out of sync, can cancel out to create silence (destructive interference) — quantum algorithms engineer this same kind of cancellation to eliminate wrong answers.",
     useCases: [
       "The actual mechanism behind Grover's Algorithm's amplitude amplification",
       "Essential to how the Quantum Fourier Transform extracts periodicity information",
@@ -615,47 +539,42 @@ export const dictionaryTerms: DictionaryTerm[] = [
     ],
     relatedTerms: [
       { slug: "superposition", term: "Superposition" },
-      { slug: "grovers-algorithm", term: "Grover's Algorithm" },
-      { slug: "quantum-fourier-transform", term: "Quantum Fourier Transform" },
     ],
     misconceptions: [
       "Superposition alone doesn't give quantum computers their power — it's the controlled interference between superposed states that algorithms exploit to amplify correct answers.",
+    ],
+    relatedAlgorithms: [
+      "grovers-algorithm",
+      "quantum-fourier-transform",
     ],
   },
   {
     slug: "barren-plateau",
     term: "Barren Plateau",
-    shortDefinition:
-      "A training obstacle in quantum machine learning where gradients become vanishingly small as circuits scale up, stalling optimization.",
+    shortDefinition: "A training obstacle in quantum machine learning where gradients become vanishingly small as circuits scale up, stalling optimization.",
     category: "Algorithms",
-    definition:
-      "A barren plateau is a phenomenon observed in training variational quantum algorithms (like quantum neural networks) where, as the number of qubits increases, the gradient signal used to guide optimization becomes exponentially small, making it nearly impossible for classical optimizers to find improvements.",
-    technicalDefinition:
-      "Research has shown barren plateaus arise under fairly general conditions for randomly initialized parameterized quantum circuits, motivating research into smarter initialization strategies and circuit structures specifically designed to avoid this vanishing gradient problem.",
-    analogy:
-      "Think of a barren plateau like trying to find the lowest point in an enormous, almost perfectly flat desert — with no slope to guide you in any direction, you have essentially no information about which way to walk to improve your position.",
+    definition: "A barren plateau is a phenomenon observed in training variational quantum algorithms (like quantum neural networks) where, as the number of qubits increases, the gradient signal used to guide optimization becomes exponentially small, making it nearly impossible for classical optimizers to find improvements.",
+    technicalDefinition: "Research has shown barren plateaus arise under fairly general conditions for randomly initialized parameterized quantum circuits, motivating research into smarter initialization strategies and circuit structures specifically designed to avoid this vanishing gradient problem.",
+    analogy: "Think of a barren plateau like trying to find the lowest point in an enormous, almost perfectly flat desert — with no slope to guide you in any direction, you have essentially no information about which way to walk to improve your position.",
     useCases: [
       "A major practical obstacle limiting how large variational quantum machine learning models can realistically be trained",
       "An active area of mitigation research, including specialized initialization techniques",
     ],
-    relatedTerms: [
-      { slug: "vqe", term: "VQE" },
-      { slug: "quantum-natural-gradient", term: "Quantum Natural Gradient" },
-      { slug: "quantum-support-vector-machine", term: "Quantum Support Vector Machine" },
+    relatedTerms: [],
+    relatedAlgorithms: [
+      "vqe",
+      "quantum-natural-gradient",
+      "quantum-support-vector-machine",
     ],
   },
   {
     slug: "algorithmic-qubits",
     term: "Algorithmic Qubits",
-    shortDefinition:
-      "A performance metric (popularized by IonQ) combining qubit count and gate fidelity to estimate how complex an algorithm a device can reliably run.",
+    shortDefinition: "A performance metric (popularized by IonQ) combining qubit count and gate fidelity to estimate how complex an algorithm a device can reliably run.",
     category: "Industry & Era",
-    definition:
-      "Algorithmic qubits is a metric intended to give a more meaningful picture of a quantum processor's practical capability than raw physical qubit count alone, by accounting for gate error rates and connectivity to estimate how large and complex a circuit the device can actually execute reliably.",
-    technicalDefinition:
-      "The metric was introduced by IonQ as an alternative to simpler measures like Quantum Volume, intended to be easier to interpret directly in terms of practical algorithm capability rather than an abstract benchmark score.",
-    analogy:
-      "Think of algorithmic qubits like a car's real-world fuel efficiency rating versus its theoretical maximum speed — raw qubit count is like top speed (easy to state, but not the full picture), while algorithmic qubits tries to capture how the device actually performs under realistic conditions.",
+    definition: "Algorithmic qubits is a metric intended to give a more meaningful picture of a quantum processor's practical capability than raw physical qubit count alone, by accounting for gate error rates and connectivity to estimate how large and complex a circuit the device can actually execute reliably.",
+    technicalDefinition: "The metric was introduced by IonQ as an alternative to simpler measures like Quantum Volume, intended to be easier to interpret directly in terms of practical algorithm capability rather than an abstract benchmark score.",
+    analogy: "Think of algorithmic qubits like a car's real-world fuel efficiency rating versus its theoretical maximum speed — raw qubit count is like top speed (easy to state, but not the full picture), while algorithmic qubits tries to capture how the device actually performs under realistic conditions.",
     useCases: [
       "Used by IonQ to argue that smaller, higher-fidelity trapped-ion systems can outperform larger, noisier superconducting processors for actual algorithm execution",
       "One of several competing metrics (alongside Quantum Volume) proposed for fairer cross-platform comparison",
@@ -668,15 +587,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-volume",
     term: "Quantum Volume",
-    shortDefinition:
-      "A single-number benchmark metric (introduced by IBM) measuring the largest random circuit a quantum computer can successfully execute.",
+    shortDefinition: "A single-number benchmark metric (introduced by IBM) measuring the largest random circuit a quantum computer can successfully execute.",
     category: "Industry & Era",
-    definition:
-      "Quantum Volume is a benchmark introduced by IBM intended to capture a quantum processor's overall practical capability in a single number, accounting for qubit count, connectivity, and gate error rates together, rather than focusing on any one specification in isolation.",
-    technicalDefinition:
-      "Quantum Volume is determined by running increasingly large random square circuits (equal qubits and circuit depth) and finding the largest size the device can execute with output statistics matching theoretical expectations above a defined threshold, expressed as 2 raised to that largest successful size.",
-    analogy:
-      "Think of Quantum Volume like a decathlon score in athletics — rather than ranking athletes by a single event (like raw qubit count), it combines performance across multiple relevant dimensions into one overall comparative number.",
+    definition: "Quantum Volume is a benchmark introduced by IBM intended to capture a quantum processor's overall practical capability in a single number, accounting for qubit count, connectivity, and gate error rates together, rather than focusing on any one specification in isolation.",
+    technicalDefinition: "Quantum Volume is determined by running increasingly large random square circuits (equal qubits and circuit depth) and finding the largest size the device can execute with output statistics matching theoretical expectations above a defined threshold, expressed as 2 raised to that largest successful size.",
+    analogy: "Think of Quantum Volume like a decathlon score in athletics — rather than ranking athletes by a single event (like raw qubit count), it combines performance across multiple relevant dimensions into one overall comparative number.",
     useCases: [
       "Used to compare quantum processors across different hardware platforms on a more standardized basis than qubit count alone",
       "Referenced in cross-platform benchmark studies, like the comparison covered in our Research Papers section",
@@ -689,57 +604,49 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "harvest-now-decrypt-later",
     term: "Harvest Now, Decrypt Later",
-    shortDefinition:
-      "A security concern where encrypted data is collected today with the intention of decrypting it once sufficiently powerful quantum computers exist.",
+    shortDefinition: "A security concern where encrypted data is collected today with the intention of decrypting it once sufficiently powerful quantum computers exist.",
     category: "Industry & Era",
-    definition:
-      "'Harvest now, decrypt later' describes a forward-looking security threat: adversaries intercept and store currently-encrypted data today, anticipating that future quantum computers running Shor's Algorithm could eventually break the encryption protecting it, even though no such quantum computer exists yet.",
-    technicalDefinition:
-      "This concern is the primary justification for organizations to migrate to post-quantum cryptography standards now, well ahead of when large-scale fault-tolerant quantum computers are expected, particularly for data with long required confidentiality lifetimes.",
-    analogy:
-      "Think of it like a thief stealing a locked safe today, confident that a much better lock-picking tool will eventually be invented — they're willing to wait years to open it, as long as the contents remain valuable when that tool arrives.",
+    definition: "'Harvest now, decrypt later' describes a forward-looking security threat: adversaries intercept and store currently-encrypted data today, anticipating that future quantum computers running Shor's Algorithm could eventually break the encryption protecting it, even though no such quantum computer exists yet.",
+    technicalDefinition: "This concern is the primary justification for organizations to migrate to post-quantum cryptography standards now, well ahead of when large-scale fault-tolerant quantum computers are expected, particularly for data with long required confidentiality lifetimes.",
+    analogy: "Think of it like a thief stealing a locked safe today, confident that a much better lock-picking tool will eventually be invented — they're willing to wait years to open it, as long as the contents remain valuable when that tool arrives.",
     useCases: [
       "The primary driver behind government and financial institution post-quantum cryptography migration timelines",
       "Particularly relevant for data needing decades-long confidentiality, like state secrets or long-term medical records",
     ],
     relatedTerms: [
       { slug: "post-quantum-cryptography", term: "Post-Quantum Cryptography" },
-      { slug: "shors-algorithm", term: "Shor's Algorithm" },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
     ],
   },
   {
     slug: "quantum-repeater",
     term: "Quantum Repeater",
-    shortDefinition:
-      "A proposed device for extending entanglement distribution over long distances, essential infrastructure for a future quantum internet.",
+    shortDefinition: "A proposed device for extending entanglement distribution over long distances, essential infrastructure for a future quantum internet.",
     category: "Applications",
-    definition:
-      "A quantum repeater is a device designed to extend the range over which entanglement can be reliably distributed, addressing the problem that entangled photons sent through fiber optic cables gradually lose fidelity over distance, similplaying a role analogous to repeaters in classical telecommunications.",
-    technicalDefinition:
-      "Quantum repeaters typically work by dividing a long distance into shorter segments, establishing entanglement across each segment, then using a technique called entanglement swapping to link the segments together into one long-distance entangled connection — all without ever directly measuring (and destroying) the underlying quantum information.",
-    analogy:
-      "Think of a quantum repeater like a relay race, where instead of one runner trying to carry a fragile object the entire distance (which would likely break it), multiple runners each carry it a short distance and carefully pass it on.",
+    definition: "A quantum repeater is a device designed to extend the range over which entanglement can be reliably distributed, addressing the problem that entangled photons sent through fiber optic cables gradually lose fidelity over distance, similplaying a role analogous to repeaters in classical telecommunications.",
+    technicalDefinition: "Quantum repeaters typically work by dividing a long distance into shorter segments, establishing entanglement across each segment, then using a technique called entanglement swapping to link the segments together into one long-distance entangled connection — all without ever directly measuring (and destroying) the underlying quantum information.",
+    analogy: "Think of a quantum repeater like a relay race, where instead of one runner trying to carry a fragile object the entire distance (which would likely break it), multiple runners each carry it a short distance and carefully pass it on.",
     useCases: [
       "Identified as the key missing technology needed for a large-scale quantum internet",
       "Early prototypes have been demonstrated extending entanglement distribution over standard telecom fiber",
     ],
     relatedTerms: [
       { slug: "entanglement", term: "Entanglement" },
-      { slug: "quantum-teleportation-protocol", term: "Quantum Teleportation" },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
     ],
   },
   {
     slug: "rydberg-state",
     term: "Rydberg State",
-    shortDefinition:
-      "A highly excited atomic state used in neutral atom quantum computers to create strong interactions between nearby atoms.",
+    shortDefinition: "A highly excited atomic state used in neutral atom quantum computers to create strong interactions between nearby atoms.",
     category: "Hardware & Errors",
-    definition:
-      "A Rydberg state is a highly excited state of an atom, where one electron is pushed to a very high energy level, far from the nucleus. Atoms in this state interact much more strongly with each other than atoms in their normal ground state, which neutral atom quantum computers exploit to perform two-qubit operations.",
-    technicalDefinition:
-      "By temporarily exciting two nearby neutral atoms into Rydberg states, their strong mutual interaction can be used to implement controlled two-qubit gates, after which the atoms return to their normal, weakly-interacting ground states for storage.",
-    analogy:
-      "Think of a Rydberg state like temporarily inflating a balloon to make it touch a neighboring balloon — atoms that normally don't interact much suddenly become big and strongly interacting for the brief moment needed to perform an operation.",
+    definition: "A Rydberg state is a highly excited state of an atom, where one electron is pushed to a very high energy level, far from the nucleus. Atoms in this state interact much more strongly with each other than atoms in their normal ground state, which neutral atom quantum computers exploit to perform two-qubit operations.",
+    technicalDefinition: "By temporarily exciting two nearby neutral atoms into Rydberg states, their strong mutual interaction can be used to implement controlled two-qubit gates, after which the atoms return to their normal, weakly-interacting ground states for storage.",
+    analogy: "Think of a Rydberg state like temporarily inflating a balloon to make it touch a neighboring balloon — atoms that normally don't interact much suddenly become big and strongly interacting for the brief moment needed to perform an operation.",
     useCases: [
       "The core mechanism enabling two-qubit gates in neutral atom quantum computers like Pasqal's systems",
       "Also used in some quantum simulation experiments studying many-body physics",
@@ -752,15 +659,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "qccd-architecture",
     term: "QCCD Architecture",
-    shortDefinition:
-      "Quantum Charge-Coupled Device — a trapped-ion architecture that physically shuttles ions between trap zones to achieve flexible connectivity.",
+    shortDefinition: "Quantum Charge-Coupled Device — a trapped-ion architecture that physically shuttles ions between trap zones to achieve flexible connectivity.",
     category: "Hardware & Errors",
-    definition:
-      "QCCD (Quantum Charge-Coupled Device) is a trapped-ion quantum computer architecture where ions can be physically moved between different zones of an ion trap, allowing the system to reconfigure which ions are positioned near each other — and therefore which qubits can interact — on demand.",
-    technicalDefinition:
-      "This architecture, used by companies like Quantinuum, contrasts with static linear ion chains by enabling effectively all-to-all connectivity at scale through physical ion transport, at the cost of additional time overhead for the shuttling operations themselves.",
-    analogy:
-      "Think of QCCD like a train switching yard, where individual train cars (ions) can be moved between different tracks (trap zones) to be coupled with whichever other car they need to interact with next, rather than being permanently fixed in one position.",
+    definition: "QCCD (Quantum Charge-Coupled Device) is a trapped-ion quantum computer architecture where ions can be physically moved between different zones of an ion trap, allowing the system to reconfigure which ions are positioned near each other — and therefore which qubits can interact — on demand.",
+    technicalDefinition: "This architecture, used by companies like Quantinuum, contrasts with static linear ion chains by enabling effectively all-to-all connectivity at scale through physical ion transport, at the cost of additional time overhead for the shuttling operations themselves.",
+    analogy: "Think of QCCD like a train switching yard, where individual train cars (ions) can be moved between different tracks (trap zones) to be coupled with whichever other car they need to interact with next, rather than being permanently fixed in one position.",
     useCases: [
       "Used in Quantinuum's H-Series trapped-ion processors, including the H2 system",
       "Enables some of the highest published two-qubit gate fidelities of any quantum hardware platform",
@@ -773,15 +676,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "gkp-qubit",
     term: "GKP Qubit",
-    shortDefinition:
-      "Gottesman-Kitaev-Preskill qubit — an error-resistant way of encoding a qubit using continuous-variable photonic states.",
+    shortDefinition: "Gottesman-Kitaev-Preskill qubit — an error-resistant way of encoding a qubit using continuous-variable photonic states.",
     category: "Hardware & Errors",
-    definition:
-      "A GKP qubit is a method of encoding a single, error-resistant logical qubit within the continuous-variable states of a photonic (light-based) system, named after the physicists who proposed the encoding. It's a specific approach to achieving error correction within photonic quantum computing platforms.",
-    technicalDefinition:
-      "GKP encoding represents qubit states as specific grid-like patterns in a continuous phase space, designed so that small errors (like photon loss or phase noise) shift the state only slightly within a detectable and correctable region of that grid.",
-    analogy:
-      "Think of GKP encoding like writing a message using an unusually wide, bold font with built-in checksums — small smudges or noise don't prevent the message from being read correctly, unlike writing in tiny, fragile handwriting.",
+    definition: "A GKP qubit is a method of encoding a single, error-resistant logical qubit within the continuous-variable states of a photonic (light-based) system, named after the physicists who proposed the encoding. It's a specific approach to achieving error correction within photonic quantum computing platforms.",
+    technicalDefinition: "GKP encoding represents qubit states as specific grid-like patterns in a continuous phase space, designed so that small errors (like photon loss or phase noise) shift the state only slightly within a detectable and correctable region of that grid.",
+    analogy: "Think of GKP encoding like writing a message using an unusually wide, bold font with built-in checksums — small smudges or noise don't prevent the message from being read correctly, unlike writing in tiny, fragile handwriting.",
     useCases: [
       "Demonstrated by Xanadu on its Aurora photonic system as a step toward fault-tolerant photonic quantum computing",
       "An active research approach for achieving error correction specifically within continuous-variable photonic architectures",
@@ -789,43 +688,39 @@ export const dictionaryTerms: DictionaryTerm[] = [
     relatedTerms: [
       { slug: "photonic-qubit", term: "Photonic Qubit" },
       { slug: "logical-qubit", term: "Logical Qubit" },
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "ansatz",
     term: "Ansatz",
-    shortDefinition:
-      "A proposed, parameterized quantum circuit structure used as a starting template in variational quantum algorithms like VQE.",
+    shortDefinition: "A proposed, parameterized quantum circuit structure used as a starting template in variational quantum algorithms like VQE.",
     category: "Algorithms",
-    definition:
-      "An ansatz (German for 'approach' or 'starting point') is a chosen quantum circuit structure with adjustable parameters, used as the trainable template in variational quantum algorithms. The classical optimizer in algorithms like VQE adjusts these parameters to find the best-performing version of the circuit.",
-    technicalDefinition:
-      "Different ansatz choices (such as hardware-efficient ansätze or chemically-inspired ansätze like UCCSD) trade off between expressibility (ability to represent the desired target state), circuit depth, and trainability — including susceptibility to barren plateaus.",
-    analogy:
-      "Think of an ansatz like a recipe template with some ingredient amounts left as variables to be tuned — the basic structure (mix flour, add liquid, bake) is fixed, but the exact quantities are adjusted through experimentation to get the best result.",
+    definition: "An ansatz (German for 'approach' or 'starting point') is a chosen quantum circuit structure with adjustable parameters, used as the trainable template in variational quantum algorithms. The classical optimizer in algorithms like VQE adjusts these parameters to find the best-performing version of the circuit.",
+    technicalDefinition: "Different ansatz choices (such as hardware-efficient ansätze or chemically-inspired ansätze like UCCSD) trade off between expressibility (ability to represent the desired target state), circuit depth, and trainability — including susceptibility to barren plateaus.",
+    analogy: "Think of an ansatz like a recipe template with some ingredient amounts left as variables to be tuned — the basic structure (mix flour, add liquid, bake) is fixed, but the exact quantities are adjusted through experimentation to get the best result.",
     useCases: [
       "The starting structure for every VQE and QAOA implementation",
       "Choice of ansatz significantly affects whether an algorithm converges to a good solution",
     ],
     relatedTerms: [
-      { slug: "vqe", term: "VQE" },
-      { slug: "qaoa", term: "QAOA" },
       { slug: "barren-plateau", term: "Barren Plateau" },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
     ],
   },
   {
     slug: "circuit-depth",
     term: "Circuit Depth",
-    shortDefinition:
-      "The number of sequential time-steps required to execute a quantum circuit, a key factor in how much error accumulates.",
+    shortDefinition: "The number of sequential time-steps required to execute a quantum circuit, a key factor in how much error accumulates.",
     category: "Gates & Circuits",
-    definition:
-      "Circuit depth measures the longest sequential chain of gate operations in a quantum circuit, from input to output — distinct from the total number of gates, since gates acting on different qubits at the same time don't add to depth. Deeper circuits take longer to run and accumulate more error.",
-    technicalDefinition:
-      "Because decoherence and gate errors compound with each additional time step, circuit depth is often a more critical practical constraint on NISQ hardware than total qubit count or total gate count alone.",
-    analogy:
-      "Think of circuit depth like the number of sequential steps in a recipe that must happen one after another (you can't frost a cake before it's baked), as opposed to steps that could happen simultaneously (chopping vegetables while the oven preheats).",
+    definition: "Circuit depth measures the longest sequential chain of gate operations in a quantum circuit, from input to output — distinct from the total number of gates, since gates acting on different qubits at the same time don't add to depth. Deeper circuits take longer to run and accumulate more error.",
+    technicalDefinition: "Because decoherence and gate errors compound with each additional time step, circuit depth is often a more critical practical constraint on NISQ hardware than total qubit count or total gate count alone.",
+    analogy: "Think of circuit depth like the number of sequential steps in a recipe that must happen one after another (you can't frost a cake before it's baked), as opposed to steps that could happen simultaneously (chopping vegetables while the oven preheats).",
     useCases: [
       "A key constraint motivating NISQ-era algorithm design (like VQE and QAOA) to use shallow circuits",
       "Directly relevant to why hardware-aware circuit compilation, discussed in our Research Papers, matters so much for practical performance",
@@ -839,79 +734,69 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "random-circuit-sampling",
     term: "Random Circuit Sampling",
-    shortDefinition:
-      "A computational task involving sampling outputs from a deliberately complex random quantum circuit, used to demonstrate quantum supremacy claims.",
+    shortDefinition: "A computational task involving sampling outputs from a deliberately complex random quantum circuit, used to demonstrate quantum supremacy claims.",
     category: "Applications",
-    definition:
-      "Random circuit sampling refers to the task of generating samples from the probability distribution produced by running a large, randomly generated quantum circuit, then measuring the result. This specific task was the basis of Google's 2019 quantum supremacy claim using its Sycamore processor.",
-    technicalDefinition:
-      "The task is believed to be exponentially hard for classical computers to simulate as circuit size grows, though the precise boundary of this hardness has shifted as classical simulation algorithms have improved, leading to ongoing debate about specific supremacy claims.",
-    analogy:
-      "Think of random circuit sampling like a complex, randomly shuffled deck of cards — predicting the exact resulting order (the equivalent of classically simulating the circuit) becomes harder as the deck size grows, even though dealing the cards (running the actual circuit) stays straightforward.",
+    definition: "Random circuit sampling refers to the task of generating samples from the probability distribution produced by running a large, randomly generated quantum circuit, then measuring the result. This specific task was the basis of Google's 2019 quantum supremacy claim using its Sycamore processor.",
+    technicalDefinition: "The task is believed to be exponentially hard for classical computers to simulate as circuit size grows, though the precise boundary of this hardness has shifted as classical simulation algorithms have improved, leading to ongoing debate about specific supremacy claims.",
+    analogy: "Think of random circuit sampling like a complex, randomly shuffled deck of cards — predicting the exact resulting order (the equivalent of classically simulating the circuit) becomes harder as the deck size grows, even though dealing the cards (running the actual circuit) stays straightforward.",
     useCases: [
       "The specific task underlying Google's 2019 and subsequent quantum supremacy demonstrations",
       "Used as a benchmark task in independent verification studies, like those covered in our Research Papers section",
     ],
     relatedTerms: [
       { slug: "quantum-supremacy", term: "Quantum Supremacy" },
-      { slug: "boson-sampling", term: "Boson Sampling" },
+    ],
+    relatedAlgorithms: [
+      "boson-sampling",
     ],
   },
   {
     slug: "classical-shadow",
     term: "Classical Shadow",
-    shortDefinition:
-      "An efficient technique for extracting useful classical information from a quantum state using relatively few measurements.",
+    shortDefinition: "An efficient technique for extracting useful classical information from a quantum state using relatively few measurements.",
     category: "Algorithms",
-    definition:
-      "Classical shadows are a measurement technique that allows researchers to estimate many different properties of a quantum state using a relatively small number of randomized measurements, rather than needing a separate, large set of measurements for each property of interest.",
-    technicalDefinition:
-      "Introduced by Huang, Kueng, and Preskill in 2020, the technique constructs an efficiently storable classical approximation ('shadow') of a quantum state from randomized measurement data, from which many different observable properties can later be estimated without needing to re-run the quantum experiment.",
-    analogy:
-      "Think of classical shadows like taking a few cleverly chosen photographs of a complex 3D object from different random angles, then being able to estimate many different facts about the object's shape later, without needing to physically examine it again from every possible angle.",
+    definition: "Classical shadows are a measurement technique that allows researchers to estimate many different properties of a quantum state using a relatively small number of randomized measurements, rather than needing a separate, large set of measurements for each property of interest.",
+    technicalDefinition: "Introduced by Huang, Kueng, and Preskill in 2020, the technique constructs an efficiently storable classical approximation ('shadow') of a quantum state from randomized measurement data, from which many different observable properties can later be estimated without needing to re-run the quantum experiment.",
+    analogy: "Think of classical shadows like taking a few cleverly chosen photographs of a complex 3D object from different random angles, then being able to estimate many different facts about the object's shape later, without needing to physically examine it again from every possible angle.",
     useCases: [
       "Used to reduce the number of measurements needed when characterizing or verifying quantum states and processes",
       "An active area of research for making near-term quantum experiments more measurement-efficient",
     ],
     relatedTerms: [
-      { slug: "swap-test", term: "SWAP Test" },
       { slug: "gate-fidelity", term: "Gate Fidelity" },
+    ],
+    relatedAlgorithms: [
+      "swap-test",
     ],
   },
   {
     slug: "quantum-error-mitigation",
     term: "Quantum Error Mitigation",
-    shortDefinition:
-      "Techniques for reducing the impact of noise on NISQ-era quantum results without full quantum error correction's qubit overhead.",
+    shortDefinition: "Techniques for reducing the impact of noise on NISQ-era quantum results without full quantum error correction's qubit overhead.",
     category: "Hardware & Errors",
-    definition:
-      "Quantum error mitigation refers to a family of techniques that reduce the effect of noise on quantum computation results through clever classical post-processing or modified measurement strategies, rather than the much more resource-intensive approach of full quantum error correction using logical qubits.",
-    technicalDefinition:
-      "Common techniques include zero-noise extrapolation (running circuits at deliberately varied noise levels and extrapolating to a zero-noise estimate) and probabilistic error cancellation, both of which trade additional classical computation or repeated runs for improved accuracy without extra physical qubits.",
-    analogy:
-      "Think of error mitigation like noise-canceling techniques in audio recording — rather than building a perfectly silent recording studio (the equivalent of full error correction), you use clever processing to reduce the impact of the noise that's already there.",
+    definition: "Quantum error mitigation refers to a family of techniques that reduce the effect of noise on quantum computation results through clever classical post-processing or modified measurement strategies, rather than the much more resource-intensive approach of full quantum error correction using logical qubits.",
+    technicalDefinition: "Common techniques include zero-noise extrapolation (running circuits at deliberately varied noise levels and extrapolating to a zero-noise estimate) and probabilistic error cancellation, both of which trade additional classical computation or repeated runs for improved accuracy without extra physical qubits.",
+    analogy: "Think of error mitigation like noise-canceling techniques in audio recording — rather than building a perfectly silent recording studio (the equivalent of full error correction), you use clever processing to reduce the impact of the noise that's already there.",
     useCases: [
       "Already widely used in practice on real NISQ hardware in VQE and QAOA experiments today",
       "A practical bridge technology until full quantum error correction becomes feasible at scale",
     ],
     relatedTerms: [
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
-      { slug: "vqe", term: "VQE" },
       { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+      "vqe",
     ],
   },
   {
     slug: "fault-tolerance",
     term: "Fault Tolerance",
-    shortDefinition:
-      "The property of a quantum computer being able to perform reliable computation despite the presence of errors in individual components.",
+    shortDefinition: "The property of a quantum computer being able to perform reliable computation despite the presence of errors in individual components.",
     category: "Hardware & Errors",
-    definition:
-      "Fault tolerance describes a quantum computing system's ability to continue functioning correctly even when individual physical qubits or gates experience errors, by using quantum error correction to detect and fix problems faster than they accumulate.",
-    technicalDefinition:
-      "The fault-tolerance threshold theorem establishes that, as long as physical error rates are below a certain threshold, increasing the size of an error-correcting code (and the redundancy it provides) can suppress logical error rates arbitrarily, in principle enabling arbitrarily long, reliable computation.",
-    analogy:
-      "Think of fault tolerance like a well-designed building with redundant support structures — even if a few support beams develop minor cracks, sufficient redundancy and reinforcement keep the building safely standing rather than collapsing.",
+    definition: "Fault tolerance describes a quantum computing system's ability to continue functioning correctly even when individual physical qubits or gates experience errors, by using quantum error correction to detect and fix problems faster than they accumulate.",
+    technicalDefinition: "The fault-tolerance threshold theorem establishes that, as long as physical error rates are below a certain threshold, increasing the size of an error-correcting code (and the redundancy it provides) can suppress logical error rates arbitrarily, in principle enabling arbitrarily long, reliable computation.",
+    analogy: "Think of fault tolerance like a well-designed building with redundant support structures — even if a few support beams develop minor cracks, sufficient redundancy and reinforcement keep the building safely standing rather than collapsing.",
     useCases: [
       "The ultimate engineering goal of quantum hardware development, beyond today's NISQ-era machines",
       "Google's Willow processor's below-threshold error scaling result was a significant step toward demonstrating fault tolerance is achievable",
@@ -919,43 +804,38 @@ export const dictionaryTerms: DictionaryTerm[] = [
     relatedTerms: [
       { slug: "logical-qubit", term: "Logical Qubit" },
       { slug: "nisq", term: "NISQ" },
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "quantum-walk",
     term: "Quantum Walk",
-    shortDefinition:
-      "The quantum analog of a classical random walk, used as the basis for several search and optimization algorithms.",
+    shortDefinition: "The quantum analog of a classical random walk, used as the basis for several search and optimization algorithms.",
     category: "Algorithms",
-    definition:
-      "A quantum walk is the quantum mechanical counterpart to a classical random walk — a process of moving step-by-step through a graph or network — but exploiting superposition and interference to spread probability differently than classical randomness allows.",
-    technicalDefinition:
-      "Quantum walks come in discrete-time and continuous-time variants, and have been shown to provide quadratic or, in some structured cases, exponential speedups over classical random walks for specific graph traversal and search problems.",
-    analogy:
-      "Think of a classical random walk like a single confused tourist randomly picking a direction at every intersection, whereas a quantum walk is more like that tourist existing in superposition across multiple paths simultaneously, with interference between the paths shaping where they're more or less likely to end up.",
+    definition: "A quantum walk is the quantum mechanical counterpart to a classical random walk — a process of moving step-by-step through a graph or network — but exploiting superposition and interference to spread probability differently than classical randomness allows.",
+    technicalDefinition: "Quantum walks come in discrete-time and continuous-time variants, and have been shown to provide quadratic or, in some structured cases, exponential speedups over classical random walks for specific graph traversal and search problems.",
+    analogy: "Think of a classical random walk like a single confused tourist randomly picking a direction at every intersection, whereas a quantum walk is more like that tourist existing in superposition across multiple paths simultaneously, with interference between the paths shaping where they're more or less likely to end up.",
     useCases: [
       "The basis for quantum walk search algorithms, an alternative to Grover's Algorithm for certain structured search problems",
       "Used in some proposed approaches to the graph isomorphism problem",
     ],
-    relatedTerms: [
-      { slug: "quantum-walk-search", term: "Quantum Walk Search" },
-      { slug: "grovers-algorithm", term: "Grover's Algorithm" },
-      { slug: "quantum-pagerank", term: "Quantum PageRank" },
+    relatedTerms: [],
+    relatedAlgorithms: [
+      "quantum-walk-search",
+      "grovers-algorithm",
+      "quantum-pagerank",
     ],
   },
   {
     slug: "dilution-refrigerator",
     term: "Dilution Refrigerator",
-    shortDefinition:
-      "Specialized cooling equipment used to bring superconducting quantum processors down to near absolute zero temperatures.",
+    shortDefinition: "Specialized cooling equipment used to bring superconducting quantum processors down to near absolute zero temperatures.",
     category: "Hardware & Errors",
-    definition:
-      "A dilution refrigerator is a piece of specialized cryogenic equipment capable of cooling materials to temperatures just a few thousandths of a degree above absolute zero — the extreme cold required for superconducting qubits to exhibit their quantum properties reliably.",
-    technicalDefinition:
-      "Dilution refrigerators achieve their extreme cooling using a mixture of two helium isotopes (helium-3 and helium-4) that undergo a phase separation process at low temperatures, absorbing heat in the process — a multi-stage process that takes many hours to reach base temperature.",
-    analogy:
-      "Think of a dilution refrigerator like an extremely elaborate, multi-stage version of a household refrigerator, except instead of keeping food a few degrees above freezing, it's designed to reach temperatures colder than the vacuum of deep space.",
+    definition: "A dilution refrigerator is a piece of specialized cryogenic equipment capable of cooling materials to temperatures just a few thousandths of a degree above absolute zero — the extreme cold required for superconducting qubits to exhibit their quantum properties reliably.",
+    technicalDefinition: "Dilution refrigerators achieve their extreme cooling using a mixture of two helium isotopes (helium-3 and helium-4) that undergo a phase separation process at low temperatures, absorbing heat in the process — a multi-stage process that takes many hours to reach base temperature.",
+    analogy: "Think of a dilution refrigerator like an extremely elaborate, multi-stage version of a household refrigerator, except instead of keeping food a few degrees above freezing, it's designed to reach temperatures colder than the vacuum of deep space.",
     useCases: [
       "Essential infrastructure for operating superconducting qubit systems like those from IBM and Google",
       "A significant cost and size factor in superconducting quantum computer installations, unlike room-temperature approaches",
@@ -968,15 +848,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "optical-tweezers",
     term: "Optical Tweezers",
-    shortDefinition:
-      "Tightly focused laser beams used to hold and manipulate individual atoms in neutral atom quantum computers.",
+    shortDefinition: "Tightly focused laser beams used to hold and manipulate individual atoms in neutral atom quantum computers.",
     category: "Hardware & Errors",
-    definition:
-      "Optical tweezers are highly focused laser beams that can trap and move individual microscopic particles — including single atoms — using the physical forces light exerts on matter. Neutral atom quantum computers use arrays of optical tweezers to hold and reposition individual qubits.",
-    technicalDefinition:
-      "The technique relies on the dipole force, where a tightly focused laser beam creates an intensity gradient that attracts polarizable particles like atoms toward the beam's focal point, allowing precise three-dimensional positioning.",
-    analogy:
-      "Think of optical tweezers like an extremely precise, invisible pair of chopsticks made of light, capable of picking up and placing individual atoms exactly where needed — a level of precision impossible with any physical tool.",
+    definition: "Optical tweezers are highly focused laser beams that can trap and move individual microscopic particles — including single atoms — using the physical forces light exerts on matter. Neutral atom quantum computers use arrays of optical tweezers to hold and reposition individual qubits.",
+    technicalDefinition: "The technique relies on the dipole force, where a tightly focused laser beam creates an intensity gradient that attracts polarizable particles like atoms toward the beam's focal point, allowing precise three-dimensional positioning.",
+    analogy: "Think of optical tweezers like an extremely precise, invisible pair of chopsticks made of light, capable of picking up and placing individual atoms exactly where needed — a level of precision impossible with any physical tool.",
     useCases: [
       "The core technology enabling neutral atom quantum computers like Pasqal's Fresnel processor",
       "Also used more broadly in biology and chemistry research for manipulating individual cells or molecules",
@@ -989,106 +865,93 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-chemistry-simulation",
     term: "Quantum Chemistry Simulation",
-    shortDefinition:
-      "Using quantum computers to model the behavior of molecules and materials, directly connected to Feynman's original motivation for the field.",
+    shortDefinition: "Using quantum computers to model the behavior of molecules and materials, directly connected to Feynman's original motivation for the field.",
     category: "Applications",
-    definition:
-      "Quantum chemistry simulation refers to using quantum computers to model how electrons behave within molecules and materials — a problem that grows exponentially difficult for classical computers as molecule size increases, but one quantum computers may handle more naturally since they're built on the same quantum mechanical principles.",
-    technicalDefinition:
-      "Near-term approaches typically use algorithms like VQE combined with techniques like active space selection to fit calculations within the qubit and circuit depth constraints of current NISQ hardware, focusing on the most chemically relevant electrons rather than simulating an entire molecule in full detail.",
-    analogy:
-      "Think of quantum chemistry simulation like using a tool built from the same fundamental material as the thing you're trying to understand — using quantum mechanics (via a quantum computer) to model quantum mechanical behavior (electrons in molecules), rather than approximating it with purely classical mathematics.",
+    definition: "Quantum chemistry simulation refers to using quantum computers to model how electrons behave within molecules and materials — a problem that grows exponentially difficult for classical computers as molecule size increases, but one quantum computers may handle more naturally since they're built on the same quantum mechanical principles.",
+    technicalDefinition: "Near-term approaches typically use algorithms like VQE combined with techniques like active space selection to fit calculations within the qubit and circuit depth constraints of current NISQ hardware, focusing on the most chemically relevant electrons rather than simulating an entire molecule in full detail.",
+    analogy: "Think of quantum chemistry simulation like using a tool built from the same fundamental material as the thing you're trying to understand — using quantum mechanics (via a quantum computer) to model quantum mechanical behavior (electrons in molecules), rather than approximating it with purely classical mathematics.",
     useCases: [
       "Central to the drug discovery applications discussed in our Healthcare industry coverage",
       "Equally relevant to materials science applications like battery and catalyst design",
     ],
     relatedTerms: [
-      { slug: "vqe", term: "VQE" },
       { slug: "ansatz", term: "Ansatz" },
-      { slug: "quantum-chemistry-active-space-selection", term: "Active Space Selection" },
+    ],
+    relatedAlgorithms: [
+      "vqe",
     ],
   },
   {
     slug: "quantum-machine-learning",
     term: "Quantum Machine Learning (QML)",
-    shortDefinition:
-      "The intersection of quantum computing and machine learning, exploring whether quantum circuits can accelerate specific ML tasks.",
+    shortDefinition: "The intersection of quantum computing and machine learning, exploring whether quantum circuits can accelerate specific ML tasks.",
     category: "Applications",
-    definition:
-      "Quantum machine learning is a research field exploring whether quantum computers can provide advantages for machine learning tasks, either by running quantum versions of classical ML algorithms or by designing entirely new quantum-native learning models.",
-    technicalDefinition:
-      "Proven QML speedups generally apply only under specific, often idealized assumptions (such as efficient quantum data loading via QRAM), and as discussed in our Quantum vs AI comparison, no broad advantage has been demonstrated on real-world datasets using currently available hardware.",
-    analogy:
-      "Think of quantum machine learning like an experimental new kind of paintbrush being tested by artists — promising in carefully controlled demonstrations, but not yet proven to produce better paintings than traditional tools when used in the messy, complex conditions of real artistic work.",
+    definition: "Quantum machine learning is a research field exploring whether quantum computers can provide advantages for machine learning tasks, either by running quantum versions of classical ML algorithms or by designing entirely new quantum-native learning models.",
+    technicalDefinition: "Proven QML speedups generally apply only under specific, often idealized assumptions (such as efficient quantum data loading via QRAM), and as discussed in our Quantum vs AI comparison, no broad advantage has been demonstrated on real-world datasets using currently available hardware.",
+    analogy: "Think of quantum machine learning like an experimental new kind of paintbrush being tested by artists — promising in carefully controlled demonstrations, but not yet proven to produce better paintings than traditional tools when used in the messy, complex conditions of real artistic work.",
     useCases: [
       "An active academic research field spanning quantum neural networks, quantum kernel methods, and quantum versions of classical algorithms like k-means and SVM",
       "Distinct from (and currently less mature than) classical AI being used to help build better quantum hardware",
     ],
     relatedTerms: [
-      { slug: "quantum-support-vector-machine", term: "Quantum Support Vector Machine" },
       { slug: "barren-plateau", term: "Barren Plateau" },
-      { slug: "qram-architecture", term: "QRAM" },
     ],
     misconceptions: [
       "Quantum machine learning is not the same as 'quantum computers making AI smarter' in a broad sense — current proven advantages are narrow and problem-specific.",
+    ],
+    relatedAlgorithms: [
+      "quantum-support-vector-machine",
+      "qram-architecture",
     ],
   },
   {
     slug: "syndrome-measurement",
     term: "Syndrome Measurement",
-    shortDefinition:
-      "The process of detecting errors in a quantum error-correcting code without directly measuring (and destroying) the protected information.",
+    shortDefinition: "The process of detecting errors in a quantum error-correcting code without directly measuring (and destroying) the protected information.",
     category: "Hardware & Errors",
-    definition:
-      "Syndrome measurement is the technique used in quantum error correction to detect that an error has occurred — and what type — without directly measuring the logical qubit's actual protected quantum state, which would destroy the very superposition being protected.",
-    technicalDefinition:
-      "This is achieved by measuring specific combinations of ancilla qubits entangled with the data qubits in a way that reveals information about errors (the 'syndrome') while remaining uncorrelated with the encoded logical information itself, preserving it through the measurement process.",
-    analogy:
-      "Think of syndrome measurement like a doctor checking a patient's reflexes and vital signs to diagnose a problem, without needing to directly examine or disturb the specific organ that might be affected.",
+    definition: "Syndrome measurement is the technique used in quantum error correction to detect that an error has occurred — and what type — without directly measuring the logical qubit's actual protected quantum state, which would destroy the very superposition being protected.",
+    technicalDefinition: "This is achieved by measuring specific combinations of ancilla qubits entangled with the data qubits in a way that reveals information about errors (the 'syndrome') while remaining uncorrelated with the encoded logical information itself, preserving it through the measurement process.",
+    analogy: "Think of syndrome measurement like a doctor checking a patient's reflexes and vital signs to diagnose a problem, without needing to directly examine or disturb the specific organ that might be affected.",
     useCases: [
       "A continuous, repeated process in any operating fault-tolerant quantum computer",
       "The specific computational step that decoders (including the neural network decoders covered in our Research Papers) process to identify and correct errors",
     ],
     relatedTerms: [
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
       { slug: "ancilla-qubit", term: "Ancilla Qubit" },
       { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "surface-code",
     term: "Surface Code",
-    shortDefinition:
-      "The most widely studied quantum error-correcting code, arranging qubits in a 2D grid with strong fault-tolerance properties.",
+    shortDefinition: "The most widely studied quantum error-correcting code, arranging qubits in a 2D grid with strong fault-tolerance properties.",
     category: "Hardware & Errors",
-    definition:
-      "The surface code is a leading quantum error-correcting code that arranges physical qubits in a two-dimensional grid pattern, using only nearest-neighbor interactions — making it particularly practical to implement on hardware platforms like superconducting qubits that naturally support 2D grid layouts.",
-    technicalDefinition:
-      "The surface code's key advantage is a relatively high fault-tolerance threshold and the requirement for only local (nearest-neighbor) qubit interactions, at the cost of needing a large number of physical qubits per logical qubit compared to some other theoretical codes.",
-    analogy:
-      "Think of the surface code like a neighborhood watch system, where each house (qubit) only needs to communicate with its immediate neighbors to collectively detect and report when something has gone wrong, rather than requiring long-distance communication across the entire neighborhood.",
+    definition: "The surface code is a leading quantum error-correcting code that arranges physical qubits in a two-dimensional grid pattern, using only nearest-neighbor interactions — making it particularly practical to implement on hardware platforms like superconducting qubits that naturally support 2D grid layouts.",
+    technicalDefinition: "The surface code's key advantage is a relatively high fault-tolerance threshold and the requirement for only local (nearest-neighbor) qubit interactions, at the cost of needing a large number of physical qubits per logical qubit compared to some other theoretical codes.",
+    analogy: "Think of the surface code like a neighborhood watch system, where each house (qubit) only needs to communicate with its immediate neighbors to collectively detect and report when something has gone wrong, rather than requiring long-distance communication across the entire neighborhood.",
     useCases: [
       "The error-correcting code used in Google's Willow processor's below-threshold scaling demonstration",
       "The most commonly referenced error-correcting code in current quantum hardware roadmaps",
     ],
     relatedTerms: [
-      { slug: "quantum-error-correction-codes", term: "Quantum Error-Correcting Codes" },
       { slug: "logical-qubit", term: "Logical Qubit" },
       { slug: "fault-tolerance", term: "Fault Tolerance" },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
     ],
   },
   {
     slug: "qubit-connectivity",
     term: "Qubit Connectivity",
-    shortDefinition:
-      "The pattern describing which qubits in a processor can directly interact with each other via two-qubit gates.",
+    shortDefinition: "The pattern describing which qubits in a processor can directly interact with each other via two-qubit gates.",
     category: "Hardware & Errors",
-    definition:
-      "Qubit connectivity describes the physical layout determining which pairs of qubits in a quantum processor can directly perform two-qubit gates with each other. Some architectures offer 'all-to-all' connectivity (any qubit can interact with any other), while others are limited to specific neighboring patterns.",
-    technicalDefinition:
-      "Limited connectivity (like IBM's heavy-hex layout) requires inserting additional 'SWAP' gates to move quantum information between non-adjacent qubits when an algorithm needs them to interact, adding circuit depth and error compared to architectures with native all-to-all connectivity.",
-    analogy:
-      "Think of qubit connectivity like a city's road network — some cities have direct highways connecting every district (all-to-all), while others require navigating through several intermediate neighborhoods to get from one point to another (limited connectivity), adding travel time.",
+    definition: "Qubit connectivity describes the physical layout determining which pairs of qubits in a quantum processor can directly perform two-qubit gates with each other. Some architectures offer 'all-to-all' connectivity (any qubit can interact with any other), while others are limited to specific neighboring patterns.",
+    technicalDefinition: "Limited connectivity (like IBM's heavy-hex layout) requires inserting additional 'SWAP' gates to move quantum information between non-adjacent qubits when an algorithm needs them to interact, adding circuit depth and error compared to architectures with native all-to-all connectivity.",
+    analogy: "Think of qubit connectivity like a city's road network — some cities have direct highways connecting every district (all-to-all), while others require navigating through several intermediate neighborhoods to get from one point to another (limited connectivity), adding travel time.",
     useCases: [
       "A key factor in hardware-aware circuit compilation, discussed in our Research Papers section",
       "Trapped-ion and QCCD architectures typically offer better native connectivity than fixed 2D superconducting grids",
@@ -1102,15 +965,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-cloud-computing",
     term: "Quantum Cloud Computing",
-    shortDefinition:
-      "Accessing real or simulated quantum computers remotely over the internet, the primary way most people interact with quantum hardware today.",
+    shortDefinition: "Accessing real or simulated quantum computers remotely over the internet, the primary way most people interact with quantum hardware today.",
     category: "Industry & Era",
-    definition:
-      "Quantum cloud computing refers to the model where users submit quantum circuits over the internet to be run on remote quantum hardware (or high-fidelity simulators), then receive results back — similar in concept to classical cloud computing, and currently the primary way most researchers and developers access real quantum processors.",
-    technicalDefinition:
-      "Major cloud platforms include IBM Quantum, Amazon Braket, Microsoft Azure Quantum, and individual hardware providers' own platforms, typically offering both free tiers with queue-based access to real hardware and paid tiers with priority access or dedicated time.",
-    analogy:
-      "Think of quantum cloud computing like a shared, specialized laboratory equipment rental service — instead of every researcher needing their own multi-million dollar quantum computer, they remotely submit experiments to be run on shared machines and receive results back.",
+    definition: "Quantum cloud computing refers to the model where users submit quantum circuits over the internet to be run on remote quantum hardware (or high-fidelity simulators), then receive results back — similar in concept to classical cloud computing, and currently the primary way most researchers and developers access real quantum processors.",
+    technicalDefinition: "Major cloud platforms include IBM Quantum, Amazon Braket, Microsoft Azure Quantum, and individual hardware providers' own platforms, typically offering both free tiers with queue-based access to real hardware and paid tiers with priority access or dedicated time.",
+    analogy: "Think of quantum cloud computing like a shared, specialized laboratory equipment rental service — instead of every researcher needing their own multi-million dollar quantum computer, they remotely submit experiments to be run on shared machines and receive results back.",
     useCases: [
       "The standard way researchers, students, and developers interact with real quantum hardware referenced throughout our Hardware Database",
       "Essential infrastructure given how expensive and specialized quantum hardware remains",
@@ -1123,15 +982,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "quantum-sensing",
     term: "Quantum Sensing",
-    shortDefinition:
-      "Using quantum mechanical phenomena to measure physical quantities with extremely high precision, distinct from quantum computing.",
+    shortDefinition: "Using quantum mechanical phenomena to measure physical quantities with extremely high precision, distinct from quantum computing.",
     category: "Applications",
-    definition:
-      "Quantum sensing uses quantum mechanical effects — like superposition and entanglement — to measure physical quantities (time, magnetic fields, gravity, acceleration) with precision exceeding what's achievable with classical sensors. It's a related but distinct field from quantum computing, often more mature in practical deployment.",
-    technicalDefinition:
-      "Quantum sensors include atomic clocks (used in GPS systems), diamond nitrogen-vacancy center magnetometers, and atom interferometers for gravity and acceleration measurement, each exploiting different quantum phenomena for specialized measurement tasks.",
-    analogy:
-      "Think of quantum sensing like upgrading from a standard ruler to a measuring tool so precise it can detect changes smaller than an atom's width — quantum effects provide a fundamentally more sensitive 'ruler' for specific physical measurements.",
+    definition: "Quantum sensing uses quantum mechanical effects — like superposition and entanglement — to measure physical quantities (time, magnetic fields, gravity, acceleration) with precision exceeding what's achievable with classical sensors. It's a related but distinct field from quantum computing, often more mature in practical deployment.",
+    technicalDefinition: "Quantum sensors include atomic clocks (used in GPS systems), diamond nitrogen-vacancy center magnetometers, and atom interferometers for gravity and acceleration measurement, each exploiting different quantum phenomena for specialized measurement tasks.",
+    analogy: "Think of quantum sensing like upgrading from a standard ruler to a measuring tool so precise it can detect changes smaller than an atom's width — quantum effects provide a fundamentally more sensitive 'ruler' for specific physical measurements.",
     useCases: [
       "GPS-independent navigation systems, particularly relevant to the defense applications discussed in our Aerospace & Defense industry coverage",
       "Already in practical commercial and scientific use today, more mature than most quantum computing applications",
@@ -1144,15 +999,11 @@ export const dictionaryTerms: DictionaryTerm[] = [
   {
     slug: "measurement-collapse",
     term: "Measurement Collapse",
-    shortDefinition:
-      "The process by which a qubit in superposition settles into one definite classical outcome (0 or 1) upon measurement.",
+    shortDefinition: "The process by which a qubit in superposition settles into one definite classical outcome (0 or 1) upon measurement.",
     category: "Core Principles",
-    definition:
-      "Measurement collapse describes what happens when a qubit in superposition is measured: rather than revealing some hidden pre-existing value, the act of measurement causes the qubit to settle into one definite outcome, with probabilities determined by its prior amplitudes. After collapse, the superposition information is gone.",
-    technicalDefinition:
-      "This is formally described by the Born rule, which states that measuring a qubit in state α|0⟩ + β|1⟩ yields outcome 0 with probability |α|² and outcome 1 with probability |β|², after which the qubit's state is updated to exactly match the observed outcome.",
-    analogy:
-      "Think of measurement collapse like flipping a coin that's genuinely in a blended, undetermined state while spinning in the air — the act of catching and looking at it doesn't just reveal a pre-decided answer, it's the very moment the outcome becomes definite.",
+    definition: "Measurement collapse describes what happens when a qubit in superposition is measured: rather than revealing some hidden pre-existing value, the act of measurement causes the qubit to settle into one definite outcome, with probabilities determined by its prior amplitudes. After collapse, the superposition information is gone.",
+    technicalDefinition: "This is formally described by the Born rule, which states that measuring a qubit in state α|0⟩ + β|1⟩ yields outcome 0 with probability |α|² and outcome 1 with probability |β|², after which the qubit's state is updated to exactly match the observed outcome.",
+    analogy: "Think of measurement collapse like flipping a coin that's genuinely in a blended, undetermined state while spinning in the air — the act of catching and looking at it doesn't just reveal a pre-decided answer, it's the very moment the outcome becomes definite.",
     useCases: [
       "The final step of every quantum algorithm, converting quantum information into a classical, readable result",
       "Central to why quantum algorithms are typically run many times to build up a statistical picture of probable outcomes",
@@ -1164,6 +1015,2907 @@ export const dictionaryTerms: DictionaryTerm[] = [
     ],
     misconceptions: [
       "Measurement collapse is not the same as decoherence — collapse is the deliberate, controlled outcome of an intentional measurement, while decoherence is unwanted, uncontrolled environmental interference.",
+    ],
+  },
+  {
+    slug: "hilbert-space",
+    term: "Hilbert Space",
+    shortDefinition: "The complex vector space in which quantum states live, equipped with an inner product that turns amplitudes into probabilities.",
+    category: "Math Foundations",
+    definition: "A Hilbert space is the mathematical stage on which quantum mechanics is played. Every possible state of a quantum system is a vector in it, and the space comes with a rule, called the inner product, for measuring how much two states overlap. For one qubit the space is two-dimensional, and each added qubit doubles the number of dimensions, which is why the space grows so fast and why simulating quantum systems on ordinary computers is so hard.",
+    technicalDefinition: "A Hilbert space is a complete complex vector space with an inner product. For a register of n qubits it is C raised to the power 2^n, with a computational basis of 2^n orthonormal states labeled by bit strings. Physical states are unit vectors, and two vectors that differ only by an overall phase describe the same physical state.",
+    analogy: "Think of a map with a huge number of directions instead of just north-south and east-west. A quantum state is an arrow on that map, and the inner product tells you how closely two arrows point the same way. A qubit gives you a two-direction map, and every extra qubit doubles the number of directions you need to describe where the arrow points.",
+    useCases: [
+      "Describing the state of a quantum register, whether in a circuit diagram or a simulator.",
+      "Counting resources: the dimension of the space tells you how much memory a classical simulation needs.",
+      "Defining error-correcting codes as subspaces that protect information from noise.",
+      "Analyzing algorithms by following how a state vector moves around the space under unitary gates.",
+    ],
+    relatedTerms: [
+      { slug: "qubit", term: "Qubit" },
+      { slug: "superposition", term: "Superposition" },
+      { slug: "tensor-product", term: "Tensor Product" },
+      { slug: "density-matrix", term: "Density Matrix" },
+    ],
+    misconceptions: [
+      "Hilbert space is not a physical place. It is a mathematical space of states, and the dimension counts independent states, not spatial directions.",
+      "A large Hilbert space does not mean a quantum computer can read out all 2^n amplitudes. A measurement returns one bit string, and the amplitudes stay hidden.",
+      "Two vectors that differ by a global phase are not different states. Only relative phases have physical effects.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The key property of a Hilbert space is that states can be added together, and the sum is again a valid state. That is the mathematical content of superposition. If the states 0 and 1 are both allowed for a qubit, then any combination a times 0 plus b times 1 is allowed too, as long as the squared sizes of a and b add up to 1. The inner product is what makes the numbers a and b meaningful: the probability of finding the qubit in state 0 is the squared magnitude of the inner product between the state and the state 0.",
+      "The size of the space is the reason quantum computing is both powerful and difficult to simulate. An n-qubit state needs 2^n complex amplitudes. For 50 qubits that is about 10^15 numbers, which at 16 bytes each takes roughly 18 petabytes of memory, and for 300 qubits it exceeds the number of atoms in the observable universe. Quantum hardware stores the state in the physical system itself, while a classical simulation must write every amplitude down. Clever methods such as tensor networks compress states that have limited entanglement, which is why not every quantum circuit is hard to simulate.",
+      "Hilbert spaces can also be infinite-dimensional. The position and momentum of a particle live in such a space, and so does the state of a light mode in a cavity. Quantum computing mostly uses finite-dimensional spaces, because qubits and qudits have a finite number of levels, but bosonic encodings such as cat and GKP qubits embed a finite-dimensional code inside an infinite-dimensional oscillator space.",
+    ],
+    keyFacts: [
+      { label: "Dimension of n qubits", value: "2^n, so 1 qubit has 2 dimensions and 10 qubits have 1,024" },
+      { label: "Memory for 50 qubits", value: "About 10^15 complex amplitudes, roughly 18 petabytes at double precision" },
+      { label: "Physical states", value: "Unit-length vectors, with overall phase ignored" },
+      { label: "Notation", value: "Dirac bra-ket notation: ket for a state, bra for its conjugate transpose" },
+      { label: "Subspaces", value: "Quantum error-correcting codes live in small subspaces of the full space" },
+    ],
+    history: "The abstract theory of Hilbert spaces was developed by David Hilbert and others in the early 1900s to study integral equations, and John von Neumann showed in his 1932 book on the mathematical foundations of quantum mechanics that it is the natural home of quantum states. Paul Dirac's bra-ket notation, introduced in 1939, made calculations in the space compact and is still used in every quantum computing textbook.",
+    comparison: [
+      "A classical bit string of length n occupies one of 2^n points, while a quantum register occupies a point in a space with 2^n dimensions, which includes all superpositions of those points.",
+      "A Hilbert space differs from an ordinary vector space in having an inner product and completeness, which together give probabilities and well-behaved limits.",
+      "The Bloch sphere is a picture of the single-qubit Hilbert space, and it does not extend to several qubits in a simple way.",
+    ],
+    faq: [
+      { q: "What is a Hilbert space in simple terms?", a: "It is the set of all possible states of a quantum system, together with a way to compare states. For qubits it is a complex vector space whose dimension doubles with every qubit." },
+      { q: "Why does the Hilbert space grow exponentially?", a: "Because the state of a combined system is described by the tensor product of the parts, so the dimensions multiply: two qubits give 4 dimensions, three give 8, and n give 2^n." },
+      { q: "Do quantum computers use the whole Hilbert space?", a: "In principle, yes, since any state in the space can be reached. In practice, useful algorithms steer the state through a tiny part of it, and measurement extracts only a small amount of information." },
+    ],
+    relatedAlgorithms: [
+      "quantum-fourier-transform",
+      "deutsch-jozsa",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "density-matrix",
+    term: "Density Matrix",
+    shortDefinition: "A matrix that describes a quantum state, including states that are mixed or only partly known.",
+    category: "Math Foundations",
+    definition: "A density matrix is a compact way to write down the state of a quantum system when you cannot be sure which pure state it is in. It handles two situations that a single state vector cannot: a system that is a statistical mixture because of noise or lack of knowledge, and a small piece of a larger entangled system. In real quantum hardware, where noise is always present, the density matrix is the honest description of what the qubits are doing.",
+    technicalDefinition: "A density matrix rho is a positive semidefinite, Hermitian matrix with trace 1. A pure state has rho equal to the outer product of the state vector with itself and satisfies trace of rho squared equals 1. A mixed state is a probabilistic combination of pure states, with trace of rho squared less than 1. The probability of outcome k for a projector P is trace of P times rho.",
+    analogy: "A state vector is like a photograph of exactly one scene. A density matrix is like a long-exposure photograph that blends several scenes, weighted by how often each occurred. If you only know that the system was one of several states with certain odds, the blended picture is the correct description.",
+    useCases: [
+      "Modeling noisy qubits and gates, where errors turn pure states into mixed ones.",
+      "Quantum state tomography, which reconstructs a density matrix from many measurements.",
+      "Defining fidelity, purity, and entanglement measures used to benchmark hardware.",
+      "Thermal states and Gibbs sampling, where the state of interest is a mixed state by nature.",
+    ],
+    relatedTerms: [
+      { slug: "hilbert-space", term: "Hilbert Space" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "bloch-sphere", term: "Bloch Sphere" },
+      { slug: "entanglement", term: "Entanglement" },
+    ],
+    misconceptions: [
+      "A mixed state does not mean the qubit is in a superposition of 0 and 1. A superposition has coherence, and a mixture has none of that.",
+      "Two different ensembles can have the same density matrix, so the matrix does not record which preparation was used.",
+      "A density matrix is not a measurement outcome. It is a complete description from which all outcome probabilities follow.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The density matrix is needed because real systems are never perfectly isolated. If a qubit interacts with its environment, the combined state of the qubit and environment may be pure, but the qubit alone is described by a mixed state. Tracing out the environment, a mathematical operation called the partial trace, produces the density matrix of the qubit. This is how entanglement with the outside world looks from the inside: as a loss of purity.",
+      "For a single qubit, a density matrix can be written with three real numbers, the components of the Bloch vector. A pure state sits on the surface of the Bloch sphere, a mixed state sits inside it, and the maximally mixed state at the center is a completely random bit with no coherence at all. The length of the Bloch vector is a direct measure of how much quantum information survives, and decoherence shrinks it.",
+      "The density matrix also gives clean definitions of useful quantities. Purity is the trace of rho squared. The von Neumann entropy, minus the trace of rho times its logarithm, quantifies mixedness and, for a part of a pure entangled state, measures entanglement. Quantum channels, which describe noise, are maps that take one density matrix to another, and error rates, fidelities, and tomography all use the language of density matrices.",
+    ],
+    keyFacts: [
+      { label: "Properties", value: "Hermitian, positive semidefinite, trace 1" },
+      { label: "Purity", value: "Trace of rho squared: 1 for pure states, 1 over d for the maximally mixed state in d dimensions" },
+      { label: "Single qubit", value: "Described by a Bloch vector inside the unit ball, three real parameters" },
+      { label: "Size for n qubits", value: "A 2^n by 2^n matrix, which is why full tomography is expensive" },
+      { label: "Partial trace", value: "Gives the state of a subsystem of a larger entangled system" },
+    ],
+    history: "The density operator was introduced independently by John von Neumann and Lev Landau in 1927, and by Felix Bloch and others soon afterward, to treat statistical ensembles in quantum mechanics. It became a core tool of quantum information theory in the 1990s, when researchers needed a language for noise, entanglement, and error correction.",
+    comparison: [
+      "A state vector describes a pure state only, and a density matrix describes pure and mixed states in one framework.",
+      "A mixed state is not the same as a superposition: a superposition is a pure state with definite phase relationships, while a mixture is classical uncertainty about which pure state you have.",
+      "Classical probability distributions are the special case of density matrices that are diagonal in some basis.",
+    ],
+    faq: [
+      { q: "Why do we need density matrices if we have state vectors?", a: "State vectors can only describe perfectly known, isolated systems. Noise, partial knowledge, and entanglement with other systems all require density matrices." },
+      { q: "What is the partial trace?", a: "An operation that discards part of a system and returns the density matrix of what remains. It is how you find the state of one qubit in an entangled pair." },
+      { q: "How many numbers describe a density matrix?", a: "A d-dimensional density matrix has d squared minus 1 independent real parameters, so n qubits need 4^n minus 1, which grows very fast." },
+    ],
+    relatedAlgorithms: [
+      "quantum-gibbs-sampling",
+      "quantum-pca",
+    ],
+    relatedHardware: [
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "tensor-product",
+    term: "Tensor Product",
+    shortDefinition: "The mathematical operation that combines the states of separate quantum systems into the state of the joint system.",
+    category: "Math Foundations",
+    definition: "The tensor product is how quantum mechanics describes more than one thing at a time. If you have one qubit and add another, the joint system is described by the tensor product of the two. It is the reason a register of n qubits has 2^n amplitudes instead of 2n, and it is also where entanglement comes from: some joint states cannot be written as a tensor product of states of the parts.",
+    technicalDefinition: "For vector spaces V and W with bases, the tensor product V tensor W has dimension equal to the product of the dimensions, and basis vectors that are pairs of basis vectors. For states, the product state of a and b is written a tensor b. For operators A and B acting on separate systems, A tensor B acts on the joint system. A joint state that cannot be written as a single tensor product is entangled.",
+    analogy: "Imagine describing two dice. If the dice are independent, you can describe each separately and multiply the odds. But if the dice are secretly linked, you need a full table of 36 outcomes. The tensor product is the full table, and a product state is the special case where the table factors into two independent lists.",
+    useCases: [
+      "Building multi-qubit states and operators in simulators and textbooks.",
+      "Identifying entanglement by checking whether a joint state factors.",
+      "Compressing quantum states with tensor networks, which exploit limited entanglement.",
+      "Counting the cost of simulating larger systems, since dimension grows multiplicatively.",
+    ],
+    relatedTerms: [
+      { slug: "entanglement", term: "Entanglement" },
+      { slug: "hilbert-space", term: "Hilbert Space" },
+      { slug: "qubit", term: "Qubit" },
+      { slug: "quantum-gate", term: "Quantum Gate" },
+    ],
+    misconceptions: [
+      "The tensor product is not ordinary multiplication of numbers. It builds a bigger object from two smaller ones.",
+      "Not every state of two qubits is a tensor product. Most are not, and those are the entangled ones.",
+      "Gates on different qubits are not applied one after another by necessity. If they act on separate qubits, they commute and can run in parallel.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "A single qubit state needs two amplitudes. Two qubits in a product state look like a tensor product of two such pairs, and multiplying them out gives four amplitudes for the basis states 00, 01, 10, and 11. A general two-qubit state has four independent amplitudes that need not factor. When they do not factor, the qubits are entangled, and neither has a state of its own.",
+      "Operations obey the same rule. A gate that acts on only the first qubit of two is written as the gate tensor the identity on the second qubit. A circuit with many gates on different qubits corresponds to tensor products of small matrices, combined by ordinary multiplication for sequential steps. This structure is why quantum circuit simulators store states as large vectors and apply gates by reshaping them, and why tensor network methods can compress states that have limited entanglement.",
+      "Because dimensions multiply, adding one qubit doubles the size of the space. This exponential growth is the root of both quantum computing's promise and the difficulty of classical simulation. It also explains why a quantum computer's usefulness depends on arranging that the final state has structure the measurement can reveal, since the exponentially large space is not directly readable.",
+    ],
+    keyFacts: [
+      { label: "Dimension rule", value: "Dimensions multiply: 2 by 2 by 2 gives 8 for three qubits" },
+      { label: "Notation", value: "Written with the symbol for tensor product, or simply as adjacent kets such as 01" },
+      { label: "Operators", value: "A gate on one qubit becomes A tensor identity on the rest" },
+      { label: "Entanglement test", value: "A pure two-qubit state is entangled exactly when it cannot be written as a tensor product" },
+      { label: "Software", value: "Libraries use the Kronecker product, the matrix form of the tensor product" },
+    ],
+    history: "Tensor products were developed in mathematics in the 19th and early 20th centuries, and they entered physics as the right way to combine systems in quantum mechanics. Einstein, Podolsky, and Rosen's 1935 paper and Schrödinger's reply drew attention to joint states that do not factor, which Schrödinger called entangled.",
+    comparison: [
+      "The tensor product combines independent systems multiplicatively, while a direct sum of spaces, used for alternatives, combines them additively.",
+      "A product state has no correlations beyond classical ones, while an entangled state has correlations that cannot be reproduced by any classical shared randomness.",
+      "The Kronecker product of two matrices is the concrete numerical version of the tensor product of two operators.",
+    ],
+    faq: [
+      { q: "Why does a quantum register have 2^n amplitudes?", a: "Because the Hilbert space of n qubits is the tensor product of n two-dimensional spaces, and dimensions multiply." },
+      { q: "How do I tell whether a state is entangled?", a: "For a pure two-qubit state, check whether it can be written as a product of one-qubit states. If it cannot, it is entangled." },
+      { q: "What is the Kronecker product?", a: "The operation that turns two matrices into a larger block matrix, and it is how the tensor product of operators is written in code." },
+    ],
+    relatedAlgorithms: [
+      "deutsch-jozsa",
+      "quantum-fourier-transform",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "unitary-operator",
+    term: "Unitary Operator",
+    shortDefinition: "A reversible, norm-preserving transformation; every quantum gate is a unitary operator.",
+    category: "Math Foundations",
+    definition: "A unitary operator is a transformation that rotates a quantum state without changing its length, which means total probability stays equal to one. Every gate in a quantum circuit is unitary, so every step can in principle be undone by running it backwards. This is a strict rule: quantum computation, apart from measurement, is a sequence of reversible rotations of the state in a high-dimensional space.",
+    technicalDefinition: "A linear operator U is unitary if U-dagger times U equals the identity, where U-dagger is the conjugate transpose. Unitary operators preserve inner products and norms, and their eigenvalues have magnitude 1. Closed-system quantum evolution is described by U equals e to the minus i H t over h-bar, where H is the Hamiltonian.",
+    analogy: "Imagine turning a globe in your hands. You can spin it any way you like, but you cannot stretch or squash it, and every spin can be undone by spinning the other way. A unitary operator is a spin of the quantum state in its space: it changes direction and keeps size.",
+    useCases: [
+      "Defining gates and circuits, where each step is a unitary matrix.",
+      "Compiling algorithms into native gates by decomposing a target unitary.",
+      "Describing time evolution of closed systems, as in Hamiltonian simulation.",
+      "Analyzing noise as deviations from ideal unitary evolution.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-gate", term: "Quantum Gate" },
+      { slug: "hamiltonian", term: "Hamiltonian" },
+      { slug: "quantum-circuit", term: "Quantum Circuit" },
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+    ],
+    misconceptions: [
+      "Unitary does not mean simple. Unitary matrices can be enormously complex and require many gates.",
+      "Unitarity does not forbid interference. It is exactly what allows amplitudes to add and cancel.",
+      "Measurement is not a unitary process in the standard formalism, which is why it appears as a separate rule.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Unitarity is the reason quantum gates are reversible. A classical AND gate takes two bits and gives one, so it loses information and cannot be undone. A quantum computer implements classical logic with reversible versions, such as the Toffoli gate, which keep the inputs available. Every quantum algorithm is therefore built from invertible steps, and measurement is the only step that is not unitary.",
+      "Unitary operators also explain how interference works. Because they preserve length, they cannot create or destroy total probability, but they can move amplitude between basis states, adding some amplitudes and cancelling others. A Hadamard gate is a two-dimensional unitary that turns the 0 state into an equal superposition, and applying it twice returns the original state. All the power of quantum algorithms comes from choosing sequences of unitaries so that wrong answers cancel and right answers reinforce.",
+      "Any unitary on n qubits can be approximated to arbitrary accuracy by a sequence of gates from a small universal set, according to the Solovay-Kitaev theorem. The catch is that most unitaries need exponentially many gates, so only a tiny, structured fraction can be implemented efficiently. Designing efficient circuits for useful unitaries is much of what quantum algorithm research does.",
+    ],
+    keyFacts: [
+      { label: "Defining condition", value: "U-dagger U equals the identity, so the inverse is the conjugate transpose" },
+      { label: "Preserves", value: "Norms, inner products, and total probability" },
+      { label: "Eigenvalues", value: "Complex numbers of magnitude 1, which are pure phases" },
+      { label: "Examples", value: "Pauli gates, Hadamard, CNOT, phase gates, rotations, the quantum Fourier transform" },
+      { label: "Not unitary", value: "Measurement, which projects the state and is irreversible" },
+    ],
+    history: "Unitary evolution follows from the Schrödinger equation and was formalized in the early days of quantum mechanics. In the 1980s and 1990s, David Deutsch and others used it to define the quantum circuit model, in which computations are products of unitary gates, and Barenco and coauthors showed in 1995 that single-qubit gates and a two-qubit gate are universal.",
+    comparison: [
+      "A unitary is reversible, while a measurement or a noisy channel is not.",
+      "A Hermitian operator represents an observable, with real eigenvalues, while a unitary represents a transformation, with eigenvalues of magnitude 1.",
+      "A classical reversible gate permutes bit strings, while a quantum unitary can mix them with complex amplitudes.",
+    ],
+    faq: [
+      { q: "Why must quantum gates be unitary?", a: "Because closed quantum systems evolve according to the Schrödinger equation, which produces unitary transformations that preserve total probability." },
+      { q: "Can a quantum computer do irreversible operations?", a: "Only measurement and reset are irreversible, and they are used deliberately, for example in error correction. All other operations are unitary." },
+      { q: "How do I check that a matrix is unitary?", a: "Multiply it by its conjugate transpose. If you get the identity matrix, it is unitary." },
+    ],
+    relatedAlgorithms: [
+      "quantum-signal-processing",
+      "quantum-singular-value-transformation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "eigenstate",
+    term: "Eigenstate",
+    shortDefinition: "A state that a measurement or operation leaves unchanged except for a number, such as an energy or a phase.",
+    category: "Math Foundations",
+    definition: "An eigenstate is a special state that stays in the same direction when a particular operation is applied, apart from being scaled by a number. For a measurement, an eigenstate is a state that always gives the same answer. For the energy operator, an eigenstate is a state with a definite energy. Quantum algorithms such as phase estimation work by finding the number attached to an eigenstate.",
+    technicalDefinition: "If A is an operator and A times the state psi equals a times psi for a number a, then psi is an eigenstate of A with eigenvalue a. For a Hermitian operator, eigenvalues are real and eigenstates for different eigenvalues are orthogonal. For a unitary operator, eigenvalues have the form e to the i theta, a pure phase.",
+    analogy: "Think of a guitar string. Most ways of plucking it produce a messy mix of tones, but a few special vibration patterns, the harmonics, keep their shape and only oscillate at one pure frequency. Those patterns are eigenstates, and their frequencies are eigenvalues.",
+    useCases: [
+      "Choosing measurement bases, since measuring in the eigenbasis of an operator gives definite outcomes.",
+      "Finding ground states of molecules and materials with VQE and phase estimation.",
+      "Encoding answers in phases, as in Shor's algorithm and amplitude estimation.",
+      "Understanding stationary states and energy levels in quantum simulation.",
+    ],
+    relatedTerms: [
+      { slug: "hamiltonian", term: "Hamiltonian" },
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+      { slug: "superposition", term: "Superposition" },
+      { slug: "pauli-gates", term: "Pauli Gates" },
+    ],
+    misconceptions: [
+      "Being an eigenstate is relative to an operator. A state can be an eigenstate of one observable and not another.",
+      "An eigenstate is not necessarily a stable or low-energy state. It is just a state with a definite value of some quantity.",
+      "Eigenvalues are not probabilities. They are the possible measurement results.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Every observable has a set of eigenstates, and measuring the observable always returns one of its eigenvalues. If the system is already in an eigenstate, the result is certain. If it is in a superposition of eigenstates, the result is random, with probabilities set by the squared amplitudes, and the system then collapses into the eigenstate that was found. This is why the choice of measurement basis matters so much in quantum circuits.",
+      "The eigenstates of the Hamiltonian are the stationary states of a system, called energy eigenstates. A molecule's ground state is its lowest-energy eigenstate, and finding it is the central task of quantum chemistry. An energy eigenstate changes with time only by a phase, which is why it stays put while superpositions of energy eigenstates evolve and interfere.",
+      "Eigenstates are the target of several major algorithms. Quantum phase estimation reads out the eigenvalue of a unitary when it is given one of its eigenstates, the variational quantum eigensolver searches for the lowest-energy eigenstate, and Shor's algorithm uses phase estimation on an operator whose eigenvalues encode the period of a function. Preparing a good approximation to the right eigenstate is often the hardest step.",
+    ],
+    keyFacts: [
+      { label: "Defining equation", value: "A psi equals a psi, where a is the eigenvalue" },
+      { label: "Hermitian operators", value: "Real eigenvalues and orthogonal eigenstates for different eigenvalues" },
+      { label: "Unitary operators", value: "Eigenvalues are phases of magnitude 1" },
+      { label: "Computational basis", value: "The states 0 and 1 are eigenstates of the Pauli Z operator with eigenvalues plus 1 and minus 1" },
+      { label: "Ground state", value: "The lowest-energy eigenstate of the Hamiltonian" },
+    ],
+    history: "The eigenvalue idea comes from linear algebra and the study of vibrating strings. Heisenberg's matrix mechanics and Schrödinger's wave mechanics in 1925 and 1926 both turned on finding the eigenvalues and eigenstates of the energy operator, which explained the discrete spectra of atoms.",
+    comparison: [
+      "An eigenstate gives a definite result for one particular observable, and may be a superposition with respect to others.",
+      "An eigenvalue is a number, and an eigenstate is the state that carries it.",
+      "A computational basis state is an eigenstate of Z, but a superposition with respect to X.",
+    ],
+    faq: [
+      { q: "What is an eigenstate in simple words?", a: "A state that a given operation leaves pointing in the same direction, only multiplied by a number. For a measurement, it is a state that always gives the same result." },
+      { q: "Why are eigenstates important for quantum algorithms?", a: "Because algorithms such as phase estimation read out the eigenvalue attached to an eigenstate, and many problems, such as finding a molecule's energy, are eigenvalue problems." },
+      { q: "Is the state 0 an eigenstate?", a: "Yes, of the Pauli Z operator, with eigenvalue plus 1. It is not an eigenstate of the Pauli X operator." },
+    ],
+    relatedAlgorithms: [
+      "quantum-phase-estimation",
+      "vqe",
+    ],
+    relatedHardware: [
+      "google-sycamore",
+    ],
+  },
+  {
+    slug: "born-rule",
+    term: "Born Rule",
+    shortDefinition: "The rule that the probability of a measurement outcome is the squared magnitude of its amplitude.",
+    category: "Math Foundations",
+    definition: "The Born rule connects the mathematics of quantum states to the results you see in a lab. A quantum state is described by amplitudes, which are complex numbers, but a measurement returns an ordinary outcome such as 0 or 1. The Born rule says the probability of each outcome is the squared size of its amplitude. This is why amplitudes must be normalized so that the probabilities sum to one.",
+    technicalDefinition: "For a state psi and a measurement with orthonormal outcome states k, the probability of outcome k is the squared magnitude of the inner product of k with psi. For a density matrix rho and a projector P, the probability is trace of P times rho. After the outcome, the state is updated to the normalized projection of the state onto the outcome subspace.",
+    analogy: "Imagine a dartboard where the area of each region is the square of a hidden number. You cannot see the numbers, only where darts land, and the chance of landing in a region equals its area. The hidden numbers are amplitudes, and the squaring is the Born rule.",
+    useCases: [
+      "Converting circuit outputs into histograms of measured bit strings.",
+      "Computing expected values of observables by averaging measurement results.",
+      "Designing algorithms that amplify the amplitude of a desired outcome.",
+      "Estimating error rates and fidelities from repeated runs.",
+    ],
+    relatedTerms: [
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+      { slug: "superposition", term: "Superposition" },
+      { slug: "quantum-interference", term: "Quantum Interference" },
+      { slug: "hilbert-space", term: "Hilbert Space" },
+    ],
+    misconceptions: [
+      "The probability is the squared magnitude of the amplitude, not the amplitude itself.",
+      "The rule does not say why a particular outcome occurs. It gives only the odds.",
+      "It does not forbid deterministic outcomes. If a state is an eigenstate of the measured observable, the outcome is certain.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The squaring is what makes interference possible. Amplitudes can be positive, negative, or complex, so contributions can cancel before the squaring happens. Probabilities, in contrast, are always positive and can only add. A quantum algorithm arranges its amplitudes so that wrong answers cancel before the measurement and right answers add, and then the Born rule turns the survivors into high probabilities.",
+      "The rule also explains why quantum computers do not just try every answer and pick the best. A superposition over all answers has equal amplitudes, and a measurement returns a random one. To get useful output, the circuit must reshape the amplitudes first so that the answer you want has a probability close to 1. Grover's algorithm, for example, increases the amplitude of the marked item until its Born probability is near certainty.",
+      "In practice, the rule means that outcome probabilities must be estimated by repeating a circuit many times. If the true probability of a result is p, the statistical error after N runs is about the square root of p times one minus p over N, which is why experiments report thousands of shots. Methods such as amplitude estimation improve on this classical sampling error, achieving error that shrinks as one over the number of circuit runs.",
+    ],
+    keyFacts: [
+      { label: "Formula", value: "Probability equals the squared magnitude of the amplitude" },
+      { label: "Normalization", value: "All outcome probabilities sum to 1, so amplitudes satisfy a norm condition" },
+      { label: "Named after", value: "Max Born, who proposed the probabilistic interpretation in 1926" },
+      { label: "Shot noise", value: "Estimating a probability to precision epsilon needs about 1 over epsilon squared runs" },
+      { label: "Nobel Prize", value: "Born received the 1954 Nobel Prize in Physics, in part for this statistical interpretation" },
+    ],
+    history: "Max Born proposed in 1926 that the wave function of Schrödinger gives probabilities through its squared magnitude, in a paper on collision processes. The interpretation was controversial because it made fundamental physics probabilistic, but it has been confirmed by every experiment since. Gleason's theorem in 1957 showed that the rule follows from the structure of Hilbert space under reasonable assumptions.",
+    comparison: [
+      "Classical probabilities add directly, while quantum probabilities come from squaring sums of amplitudes, which allows cancellation.",
+      "The Born rule gives probabilities for outcomes, and the collapse rule describes the state afterward.",
+      "Amplitude and probability are different: an amplitude of 0.5 corresponds to a probability of 0.25.",
+    ],
+    faq: [
+      { q: "What does the Born rule say?", a: "That the probability of a measurement outcome equals the squared magnitude of the amplitude for that outcome." },
+      { q: "Why are amplitudes squared?", a: "The squaring ensures probabilities are non-negative and sum to one when the state is normalized, and it is what experiments confirm." },
+      { q: "How does the Born rule relate to interference?", a: "Amplitudes add before they are squared, so they can cancel or reinforce, which produces the interference patterns seen in quantum experiments." },
+    ],
+    relatedAlgorithms: [
+      "grovers-algorithm",
+      "quantum-amplitude-estimation",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "hamiltonian",
+    term: "Hamiltonian",
+    shortDefinition: "The operator that represents the total energy of a quantum system and determines how it evolves in time.",
+    category: "Math Foundations",
+    definition: "The Hamiltonian is the master recipe for a quantum system. It lists all the energy contributions, such as how particles move and how they interact, and it determines how the system changes with time. In quantum computing the Hamiltonian appears in two ways: as the thing you want to simulate, such as the energy of a molecule, and as the physical description of how the qubits and control pulses in a device behave.",
+    technicalDefinition: "A Hamiltonian H is a Hermitian operator whose eigenvalues are the allowed energies of the system. Time evolution of a closed system is given by the unitary operator e to the minus i H t over h-bar. The lowest eigenvalue is the ground-state energy, and the corresponding eigenstate is the ground state.",
+    analogy: "A Hamiltonian is like the rules of a board game. Once you know all the rules, you can predict how any position will unfold. Change a rule and the game plays out differently, and finding the best possible position corresponds to finding the ground state.",
+    useCases: [
+      "Defining the molecular and materials problems that quantum chemistry algorithms solve.",
+      "Specifying optimization problems as Ising Hamiltonians for annealers and QAOA.",
+      "Modeling and calibrating the physical behavior of qubits and control pulses.",
+      "Simulating dynamics of spin systems, lattice models, and quantum fields.",
+    ],
+    relatedTerms: [
+      { slug: "eigenstate", term: "Eigenstate" },
+      { slug: "schrodinger-equation", term: "Schrödinger Equation" },
+      { slug: "unitary-operator", term: "Unitary Operator" },
+      { slug: "quantum-chemistry-simulation", term: "Quantum Chemistry Simulation" },
+    ],
+    misconceptions: [
+      "The Hamiltonian is not a state. It is an operator whose eigenvectors are states.",
+      "Finding the ground state of a general Hamiltonian is hard even for quantum computers, since the problem is QMA-hard in the worst case.",
+      "The Hamiltonian does not include measurement, which is treated by a separate rule.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Quantum chemistry is largely about Hamiltonians. The electronic Hamiltonian of a molecule has terms for the kinetic energy of electrons, their attraction to the nuclei, and their repulsion from each other. After choosing a set of orbitals, it can be written as a sum of Pauli operators acting on qubits, often thousands or millions of terms. The lowest eigenvalue of that sum is the molecule's ground-state energy, which determines bond strengths and reaction energies.",
+      "Hamiltonians also describe the hardware. A superconducting qubit device is described by a Hamiltonian with qubit frequencies, couplings between neighbors, and drive terms from control pulses. Engineers design gates by shaping those pulses so that the evolution under the Hamiltonian implements the desired unitary. Errors in the Hamiltonian, such as unwanted couplings called crosstalk, are a main source of gate errors.",
+      "Simulating Hamiltonian dynamics is the problem that originally motivated quantum computers. Methods include Trotterization, which approximates evolution by alternating simple terms, linear combination of unitaries, and quantum signal processing, which reaches optimal complexity. Quantum annealers use a different idea: they start in the ground state of a simple Hamiltonian and slowly change it into a problem Hamiltonian whose ground state encodes the answer.",
+    ],
+    keyFacts: [
+      { label: "Mathematical type", value: "Hermitian operator; eigenvalues are energies" },
+      { label: "Evolution", value: "Time evolution operator is the exponential of minus i H t over h-bar" },
+      { label: "Molecular Hamiltonians", value: "Written as sums of Pauli strings after mapping electrons to qubits, with up to millions of terms" },
+      { label: "Ground state", value: "Lowest-energy eigenstate, the target of VQE and phase estimation" },
+      { label: "Named after", value: "William Rowan Hamilton, whose 19th-century reformulation of mechanics led to the quantum operator" },
+    ],
+    history: "William Rowan Hamilton reformulated classical mechanics in the 1830s using a function of positions and momenta that equals the total energy. When quantum mechanics was developed in the 1920s, that function became an operator, and Schrödinger's equation says that the Hamiltonian generates time evolution.",
+    comparison: [
+      "The Hamiltonian is the generator of time evolution, while the unitary is the result of running it for a specific time.",
+      "A classical energy function gives a number for each configuration, and a quantum Hamiltonian is a matrix that can mix configurations.",
+      "A problem Hamiltonian encodes a computation, while a driver Hamiltonian in annealing supplies quantum fluctuations.",
+    ],
+    faq: [
+      { q: "What is a Hamiltonian in quantum computing?", a: "An operator that represents total energy. It describes either the system you want to simulate, such as a molecule, or the physical device that implements the computation." },
+      { q: "How does a Hamiltonian relate to a gate?", a: "A gate is the unitary produced by running a Hamiltonian for a specific time. Control pulses create the Hamiltonian that generates the gate." },
+      { q: "Why is the ground state of a Hamiltonian important?", a: "It determines the stable structure and energy of molecules and materials, and many optimization problems are encoded as ground-state searches." },
+    ],
+    relatedAlgorithms: [
+      "trotter-suzuki-decomposition",
+      "adiabatic-quantum-computation",
+      "vqe",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedIndustries: [
+      "materials-science",
+      "chemicals",
+    ],
+  },
+  {
+    slug: "schrodinger-equation",
+    term: "Schrödinger Equation",
+    shortDefinition: "The equation that governs how the state of a closed quantum system changes with time.",
+    category: "Math Foundations",
+    definition: "The Schrödinger equation is the basic law of motion for quantum systems. Given the energy structure of a system, encoded in its Hamiltonian, it tells you how the state evolves from one moment to the next. Quantum gates are carefully timed applications of this evolution, and simulating it is one of the main reasons for building quantum computers.",
+    technicalDefinition: "The time-dependent Schrödinger equation is i h-bar times the time derivative of the state equal to H times the state. For a time-independent Hamiltonian the solution is the state at time t equal to the unitary e to the minus i H t over h-bar applied to the initial state. The time-independent equation, H psi equals E psi, is the eigenvalue problem for energy.",
+    analogy: "If the Hamiltonian is the rulebook of a game, the Schrödinger equation is the instruction that says how to advance the game by one tick of the clock. Apply it repeatedly and you can play the whole game forward.",
+    useCases: [
+      "Deriving how control pulses implement gates on qubits.",
+      "Simulating the dynamics of molecules and materials.",
+      "Finding energy levels with the time-independent form.",
+      "Verifying quantum devices by comparing measured evolution with predictions.",
+    ],
+    relatedTerms: [
+      { slug: "hamiltonian", term: "Hamiltonian" },
+      { slug: "unitary-operator", term: "Unitary Operator" },
+      { slug: "eigenstate", term: "Eigenstate" },
+      { slug: "superposition", term: "Superposition" },
+    ],
+    misconceptions: [
+      "The equation does not describe measurement. It describes evolution between measurements.",
+      "The wave function is not a physical wave in ordinary space for multi-particle systems. It lives in a high-dimensional configuration space.",
+      "The equation is not approximate. It is exact for the system described, and approximations arise from how we model the Hamiltonian.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The equation is linear, which means that if two states are solutions, so is any sum of them. That linearity is why superposition persists as the system evolves, and why interference patterns appear. It is also deterministic: given the state now, the state later is completely fixed. Randomness enters only at measurement, through the Born rule.",
+      "For quantum computing the equation is both a tool and a target. As a tool, it tells hardware designers how a control pulse drives a qubit: a resonant microwave pulse rotates a superconducting qubit's state around the Bloch sphere at a rate set by the pulse amplitude. As a target, it defines what a quantum simulation must reproduce. Solving the equation for many interacting particles takes resources that grow exponentially on classical computers, and quantum computers can follow it directly.",
+      "There are two ways to use the equation in practice. One is to find stationary states by solving the time-independent form, which gives the energies of molecules. The other is to follow dynamics by solving the time-dependent form, which gives chemical reaction rates, spectra, and the behavior of materials after they are disturbed. Each has its own quantum algorithm family, phase estimation for the first and Hamiltonian simulation for the second.",
+    ],
+    keyFacts: [
+      { label: "Time-dependent form", value: "i h-bar d/dt of the state equals the Hamiltonian applied to the state" },
+      { label: "Solution", value: "Unitary evolution by e to the minus i H t over h-bar" },
+      { label: "Linearity", value: "Sums of solutions are solutions, which underlies superposition" },
+      { label: "Proposed", value: "By Erwin Schrödinger in 1926" },
+      { label: "Nobel Prize", value: "Schrödinger shared the 1933 Nobel Prize in Physics with Paul Dirac" },
+    ],
+    history: "Erwin Schrödinger published the equation in 1926, building on Louis de Broglie's idea that particles have wave properties. It reproduced the energy levels of the hydrogen atom, which Bohr's older model had only partly explained, and it became the foundation of quantum chemistry. Schrödinger also devised the famous cat thought experiment in 1935 to illustrate the strangeness of superposition.",
+    comparison: [
+      "Newton's laws describe the evolution of positions and velocities, and the Schrödinger equation describes the evolution of a state vector.",
+      "The Schrödinger equation is deterministic, while measurement outcomes are probabilistic.",
+      "The equation applies to closed systems, and open systems with noise need master equations for density matrices.",
+    ],
+    faq: [
+      { q: "What does the Schrödinger equation do?", a: "It determines how a quantum state changes in time given the system's Hamiltonian." },
+      { q: "How does it relate to quantum gates?", a: "A gate is the result of evolving a qubit under a controlled Hamiltonian for a set time, which is a solution of the Schrödinger equation." },
+      { q: "Why is it hard to solve for many particles?", a: "The state space grows exponentially with the number of particles, so classical solvers run out of memory and time, which is the opening for quantum computers." },
+    ],
+    relatedAlgorithms: [
+      "trotter-suzuki-decomposition",
+      "quantum-phase-estimation",
+    ],
+    relatedHardware: [
+      "google-sycamore",
+    ],
+  },
+  {
+    slug: "rotation-gate",
+    term: "Rotation Gate",
+    shortDefinition: "A single-qubit gate that rotates the qubit's state by a chosen angle around the X, Y, or Z axis of the Bloch sphere.",
+    category: "Gates & Circuits",
+    definition: "A rotation gate turns a qubit's state by an adjustable angle. Unlike fixed gates such as NOT or Hadamard, which do one specific thing, a rotation gate has a dial: you choose how far to turn. This continuous control is what lets quantum programs fine-tune states, and it is the basic building block of variational algorithms such as VQE and QAOA, whose parameters are rotation angles.",
+    technicalDefinition: "The rotation gates are R_x(theta), R_y(theta), and R_z(theta), equal to the exponentials of minus i theta over 2 times the Pauli X, Y, or Z matrix. R_z(theta) applies a phase of minus theta over 2 to the 0 state and plus theta over 2 to the 1 state. On the Bloch sphere, each gate rotates the state vector about the corresponding axis by the angle theta.",
+    analogy: "Picture a compass needle that you can turn by exactly any angle you choose, around one of three fixed axes. A NOT gate is a flip by 180 degrees, and a rotation gate is the same motion with a dial that allows any amount from 0 to 360 degrees.",
+    useCases: [
+      "Preparing arbitrary single-qubit states and tuning gate parameters in variational algorithms.",
+      "Implementing the phase gates inside the quantum Fourier transform and the cost layers of QAOA.",
+      "Calibrating hardware by sweeping rotation angles to find the best pulse amplitudes.",
+      "Encoding classical data into qubits as rotation angles in quantum machine learning.",
+    ],
+    relatedTerms: [
+      { slug: "bloch-sphere", term: "Bloch Sphere" },
+      { slug: "pauli-gates", term: "Pauli Gates" },
+      { slug: "ansatz", term: "Ansatz" },
+      { slug: "quantum-gate", term: "Quantum Gate" },
+    ],
+    misconceptions: [
+      "A rotation of 2 pi does not return the state exactly. It returns it with a global sign, which has no physical effect for a single qubit but matters when the gate is controlled.",
+      "The rotation angle in the gate is half the angle on the Bloch sphere in some conventions. Check the definition used by your software.",
+      "Rotation gates are not free in fault-tolerant machines. Small angles can be costly.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Every single-qubit operation can be written as a product of three rotations, for example R_z, R_y, and R_z with suitable angles, up to a global phase. That is why hardware needs only a small set of controllable rotations to perform any single-qubit gate. On superconducting qubits, rotations about X and Y are made with microwave pulses whose amplitude and duration set the angle, and rotations about Z are often implemented virtually, by updating the phase of later pulses at no cost.",
+      "Rotation gates matter for algorithms because they provide the continuous parameters of variational circuits. In VQE the angles are tuned by a classical optimizer to minimize an energy, and in QAOA they set how strongly the cost and mixer layers act. The gradient of a cost with respect to a rotation angle can be measured exactly with the parameter-shift rule, by running the circuit twice with the angle shifted by plus and minus pi over 2.",
+      "In fault-tolerant machines, arbitrary-angle rotations are expensive. Error-correcting codes natively support a discrete set of gates, and small-angle rotations must be built from sequences of T gates using synthesis algorithms, with the number of T gates growing with the logarithm of the required precision. This is why resource estimates for algorithms with many rotations, such as Hamiltonian simulation, are dominated by T-gate counts.",
+    ],
+    keyFacts: [
+      { label: "Axes", value: "R_x, R_y, and R_z rotate about the three Bloch sphere axes" },
+      { label: "Parameter", value: "A real angle theta, with 2 pi giving a full turn up to a global sign" },
+      { label: "Decomposition", value: "Any single-qubit unitary equals R_z R_y R_z with suitable angles, up to phase" },
+      { label: "Virtual Z", value: "On many devices, Z rotations are implemented by phase tracking with no pulse" },
+      { label: "Fault tolerance", value: "Arbitrary-angle rotations are approximated with sequences of Clifford and T gates" },
+    ],
+    history: "Rotations of a spin-one-half particle are among the oldest results in quantum mechanics, and they were used in nuclear magnetic resonance experiments from the 1940s. Quantum computing adopted them as the elementary parametrized gates, and the parameter-shift rule of Mitarai and coauthors in 2018 and Schuld and coauthors in 2019 made them the basis of gradient-based training.",
+    comparison: [
+      "Pauli gates are rotations by exactly 180 degrees, and rotation gates allow any angle.",
+      "The Hadamard gate is a specific rotation combined with a phase, and it can be built from rotation gates.",
+      "A phase gate is a Z rotation up to a global phase, with S and T being special angles.",
+    ],
+    faq: [
+      { q: "What do R_x, R_y, and R_z do?", a: "They rotate the qubit's Bloch vector about the X, Y, or Z axis by a chosen angle." },
+      { q: "Why are rotation gates used in variational algorithms?", a: "Their angles are continuous parameters that a classical optimizer can adjust, and their gradients can be measured with the parameter-shift rule." },
+      { q: "How are arbitrary rotations done on error-corrected hardware?", a: "By approximating them with long sequences of Clifford and T gates, at a cost that grows with the required accuracy." },
+    ],
+    relatedAlgorithms: [
+      "qaoa",
+      "vqe",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "google-willow",
+    ],
+  },
+  {
+    slug: "t-gate",
+    term: "T Gate",
+    shortDefinition: "A single-qubit phase gate that rotates by 45 degrees; the gate that makes fault-tolerant quantum computing universal and expensive.",
+    category: "Gates & Circuits",
+    definition: "The T gate is a small, specific rotation of a qubit about the Z axis, by one eighth of a full turn. On its own it looks minor, but it plays an outsized role: a quantum computer built only from the easy, error-corrected gates can be simulated by an ordinary computer, and adding the T gate is what unlocks the full power of quantum computing. In practice the T gate is also the costly one, so the number of T gates in a circuit is a key measure of how hard it is to run.",
+    technicalDefinition: "The T gate is the diagonal matrix with entries 1 and e to the i pi over 4. It is the square root of the S gate, which is the square root of Pauli Z, and it is not a member of the Clifford group. Clifford gates together with T form a universal gate set, and the number of T gates, called T-count, and the number of sequential layers of T gates, called T-depth, determine the cost of fault-tolerant execution.",
+    analogy: "Imagine a toolbox of safe tools that can build only simple structures, which a calculator could design just as well. The T gate is the one special tool that is harder to make and handle, and it is the only one that lets you build anything. Fault-tolerant machines spend most of their effort manufacturing and delivering that tool.",
+    useCases: [
+      "Making a Clifford-based gate set universal for quantum computation.",
+      "Measuring the cost of an algorithm on fault-tolerant hardware through T-count.",
+      "Synthesizing arbitrary rotations from discrete gates.",
+      "Designing optimizing compilers that reduce T-count and T-depth.",
+    ],
+    relatedTerms: [
+      { slug: "clifford-group", term: "Clifford Group" },
+      { slug: "magic-state-distillation", term: "Magic State Distillation" },
+      { slug: "fault-tolerance", term: "Fault Tolerance" },
+      { slug: "rotation-gate", term: "Rotation Gate" },
+    ],
+    misconceptions: [
+      "The T gate is not named after anything fancy. It is called T because it is the pi over 8 gate, and the name stuck.",
+      "It is not an expensive gate on today's noisy devices. Its cost matters on error-corrected machines.",
+      "Removing T gates does not always make a circuit simple. It removes the quantum advantage if all T gates are removed.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The Gottesman-Knill theorem says that circuits made only of Clifford gates, together with preparation and measurement in the computational basis, can be simulated efficiently on a classical computer, however many qubits they involve. That means such circuits cannot give a quantum speedup. Adding even a single type of non-Clifford gate, such as T, breaks that classical simulability and makes the gate set universal, so the T gate is where quantum advantage is hidden.",
+      "In error-corrected machines, Clifford gates can usually be performed directly on the encoded qubits, for example with surface-code operations. The T gate cannot, and it is implemented by consuming a special prepared state called a magic state, which must be produced by a process called magic state distillation. Distillation takes many noisy copies and outputs fewer, cleaner ones, and it can occupy most of the qubits and time in a fault-tolerant architecture. That is why resource estimates are often quoted in numbers of T gates and why compilers work hard to reduce T-count.",
+      "Many algorithms need rotations by arbitrary angles, and these are synthesized from sequences of Clifford and T gates. To approximate a rotation to precision epsilon takes roughly a few times log of 1 over epsilon T gates with modern synthesis methods. A large chemistry simulation can require billions of T gates, which sets the scale for the quantum hardware needed.",
+    ],
+    keyFacts: [
+      { label: "Matrix", value: "Diagonal with entries 1 and e to the i pi over 4" },
+      { label: "Relationship", value: "T squared is S, and S squared is Pauli Z" },
+      { label: "Clifford status", value: "Not a Clifford gate, which is why it adds computational power" },
+      { label: "Cost metric", value: "T-count and T-depth are standard resource measures" },
+      { label: "Typical algorithm costs", value: "Resource estimates for useful chemistry and cryptanalysis run from millions to billions of T gates" },
+    ],
+    history: "The need for a non-Clifford gate was understood from the work of Gottesman and Knill in the late 1990s, and Bravyi and Kitaev's 2005 paper on universal quantum computation with ideal Clifford gates and noisy ancillas introduced magic state distillation as the way to implement it fault-tolerantly. The T-count became a standard cost measure in the 2010s as researchers estimated the resources for chemistry and factoring.",
+    comparison: [
+      "Clifford gates are cheap on error-corrected hardware and classically simulable, while the T gate is expensive and provides the quantum advantage.",
+      "The Toffoli gate can be built from about seven T gates in the standard decomposition.",
+      "On noisy hardware without error correction, T is no more difficult than any other rotation, because there are no special magic states.",
+    ],
+    faq: [
+      { q: "Why is the T gate important?", a: "Because Clifford gates alone can be simulated classically, and adding T makes the set universal. It is also the main cost driver in fault-tolerant computing." },
+      { q: "What is T-count?", a: "The number of T gates in a circuit, used as a measure of how expensive it is to run on an error-corrected quantum computer." },
+      { q: "How are T gates implemented fault-tolerantly?", a: "By using magic states, produced by distillation, and a short circuit that teleports the gate into the data qubit." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "quantum-phase-estimation",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "toffoli-gate",
+    term: "Toffoli Gate",
+    shortDefinition: "A three-qubit gate that flips a target qubit only when both control qubits are 1; the quantum version of AND.",
+    category: "Gates & Circuits",
+    definition: "The Toffoli gate, also called the controlled-controlled-NOT, has two control qubits and one target. The target flips only if both controls are 1. It is the reversible version of the AND operation, which makes it the key to running classical logic on a quantum computer. Arithmetic inside algorithms such as Shor's, and the oracles in Grover's search, are built out of Toffoli gates.",
+    technicalDefinition: "The Toffoli gate maps the basis state of qubits a, b, c to a, b, and c XOR the product of a and b. It is a permutation matrix on 8 basis states, reversible and self-inverse, and universal for reversible classical computation. A standard decomposition uses 6 CNOT gates and 7 T gates, together with Hadamards, or it can be implemented with relative-phase variants that cost fewer resources.",
+    analogy: "Picture a door that opens only when two keys are turned at the same time. The two controls are the keys and the target is the door. If both are turned, the door state flips, and if not, nothing happens, and you can always run it again to undo the flip.",
+    useCases: [
+      "Building adders, multipliers, and comparators for arithmetic in quantum algorithms.",
+      "Implementing oracles that evaluate a Boolean function for Grover search.",
+      "Performing classical conditional logic inside quantum error correction.",
+      "Estimating algorithm cost as a Toffoli count in resource analyses.",
+    ],
+    relatedTerms: [
+      { slug: "cnot-gate", term: "CNOT Gate" },
+      { slug: "t-gate", term: "T Gate" },
+      { slug: "quantum-oracle", term: "Quantum Oracle" },
+      { slug: "quantum-gate", term: "Quantum Gate" },
+    ],
+    misconceptions: [
+      "The Toffoli gate is not a native operation on most hardware. It is compiled into one- and two-qubit gates.",
+      "It is not a quantum-only gate. It is a classical reversible gate that also acts on superpositions.",
+      "Toffoli alone cannot give a quantum speedup, since it is classical, and quantum advantage needs other gates such as Hadamard.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Classical computers use gates such as AND that discard information: from the output 0 you cannot tell which inputs produced it. Quantum gates must be reversible, so a quantum computer needs a version of AND that keeps its inputs. The Toffoli gate does that by writing the AND of the inputs into a third qubit while leaving the inputs unchanged. Toffoli, together with the ability to prepare a 1, is universal for reversible classical computation, which means any classical program can be run reversibly on a quantum computer.",
+      "This is why Toffoli gates fill quantum algorithm circuits. In Shor's algorithm, modular exponentiation is carried out by adders and multipliers built from Toffolis. In Grover's algorithm, an oracle that checks a condition is a reversible circuit of Toffolis that flips a flag qubit when the input satisfies the condition. Counting Toffoli gates is the standard way to estimate algorithm cost in cryptanalysis papers, for example in estimates of breaking RSA and elliptic curve cryptography.",
+      "On fault-tolerant hardware, the Toffoli gate is non-Clifford, so it is expensive. It costs about four T gates with ancillas in optimized constructions, or can be made from a prepared CCZ magic state. Compilers try to reduce Toffoli counts using tricks such as measurement-based uncomputation, which removes temporary values at half the cost, and by arranging arithmetic carefully.",
+    ],
+    keyFacts: [
+      { label: "Size", value: "Three qubits: two controls and one target" },
+      { label: "Action", value: "Flips the target if and only if both controls are 1" },
+      { label: "Classical analogue", value: "Reversible AND, and with a constant, NAND" },
+      { label: "Standard decomposition", value: "About 6 CNOT gates and 7 T gates, with optimized versions using 4 T gates and an ancilla" },
+      { label: "Invented", value: "By Tommaso Toffoli in 1980" },
+    ],
+    history: "Tommaso Toffoli described the gate in 1980 in work on reversible computing, and Charles Bennett had shown in 1973 that computation can be made reversible in principle. The gate became central to quantum computing because it is the smallest standard gate that makes reversible classical logic universal, and Barenco and coauthors showed in 1995 how to decompose it into two-qubit gates.",
+    comparison: [
+      "A CNOT has one control and flips the target, and a Toffoli has two controls.",
+      "A classical AND loses information, and a Toffoli keeps the inputs and so is reversible.",
+      "Toffoli and CCZ are equivalent up to Hadamard gates on the target.",
+    ],
+    faq: [
+      { q: "What does the Toffoli gate do?", a: "It flips a target qubit when both of its two control qubits are 1, otherwise it does nothing." },
+      { q: "Why is it important?", a: "It implements reversible AND, which is the basis of arithmetic and conditional logic in quantum algorithms." },
+      { q: "How is it implemented on real hardware?", a: "It is decomposed into single-qubit and CNOT gates, with T gates when error correction is used, and sometimes made natively on neutral-atom or ion platforms." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "grovers-algorithm",
+    ],
+    relatedHardware: [
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "swap-gate",
+    term: "SWAP Gate",
+    shortDefinition: "A two-qubit gate that exchanges the states of two qubits; the tool for moving information around a chip.",
+    category: "Gates & Circuits",
+    definition: "The SWAP gate swaps the states of two qubits: whatever was on the first qubit ends up on the second, and vice versa. It does not create anything new, but it is vital in practice because most quantum chips can only run two-qubit gates between neighboring qubits. When an algorithm wants two distant qubits to interact, the compiler inserts SWAP gates to bring them next to each other, and those extra gates add time and errors.",
+    technicalDefinition: "The SWAP gate is the 4 by 4 permutation matrix that exchanges the basis states 01 and 10 and leaves 00 and 11 unchanged. It can be built from three CNOT gates, with alternating control and target. The related iSWAP gate adds a phase of i to the swapped states and is native on some superconducting hardware.",
+    analogy: "Think of two people in a queue swapping places. Nothing about either person changes, only where they stand. When the queue is a line of qubits on a chip and you need two people far apart to talk, you have to move them next to each other by a chain of swaps.",
+    useCases: [
+      "Qubit routing in compilers for devices with limited connectivity.",
+      "The SWAP test for state comparison and kernel estimation.",
+      "Reordering qubits at the end of the quantum Fourier transform.",
+      "Moving quantum information between memory and processing zones in modular designs.",
+    ],
+    relatedTerms: [
+      { slug: "qubit-connectivity", term: "Qubit Connectivity" },
+      { slug: "cnot-gate", term: "CNOT Gate" },
+      { slug: "transpilation", term: "Transpilation" },
+      { slug: "circuit-depth", term: "Circuit Depth" },
+    ],
+    misconceptions: [
+      "SWAP does not copy a state. It exchanges two states, so the no-cloning theorem is not violated.",
+      "A SWAP is not free on most hardware. It costs about three entangling gates.",
+      "Better connectivity does not remove the need for SWAP entirely, but it reduces it.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Connectivity limits explain why SWAP matters. On a superconducting chip, each qubit is wired to only two to four neighbors, so a circuit that needs a gate between qubits far apart must route them together. The compiler step called routing inserts SWAP gates, and each SWAP costs three CNOT gates, so a routing overhead can multiply the number of two-qubit gates, which are the main source of errors. Trapped-ion machines with all-to-all connectivity and neutral-atom machines that can move atoms avoid much of this overhead.",
+      "A related use of SWAP is the SWAP test, a circuit that estimates the overlap between two states by applying a controlled swap. This is a different gate, called the Fredkin gate, which swaps two qubits only if a control qubit is 1. The SWAP test is used in quantum machine learning for computing kernels and in fingerprinting protocols.",
+      "Hardware vendors sometimes implement a native swap-like gate. The iSWAP gate on superconducting hardware, and the exchange interaction in spin qubits, produce swapping dynamics directly, and some architectures treat SWAP as cheap. Layout design, such as heavy-hex lattices and square grids, is chosen in part to reduce the average SWAP overhead for common algorithms.",
+    ],
+    keyFacts: [
+      { label: "Matrix action", value: "Exchanges basis states 01 and 10" },
+      { label: "Decomposition", value: "Three CNOT gates" },
+      { label: "Main use", value: "Routing qubits on chips with limited connectivity" },
+      { label: "Variant", value: "iSWAP adds a phase i and is native on some superconducting chips; the Fredkin gate is a controlled swap" },
+      { label: "Cost", value: "Each SWAP adds three two-qubit gates and extra error" },
+    ],
+    history: "The SWAP operation is basic to any theory of computation with registers, and its decomposition into CNOT gates appeared in the early circuit-model literature of the mid-1990s. Routing and SWAP minimization became a central compiler problem as superconducting devices with fixed layouts appeared in the 2010s.",
+    comparison: [
+      "SWAP exchanges the quantum states of two qubits, while a physical movement of atoms or ions transports the qubits themselves.",
+      "The Fredkin gate is a controlled swap, and the plain SWAP has no control.",
+      "Teleportation can move a state across a distance using entanglement, while SWAP requires adjacent qubits.",
+    ],
+    faq: [
+      { q: "Why do compilers insert SWAP gates?", a: "Because two-qubit gates can only be run between connected qubits, and SWAPs move states next to each other so that a gate can be applied." },
+      { q: "How many CNOTs make a SWAP?", a: "Three CNOT gates, with the control and target alternating." },
+      { q: "What is the difference between SWAP and iSWAP?", a: "iSWAP adds a phase of i to the exchanged states. It is a native interaction on some superconducting chips." },
+    ],
+    relatedAlgorithms: [
+      "quantum-fourier-transform",
+      "quantum-k-means",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "iqm-garnet",
+    ],
+  },
+  {
+    slug: "clifford-group",
+    term: "Clifford Group",
+    shortDefinition: "The set of gates generated by Hadamard, S, and CNOT; efficiently simulable on a classical computer and cheap in error-corrected machines.",
+    category: "Gates & Circuits",
+    definition: "The Clifford group is a special family of quantum gates that includes the Hadamard gate, the S phase gate, and the CNOT gate, along with everything you can build from them. Circuits made only of these gates behave in a very orderly way: they map simple states to simple states, and an ordinary computer can simulate them even for hundreds of qubits. They matter because error-correcting codes make them easy to perform on protected qubits, and because adding one more kind of gate, such as T, makes the set universal.",
+    technicalDefinition: "The Clifford group on n qubits is the normalizer of the Pauli group: unitaries that map Pauli operators to Pauli operators under conjugation. It is generated by H, S, and CNOT. The Gottesman-Knill theorem states that Clifford circuits with Pauli measurements can be simulated in polynomial time using the stabilizer formalism.",
+    analogy: "Imagine a dance in which every move keeps the dancers on a fixed grid of positions. You can track the whole performance with a simple notebook even for a large crowd. Clifford gates are those grid-preserving moves, and the dance only becomes hard to track when you add moves that leave the grid, like the T gate.",
+    useCases: [
+      "Describing and simulating error-correcting codes and syndrome measurement circuits.",
+      "Randomized benchmarking of gate fidelities.",
+      "Splitting a circuit into cheap Clifford operations and costly non-Clifford operations for cost estimates.",
+      "Preparing entangled stabilizer states such as GHZ states and graph states.",
+    ],
+    relatedTerms: [
+      { slug: "t-gate", term: "T Gate" },
+      { slug: "stabilizer-code", term: "Stabilizer Code" },
+      { slug: "pauli-gates", term: "Pauli Gates" },
+      { slug: "randomized-benchmarking", term: "Randomized Benchmarking" },
+    ],
+    misconceptions: [
+      "Clifford circuits can still produce highly entangled states. They are easy to simulate, not trivial.",
+      "Clifford does not mean limited to few qubits. The simulation scales to very large numbers.",
+      "The group is infinite for the continuous case only when including arbitrary rotations, which are not Clifford. The Clifford group on n qubits is finite, modulo phase.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The stabilizer formalism explains why Clifford circuits are easy to simulate. A stabilizer state on n qubits can be described by n Pauli operators that leave it unchanged, which takes only about n squared bits, instead of 2^n amplitudes. A Clifford gate transforms the list of Paulis in a simple way, and measuring a Pauli updates the list efficiently. Programs that use only these operations, including many error correction protocols, can be simulated at enormous scale, and that is how researchers study surface codes with thousands of qubits on ordinary computers.",
+      "The same structure makes the Clifford group the natural gate set for error-corrected machines. In the surface code, Clifford gates can be performed on logical qubits with lattice surgery or transversal operations, at modest cost. The non-Clifford gates, needed for universality, require magic states and are far more expensive. Resource estimates therefore split a circuit into a cheap Clifford part and an expensive non-Clifford part.",
+      "Clifford gates are also a standard tool for benchmarking. Randomized benchmarking applies random Clifford sequences and measures how the fidelity decays with sequence length. Because Clifford sequences can be inverted classically with a single final Clifford, the method measures the average error per gate without being affected by state preparation and measurement errors.",
+    ],
+    keyFacts: [
+      { label: "Generators", value: "Hadamard, S, and CNOT" },
+      { label: "Classical simulation", value: "Polynomial time by the Gottesman-Knill theorem" },
+      { label: "Stabilizer states", value: "Described by n Pauli operators, about n squared bits" },
+      { label: "Not included", value: "T gate, Toffoli gate, and arbitrary-angle rotations" },
+      { label: "Use in benchmarking", value: "Randomized benchmarking uses random Clifford sequences" },
+    ],
+    history: "Daniel Gottesman introduced the stabilizer formalism in 1996 and 1997 as a way to describe quantum error-correcting codes, and the Gottesman-Knill theorem followed in 1998. The group is named after William Kingdon Clifford, a 19th-century mathematician whose algebras are related to the structure of the Pauli matrices.",
+    comparison: [
+      "Clifford circuits are classically simulable, while Clifford plus T circuits are universal and believed hard to simulate.",
+      "The Pauli group is a subset of the Clifford group, and the Clifford group maps Paulis to Paulis.",
+      "Clifford gates are cheap in surface-code machines, and non-Clifford gates are expensive.",
+    ],
+    faq: [
+      { q: "What are Clifford gates?", a: "The gates generated by Hadamard, S, and CNOT. They map Pauli operators to Pauli operators and can be efficiently simulated classically." },
+      { q: "Why are Clifford gates cheap in fault-tolerant computers?", a: "Error-correcting codes such as the surface code implement them directly on encoded qubits, without magic states." },
+      { q: "What does the Gottesman-Knill theorem say?", a: "That circuits of Clifford gates with Pauli measurements can be simulated in polynomial time on a classical computer, so they cannot give a quantum speedup." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "universal-gate-set",
+    term: "Universal Gate Set",
+    shortDefinition: "A small collection of gates from which any quantum computation can be built to any desired accuracy.",
+    category: "Gates & Circuits",
+    definition: "A universal gate set is a short list of gates that is enough to build every possible quantum computation, at least approximately. You do not need a separate gate for each task, just as classical computers can build any program from NAND gates. Hardware makers choose one such set to implement natively, and compilers translate every algorithm into those gates.",
+    technicalDefinition: "A set of gates is universal if products of its elements can approximate any unitary on any number of qubits to arbitrary precision. A standard example is the Clifford gates Hadamard, S, and CNOT together with T. The Solovay-Kitaev theorem guarantees that approximating any single-qubit gate to precision epsilon needs only a polylogarithmic number of gates from a finite universal set.",
+    analogy: "A painter with only red, yellow, and blue paint can mix any color, to whatever accuracy they need. The three paints are the universal set, and the colors are the possible computations. You may need many careful mixtures for subtle shades, but nothing is out of reach.",
+    useCases: [
+      "Defining the native gate set of a device, which compilers target.",
+      "Proving that a new gate or interaction suffices for universal quantum computation.",
+      "Estimating compilation overhead when moving between hardware platforms.",
+      "Designing fault-tolerant architectures around a Clifford plus T set.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-gate", term: "Quantum Gate" },
+      { slug: "clifford-group", term: "Clifford Group" },
+      { slug: "t-gate", term: "T Gate" },
+      { slug: "transpilation", term: "Transpilation" },
+    ],
+    misconceptions: [
+      "A universal gate set does not mean every circuit is short. Most unitaries need exponentially many gates.",
+      "Universal does not mean exact. It means arbitrarily close approximation.",
+      "Clifford gates alone are not universal, since they can be simulated classically.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Universality needs two ingredients: the ability to make arbitrary single-qubit rotations, or an approximation to them, and at least one entangling two-qubit gate, such as CNOT. Barenco and coauthors proved in 1995 that arbitrary single-qubit gates plus CNOT are universal, and later work showed that a finite set, such as Hadamard, T, and CNOT, suffices if arbitrary precision is obtained by long sequences. The two constructions reflect two natural designs: continuous gates for noisy devices, and discrete gates for error-corrected machines.",
+      "The choice of set affects efficiency. Superconducting devices often use single-qubit rotations and a native two-qubit gate such as CZ or iSWAP. Trapped-ion devices use rotations and the Molmer-Sorensen entangling gate. On error-corrected architectures, the natural set is the Clifford gates plus T or a magic state. The compiler's job is to convert circuits from any set into the target, and the cost can differ by orders of magnitude between sets.",
+      "The Solovay-Kitaev theorem, proven by Kitaev in 1997 and independently by Solovay, shows that conversion is efficient: approximating any gate to precision epsilon needs about log to a small power of 1 over epsilon gates. Later algorithms, such as those based on number theory, reach nearly optimal sequence lengths, about three times log base 2 of 1 over epsilon T gates for a single-qubit rotation.",
+    ],
+    keyFacts: [
+      { label: "Standard set", value: "Hadamard, S, T, and CNOT" },
+      { label: "Alternative", value: "Arbitrary single-qubit rotations plus one entangling gate (CNOT or CZ)" },
+      { label: "Approximation theorem", value: "Solovay-Kitaev: polylog(1/epsilon) gates for precision epsilon" },
+      { label: "Near-optimal synthesis", value: "About 3 log2(1/epsilon) T gates for a single-qubit rotation" },
+      { label: "Native sets", value: "Differ by hardware: CZ on many superconducting chips, Molmer-Sorensen on ions, CZ via Rydberg blockade on atoms" },
+    ],
+    history: "The idea that a few gates can build everything comes from classical logic, where NAND is universal. David Deutsch showed in 1989 that a three-qubit gate is universal for quantum computing, and DiVincenzo and Barenco and coauthors reduced this to one- and two-qubit gates in 1995. The Solovay-Kitaev theorem followed in the late 1990s, providing the efficiency guarantee.",
+    comparison: [
+      "Universal for classical reversible computing needs only the Toffoli gate, and universal for quantum computing needs a gate that creates superpositions as well.",
+      "A native gate set is what hardware performs directly, and a universal set is what suffices in principle. They need not be the same.",
+      "Approximate universality is enough for computation, since exact synthesis of arbitrary gates from a finite set is impossible.",
+    ],
+    faq: [
+      { q: "What is a universal gate set?", a: "A finite set of gates that can approximate any quantum operation to any desired accuracy, such as Hadamard, T, and CNOT." },
+      { q: "Why can't Clifford gates alone do everything?", a: "They can be simulated efficiently on a classical computer, so they cannot produce a quantum speedup. A non-Clifford gate such as T is needed." },
+      { q: "What is the Solovay-Kitaev theorem?", a: "A theorem showing that any gate can be approximated to precision epsilon using only polylogarithmically many gates from a universal set." },
+    ],
+    relatedAlgorithms: [
+      "quantum-fourier-transform",
+      "quantum-signal-processing",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "quantum-oracle",
+    term: "Quantum Oracle",
+    shortDefinition: "A black-box circuit that evaluates a function or checks a condition, used to define what many quantum algorithms need to compute.",
+    category: "Gates & Circuits",
+    definition: "A quantum oracle is a stand-in for a problem you want to solve. Instead of describing how to compute a function, the algorithm is given a box that computes it, and the question becomes how many times the box must be used. Grover's search, Deutsch-Jozsa, and Simon's algorithms are all described in terms of oracles, which lets theorists prove exactly how much faster a quantum algorithm is than a classical one.",
+    technicalDefinition: "For a Boolean function f, the standard oracle is the unitary U_f that maps the basis state x, y to x, y XOR f(x). The phase version maps x to minus 1 to the f(x) times x. Both are reversible and can be built from Toffoli and CNOT gates when f has an explicit circuit. Query complexity counts the number of oracle calls an algorithm needs.",
+    analogy: "Imagine a vending machine that tells you whether the item you have chosen is the right one, but without showing how it decides. You can test as many choices as you like and the question is how few tests you need. The vending machine is the oracle and the number of tests is the query count.",
+    useCases: [
+      "Defining search problems for Grover's algorithm and its variants.",
+      "Proving lower bounds on how many queries any algorithm needs.",
+      "Modeling access to data through QRAM in quantum machine learning.",
+      "Specifying the checking function in cryptanalysis resource estimates.",
+    ],
+    relatedTerms: [
+      { slug: "toffoli-gate", term: "Toffoli Gate" },
+      { slug: "quantum-interference", term: "Quantum Interference" },
+      { slug: "quantum-gate", term: "Quantum Gate" },
+      { slug: "quantum-speedup", term: "Quantum Speedup" },
+    ],
+    misconceptions: [
+      "An oracle does not give the answer for free. The algorithm must use it cleverly, and its construction has a cost.",
+      "Querying in superposition does not read all outputs. The outputs are combined by interference.",
+      "A speedup in the oracle model does not automatically transfer to real problems, because the real oracle may be expensive or may reveal structure that classical algorithms can exploit.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Oracles let researchers separate the structure of an algorithm from the cost of the problem it works on. In the oracle model, the only way to learn about f is to query it, and the cost is the number of queries. Under that rule, Grover's algorithm needs about the square root of N queries to find a marked item among N, while any classical method needs about N, and the lower bound shows no quantum algorithm can do better. Simon's problem gives an exponential separation in the same model.",
+      "In a real implementation, the oracle is not a mystery box. It is a circuit that you must build, and its size can dominate the cost of the algorithm. For Grover's algorithm applied to a satisfiability problem, the oracle is a reversible circuit that evaluates the formula, and compiling it to Toffoli and CNOT gates can take thousands of gates. For cryptanalysis, the oracle might be a full implementation of AES. Fair comparison of quantum and classical methods needs the oracle cost included.",
+      "Oracles also appear as black-box access to data. Quantum random access memory is an oracle that returns a stored value for a superposition of addresses, and many machine learning speedups assume that such an oracle is available at low cost. Whether that assumption can be met in hardware is one of the open questions about practical quantum advantage in learning.",
+    ],
+    keyFacts: [
+      { label: "Standard form", value: "U_f maps x, y to x, y XOR f(x)" },
+      { label: "Phase form", value: "Maps x to minus 1 to the f(x) times x, used in Grover and Deutsch-Jozsa" },
+      { label: "Reversibility", value: "Any computable function has a reversible circuit, using ancilla qubits" },
+      { label: "Query complexity", value: "Number of oracle calls, the measure in which many quantum speedups are proven" },
+      { label: "Hidden cost", value: "Building the oracle may cost more than the rest of the algorithm" },
+    ],
+    history: "The oracle model comes from classical computer science, where Turing introduced oracle machines in 1939. In quantum computing, Deutsch and Jozsa's 1992 paper, Bernstein and Vazirani's 1993 paper, and Simon's 1994 paper used oracles to show provable quantum advantages, which paved the way for Shor's algorithm.",
+    comparison: [
+      "An oracle in a theory paper is a black box, while an oracle in practice is a circuit with a measurable gate count.",
+      "Query complexity counts oracle calls, and gate complexity counts all operations, including those inside the oracle.",
+      "A classical oracle returns a value for one input at a time, while a quantum oracle can be queried on a superposition of inputs.",
+    ],
+    faq: [
+      { q: "What is a quantum oracle?", a: "A reversible circuit that computes a function or checks a condition, treated as a black box in the definition of an algorithm." },
+      { q: "Why do quantum algorithms use oracles?", a: "They make it possible to prove precise speedups in the number of queries, independent of how the function is computed." },
+      { q: "Does the oracle's cost matter?", a: "Yes. In practice the oracle has to be implemented, and its gate count can dominate the total cost." },
+    ],
+    relatedAlgorithms: [
+      "grovers-algorithm",
+      "deutsch-jozsa",
+      "simons-algorithm",
+      "bernstein-vazirani",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "transpilation",
+    term: "Transpilation",
+    shortDefinition: "The compiler step that rewrites a quantum circuit into the gates and qubit layout a specific device can run.",
+    category: "Gates & Circuits",
+    definition: "Transpilation is what happens between writing a quantum program and running it on real hardware. The circuit you write uses convenient abstract gates and assumes any two qubits can interact. A real chip has a limited set of native gates and connects only certain pairs of qubits, so a compiler must rewrite the program to match: swapping gates to the native set, choosing which physical qubits to use, and inserting moves where needed. The quality of this step can decide whether a result is useful or noise.",
+    technicalDefinition: "Transpilation is a sequence of compiler passes: decomposing gates into the device's native basis, mapping logical qubits to physical qubits, routing two-qubit gates by inserting SWAPs for connectivity, and optimizing the circuit by cancelling gates and merging rotations. The objective is usually to minimize two-qubit gate count and depth, adjusted for per-qubit error rates.",
+    analogy: "Think of translating a recipe for a kitchen with a full set of tools into one for a camp stove with a single pan. The meal is the same, but the steps change, and a good translator saves time and avoids burning the food.",
+    useCases: [
+      "Preparing any algorithm to run on a specific superconducting, ion, or atom device.",
+      "Reducing two-qubit gate counts to improve fidelity on noisy hardware.",
+      "Choosing the best qubits on a chip based on daily calibration data.",
+      "Benchmarking compilers and hardware together, since performance depends on both.",
+    ],
+    relatedTerms: [
+      { slug: "qubit-connectivity", term: "Qubit Connectivity" },
+      { slug: "swap-gate", term: "SWAP Gate" },
+      { slug: "circuit-depth", term: "Circuit Depth" },
+      { slug: "universal-gate-set", term: "Universal Gate Set" },
+    ],
+    misconceptions: [
+      "Transpilation does not change the answer the circuit computes. It changes how the circuit is executed.",
+      "A bigger chip does not always make circuits easier to run. Routing quality and error rates matter as much as qubit count.",
+      "The transpiler cannot fix a circuit that is too deep for the hardware's coherence.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Mapping and routing are the expensive parts. The initial layout decides which logical qubits sit on which physical qubits, and a good choice puts qubits that interact often next to each other and avoids qubits with high error rates. Routing then inserts SWAP gates for the interactions that remain between distant qubits. Finding the optimal mapping is NP-hard, so compilers use heuristics such as SABRE and look-ahead search, and results can differ by factors of two or more in two-qubit gate count.",
+      "Optimization passes then clean up the result. They cancel adjacent inverse gates, merge consecutive single-qubit rotations into one, commute gates to expose cancellations, and resynthesize blocks of gates into shorter equivalent sequences. On noisy devices these savings matter greatly: since two-qubit gates have error rates around one in a thousand or worse, removing a few hundred gates can improve the fidelity of the final answer by a large factor.",
+      "Modern toolchains add noise-aware features. They read calibration data about which qubits and couplings are best today and bias layout toward them, and they add error suppression such as dynamical decoupling and gate twirling. In error-corrected machines, transpilation also includes steps like converting arbitrary rotations to Clifford plus T and scheduling lattice surgery operations.",
+    ],
+    keyFacts: [
+      { label: "Main steps", value: "Gate decomposition, layout, routing, optimization, scheduling" },
+      { label: "Typical heuristic", value: "SABRE routing is widely used in open-source toolchains" },
+      { label: "Objective", value: "Minimize two-qubit gates and depth, weighted by error rates" },
+      { label: "Complexity", value: "Optimal layout and routing are NP-hard, so heuristics are standard" },
+      { label: "Tools", value: "Qiskit, Cirq, tket, and vendor compilers all include transpilers" },
+    ],
+    history: "Compilation for quantum circuits began as hand optimization in the 1990s and became a field of its own in the 2010s, when the first cloud devices with fixed connectivity appeared. Qubit mapping algorithms, the SABRE heuristic of Li, Ding, and Xie in 2019, and tools such as Qiskit's transpiler and Quantinuum's tket made automatic compilation standard.",
+    comparison: [
+      "Transpilation targets a particular device, while high-level compilation turns algorithm descriptions into circuits.",
+      "Classical compilers optimize for speed and memory, and quantum transpilers optimize for fidelity and gate counts.",
+      "Pulse-level control goes one step further and tunes the analog pulses that realize each gate.",
+    ],
+    faq: [
+      { q: "What does a quantum transpiler do?", a: "It rewrites a circuit into the native gates and connectivity of a particular quantum device, and optimizes it to reduce gate count and error." },
+      { q: "Why does the same circuit give different results on different devices?", a: "Because the transpiled circuit has different gate counts and uses different qubits with different error rates." },
+      { q: "What is routing?", a: "The step that inserts SWAP gates so that qubits that need to interact are adjacent on the chip." },
+    ],
+    relatedAlgorithms: [
+      "qaoa",
+      "quantum-fourier-transform",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "iqm-garnet",
+    ],
+  },
+  {
+    slug: "bell-inequality",
+    term: "Bell Inequality",
+    shortDefinition: "A mathematical limit on correlations that any local classical theory must obey, and that entangled quantum systems can violate.",
+    category: "Core Principles",
+    definition: "A Bell inequality is a test that separates quantum mechanics from any theory in which measurement outcomes are fixed in advance by hidden properties. It is a simple inequality about how strongly the results of measurements on two distant particles can be correlated. Classical, local theories cannot exceed the limit, while entangled quantum particles can, and experiments confirm that nature does. The result is the foundation for entanglement-based cryptography and tests of quantum devices.",
+    technicalDefinition: "The CHSH inequality states that for two parties each choosing between two measurements with outcomes plus or minus 1, the combination S of four correlation values satisfies the absolute value of S at most 2 for any local hidden variable theory. Quantum mechanics allows values up to 2 times the square root of 2, known as the Tsirelson bound, for suitable entangled states and measurement settings.",
+    analogy: "Imagine two people given sealed envelopes, each with a pre-agreed plan, who answer questions asked in separate rooms. No matter how they plan, there is a limit to how well their answers can agree over many rounds. Entangled particles beat that limit, which shows they are not following pre-arranged plans.",
+    useCases: [
+      "Certifying entanglement between qubits on a device.",
+      "Securing key distribution in device-independent protocols.",
+      "Certifying random numbers generated by quantum devices.",
+      "Foundational tests of quantum mechanics and non-locality.",
+    ],
+    relatedTerms: [
+      { slug: "entanglement", term: "Entanglement" },
+      { slug: "bell-state", term: "Bell State" },
+      { slug: "quantum-key-distribution", term: "Quantum Key Distribution" },
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+    ],
+    misconceptions: [
+      "A Bell violation does not mean signals travel faster than light. Outcomes are random and no information is sent.",
+      "It does not prove that quantum mechanics is complete in every interpretation. It rules out local hidden variable theories.",
+      "The test is statistical. It requires many repeated measurements, not a single event.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "John Bell proved in 1964 that the predictions of quantum mechanics for entangled pairs cannot be reproduced by any theory in which each particle carries definite values for all its measurable properties and influences travel no faster than light. Einstein, Podolsky, and Rosen had argued in 1935 that such hidden values must exist, and Bell turned the philosophical debate into an experimental question. The CHSH form, from Clauser, Horne, Shimony, and Holt in 1969, is the version used in laboratories.",
+      "Experiments started with Freedman and Clauser in 1972 and Aspect's group in 1982 and later closed various loopholes. In 2015 several groups, in Delft, Vienna, and at NIST, reported loophole-free violations, in which the detectors were efficient enough and the measurement choices were made so that no signal at light speed could coordinate them. John Clauser, Alain Aspect, and Anton Zeilinger shared the 2022 Nobel Prize in Physics for this work.",
+      "Bell tests are also practical tools. In device-independent quantum key distribution, a violation of the inequality certifies that the key is secret, even if the devices are untrusted. In randomness certification, a violation proves that outputs are unpredictable. And in quantum hardware, a high CHSH value is a quick check that entanglement exists between two qubits and that measurements are working in the intended bases.",
+    ],
+    keyFacts: [
+      { label: "Classical bound", value: "S is at most 2 in absolute value for local hidden variable theories" },
+      { label: "Quantum bound", value: "2 times the square root of 2, about 2.83 (Tsirelson bound)" },
+      { label: "First proposed", value: "John Bell, 1964; CHSH form, 1969" },
+      { label: "Loophole-free tests", value: "2015, by groups in Delft, Vienna, and NIST" },
+      { label: "Nobel Prize", value: "Clauser, Aspect, and Zeilinger, 2022" },
+    ],
+    history: "Einstein, Podolsky, and Rosen argued in 1935 that quantum mechanics must be incomplete. Bell showed in 1964 that their view leads to testable inequalities, and experiments from the 1970s onward have repeatedly found them violated, supporting quantum mechanics and ruling out local hidden variable theories.",
+    comparison: [
+      "A Bell inequality violation shows non-classical correlations, which is stronger than just observing correlation.",
+      "Entanglement is necessary for a violation, but not all entangled states violate a Bell inequality.",
+      "Quantum non-locality does not allow faster-than-light signaling, since individual outcomes are random.",
+    ],
+    faq: [
+      { q: "What does a Bell inequality test?", a: "Whether correlations between distant measurements can be explained by pre-existing local properties. Quantum mechanics violates the inequality and shows that they cannot." },
+      { q: "What is the CHSH inequality?", a: "The most common Bell inequality, bounding a combination of four correlations at 2 for local theories, with quantum mechanics reaching about 2.83." },
+      { q: "Why does it matter for technology?", a: "It provides security guarantees in device-independent key distribution and certifies randomness and entanglement." },
+    ],
+    relatedAlgorithms: [
+      "e91-protocol",
+      "device-independent-qkd",
+    ],
+    relatedHardware: [
+      "quera-aquila",
+    ],
+  },
+  {
+    slug: "uncertainty-principle",
+    term: "Uncertainty Principle",
+    shortDefinition: "The limit on how precisely certain pairs of properties, such as position and momentum, can be known at the same time.",
+    category: "Core Principles",
+    definition: "The uncertainty principle says that some pairs of properties of a quantum system cannot both have sharply defined values. The more precisely you fix one, the less precisely the other is determined. This is not a limitation of our instruments but a feature of nature, and it underlies quantum cryptography, since measuring a quantum state in the wrong way unavoidably disturbs it.",
+    technicalDefinition: "For two observables A and B, the Robertson uncertainty relation states that the product of their standard deviations is at least one half of the absolute value of the expectation of their commutator. For position and momentum, this gives the product of uncertainties at least h-bar over 2. For a qubit, the Pauli X, Y, and Z observables do not commute, so a state cannot have definite values for all three.",
+    analogy: "Think of a spinning coin viewed in a photograph. A fast shutter shows where the coin is but blurs its spin, and a slow shutter reveals the spin pattern but smears the position. Quantum states behave as if no single photograph can capture both clearly.",
+    useCases: [
+      "Explaining why quantum key distribution detects eavesdropping.",
+      "Setting limits on measurement precision in quantum sensing.",
+      "Designing squeezed states that reduce noise in one variable at the expense of another.",
+      "Understanding why a qubit cannot hold definite values for all measurement axes.",
+    ],
+    relatedTerms: [
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+      { slug: "quantum-sensing", term: "Quantum Sensing" },
+      { slug: "pauli-gates", term: "Pauli Gates" },
+      { slug: "no-cloning-theorem", term: "No-Cloning Theorem" },
+    ],
+    misconceptions: [
+      "The principle is not about clumsy instruments. It holds even for ideal measurements.",
+      "It does not say that nothing can be known precisely. A single property can be measured to any accuracy.",
+      "It is not specific to position and momentum. It applies to any non-commuting pair of observables.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "For a qubit, the principle is easy to see. The state 0 has a definite Z value of plus 1, and a measurement of Z always returns 0. But if you measure X on the state 0, the outcomes plus 1 and minus 1 are equally likely. The Z and X observables do not commute, so there is no state in which both are certain. The three Pauli observables obey an uncertainty relation: the sum of their squared uncertainties is always at least 1 for a single qubit.",
+      "The principle has direct consequences for quantum technology. In BB84 key distribution, photons are prepared in one of two incompatible bases. An eavesdropper does not know the basis, and any measurement in the wrong basis randomizes the result and leaves a detectable error. Without the uncertainty principle, copying and measuring the photon without disturbance would be possible, and the security would fail.",
+      "There are also entropic versions of the principle, which bound the sum of the Shannon entropies of measurement outcomes, and these are used to prove the security of quantum cryptography and the strength of randomness extractors. In metrology, uncertainty relations set limits on sensor precision, such as the standard quantum limit for interferometers, which can be surpassed with squeezed states that trade uncertainty between conjugate variables.",
+    ],
+    keyFacts: [
+      { label: "Position-momentum", value: "Delta x times Delta p is at least h-bar over 2" },
+      { label: "Robertson relation", value: "Product of standard deviations is at least half the expectation of the commutator" },
+      { label: "Qubit example", value: "Pauli Z and X cannot both be sharp" },
+      { label: "Proposed", value: "By Werner Heisenberg in 1927; proven in general form by Kennard and Robertson" },
+      { label: "Technology use", value: "Security of BB84 and limits on sensor precision" },
+    ],
+    history: "Heisenberg proposed the principle in 1927 through a thought experiment about observing an electron with a microscope. Earle Kennard proved the position-momentum inequality that year, and Howard Robertson generalized it in 1929 to any pair of observables.",
+    comparison: [
+      "The uncertainty principle limits joint knowledge of incompatible observables, while the no-cloning theorem forbids copying unknown states.",
+      "Measurement disturbance and uncertainty are related but distinct ideas: uncertainty concerns the state before measurement.",
+      "Classical measurements can in principle be made arbitrarily precise for all variables at once.",
+    ],
+    faq: [
+      { q: "What is the uncertainty principle in simple words?", a: "Some pairs of properties cannot both be sharply defined at once, and the more exactly one is known, the less exactly the other can be." },
+      { q: "How does it relate to qubits?", a: "A qubit state cannot have definite results for all three of the X, Y, and Z measurements at once." },
+      { q: "Why is it important for cryptography?", a: "Because measuring a state in the wrong basis disturbs it, which allows quantum key distribution to detect eavesdroppers." },
+    ],
+    relatedAlgorithms: [
+      "bb84-protocol",
+    ],
+    relatedHardware: [
+      "xanadu-borealis",
+    ],
+  },
+  {
+    slug: "quantum-teleportation",
+    term: "Quantum Teleportation",
+    shortDefinition: "A protocol that transfers an unknown quantum state from one place to another using shared entanglement and two classical bits.",
+    category: "Core Principles",
+    definition: "Quantum teleportation moves the state of one qubit to another qubit far away, without sending the qubit itself. The sender and receiver first share an entangled pair. The sender performs a joint measurement on her half of the pair and the qubit to be sent, then tells the receiver the two-bit result over an ordinary channel. The receiver applies a correction, and his qubit now holds the original state. Nothing travels faster than light, and the original is destroyed in the process.",
+    technicalDefinition: "Teleportation uses a Bell pair shared between Alice and Bob. Alice applies a CNOT and Hadamard to the unknown qubit and her half of the pair, measures both qubits, and sends the two classical bits to Bob. Bob applies X and Z corrections conditioned on those bits, which maps his qubit to the original state. The protocol consumes one Bell pair and two bits per qubit.",
+    analogy: "Imagine two people with matching halves of a torn banknote, so they share a hidden link. To send a secret message, Alice combines it with her half in a way that destroys the message and writes down a short code. Bob uses the code to adjust his half into a perfect copy. The message never traveled, and the code alone reveals nothing.",
+    useCases: [
+      "Transferring quantum states across quantum networks and repeaters.",
+      "Gate teleportation for non-Clifford gates in fault-tolerant machines.",
+      "Linking modules in distributed quantum computers.",
+      "Entanglement swapping to extend the range of entanglement distribution.",
+    ],
+    relatedTerms: [
+      { slug: "entanglement", term: "Entanglement" },
+      { slug: "bell-state", term: "Bell State" },
+      { slug: "no-cloning-theorem", term: "No-Cloning Theorem" },
+      { slug: "quantum-repeater", term: "Quantum Repeater" },
+    ],
+    misconceptions: [
+      "Teleportation does not send matter or energy. It transfers a quantum state.",
+      "It does not allow faster-than-light communication, because the classical bits are needed.",
+      "It does not create a copy. The original state is destroyed when measured.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Teleportation is practical, not just a curiosity. It is a core primitive of quantum networks: to send a qubit across a link that loses photons, you can distribute entanglement first, repeating attempts until success, and then teleport the qubit with certainty. Quantum repeaters use entanglement swapping, a form of teleportation, to stitch short links into a long one. Distributed quantum computing uses it to move states and even apply gates between separate modules.",
+      "Inside a quantum computer, the same idea is used as gate teleportation. A hard gate, such as the T gate, can be applied by preparing a special state offline, then teleporting the data qubit through it, with a small classical correction. This is how error-corrected machines implement non-Clifford gates, using magic states, without exposing data qubits to risky operations.",
+      "Experimental milestones track the progress of the field. The first teleportation experiments with photons were in 1997 in Innsbruck and Rome, and the distance has grown from meters to over 100 kilometers on the ground and over 1,400 kilometers between ground and the Micius satellite in 2017. Teleportation between ions, atoms, and superconducting qubits has also been demonstrated.",
+    ],
+    keyFacts: [
+      { label: "Resources", value: "One shared Bell pair and two classical bits per qubit" },
+      { label: "Proposed", value: "Bennett, Brassard, Crépeau, Jozsa, Peres, and Wootters, 1993" },
+      { label: "First experiments", value: "1997, with photons in Innsbruck and Rome" },
+      { label: "Distance record", value: "Ground to satellite over more than 1,400 km (2017)" },
+      { label: "Speed limit", value: "Bounded by the classical message, so no faster-than-light signaling" },
+    ],
+    history: "The protocol was proposed in 1993 and first demonstrated in 1997. Continuous-variable teleportation followed in 1998, and satellite-based teleportation in 2017. Zeilinger, whose group did the first photon experiments, shared the 2022 Nobel Prize in Physics.",
+    comparison: [
+      "Teleportation moves a state and destroys the original, while cloning would copy it and is forbidden.",
+      "It needs both entanglement and classical communication, and neither alone suffices.",
+      "Superdense coding is the reverse trade: sending two classical bits with one qubit and one shared entangled pair.",
+    ],
+    faq: [
+      { q: "Can quantum teleportation transport objects?", a: "No. It transfers the quantum state of a particle to another particle, using entanglement and classical communication." },
+      { q: "Is it faster than light?", a: "No. The receiver needs two classical bits from the sender to complete the process." },
+      { q: "What is it used for?", a: "Quantum networks, repeaters, distributed quantum computing, and implementing gates in error-corrected machines." },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
+      "quantum-secret-sharing",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+    ],
+  },
+  {
+    slug: "quantum-tunneling",
+    term: "Quantum Tunneling",
+    shortDefinition: "The ability of a quantum particle to pass through an energy barrier it would not have enough energy to climb classically.",
+    category: "Core Principles",
+    definition: "Quantum tunneling is the effect by which a particle can appear on the far side of a barrier even though a classical particle with the same energy would be stopped. Because a quantum particle is described by a spreading wave, part of the wave leaks through the barrier. Tunneling powers the Sun, makes flash memory work, and is the key mechanism in superconducting circuits and quantum annealers.",
+    technicalDefinition: "For a particle of energy E meeting a barrier of height V greater than E and width a, the transmission probability falls off roughly as e to the minus 2 a times the square root of 2m(V minus E) over h-bar. The wave function decays exponentially inside the barrier and a nonzero amplitude emerges on the other side.",
+    analogy: "Imagine rolling a ball toward a hill it cannot climb. Classically it rolls back. A quantum ball is more like a fuzzy cloud, and a little of the cloud seeps through the hill so there is a small chance of finding the ball on the other side.",
+    useCases: [
+      "Operating Josephson junctions in superconducting qubits.",
+      "Escaping local minima in quantum annealing.",
+      "Imaging surfaces with scanning tunneling microscopes.",
+      "Understanding leakage and memory behavior in nanoscale electronics.",
+    ],
+    relatedTerms: [
+      { slug: "superconducting-qubit", term: "Superconducting Qubit" },
+      { slug: "quantum-annealing", term: "Quantum Annealing" },
+      { slug: "transmon", term: "Transmon" },
+      { slug: "superposition", term: "Superposition" },
+    ],
+    misconceptions: [
+      "Tunneling does not mean particles travel faster than light or disappear and reappear. The effect is a feature of wave propagation.",
+      "It is not limited to the microscopic world. Circuits with billions of electrons have shown it.",
+      "It does not guarantee that quantum annealers beat classical algorithms.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Tunneling is common in technology. Scanning tunneling microscopes image surfaces atom by atom by measuring the tunneling current between a sharp tip and the surface, which depends extremely strongly on distance. Flash memory stores bits by tunneling electrons through thin insulating layers. Tunnel diodes and some transistors rely on it, and as transistors shrink, unwanted tunneling leakage is a design limit.",
+      "In quantum computing, tunneling appears in two places. In superconducting circuits, the Josephson junction is a thin insulating barrier between two superconductors through which Cooper pairs tunnel. The junction behaves as a nonlinear inductor, and that nonlinearity is what makes a circuit into a qubit with distinct energy levels. Without tunneling, superconducting qubits would not exist.",
+      "In quantum annealing, tunneling is the proposed mechanism for finding low-energy states of optimization problems. A classical algorithm such as simulated annealing climbs over energy barriers using thermal energy, whereas a quantum annealer can tunnel through tall, thin barriers. Whether this gives a real advantage on practical problems is debated, with some benchmarks showing speedups for specially constructed problems and classical algorithms matching in others.",
+    ],
+    keyFacts: [
+      { label: "Transmission", value: "Falls exponentially with barrier width and the square root of barrier height" },
+      { label: "Josephson junction", value: "The tunnel barrier that makes superconducting qubits possible" },
+      { label: "Scanning tunneling microscope", value: "Invented in 1981, Nobel Prize in 1986" },
+      { label: "Nobel Prize 2025", value: "Awarded to Clarke, Devoret, and Martinis for macroscopic quantum tunneling in circuits" },
+      { label: "Stars", value: "Fusion in the Sun depends on protons tunneling through their mutual repulsion" },
+    ],
+    history: "Friedrich Hund identified tunneling in molecular spectra in 1927, and George Gamow used it the next year to explain alpha decay. In 1985 Clarke, Devoret, and Martinis showed tunneling of a macroscopic circuit variable, the work cited in the 2025 Nobel Prize in Physics, which laid the foundation for superconducting qubits.",
+    comparison: [
+      "Thermal activation crosses a barrier by climbing over it, while tunneling passes through it.",
+      "Tunneling is a wave effect, related to the same mathematics as interference.",
+      "Tunneling is probabilistic, and its rate depends strongly on barrier shape.",
+    ],
+    faq: [
+      { q: "What is quantum tunneling?", a: "The passage of a particle through an energy barrier that it could not cross classically, because its wave extends into and through the barrier." },
+      { q: "How does tunneling relate to quantum computers?", a: "It underlies the Josephson junction in superconducting qubits and the mechanism proposed for quantum annealing." },
+      { q: "Who won the Nobel Prize for tunneling in circuits?", a: "John Clarke, Michel Devoret, and John Martinis shared the 2025 Nobel Prize in Physics for work on macroscopic quantum tunneling in superconducting circuits." },
+    ],
+    relatedAlgorithms: [
+      "quantum-annealing",
+      "adiabatic-quantum-computation",
+    ],
+    relatedHardware: [
+      "dwave-advantage2",
+      "google-willow",
+    ],
+  },
+  {
+    slug: "transmon",
+    term: "Transmon",
+    shortDefinition: "The dominant type of superconducting qubit: a Josephson-junction circuit designed to be insensitive to charge noise.",
+    category: "Hardware & Errors",
+    definition: "A transmon is a tiny electrical circuit, made of superconducting metal and a thin insulating gap, that behaves like an artificial atom with two usable energy levels. It is the qubit used by IBM, Google, Rigetti, IQM, and most superconducting quantum computers. Its main virtue is that it keeps its quantum state much longer than earlier superconducting designs, because it is built to ignore stray electric charges.",
+    technicalDefinition: "A transmon is a Josephson junction shunted by a large capacitor, so that the ratio of the Josephson energy E_J to the charging energy E_C is about 50 or larger. In this regime the energy levels are nearly insensitive to offset charge, with a small anharmonicity, typically minus 200 to minus 300 MHz, that lets the lowest two levels be addressed as a qubit. Transition frequencies are about 4 to 6 GHz and devices operate at around 10 to 20 millikelvin.",
+    analogy: "A swing is a classic oscillator whose energy levels are evenly spaced, so you cannot push it to just one level. The Josephson junction acts like a swing with a slightly warped frame, so the first jump costs a bit more energy than the second. That small difference lets you pick out the lowest two levels as a qubit.",
+    useCases: [
+      "Qubits in processors from IBM, Google, Rigetti, and IQM.",
+      "Experiments in quantum error correction, such as Google's surface code demonstrations.",
+      "Testbeds for new materials and fabrication processes that improve coherence.",
+      "Quantum sensing of microwave photons and in circuit quantum electrodynamics research.",
+    ],
+    relatedTerms: [
+      { slug: "superconducting-qubit", term: "Superconducting Qubit" },
+      { slug: "dilution-refrigerator", term: "Dilution Refrigerator" },
+      { slug: "coherence-time", term: "Coherence Time" },
+      { slug: "quantum-tunneling", term: "Quantum Tunneling" },
+    ],
+    misconceptions: [
+      "A transmon is not an atom. It is a circuit with millions of atoms that behaves like one in its quantum states.",
+      "It does not need a vacuum chamber. It needs extreme cold and good shielding.",
+      "Higher qubit count does not mean higher quality. Coherence and gate fidelity matter more.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The history of superconducting qubits is largely the history of improving coherence. Early charge qubits, such as the Cooper pair box shown by Nakamura and colleagues in 1999, could be placed in superpositions but lost coherence in nanoseconds because fluctuating background charges shifted their energy. Koch, Schoelkopf, and coauthors at Yale introduced the transmon in 2007 by adding a large shunt capacitor, which flattens the dependence on charge exponentially at the cost of only a modest loss of anharmonicity. Coherence times rose from microseconds to hundreds of microseconds within a decade.",
+      "Today, transmon performance is limited mostly by materials and fabrication. Defects in surface oxides, tiny two-level systems in the substrate, and quasiparticles all cause energy loss. Switching to tantalum for the capacitor films and high-resistivity silicon substrates has produced devices with energy relaxation times above a millisecond in the lab, though processors with many qubits typically show 100 to 300 microseconds. Gate times are short, about 20 to 50 nanoseconds for single-qubit gates and 30 to 200 nanoseconds for two-qubit gates, which gives thousands of gates per coherence time.",
+      "The transmon is controlled with microwave pulses and read out by coupling it to a resonator whose frequency shifts slightly with the qubit state. Neighboring qubits are coupled by capacitors, resonators, or tunable couplers. Variants include fixed-frequency transmons, used by IBM with cross-resonance gates, and flux-tunable transmons, used by Google and Rigetti, which can be tuned into resonance for fast gates. Other designs, such as fluxonium, trade size for higher coherence and are an active research direction.",
+    ],
+    keyFacts: [
+      { label: "Invented", value: "2007, by Koch, Schoelkopf, and colleagues at Yale" },
+      { label: "Frequency", value: "About 4 to 6 GHz, operated at about 10 to 20 mK" },
+      { label: "Anharmonicity", value: "Typically minus 200 to minus 300 MHz" },
+      { label: "Coherence", value: "Typically 100 to 300 microseconds in large chips; above 1 ms reported in laboratory devices" },
+      { label: "Gate speed", value: "Tens of nanoseconds for single-qubit gates, tens to hundreds for two-qubit gates" },
+      { label: "Used by", value: "IBM, Google, Rigetti, IQM, Alice and Bob (cat qubits are related), and many labs" },
+    ],
+    history: "The Cooper pair box of 1999 and the circuit quantum electrodynamics architecture of Blais, Wallraff, and Schoelkopf in 2004 set the stage. The transmon of 2007 became the standard, and the 2025 Nobel Prize in Physics, awarded to Clarke, Devoret, and Martinis, honored the macroscopic quantum effects in superconducting circuits on which it is built.",
+    comparison: [
+      "Compared with trapped ions, transmons are fast but have shorter coherence, and every device has slightly different parameters.",
+      "Compared with charge qubits, transmons trade a little anharmonicity for far less charge noise.",
+      "Fluxonium qubits have longer coherence but lower frequencies and slower gates.",
+    ],
+    faq: [
+      { q: "What is a transmon qubit?", a: "A superconducting circuit based on a Josephson junction and a large capacitor, designed so that its energy levels are insensitive to charge noise, widely used in quantum computers." },
+      { q: "Why must transmons be cooled?", a: "To keep the metal superconducting and to prevent thermal energy from exciting the qubit, they run at about 10 to 20 millikelvin." },
+      { q: "How long do transmons stay coherent?", a: "Typically a few hundred microseconds in processors, and more than a millisecond in the best laboratory devices." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "google-willow",
+      "iqm-garnet",
+    ],
+  },
+  {
+    slug: "spin-qubit",
+    term: "Spin Qubit",
+    shortDefinition: "A qubit stored in the spin of a single electron or nucleus, typically in a silicon chip made with semiconductor processes.",
+    category: "Hardware & Errors",
+    definition: "A spin qubit uses the tiny magnetic orientation of a single electron, up or down, as the 0 and 1 of a qubit. The electron is trapped in a nanoscale structure on a chip, often silicon, that looks like a transistor. That similarity is the main attraction: spin qubits could be manufactured in the same factories that make computer chips, and they are small enough that millions could in principle fit on one die.",
+    technicalDefinition: "In a gate-defined quantum dot, electrodes on top of a silicon layer create a potential well that traps one electron. The qubit states are the spin-up and spin-down states in a magnetic field. Single-qubit gates use electron spin resonance driven by microwave fields or electric-dipole spin resonance with a magnetic field gradient, and two-qubit gates use the exchange interaction between neighboring dots.",
+    analogy: "Imagine a bar magnet so small that it is a single electron, held in a cage on a chip. Pointing it up or down is a bit, and tilting it in between is a superposition. The cage is built with the same techniques used to make transistors.",
+    useCases: [
+      "Building quantum processors with semiconductor manufacturing.",
+      "Research toward millions of qubits on one chip.",
+      "Integrating qubits with cryogenic control electronics.",
+      "Quantum sensing and memory using donor spins in silicon.",
+    ],
+    relatedTerms: [
+      { slug: "transmon", term: "Transmon" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "cryo-cmos", term: "Cryogenic CMOS Control" },
+      { slug: "coherence-time", term: "Coherence Time" },
+    ],
+    misconceptions: [
+      "Spin qubits are not a mature technology. They are advancing quickly but have only demonstrated up to a dozen or so qubits.",
+      "Being made in silicon does not mean they are easy to mass-produce. Uniformity is a major challenge.",
+      "They are not the same as quantum dots in displays. The dots are used here to hold a single electron.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Spin qubits began with the 1998 proposal by Daniel Loss and David DiVincenzo for quantum computing with electron spins in quantum dots. Early experiments used gallium arsenide, where nuclear spins in the host material cause rapid decoherence. Silicon changed that, because its most common isotope, silicon-28, has no nuclear spin, and purified silicon-28 wafers give a magnetically quiet environment. Coherence times of milliseconds to seconds are possible for spins in purified silicon.",
+      "Performance has improved quickly. In 2022, three groups in Delft, at RIKEN, and at Princeton reported two-qubit gate fidelities above 99 percent in silicon devices. In 2025, Diraq and imec reported fidelities above 99 percent on devices made on 300 millimeter wafers in an industrial CMOS line, and Intel's Tunnel Falls chip put 12 spin qubits in a package available to researchers. Operating temperatures are about 100 millikelvin, and some devices have worked above 1 kelvin, which would ease cooling.",
+      "Challenges include uniformity, since tiny variations in the fabricated dots shift qubit frequencies, and wiring, because each qubit needs several control lines. Two-qubit gates depend on exchange coupling that decays quickly with distance, so qubits must be close, and crosstalk must be managed. Researchers are developing cryogenic control chips and shuttling methods that move electrons across a chip to connect distant qubits.",
+    ],
+    keyFacts: [
+      { label: "Proposal", value: "Loss and DiVincenzo, 1998" },
+      { label: "Host material", value: "Often silicon, ideally isotopically purified silicon-28" },
+      { label: "Two-qubit fidelity", value: "Above 99 percent demonstrated in 2022 and on 300 mm wafers in 2025" },
+      { label: "Operating temperature", value: "About 100 millikelvin, with demonstrations above 1 kelvin" },
+      { label: "Size", value: "Tens of nanometers per qubit, much smaller than superconducting qubits" },
+    ],
+    history: "After the 1998 proposal, single-spin control in quantum dots was demonstrated in the 2000s and 2010s, with silicon devices at UNSW in 2012 and 2014. Industrial interest rose as Intel, imec, and CEA-Leti began fabricating devices, and the first fidelities above the error-correction threshold were reported in 2022.",
+    comparison: [
+      "Compared with transmons, spin qubits are far smaller and compatible with CMOS, but earlier in development and harder to wire.",
+      "Compared with trapped ions, they are faster and smaller, but have lower gate fidelities so far.",
+      "Donor spins in silicon, such as phosphorus atoms, have longer coherence than gate-defined dots but are harder to place.",
+    ],
+    faq: [
+      { q: "What is a spin qubit?", a: "A qubit that stores information in the spin of a single electron or nucleus, usually trapped in a silicon quantum dot." },
+      { q: "Why is silicon used?", a: "Purified silicon-28 has no nuclear spins, which gives a quiet magnetic environment, and silicon manufacturing is mature." },
+      { q: "Who is building spin qubit processors?", a: "Intel, Diraq, imec, Quantum Motion, Silicon Quantum Computing, and several universities." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "diraq-core1",
+    ],
+    relatedIndustries: [
+      "semiconductors-electronics",
+    ],
+  },
+  {
+    slug: "topological-qubit",
+    term: "Topological Qubit",
+    shortDefinition: "A proposed qubit that stores information in a global property of a material, so that local noise cannot easily corrupt it.",
+    category: "Hardware & Errors",
+    definition: "A topological qubit stores information not in a single fragile particle but in a pattern spread across a material, much as a knot in a rope stays a knot however you wiggle the rope. Local disturbances cannot easily undo the pattern, so the qubit should have built-in protection from errors. Microsoft is the best-known developer, and its claims of having built such qubits remain debated among physicists.",
+    technicalDefinition: "Topological qubits are based on non-Abelian anyons, quasiparticles whose exchange applies a unitary operation depending only on the topology of their paths. A leading candidate is the Majorana zero mode at the ends of a semiconductor-superconductor nanowire, where the qubit is encoded in the fermion parity of a pair of such modes and gates are performed by braiding or measurement.",
+    analogy: "A knot tied in a rope cannot be undone by small shakes, only by cutting or untying it. A topological qubit encodes its information in such a knot, and ordinary noise is like shaking the rope.",
+    useCases: [
+      "Long-term research toward intrinsically protected qubits.",
+      "Simulating anyons and topological order on conventional hardware to study the physics.",
+      "Developing materials science for semiconductor-superconductor hybrids.",
+      "Setting benchmarks for what it would mean to demonstrate a topological qubit.",
+    ],
+    relatedTerms: [
+      { slug: "fault-tolerance", term: "Fault Tolerance" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "surface-code", term: "Surface Code" },
+    ],
+    misconceptions: [
+      "Topological protection does not remove all errors. It suppresses certain local ones, and others, such as quasiparticle poisoning, remain.",
+      "Microsoft's announcements are not universally accepted as proof of topological qubits.",
+      "Synthetic anyons on ordinary qubits do not have hardware protection.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The idea comes from Alexei Kitaev's 1997 proposal for fault-tolerant quantum computation by anyons. In some two-dimensional systems, particles can exist whose collective states are protected, so that errors need nonlocal events to occur, which makes them exponentially rare. In principle, a topological qubit could be so stable that it needs little or no error correction, which would transform the cost of building a large quantum computer.",
+      "The experimental difficulty is proving that the protected states exist. The leading approach, which Microsoft has pursued for about two decades, combines a semiconductor nanowire, a superconductor, and a magnetic field to create Majorana zero modes at the wire ends. A 2018 Nature paper from a Microsoft-linked team claiming quantized Majorana conductance was retracted in 2021, and the 2025 announcement of the Majorana 1 chip and the 2026 announcement of Majorana 2 drew skepticism, with researchers asking for independent evidence that the measured states are topological.",
+      "Other groups have simulated topological behavior on conventional qubits. In 2023, Google and Quantinuum each reported creating non-Abelian anyons in superconducting and trapped-ion processors, and demonstrated braiding in these synthetic systems, which shows the physics but does not provide a hardware-protected qubit. Alternative platforms, such as fractional quantum Hall systems, remain at the research stage.",
+    ],
+    keyFacts: [
+      { label: "Proposed", value: "Kitaev, 1997, fault-tolerant quantum computation by anyons" },
+      { label: "Leading candidate", value: "Majorana zero modes in semiconductor-superconductor nanowires" },
+      { label: "Microsoft chips", value: "Majorana 1 (2025) and Majorana 2 (2026), both disputed" },
+      { label: "Synthetic anyons", value: "Non-Abelian anyons created on Google and Quantinuum processors in 2023" },
+      { label: "Potential payoff", value: "Dramatically lower error-correction overhead if protection is real" },
+    ],
+    history: "After Kitaev's 1997 proposal and the 2000s work by Freedman, Nayak, and others at Microsoft's Station Q, experimental searches for Majorana modes began in 2012 with signals reported by the Delft group. Claims and retractions followed, and the status in 2026 is that the physics is promising but unproven.",
+    comparison: [
+      "Conventional qubits are error-corrected by software and redundancy, while topological qubits would be protected in hardware.",
+      "The surface code is a topological code built from conventional qubits, and a topological qubit would be a topological material.",
+      "A claim of Majorana modes does not by itself demonstrate a working qubit.",
+    ],
+    faq: [
+      { q: "What is a topological qubit?", a: "A qubit whose information is stored in a global property of a material, so local noise should not corrupt it." },
+      { q: "Has anyone built one?", a: "Microsoft says it has shown the building blocks, but many physicists want stronger independent evidence that the effects are topological." },
+      { q: "Why is it so appealing?", a: "If real, it could cut the huge overhead of quantum error correction." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "nitrogen-vacancy-center",
+    term: "Nitrogen-Vacancy Center",
+    shortDefinition: "A defect in diamond, a nitrogen atom next to a missing carbon atom, whose spin works as a qubit and sensor at room temperature.",
+    category: "Hardware & Errors",
+    definition: "A nitrogen-vacancy center, or NV center, is a tiny flaw in a diamond crystal made of one nitrogen atom sitting beside an empty spot where a carbon atom should be. The flaw has an electron spin that can be set with microwaves and read out with a green laser, and it works at room temperature. That makes NV centers unusually practical for quantum sensing of magnetic fields, temperature, and electric fields at the nanoscale, and they are also used in quantum networking experiments.",
+    technicalDefinition: "The negatively charged NV center has a spin-1 electronic ground state with a zero-field splitting of 2.87 GHz between the m=0 and m=plus or minus 1 sublevels. Optical excitation near 532 nm yields spin-dependent fluorescence, allowing optically detected magnetic resonance. Coherence times of milliseconds at room temperature are achieved in isotopically purified diamond, and nearby nuclear spins provide longer-lived memories.",
+    analogy: "Think of a single atom-sized compass needle frozen into a diamond. Shine a green light and the needle glows more or less brightly depending on which way it points, and a nearby magnetic field changes its orientation. Reading the glow tells you the field.",
+    useCases: [
+      "Nanoscale magnetic imaging of materials, batteries, and microelectronics.",
+      "Quantum sensing of temperature and electric fields in cells and devices.",
+      "Nuclear magnetic resonance of very small samples.",
+      "Quantum network nodes and memories in research settings.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-sensing", term: "Quantum Sensing" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "quantum-repeater", term: "Quantum Repeater" },
+      { slug: "coherence-time", term: "Coherence Time" },
+    ],
+    misconceptions: [
+      "NV centers are not gemstones used for computing. They are atomic defects in engineered diamond.",
+      "They are not mainly a computing platform today. Their strongest use is sensing.",
+      "Room-temperature operation does not mean they are easy to wire into large arrays.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The NV center's special feature is that its spin state can be initialized and read out optically at room temperature, which is rare among solid-state qubits. A green laser pumps the spin into the m=0 state and the fluorescence is brighter for m=0 than for the other states, giving a readout signal. Applying microwaves at the resonance frequency flips the spin. A static magnetic field splits the levels in proportion to the field, which is the basis of magnetometry with sensitivity at the nanotesla or better, and with spatial resolution down to nanometers.",
+      "Applications are already commercial. Diamond-based magnetometers are used for imaging magnetic structure in materials and batteries, inspecting microelectronics, and in nanoscale nuclear magnetic resonance of tiny samples. Companies including Bosch Quantum Sensing and QDTI sell instruments, and quantum diamond microscopes map magnetic fields across a chip or a rock sample. Biological uses include temperature sensing inside cells and detecting magnetic signals from neurons.",
+      "As a qubit, the NV center is limited by the difficulty of connecting many of them: they are randomly positioned and coupled weakly. Researchers at Delft built small networks of NV nodes with entanglement over distances of meters to kilometers, and the platform is important for quantum networking research. A related defect, the silicon-vacancy center in diamond, has stronger optical properties and is used in Harvard's metropolitan fiber network experiments.",
+    ],
+    keyFacts: [
+      { label: "Structure", value: "A substitutional nitrogen atom adjacent to a lattice vacancy in diamond" },
+      { label: "Zero-field splitting", value: "2.87 GHz" },
+      { label: "Operating temperature", value: "Room temperature, with cryogenic operation for networking" },
+      { label: "Coherence", value: "Milliseconds at room temperature in purified diamond" },
+      { label: "Sensitivity", value: "Nanotesla-scale magnetic fields with nanometer resolution" },
+      { label: "Commercial users", value: "Bosch Quantum Sensing, QDTI, and several microscopy companies" },
+    ],
+    history: "Optical detection of single NV centers was shown by Gruber and colleagues in 1997, and coherent control followed in the early 2000s. The development of NV magnetometry around 2008, by groups at Harvard and Stuttgart, started the field of diamond quantum sensing.",
+    comparison: [
+      "NV centers work at room temperature, while superconducting qubits need millikelvin cooling.",
+      "Compared with atomic magnetometers, NV sensors are far smaller and offer nanoscale spatial resolution, but lower absolute sensitivity.",
+      "Compared with silicon-vacancy centers, NV centers have longer spin coherence but weaker optical emission into the zero-phonon line.",
+    ],
+    faq: [
+      { q: "What is an NV center?", a: "A defect in diamond consisting of a nitrogen atom next to a vacancy, whose spin can be controlled and read out with light and microwaves." },
+      { q: "What are NV centers used for?", a: "Mostly quantum sensing, such as magnetic imaging, and in research on quantum networks and memories." },
+      { q: "Do NV centers need cooling?", a: "Not for sensing. They work at room temperature, though networking experiments use cryogenic conditions to improve optical properties." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "rigetti-novera",
+    ],
+    relatedIndustries: [
+      "manufacturing",
+      "healthcare",
+    ],
+  },
+  {
+    slug: "cryo-cmos",
+    term: "Cryogenic CMOS Control",
+    shortDefinition: "Control and readout chips that run at very low temperatures next to the qubits, reducing the wiring needed for large quantum computers.",
+    category: "Hardware & Errors",
+    definition: "Cryogenic CMOS, or cryo-CMOS, means ordinary silicon chip technology adapted to work at extremely low temperatures, close to the qubits themselves. Today, each qubit is controlled by cables running from room-temperature electronics into the cold refrigerator, and this becomes impossible with thousands or millions of qubits. Putting the control electronics in the cold, on a chip, replaces thousands of cables with a few, and is considered essential for scaling.",
+    technicalDefinition: "Cryo-CMOS circuits use standard transistor processes, tuned for operation at 4 kelvin or below, to generate microwave control pulses, route signals, and digitize readout. Power dissipation must stay within the cooling budget of the stage: a dilution refrigerator provides on the order of tens of microwatts at 20 millikelvin and about a watt at 4 kelvin.",
+    analogy: "Imagine a concert with a million musicians, each needing their own dedicated cable to a distant conductor. It would be impossible. Cryo-CMOS puts a small conductor at each section of the orchestra, so only a few cables run to the outside.",
+    useCases: [
+      "Controlling spin qubits and superconducting qubits with chips in the cryostat.",
+      "Multiplexed readout of many qubits with fewer lines.",
+      "Reducing latency between measurement and feedback for error correction.",
+      "Lowering the cost and size of large dilution refrigerator systems.",
+    ],
+    relatedTerms: [
+      { slug: "dilution-refrigerator", term: "Dilution Refrigerator" },
+      { slug: "superconducting-qubit", term: "Superconducting Qubit" },
+      { slug: "spin-qubit", term: "Spin Qubit" },
+      { slug: "pulse-level-control", term: "Pulse-Level Control" },
+    ],
+    misconceptions: [
+      "Cryo-CMOS is not a quantum technology. It is classical electronics for operating quantum hardware.",
+      "Placing electronics in the cold does not remove the need for room-temperature equipment altogether.",
+      "Putting control chips next to qubits can add noise and heat that harm the qubits.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The wiring problem is basic. A superconducting processor typically needs two to three coaxial lines per qubit, each carrying microwave signals down through several temperature stages to the chip. A thousand-qubit machine would need thousands of lines, and a million-qubit machine would be impossible with the same approach, because the lines conduct heat, take space, and add cost. The cooling power of a dilution refrigerator, just tens of microwatts at the coldest stage, sets a hard budget for any electronics placed there.",
+      "The approach developed by industry places control chips at the 4 kelvin stage, where more cooling power exists, and uses multiplexing to share lines. Intel's Horse Ridge series, beginning in 2019, was an early controller operating at 4 kelvin to drive spin qubits and superconducting qubits, and Google and several university groups have built cryo-CMOS microwave sources and readout circuits. Another route uses superconducting digital logic, such as single-flux-quantum circuits, which dissipate far less power at millikelvin temperatures.",
+      "For spin qubits, integration is especially natural, since qubits and control transistors are made in the same silicon process, and researchers have demonstrated chips with qubits and control electronics operating together. A broader challenge is that transistors change behavior at cryogenic temperatures, so device models must be recalibrated, and noise from the control electronics can itself limit qubit performance.",
+    ],
+    keyFacts: [
+      { label: "Wiring today", value: "Typically 2 to 3 coaxial lines per qubit for superconducting chips" },
+      { label: "Cooling budget", value: "Tens of microwatts at 20 mK and about a watt at 4 K in a dilution refrigerator" },
+      { label: "Early example", value: "Intel Horse Ridge controller chips, from 2019, operating at 4 K" },
+      { label: "Alternative", value: "Superconducting single-flux-quantum logic for lower power" },
+      { label: "Why it matters", value: "Needed for machines with thousands to millions of physical qubits" },
+    ],
+    history: "The need for cold electronics was recognized as soon as processors reached dozens of qubits. Researchers at Delft, Sydney, and Intel's labs demonstrated cryo-CMOS circuits in the 2010s, and the first commercial-style cryogenic controllers appeared in 2019.",
+    comparison: [
+      "Room-temperature electronics are flexible and low-noise but need many cables, while cryo-CMOS saves wires at the cost of power budget.",
+      "Superconducting digital logic dissipates less than CMOS but is harder to design and fabricate.",
+      "Photonic links can bring signals in with less heat load, and several groups are developing them.",
+    ],
+    faq: [
+      { q: "Why do quantum computers need cryogenic control chips?", a: "Because wiring every qubit to room-temperature electronics does not scale. Cold chips cut the number of cables." },
+      { q: "What limits cryo-CMOS?", a: "The cooling power at low temperature, noise from the electronics, and changed transistor behavior in the cold." },
+      { q: "Who works on it?", a: "Intel, Google, IBM, Diraq, Quantum Motion, and many university and national laboratory groups." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedIndustries: [
+      "semiconductors-electronics",
+    ],
+  },
+  {
+    slug: "crosstalk",
+    term: "Crosstalk",
+    shortDefinition: "Unwanted interaction between qubits or control lines, so that an operation on one qubit disturbs its neighbors.",
+    category: "Hardware & Errors",
+    definition: "Crosstalk is what happens when you try to talk to one qubit and its neighbors overhear. A control pulse meant for one qubit leaks to others, or two qubits that should be independent influence each other. Because it grows with the number of qubits packed on a chip, crosstalk is one of the main reasons that bigger processors are harder to run well, and error-correcting codes must be designed to tolerate it.",
+    technicalDefinition: "Crosstalk includes classical microwave crosstalk, where drive signals reach unintended qubits through wiring or the substrate, and quantum crosstalk, such as residual ZZ coupling, where the frequency of one qubit shifts depending on the state of another. Readout crosstalk occurs when measuring one qubit affects others. It is characterized by simultaneous randomized benchmarking and cross-measurement experiments.",
+    analogy: "Imagine a room where several people are having separate phone calls. If the walls are thin, each conversation leaks into the others. The more people crowded in, the worse it gets, and the harder it is to hold a clean private conversation with any one person.",
+    useCases: [
+      "Designing chip layouts and frequency plans that limit unwanted interaction.",
+      "Benchmarking how well a device performs with all qubits active.",
+      "Compiling circuits that avoid simultaneous gates on crosstalk-prone pairs.",
+      "Modeling correlated noise in error-correction simulations.",
+    ],
+    relatedTerms: [
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "qubit-connectivity", term: "Qubit Connectivity" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "transmon", term: "Transmon" },
+    ],
+    misconceptions: [
+      "Crosstalk is not just random noise. Much of it is systematic and can be reduced by calibration and design.",
+      "Isolated gate fidelity does not tell the whole story. Full-chip fidelity is what matters.",
+      "Using more qubits does not always improve performance if crosstalk grows faster than the gain.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "In superconducting processors, qubits are coupled to neighbors on purpose so that two-qubit gates are possible, and that same coupling creates residual interaction when gates are supposed to be off. The ZZ interaction, a shift in one qubit's frequency that depends on its neighbor's state, accumulates phase errors even while qubits idle. In fixed-coupling designs this is a continuous background error, and its strength can be tens of kilohertz, which over microseconds adds up to a noticeable error.",
+      "Several design and control techniques reduce crosstalk. Tunable couplers, used in Google's Sycamore and Willow and in IBM's Heron, switch the interaction between qubits on and off, cutting the residual coupling by orders of magnitude. Frequency planning keeps neighboring qubits far apart in frequency, and pulse shaping techniques such as DRAG reduce leakage of the drive to other transitions. Dynamical decoupling, using sequences of echo pulses, cancels some static crosstalk during idle periods, and compilers can schedule gates to avoid simultaneous operations on sensitive pairs.",
+      "Crosstalk is measured by comparing the fidelity of a gate run alone against the same gate with neighbors active, in a protocol called simultaneous randomized benchmarking. Performance that looks good in isolated tests may degrade when the whole chip runs, which is why published fidelities for full-chip operation are often lower than headline single-qubit numbers. In error correction, correlated errors from crosstalk are especially damaging because codes assume mostly independent errors.",
+    ],
+    keyFacts: [
+      { label: "Types", value: "Microwave drive crosstalk, ZZ coupling, readout crosstalk, and spectator errors" },
+      { label: "Typical ZZ strength", value: "Tens to hundreds of kilohertz in fixed-coupling designs" },
+      { label: "Mitigation", value: "Tunable couplers, frequency allocation, pulse shaping, dynamical decoupling" },
+      { label: "Measurement", value: "Simultaneous randomized benchmarking and cross-resonance maps" },
+      { label: "Scaling", value: "Gets worse as qubit density and connectivity increase" },
+    ],
+    history: "Crosstalk was a minor concern with a few qubits, and became central as processors grew past 20 qubits around 2018 to 2019. Tunable-coupler architectures, first demonstrated by Yan and colleagues at MIT in 2018, were adopted by Google and IBM to suppress it.",
+    comparison: [
+      "Crosstalk is a coherent or classical coupling between parts of a device, while decoherence is loss of coherence to an environment.",
+      "A spectator error is a specific kind of crosstalk in which an idle qubit is disturbed by a gate on its neighbor.",
+      "Crosstalk can be calibrated out in part, unlike random noise.",
+    ],
+    faq: [
+      { q: "What is crosstalk in a quantum computer?", a: "Unwanted interaction in which operating on or measuring one qubit affects other qubits." },
+      { q: "How do chip makers reduce it?", a: "By using tunable couplers, spacing qubit frequencies, shaping control pulses, and shielding wiring." },
+      { q: "Why does crosstalk matter for error correction?", a: "Codes work best when errors are independent, and crosstalk produces correlated errors that are harder to correct." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "google-willow",
+    ],
+  },
+  {
+    slug: "t1-t2-times",
+    term: "T1 and T2 Times",
+    shortDefinition: "The two main coherence timescales of a qubit: T1 for losing energy and T2 for losing phase.",
+    category: "Hardware & Errors",
+    definition: "T1 and T2 are the two clocks that tell you how long a qubit stays useful. T1 is the time it takes a qubit in the excited state to fall back to the ground state by losing energy. T2 is the time over which the delicate phase relationship in a superposition survives. Together with the time a gate takes, they set how many operations a quantum computer can perform before noise takes over.",
+    technicalDefinition: "T1 is the energy relaxation time, the exponential decay constant of the excited-state population. T2 is the dephasing time, the decay constant of the off-diagonal coherence of the density matrix. They are related by one over T2 equals one over twice T1 plus one over T phi, where T phi is the pure dephasing time, so T2 is at most 2 times T1. T2 star is the free-induction decay time, and T2 echo, measured with a refocusing pulse, is longer.",
+    analogy: "Think of a spinning top. T1 is how long until it falls over and lies flat, losing its energy. T2 is how long until it wobbles so that you can no longer tell which way it was pointing. A top can wobble out of sync long before it falls.",
+    useCases: [
+      "Characterizing and comparing qubit technologies and fabrication improvements.",
+      "Estimating how deep a circuit can be before errors dominate.",
+      "Choosing which qubits on a chip to use based on current calibrations.",
+      "Designing dynamical decoupling and error mitigation strategies.",
+    ],
+    relatedTerms: [
+      { slug: "coherence-time", term: "Coherence Time" },
+      { slug: "decoherence", term: "Decoherence" },
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "circuit-depth", term: "Circuit Depth" },
+    ],
+    misconceptions: [
+      "A long coherence time does not mean a good quantum computer. Gate speed, fidelity, and connectivity also matter.",
+      "T2 can never exceed 2 T1. If a measurement suggests otherwise, it is an error or a different quantity.",
+      "Coherence times can fluctuate over hours, so single numbers are snapshots.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The two times measure different failures. Energy relaxation flips a 1 into a 0, through interaction with defects, photons, or phonons. Dephasing leaves the populations alone but scrambles the relative phase of the 0 and 1 components, so a superposition turns into a classical mixture. Dephasing is usually faster than relaxation, caused by slowly fluctuating fields that shift the qubit frequency, and that is why T2 is often much shorter than T1.",
+      "Typical values vary by platform by many orders of magnitude. Superconducting transmons have T1 of about 100 to 300 microseconds in processors and above a millisecond in the best devices. Trapped-ion hyperfine qubits have coherence times of seconds to many minutes, and neutral atoms reach seconds. Silicon spin qubits have T2 from microseconds to seconds depending on purification and dynamical decoupling, and NV centers reach milliseconds. These numbers must be compared with gate times, which are tens of nanoseconds for superconductors and tens of microseconds for ions.",
+      "A useful rule is to divide coherence time by gate time to estimate how many gates fit in one coherence window. A transmon with a 100-microsecond T2 and 50-nanosecond gates gives about 2,000 gates, and an ion with a 1-second T2 and 100-microsecond gates gives about 10,000. Real error rates are also affected by control imperfections, so the actual figure is smaller. Dynamical decoupling, which applies refocusing pulses, can extend T2 toward the limit of 2 T1.",
+    ],
+    keyFacts: [
+      { label: "T1", value: "Energy relaxation: the time for an excited qubit to decay to the ground state" },
+      { label: "T2", value: "Dephasing: the time for superposition phase coherence to decay; at most 2 times T1" },
+      { label: "Superconducting qubits", value: "T1 about 100 to 300 microseconds in processors, above 1 ms in lab devices" },
+      { label: "Trapped ions", value: "Coherence from seconds to minutes in hyperfine states" },
+      { label: "Gate budget", value: "Roughly T2 divided by gate time gives the number of gates that fit" },
+    ],
+    history: "The terms come from nuclear magnetic resonance, where Felix Bloch introduced the longitudinal and transverse relaxation times in 1946. Quantum computing adopted them as the standard characterization of a qubit, and measuring T1 and T2 is the first calibration experiment on any new device.",
+    comparison: [
+      "T1 describes loss of energy and flips, while T2 describes loss of phase, which is the more fragile property.",
+      "T2 star measures free decay with slow noise included, and T2 echo removes slow noise with a refocusing pulse.",
+      "A long T1 does not guarantee a long T2.",
+    ],
+    faq: [
+      { q: "What is the difference between T1 and T2?", a: "T1 is how long a qubit holds its energy state, and T2 is how long it keeps the phase of a superposition. T2 is at most twice T1." },
+      { q: "What are good T1 and T2 values?", a: "It depends on the platform. For superconducting qubits, a few hundred microseconds is good, and for ions, seconds or more." },
+      { q: "How are they measured?", a: "T1 by exciting the qubit and measuring decay over time, and T2 by Ramsey or echo experiments that track phase decay." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "leakage-error",
+    term: "Leakage Error",
+    shortDefinition: "An error in which a qubit leaves its two intended states and ends up in another energy level or is lost altogether.",
+    category: "Hardware & Errors",
+    definition: "A qubit is supposed to live in two states, 0 and 1. But the physical object that carries it, such as a superconducting circuit or an atom, has more energy levels, and a gate or noise can push the qubit into one of them. That is leakage. Leakage is especially harmful because ordinary error-correcting codes are built to fix bit and phase flips, and a qubit sitting in a third state can spread errors to its neighbors for many rounds before it is noticed.",
+    technicalDefinition: "Leakage is a transition out of the computational subspace spanned by the qubit states into other levels, such as the second excited state of a transmon, or the loss of an atom or ion from its trap. Leaked states are outside the Hilbert space assumed by the circuit and by standard error-correction decoders. Mitigation includes leakage reduction units, pulse shaping, and conversion of leakage into erasure errors that can be detected and located.",
+    analogy: "Imagine a light switch that can only be on or off, but sometimes it jams halfway in a position that neither state describes. Anything wired to it behaves oddly until someone notices and resets it.",
+    useCases: [
+      "Calibrating gates to minimize population outside the qubit space.",
+      "Adding leakage reduction units to error-correction circuits.",
+      "Designing erasure-converted qubits for atoms and superconducting dual-rail encodings.",
+      "Modeling realistic noise in decoders and simulations.",
+    ],
+    relatedTerms: [
+      { slug: "syndrome-measurement", term: "Syndrome Measurement" },
+      { slug: "surface-code", term: "Surface Code" },
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    misconceptions: [
+      "Leakage is not rare enough to ignore in error-correction experiments. It affects logical error rates.",
+      "You cannot simply measure leakage away. Standard readout often cannot distinguish a leaked state from the 1 state.",
+      "Leakage is not unique to superconducting qubits. It appears as atom and ion loss in other platforms.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "In transmons, the qubit is the lowest two levels of an anharmonic oscillator, and fast gates can excite the third level because it is only a few hundred megahertz away. Techniques such as DRAG pulses add a quadrature component to the drive that cancels transitions to the third level, and they cut leakage per gate to the order of 0.01 percent or below. But small leakage accumulates, and in error-correction experiments leaked qubits can persist for many cycles, corrupting syndrome measurements.",
+      "Error-correction groups therefore add leakage reduction units, circuits that return a leaked qubit to the computational space, and decoders that account for leakage. Google's experiments with the surface code showed that leakage is a significant source of correlated errors, and reducing it was part of reaching below-threshold performance on Willow. Researchers also study dual-rail encoding, where a qubit is a single excitation in one of two resonators, which turns leakage into an observable erasure.",
+      "In neutral atom and trapped ion machines, the analogous error is atom or ion loss, where the carrier leaves the trap. This can be detected by imaging, which makes it an erasure error whose location is known, and erasure errors are easier to correct than unknown errors, since the code needs less redundancy. Convert-to-erasure designs, proposed by Wu and coauthors and by Kubica and coauthors for atoms and demonstrated in several labs, exploit this property deliberately.",
+    ],
+    keyFacts: [
+      { label: "Cause", value: "Population in non-computational levels after gates or noise, or physical loss of the qubit carrier" },
+      { label: "Typical rates", value: "Order 10^-4 to 10^-3 per gate, depending on the platform and pulse design" },
+      { label: "Mitigation", value: "DRAG pulses, leakage reduction units, and fast reset" },
+      { label: "Erasure conversion", value: "Making leakage or loss detectable, which improves code thresholds" },
+      { label: "Where it matters most", value: "Quantum error correction, where leaked qubits cause correlated errors" },
+    ],
+    history: "Leakage was recognized as a problem for early superconducting qubits, and the DRAG pulse technique of Motzoi and coauthors in 2009 reduced it. With surface code demonstrations in 2021 and 2023, leakage reduction became standard, and the idea of erasure conversion in 2022 and 2023 gave it a positive spin.",
+    comparison: [
+      "A bit flip keeps the qubit in the computational space, while leakage takes it out.",
+      "An erasure error is a known-location error and easier to correct than a random error.",
+      "Leakage is different from decoherence, which is loss of coherence within the qubit space.",
+    ],
+    faq: [
+      { q: "What is a leakage error?", a: "An error in which a qubit ends up in a state outside the two intended levels, or is physically lost." },
+      { q: "Why is leakage dangerous for error correction?", a: "A leaked qubit can persist and cause correlated errors in neighbors, which codes are poorly equipped to handle." },
+      { q: "How can leakage help?", a: "If it is detected and its location known, it becomes an erasure error, which is easier to correct." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+      "pasqal-fresnel",
+    ],
+  },
+  {
+    slug: "readout-error",
+    term: "Readout Error",
+    shortDefinition: "An error in which the final measurement of a qubit reports the wrong value.",
+    category: "Hardware & Errors",
+    definition: "Readout error is what happens when a qubit is measured and the answer comes back wrong. A qubit that was really in state 1 is reported as 0, or the other way around. Even if every gate in a circuit works perfectly, readout error limits how accurate the final answer can be, and in error correction, which measures qubits many times per second, it is a major source of mistakes.",
+    technicalDefinition: "Readout error is characterized by the assignment probabilities P(0 given 1) and P(1 given 0), together with measurement-induced state transitions and crosstalk. It is part of the state preparation and measurement (SPAM) error. Readout fidelity is one minus the average assignment error, and typical values are 98 to 99.5 percent for superconducting qubits and above 99.9 percent for trapped ions.",
+    analogy: "Think of a referee at the end of a race who sometimes writes down the wrong winner. The race itself was fair, but the recorded result is off, and the more races you record, the more wrong entries pile up.",
+    useCases: [
+      "Benchmarking and calibrating qubits.",
+      "Applying readout error mitigation to experimental results.",
+      "Setting measurement cycles in error-correction experiments.",
+      "Choosing qubits on a device with the best readout fidelity.",
+    ],
+    relatedTerms: [
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+      { slug: "syndrome-measurement", term: "Syndrome Measurement" },
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "quantum-error-mitigation", term: "Quantum Error Mitigation" },
+    ],
+    misconceptions: [
+      "A high readout fidelity does not mean the computation is accurate. Gate errors still accumulate.",
+      "Readout error cannot be removed completely by software. It can be partly mitigated at the cost of more shots.",
+      "Faster readout is not always better. Speed can reduce fidelity if the signal-to-noise ratio drops.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "In superconducting qubits, readout is dispersive: the qubit is coupled to a resonator whose frequency depends slightly on the qubit state, and a microwave tone is reflected or transmitted, with the phase or amplitude revealing the state. The signal is tiny, so it is amplified first by a near-quantum-limited parametric amplifier at the cold stage, then by a cryogenic and room-temperature chain. Errors arise because the qubit may decay during the measurement, taking hundreds of nanoseconds to microseconds, and because noise blurs the two signal distributions.",
+      "Trapped ions are read by fluorescence: laser light makes one state scatter many photons while the other stays dark, and counting photons in about 100 microseconds can reach errors below 0.1 percent. Neutral atoms use imaging, with typical readout errors around 0.1 to a few percent, partly from atom loss during imaging. The tradeoff between speed and fidelity is central, because error correction wants fast, repeated measurements, and long measurements allow decay.",
+      "Readout error can be partly corrected in software. A calibration matrix, measured by preparing all basis states and recording the outcomes, is inverted to correct measured distributions, and more scalable methods such as tensored or randomized calibration extend it to many qubits. For error-corrected computing, mid-circuit measurement must also avoid disturbing neighboring qubits, which is a form of crosstalk.",
+    ],
+    keyFacts: [
+      { label: "Superconducting qubits", value: "Readout fidelity typically 98 to 99.5 percent, measurement times of hundreds of nanoseconds to about a microsecond" },
+      { label: "Trapped ions", value: "Fluorescence readout with error below 0.1 percent in about 100 microseconds" },
+      { label: "Part of", value: "State preparation and measurement (SPAM) error" },
+      { label: "Mitigation", value: "Parametric amplifiers, optimized pulses, and calibration-matrix correction" },
+      { label: "Role in QEC", value: "Syndrome measurement errors set the threshold and the number of rounds" },
+    ],
+    history: "Dispersive readout was developed in circuit quantum electrodynamics in the mid-2000s, and the introduction of Josephson parametric amplifiers around 2008 to 2012 allowed single-shot high-fidelity measurement. Since then, readout error has fallen by roughly an order of magnitude.",
+    comparison: [
+      "Readout error affects the final measurement, while gate error affects the operations before it.",
+      "SPAM errors combine state preparation and measurement errors and are separated from gate errors by randomized benchmarking.",
+      "Syndrome measurement error is readout error in the context of error correction.",
+    ],
+    faq: [
+      { q: "What is readout error?", a: "The probability that a measurement reports the wrong state of a qubit." },
+      { q: "How is it reduced?", a: "With low-noise amplifiers, optimized pulses, and software calibration, and by choosing platforms with high-fidelity readout such as ions." },
+      { q: "Why does it matter for error correction?", a: "Error correction measures many qubits every cycle, and measurement errors can look like data errors, reducing the code's performance." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "quantinuum-h2",
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "stabilizer-code",
+    term: "Stabilizer Code",
+    shortDefinition: "A quantum error-correcting code defined by a set of Pauli checks that every encoded state satisfies.",
+    category: "Error Correction",
+    definition: "A stabilizer code protects quantum information by spreading it across many qubits in a way that obeys a set of rules, called stabilizers. Each rule is a simple check, such as whether two neighboring qubits agree. If an error happens, some checks fail, and the pattern of failures tells you what went wrong and how to fix it, without ever looking at the protected information itself. Most error-correcting codes in use, including the surface code, are stabilizer codes.",
+    technicalDefinition: "A stabilizer code is defined by an abelian subgroup S of the Pauli group that does not contain minus the identity. The code space is the simultaneous plus 1 eigenspace of all elements of S. An [[n, k, d]] code encodes k logical qubits in n physical qubits with distance d, using n minus k independent stabilizer generators. Errors anticommuting with some generators flip syndrome bits, and the syndrome identifies the error class.",
+    analogy: "Imagine a combination lock where several simple tests must all pass for the lock to be set correctly: this pair matches, that pair differs, and so on. If a bit of dust knocks one setting, only some tests fail, and the pattern tells you which setting to fix, without knowing the combination itself.",
+    useCases: [
+      "Defining and analyzing nearly every practical quantum error-correcting code.",
+      "Simulating error-correction circuits efficiently on classical computers.",
+      "Designing decoders that infer errors from syndrome data.",
+      "Constructing new codes with better rates and thresholds, such as qLDPC codes.",
+    ],
+    relatedTerms: [
+      { slug: "surface-code", term: "Surface Code" },
+      { slug: "syndrome-measurement", term: "Syndrome Measurement" },
+      { slug: "code-distance", term: "Code Distance" },
+      { slug: "clifford-group", term: "Clifford Group" },
+    ],
+    misconceptions: [
+      "The stabilizers are not the encoded information. They are the checks that leave the information intact.",
+      "Measuring the stabilizers does not collapse the logical state, since they commute with the logical operators.",
+      "A stabilizer code does not eliminate errors. It lets you detect and correct them if they are few enough.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Daniel Gottesman introduced the stabilizer formalism in 1996 and 1997, and it unified earlier codes such as Shor's nine-qubit code and Steane's seven-qubit code. The key insight is that checking a Pauli operator on the encoded state does not reveal the logical information if the operator commutes with all logical operators. The code space is specified by the checks, and the logical operators are Paulis that commute with all the checks but are not themselves checks.",
+      "Measuring the stabilizer generators gives the error syndrome. For a code with distance d, any error affecting fewer than d over 2 qubits can be identified and corrected. For example, the five-qubit code is the smallest code that corrects any single-qubit error, and the Steane code uses a classical Hamming code to protect against bit flips and another to protect against phase flips. The surface code is a stabilizer code whose generators are four-body checks on a grid.",
+      "The stabilizer formalism has computational consequences. Because stabilizer states and Clifford operations can be simulated efficiently, researchers can study codes with thousands of qubits on classical computers. It also makes decoding a well-defined task: given the syndrome, find the most likely error, which is the job of decoders such as minimum-weight perfect matching or neural-network decoders.",
+    ],
+    keyFacts: [
+      { label: "Notation", value: "[[n, k, d]] means n physical qubits, k logical qubits, distance d" },
+      { label: "Generators", value: "n minus k independent commuting Pauli operators" },
+      { label: "Smallest perfect code", value: "The [[5, 1, 3]] code corrects any single-qubit error" },
+      { label: "Examples", value: "Shor [[9,1,3]], Steane [[7,1,3]], surface code, color codes" },
+      { label: "Introduced", value: "Gottesman, 1996 to 1997" },
+    ],
+    history: "Shor's nine-qubit code in 1995 and Steane's code in 1996 showed that quantum error correction is possible. Gottesman's stabilizer formalism and the CSS construction by Calderbank, Shor, and Steane gave a general framework, and the surface code and quantum LDPC codes are the modern descendants.",
+    comparison: [
+      "Classical linear codes are defined by parity checks, and stabilizer codes are their quantum generalization with Pauli checks.",
+      "CSS codes are a subclass of stabilizer codes that treat bit and phase errors separately.",
+      "Non-stabilizer codes exist, such as some bosonic codes, but most practical proposals are stabilizer-based.",
+    ],
+    faq: [
+      { q: "What is a stabilizer code?", a: "A quantum error-correcting code defined by a set of commuting Pauli operators, the stabilizers, that all encoded states satisfy." },
+      { q: "How does it detect errors?", a: "By measuring the stabilizers. An error flips the outcome of the checks it anticommutes with, and the pattern identifies the error." },
+      { q: "Is the surface code a stabilizer code?", a: "Yes. Its stabilizers are products of Pauli X or Z on groups of four neighboring qubits." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "code-distance",
+    term: "Code Distance",
+    shortDefinition: "The minimum number of physical errors that can cause an undetected logical error; higher distance means stronger protection.",
+    category: "Error Correction",
+    definition: "Code distance is the single most important number describing how well a quantum error-correcting code protects information. It counts how many qubits would have to go wrong, in just the right way, before the code fails to notice. A distance-3 code can fix any single error, a distance-5 code can fix any two, and a distance-7 code any three. Making the distance larger is how engineers make logical qubits more reliable, at the price of using more physical qubits.",
+    technicalDefinition: "The distance d of a stabilizer code is the minimum weight of a Pauli operator that commutes with all stabilizers but is not in the stabilizer group, that is, a nontrivial logical operator. The code can correct up to floor of (d minus 1) over 2 arbitrary errors and detect up to d minus 1. For the rotated surface code, a distance-d patch uses d squared data qubits and d squared minus 1 measurement qubits.",
+    analogy: "Think of a message sent in triplicate. If one copy gets garbled you can tell which is right by majority, and if two copies are garbled you cannot. The number of garbled copies that the scheme survives is its distance, and sending more copies raises it.",
+    useCases: [
+      "Choosing how large a logical qubit must be for a target error rate.",
+      "Estimating the physical qubit requirements of fault-tolerant algorithms.",
+      "Demonstrating below-threshold operation by comparing several distances.",
+      "Setting decoder speed requirements and lattice surgery timing.",
+    ],
+    relatedTerms: [
+      { slug: "stabilizer-code", term: "Stabilizer Code" },
+      { slug: "surface-code", term: "Surface Code" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+      { slug: "threshold-theorem", term: "Threshold Theorem" },
+    ],
+    misconceptions: [
+      "A higher distance does not help if the physical error rate is above threshold. Errors then grow with distance.",
+      "Distance is not the number of qubits. It is the smallest number of errors that defeat the code.",
+      "A distance-3 code cannot correct two errors in general.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The importance of distance comes from the way logical errors scale. If physical errors occur independently with probability p, and p is below the code's threshold, the logical error rate falls exponentially with distance, roughly as p over p threshold to the power of (d plus 1) over 2. Increasing the distance by 2 multiplies the suppression by a constant factor, which Google called the error suppression factor, lambda. In its 2024 Willow experiment, going from distance 3 to 5 to 7 reduced the logical error rate by about a factor of 2 at each step.",
+      "The cost is qubit count. In the surface code, the qubit overhead grows as the square of the distance, so a distance-25 logical qubit uses on the order of 1,000 physical qubits. To run a long algorithm with millions of operations at acceptable overall failure, resource estimates often need distances in the 20s, which is why useful fault-tolerant machines are projected to need hundreds of thousands to millions of physical qubits. Higher-rate codes, such as quantum LDPC codes, aim to reach similar protection with far fewer qubits.",
+      "Distance also determines how fast the decoder must work and how long a logical operation takes, since lattice surgery operations take about d rounds of syndrome measurement. Experimenters study distance by running the same code at several sizes and checking that the logical error falls, which is the signature of operating below threshold.",
+    ],
+    keyFacts: [
+      { label: "Correctable errors", value: "Up to (d minus 1) over 2 arbitrary errors" },
+      { label: "Surface code size", value: "About 2 d squared minus 1 physical qubits per logical qubit" },
+      { label: "Logical error scaling", value: "Falls roughly exponentially with d when physical error is below threshold" },
+      { label: "Willow result", value: "Distances 3, 5, and 7 showed logical error falling by about a factor of 2 per step (2024)" },
+      { label: "Typical large-scale need", value: "Distances in the 20s for useful algorithms" },
+    ],
+    history: "The concept comes from classical coding theory, where Hamming introduced code distance in 1950. For quantum codes, it was part of the original stabilizer formalism of Gottesman, and experimental distance-scaling studies began with Google's distance-3 and distance-5 surface codes in 2021 and 2023.",
+    comparison: [
+      "Code distance measures protection strength, while code rate measures how many logical qubits per physical qubit.",
+      "Larger distance means more qubits and slower operations, so it is a tradeoff.",
+      "A code can have large distance but a high threshold needed to benefit from it.",
+    ],
+    faq: [
+      { q: "What is code distance?", a: "The smallest number of physical qubit errors that can produce a logical error the code cannot detect." },
+      { q: "Why is it important?", a: "Because logical error rates fall exponentially with distance when the hardware is below threshold, making distance the main knob for reliability." },
+      { q: "How many qubits does a larger distance need?", a: "For the surface code, roughly twice the distance squared, so doubling the distance quadruples the qubit count." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "threshold-theorem",
+    term: "Threshold Theorem",
+    shortDefinition: "The result that if physical error rates are below a fixed threshold, quantum computations of any length can be made reliable.",
+    category: "Error Correction",
+    definition: "The threshold theorem is the reason large quantum computers are possible in principle. It says that there is a critical level of noise, the threshold, and that if every gate and measurement is more accurate than that level, then errors can be suppressed as much as you like by using more qubits for error correction. Below the threshold, adding redundancy helps. Above it, adding redundancy makes things worse.",
+    technicalDefinition: "The quantum accuracy threshold theorem states that there exists a constant p_th such that, for any quantum circuit of size N and any target accuracy epsilon, if the physical error rate per operation is below p_th and noise satisfies suitable locality conditions, the circuit can be simulated by a fault-tolerant circuit with polylogarithmic overhead in N over epsilon. For concatenated codes, the logical error after k levels scales as p_th times (p over p_th) to the power 2^k.",
+    analogy: "Think of bailing water out of a leaky boat. If the leak is slower than you can bail, you stay afloat indefinitely. If the leak is faster, no amount of effort will save you. The threshold is the leak rate at which bailing exactly keeps pace.",
+    useCases: [
+      "Justifying that scalable, fault-tolerant quantum computing is possible.",
+      "Setting hardware targets: physical error rates must be well below the threshold of the chosen code.",
+      "Comparing codes by threshold and overhead.",
+      "Interpreting experiments that show logical errors decreasing with code size.",
+    ],
+    relatedTerms: [
+      { slug: "fault-tolerance", term: "Fault Tolerance" },
+      { slug: "code-distance", term: "Code Distance" },
+      { slug: "surface-code", term: "Surface Code" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    misconceptions: [
+      "There is not a single universal threshold. Different codes and noise models have different thresholds.",
+      "Reaching the threshold does not mean a quantum computer is ready. It means scaling up will improve things.",
+      "The theorem does not guarantee success under all noise, only under assumptions about locality and independence.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Early in the 1990s many physicists doubted that quantum computers could work at scale, because quantum states cannot be copied and every operation introduces new errors. The threshold theorem, proved independently by Aharonov and Ben-Or, by Kitaev, and by Knill, Laflamme, and Zurek in 1996 to 1998, answered that objection. Its proofs use concatenated codes, in which each qubit is encoded in a code whose qubits are themselves encoded, repeated over several levels, with fault-tolerant gadgets that prevent errors from spreading.",
+      "The exact threshold value depends on the code, the noise model, and the assumptions. Rigorous early bounds were extremely small, around 10 to the minus 5 or 10 to the minus 6, while numerical studies show that the surface code has a threshold near 1 percent for circuit-level noise with fast decoding. Hardware has crossed this line: modern superconducting and ion devices have two-qubit error rates of 0.1 to 0.5 percent, which is why experiments such as Google's Willow can show logical error falling as the code grows.",
+      "The theorem comes with assumptions that matter in practice. Noise should be local or weakly correlated, operations must be parallel so that idle qubits do not accumulate errors, fresh qubits must be supplied continuously, and classical processing for decoding must be fast and reliable. Correlated errors from crosstalk, leakage, or cosmic rays can violate the assumptions, and handling them is an active research area.",
+    ],
+    keyFacts: [
+      { label: "Proved", value: "1996 to 1998, by Aharonov and Ben-Or, Kitaev, and Knill, Laflamme, and Zurek" },
+      { label: "Surface code threshold", value: "About 1 percent for circuit-level noise with good decoders" },
+      { label: "Concatenated code scaling", value: "Logical error falls doubly exponentially with the number of levels below threshold" },
+      { label: "Overhead", value: "Polylogarithmic in computation size and inverse accuracy" },
+      { label: "Experimental milestone", value: "Below-threshold scaling shown by Google Willow in 2024" },
+    ],
+    history: "After Shor's 1995 code showed error correction was possible, the next question was whether it could be done with imperfect gates. The threshold theorems of 1996 to 1998 settled it theoretically, and Raussendorf, Harrington, and Fowler's work on the surface code in the 2000s and 2010s produced much more optimistic numerical thresholds.",
+    comparison: [
+      "The threshold is a property of a code, a noise model, and a decoder together, not of hardware alone.",
+      "Being below threshold is necessary but not sufficient: the overhead can still be huge if the error rate is just under it.",
+      "Classical computers also use error correction, but they rarely need it for logic because transistors are reliable.",
+    ],
+    faq: [
+      { q: "What does the threshold theorem say?", a: "That if physical errors are below a threshold, arbitrarily long quantum computations can be made reliable with a reasonable overhead." },
+      { q: "What is the threshold for the surface code?", a: "Roughly 1 percent for circuit-level noise, which is why it is the leading code for superconducting hardware." },
+      { q: "Has anyone shown operation below threshold?", a: "Yes. Google's Willow processor showed logical errors falling as the code distance increased from 3 to 5 to 7 in 2024." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "magic-state-distillation",
+    term: "Magic State Distillation",
+    shortDefinition: "A protocol that turns many noisy copies of a special quantum state into fewer, cleaner ones, enabling non-Clifford gates in error-corrected machines.",
+    category: "Error Correction",
+    definition: "Error-corrected quantum computers can perform some gates cheaply but need a special ingredient, called a magic state, for the rest. Magic states are hard to prepare accurately, so machines make many noisy ones and combine them in a process called distillation, which outputs fewer but higher-quality states. This step can consume most of the qubits and time in a fault-tolerant computer, so it is a major focus of research on reducing cost.",
+    technicalDefinition: "A magic state is a non-stabilizer state, such as the T-type state with amplitudes 1 over root 2 for 0 and e to the i pi over 4 over root 2 for 1, which, together with Clifford operations, allows implementation of the T gate by gate teleportation. Distillation protocols use Clifford operations and stabilizer measurements on several noisy copies to detect errors. Bravyi and Kitaev's 15-to-1 protocol maps input error p to output error about 35 p cubed.",
+    analogy: "Imagine refining crude oil. A single barrel is impure, but by processing many barrels together and discarding what fails the tests, you get a smaller amount of pure fuel. Distillation of magic states follows the same logic, trading quantity for quality.",
+    useCases: [
+      "Implementing T gates and arbitrary rotations on error-corrected machines.",
+      "Estimating the physical qubit requirements of useful algorithms.",
+      "Designing chip layouts with magic state factories.",
+      "Comparing code architectures by non-Clifford gate cost.",
+    ],
+    relatedTerms: [
+      { slug: "t-gate", term: "T Gate" },
+      { slug: "clifford-group", term: "Clifford Group" },
+      { slug: "fault-tolerance", term: "Fault Tolerance" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    misconceptions: [
+      "Magic states are not magical in the everyday sense. They are states outside the stabilizer set.",
+      "Distillation does not make states perfect. It reduces error by a controlled amount per round.",
+      "It is not needed on today's noisy machines without error correction.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Clifford gates, which are easy on error-corrected hardware, are not enough for universal computation because they can be simulated classically. The missing gate, usually the T gate, cannot be done directly on most codes without breaking their protection. The workaround is to prepare a special state offline and then consume it using a small circuit that applies the T gate to the data. The state must be accurate to a level well below the algorithm's required error, often 10 to the minus 10 or better, while raw physical preparation gives only about 10 to the minus 2 or 10 to the minus 3.",
+      "Distillation bridges that gap by repeated rounds. In the 15-to-1 protocol, 15 noisy states with error p yield one state with error about 35 p cubed, so p of 10 to the minus 3 becomes about 3.5 times 10 to the minus 8 after one round, and 10 to the minus 22 after two rounds. Each round multiplies the input count by 15, so full distillation takes hundreds of states and regions of the chip set aside as magic state factories. Resource estimates for large algorithms often assign 50 percent or more of the physical qubits to factories.",
+      "Reducing this overhead is a central goal. Litinski's 2019 work showed that careful layouts cut the cost substantially, and in 2024 Gidney, Shutty, and Jones proposed magic state cultivation, a method that grows high-quality T states directly in the surface code at a cost close to that of a Clifford gate, potentially reducing overhead by about an order of magnitude. Experiments have also demonstrated distillation: in 2025 QuEra and Harvard reported logical-level magic state distillation on a neutral atom machine, and Quantinuum demonstrated logical magic states with fidelity beyond physical ones.",
+    ],
+    keyFacts: [
+      { label: "Introduced", value: "Bravyi and Kitaev, 2005" },
+      { label: "15-to-1 protocol", value: "Input error p becomes about 35 p cubed" },
+      { label: "Overhead", value: "Factories can take half or more of the qubits in resource estimates" },
+      { label: "Alternative", value: "Magic state cultivation (2024) promises about 10 times lower cost" },
+      { label: "Experiments", value: "Logical-level demonstrations on neutral atoms and trapped ions in 2024 and 2025" },
+    ],
+    history: "Bravyi and Kitaev's 2005 paper showed that universal quantum computation is possible using only Clifford operations and noisy magic states, which made fault-tolerant universal computation plausible. Subsequent work reduced costs by factors of hundreds, and the first logical-level demonstrations arrived in 2024 and 2025.",
+    comparison: [
+      "Distillation improves a noisy resource state, while error correction protects data qubits.",
+      "Gate teleportation consumes a magic state to apply a gate, and the state is destroyed in the process.",
+      "Transversal gates avoid magic states for some codes but cannot give a universal set alone, by the Eastin-Knill theorem.",
+    ],
+    faq: [
+      { q: "Why do quantum computers need magic states?", a: "Because Clifford gates alone are not universal, and the missing non-Clifford gate is implemented by consuming a magic state." },
+      { q: "What is distillation?", a: "A procedure that uses many noisy magic states to produce fewer, more accurate ones, by checking them with error-detecting circuits." },
+      { q: "How costly is it?", a: "It can take most of the qubits in a fault-tolerant design, which is why new methods such as cultivation aim to cut the cost." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "quantum-phase-estimation",
+    ],
+    relatedHardware: [
+      "quera-aquila",
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "qldpc-code",
+    term: "Quantum LDPC Code",
+    shortDefinition: "A quantum error-correcting code whose checks each involve only a few qubits, promising much lower qubit overhead than the surface code.",
+    category: "Error Correction",
+    definition: "Quantum LDPC codes are error-correcting codes in which every check touches only a handful of qubits and every qubit is touched by only a handful of checks. This sparse structure keeps the circuits simple, and the codes can protect many logical qubits at once with far fewer physical qubits than the surface code needs. IBM's roadmap to a fault-tolerant machine is built on this idea, though it requires longer-range connections between qubits than a simple grid provides.",
+    technicalDefinition: "A quantum low-density parity-check (qLDPC) code is a stabilizer code, often of CSS type, whose stabilizer generators have constant weight and each qubit participates in a constant number of generators. Good qLDPC codes, shown by Panteleev and Kalachev in 2021, have constant rate and linear distance. IBM's bivariate bicycle codes include the [[144, 12, 12]] gross code, which uses 288 physical qubits including check qubits to encode 12 logical qubits.",
+    analogy: "The surface code is like protecting each valuable item in its own safe, one safe per item. A qLDPC code is like a well-designed shared vault where many items are protected together by a network of simple locks, which needs far less steel but requires a more complicated floor plan.",
+    useCases: [
+      "Reducing the physical qubit count of fault-tolerant machines.",
+      "Designing chip architectures with long-range couplers.",
+      "Developing decoders and logical gate schemes for non-planar codes.",
+      "Comparing hardware roadmaps that rely on different codes.",
+    ],
+    relatedTerms: [
+      { slug: "surface-code", term: "Surface Code" },
+      { slug: "stabilizer-code", term: "Stabilizer Code" },
+      { slug: "code-distance", term: "Code Distance" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+    ],
+    misconceptions: [
+      "Sparse does not mean simple to build. The connectivity pattern may be hard to wire.",
+      "A 10-fold saving applies to quantum memory. Logical gates add overhead.",
+      "qLDPC codes are not a different physics. They are stabilizer codes with special structure.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The surface code is easy to build because it needs only nearest-neighbor connections on a grid, but it is wasteful: a logical qubit with distance d needs about 2 d squared physical qubits, and the rate of logical qubits per physical qubit goes to zero as d grows. Classical LDPC codes, introduced by Gallager in 1962, achieve constant rate and good distance with sparse checks, and the quantum community searched for analogs for decades. Tillich and Zémor's hypergraph product codes in 2009 gave constant rate with distance growing as the square root of n, and Panteleev and Kalachev's 2021 result produced the first asymptotically good qLDPC codes, with both rate and distance growing linearly.",
+      "IBM's 2024 Nature paper on high-threshold and low-overhead fault-tolerant quantum memory proposed bivariate bicycle codes that fit practical sizes. The gross code stores 12 logical qubits with distance 12 in 144 data qubits and 144 check qubits, roughly a tenfold saving over the surface code for similar protection. The price is connectivity: the checks need long-range couplers, and the qubit layout is not planar, so chips need extra wiring layers. IBM's Loon processor, delivered in 2025, was built to test those components.",
+      "Decoding qLDPC codes is a challenge too, because the structure is less regular than a grid. Decoders based on belief propagation combined with ordered statistics, known as BP-OSD, work well in simulation, and IBM has developed faster variants for real-time use. Performing logical gates on these codes also needs new techniques, such as generalized lattice surgery and code switching, which are active research topics.",
+    ],
+    keyFacts: [
+      { label: "Property", value: "Constant-weight checks, with each qubit in a constant number of checks" },
+      { label: "Gross code", value: "[[144, 12, 12]], using 288 physical qubits including check qubits" },
+      { label: "Saving vs surface code", value: "About 10 times fewer qubits for comparable protection" },
+      { label: "Good codes", value: "Panteleev and Kalachev, 2021: constant rate and linear distance" },
+      { label: "Hardware need", value: "Long-range couplers or non-planar connectivity" },
+    ],
+    history: "Classical LDPC codes date to Gallager's 1962 thesis and became widely used in communications in the 1990s. Quantum versions were proposed in the 2000s, the existence of good codes was proven in 2021 and 2022, and IBM adopted bivariate bicycle codes as the core of its 2025 roadmap to the Starling fault-tolerant machine.",
+    comparison: [
+      "Surface codes need only local connections and many qubits, while qLDPC codes need nonlocal connections and far fewer qubits.",
+      "Neutral atoms and ions can implement nonlocal connections more naturally than fixed superconducting chips.",
+      "Concatenated codes also achieve good rates but have lower thresholds than qLDPC codes in practice.",
+    ],
+    faq: [
+      { q: "What is a qLDPC code?", a: "A quantum error-correcting code with low-weight checks that protects many logical qubits with relatively few physical qubits." },
+      { q: "What is the gross code?", a: "IBM's bivariate bicycle code that encodes 12 logical qubits with distance 12 using 288 physical qubits, about ten times fewer than the surface code for similar protection." },
+      { q: "What is the catch?", a: "The codes need long-range connections between qubits, which are difficult on fixed planar chips." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+      "quantum-belief-propagation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "cat-qubit",
+    term: "Cat Qubit",
+    shortDefinition: "A bosonic qubit stored in a microwave resonator, engineered so that bit-flip errors become exponentially rare.",
+    category: "Error Correction",
+    definition: "A cat qubit stores quantum information in the state of a microwave resonator, in a superposition of two opposite classical-looking waves, named after Schrödinger's cat. A carefully engineered circuit keeps the resonator in that two-state space and makes one kind of error, the bit flip, almost impossible. The remaining error, the phase flip, can then be fixed with a very simple code, so cat qubits could cut the number of physical qubits needed for error correction.",
+    technicalDefinition: "A cat qubit encodes information in the span of two coherent states of an oscillator with opposite phase, alpha and minus alpha. Two-photon dissipation, engineered with a nonlinear buffer mode and a microwave drive, stabilizes this manifold. Bit-flip errors are suppressed exponentially in the mean photon number |alpha|^2, while phase-flip errors grow only linearly.",
+    analogy: "Imagine a pendulum with two stable resting positions separated by a tall wall. Noise rarely pushes it over the wall, so it stays in its position for a long time. But the wall does nothing against a different kind of disturbance that blurs which side it is on, and that one still needs correcting.",
+    useCases: [
+      "Building error-corrected qubits with repetition codes and low overhead.",
+      "Studying bosonic error-correction and noise-biased gates.",
+      "Hardware roadmaps aiming for fewer physical qubits per logical qubit.",
+      "Cloud access to cat-qubit devices for research.",
+    ],
+    relatedTerms: [
+      { slug: "gkp-qubit", term: "GKP Qubit" },
+      { slug: "logical-qubit", term: "Logical Qubit" },
+      { slug: "superconducting-qubit", term: "Superconducting Qubit" },
+      { slug: "decoherence", term: "Decoherence" },
+    ],
+    misconceptions: [
+      "A cat qubit is not immune to errors. It suppresses bit flips and still suffers from phase flips.",
+      "The name does not mean a live cat. It refers to the superposition of two macroscopic-looking states.",
+      "Cat qubits are not yet a replacement for transmons in large machines. They are an emerging approach.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Cat qubits exploit noise bias. In most qubits, bit flips and phase flips occur at similar rates, and codes must correct both. In a cat qubit, increasing the photon number in the oscillator stretches the bit-flip time exponentially, while the phase-flip rate grows in proportion to the photon number from photon loss. Alice and Bob demonstrated bit-flip times of more than seven minutes in 2024 and reported much longer times in 2025, while phase flips remain at microsecond scale. With such a strong bias, a repetition code that only corrects phase flips can suffice, using a linear chain of cat qubits instead of a two-dimensional surface code.",
+      "The approach has attracted major players. Alice and Bob in Paris lead the field with a roadmap to 100 logical qubits by 2030, and Amazon's Ocelot chip, announced in February 2025, combines cat qubits with a repetition code and reports about a 90 percent reduction in error-correction overhead compared with a surface code, according to the company. Nord Quantique pursues a related bosonic approach, and Yale and French research groups introduced and refined the basic ideas.",
+      "Challenges remain. Gates on cat qubits that preserve bias are harder than gates on transmons, in particular the entangling gates between cat qubits and the operation needed for universal computation. The photon number must be large enough for bias but small enough to keep phase flips low, which sets a tradeoff, and the dissipation engineering must be reliable at the scale of many qubits.",
+    ],
+    keyFacts: [
+      { label: "Encoding", value: "Superposition of two coherent states, alpha and minus alpha, of a microwave resonator" },
+      { label: "Bit-flip suppression", value: "Exponential in mean photon number" },
+      { label: "Phase-flip rate", value: "Grows linearly with photon number" },
+      { label: "Records", value: "Bit-flip times above 7 minutes (2024) and tens of minutes reported in 2025" },
+      { label: "Developers", value: "Alice and Bob, Amazon (Ocelot), Nord Quantique, and academic groups at Yale and in France" },
+    ],
+    history: "Cat states were discussed by Schrödinger in 1935, and Mirrahimi, Leghtas, and colleagues proposed the dissipative stabilization of cat qubits in 2014. Experiments by Lescanne and Leghtas in 2020 showed exponential bit-flip suppression, and Alice and Bob was founded in 2020 to commercialize the approach.",
+    comparison: [
+      "A GKP qubit is another bosonic encoding that protects against small shifts, while a cat qubit protects against bit flips.",
+      "A transmon has similar bit-flip and phase-flip rates, and a cat qubit has strongly biased noise.",
+      "Concatenating a cat qubit with an outer code gives a hybrid scheme with lower overhead.",
+    ],
+    faq: [
+      { q: "What is a cat qubit?", a: "A qubit encoded in two opposite-phase coherent states of a microwave resonator, engineered to suppress bit-flip errors exponentially." },
+      { q: "Why does it reduce error-correction overhead?", a: "With bit flips nearly eliminated, only phase flips need correcting, which a simple repetition code can do with fewer qubits." },
+      { q: "Who is building them?", a: "Alice and Bob, Amazon with its Ocelot chip, Nord Quantique, and research groups in France and at Yale." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "alice-bob-cat-qubit",
+    ],
+  },
+  {
+    slug: "randomized-benchmarking",
+    term: "Randomized Benchmarking",
+    shortDefinition: "A method for measuring the average error of quantum gates by running long random sequences and watching how fast fidelity decays.",
+    category: "Benchmarks & Metrics",
+    definition: "Randomized benchmarking is the standard way to measure how good a quantum gate is. You apply a long, random sequence of gates that should, in the ideal case, return the qubit to where it started, and then check how often it actually does. By repeating with sequences of different lengths, you see how quickly the success rate drops, and the speed of decay tells you the average error per gate, in a way that is insensitive to errors in preparing and measuring the qubit.",
+    technicalDefinition: "In Clifford randomized benchmarking, random Clifford sequences of length m are followed by a single inversion Clifford. The survival probability is fit to F(m) = A p^m + B, where p is the depolarizing parameter and A and B absorb state preparation and measurement errors. The average error per Clifford is r = (1 minus p) times (d minus 1) over d, with d equal to 2 to the n for n qubits.",
+    analogy: "Imagine testing a photocopier by copying a page, then copying the copy, and so on many times. The page gets blurrier with each generation, and how quickly it degrades tells you how good the machine is, regardless of whether your first original was slightly smudged.",
+    useCases: [
+      "Reporting gate fidelities for hardware comparisons.",
+      "Calibrating gates by tracking the effect of parameter changes on the decay.",
+      "Detecting crosstalk with simultaneous benchmarking.",
+      "Benchmarking logical gates in error-corrected experiments.",
+    ],
+    relatedTerms: [
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "clifford-group", term: "Clifford Group" },
+      { slug: "crosstalk", term: "Crosstalk" },
+      { slug: "readout-error", term: "Readout Error" },
+    ],
+    misconceptions: [
+      "A good randomized benchmarking number does not guarantee that a specific algorithm will run well.",
+      "It measures average error over random Cliffords, not the error of every possible gate.",
+      "The reported fidelity is not the same as the error in a full-chip circuit with crosstalk.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The key advantage of randomized benchmarking is robustness to SPAM errors. A direct test, such as applying a single gate and measuring, mixes the gate's error with errors in state preparation and readout. By measuring the decay with sequence length, the constant offsets from SPAM go into the fit parameters A and B and drop out of the error rate p, which depends only on the gates. The method was developed by Emerson and colleagues in 2005, refined by Knill and coauthors in 2008, and made into the standard form by Magesan, Gambetta, and Emerson in 2011.",
+      "Variants address different needs. Interleaved randomized benchmarking inserts a specific gate between random Cliffords to measure its fidelity, and simultaneous randomized benchmarking runs sequences on several qubits at once to expose crosstalk. Cycle benchmarking and direct randomized benchmarking extend the idea to larger systems and non-Clifford gates. For error-correction experiments, logical randomized benchmarking applies the protocol to logical qubits.",
+      "The numbers reported from this method are the headline figures in hardware announcements. Superconducting single-qubit gates have errors around 10 to the minus 4 to 10 to the minus 3, and two-qubit errors around 10 to the minus 3 to 5 times 10 to the minus 3. Trapped ions have shown two-qubit errors near 10 to the minus 4 and single-qubit errors below 10 to the minus 6 in laboratory records. A caveat is that randomized benchmarking measures an average over random sequences, which can hide coherent errors that accumulate in structured circuits.",
+    ],
+    keyFacts: [
+      { label: "Fit model", value: "F(m) equals A times p to the m plus B" },
+      { label: "Output", value: "Average error per Clifford, r equals (1 minus p)(d minus 1) over d" },
+      { label: "Robust to", value: "State preparation and measurement errors" },
+      { label: "Variants", value: "Interleaved, simultaneous, cycle benchmarking, logical randomized benchmarking" },
+      { label: "Limitation", value: "Averages over random sequences and can underestimate coherent errors" },
+    ],
+    history: "Randomized benchmarking was proposed in 2005 by Emerson, Alicki, and Zyczkowski, and developed for experimental use by Knill and colleagues at NIST in 2008 and by the Gambetta group at IBM and Yale. The 2011 and 2012 papers by Magesan and coauthors established the modern protocol and interleaved variant.",
+    comparison: [
+      "Quantum process tomography reconstructs a full model of a gate but is sensitive to SPAM and scales poorly, while randomized benchmarking gives one robust number.",
+      "Gate set tomography is more complete and also self-consistent, but more demanding than randomized benchmarking.",
+      "Quantum volume and cross-entropy benchmarking test whole circuits, while randomized benchmarking tests gates.",
+    ],
+    faq: [
+      { q: "What does randomized benchmarking measure?", a: "The average error per gate, by fitting how quickly the success probability of long random gate sequences decays." },
+      { q: "Why is it robust to measurement errors?", a: "Because state preparation and measurement errors only change the constants in the decay fit, not the decay rate that gives the gate error." },
+      { q: "What is interleaved benchmarking?", a: "A variant that inserts a particular gate into the random sequences to measure its individual fidelity." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "cross-entropy-benchmarking",
+    term: "Cross-Entropy Benchmarking",
+    shortDefinition: "A method for estimating how closely a quantum computer's output matches the ideal result of a random circuit, used in quantum supremacy experiments.",
+    category: "Benchmarks & Metrics",
+    definition: "Cross-entropy benchmarking, or XEB, checks whether a quantum computer is really running a circuit correctly when the circuit is too large to verify directly. You run a random circuit many times, record the bit strings that come out, and compute how likely those strings are according to the ideal circuit. If the machine works, it produces strings that the ideal circuit says are likely much more often than chance. The score between 0 and 1 measures how faithful the hardware is.",
+    technicalDefinition: "The linear XEB fidelity is F = 2^n times the average over measured bit strings x_i of the ideal probability P(x_i), minus 1, where n is the number of qubits. For a perfect device sampling from a Porter-Thomas distribution, F is about 1, and for a uniformly random output F is 0. The estimate requires computing ideal probabilities P(x_i) classically, which is feasible for smaller circuits.",
+    analogy: "Imagine checking a student's answers to a huge exam you cannot fully grade. You grade a sample of questions you can check, and see whether their answers match the right ones far more than random guessing would. The score on the sample estimates the score on the whole exam.",
+    useCases: [
+      "Verifying the output of random circuit sampling experiments.",
+      "Calibrating gates and layers on full-chip circuits.",
+      "Detecting crosstalk and correlated errors.",
+      "Comparing devices on a common random-circuit benchmark.",
+    ],
+    relatedTerms: [
+      { slug: "random-circuit-sampling", term: "Random Circuit Sampling" },
+      { slug: "quantum-supremacy", term: "Quantum Supremacy" },
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "randomized-benchmarking", term: "Randomized Benchmarking" },
+    ],
+    misconceptions: [
+      "A low XEB number such as 0.002 does not mean the experiment failed. It can still be statistically significant with enough samples.",
+      "XEB does not verify every aspect of the computation. It tests faithfulness on random circuits.",
+      "It does not apply easily to circuits with structured outputs.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "XEB was proposed by Boixo and colleagues at Google in 2018 as a way to demonstrate quantum supremacy and certify that a device works as claimed. For random circuits, the ideal output probabilities follow a Porter-Thomas distribution, with a few very likely strings and many unlikely ones. A noisy device produces a mixture of the ideal distribution and uniform noise, and the cross-entropy score measures the weight of the ideal part. In Google's 2019 Sycamore experiment, the total XEB fidelity was about 0.2 percent on 53 qubits, small but statistically unambiguous with millions of samples.",
+      "The method relies on being able to compute ideal probabilities. For the largest circuits, that is infeasible, so experiments estimate fidelity by extrapolation from smaller circuits and by per-gate error models, and the claim for the full circuit rests on the assumption that errors multiply simply. This is a known weakness: classical spoofing algorithms, including tensor network methods and approaches that exploit noise, have tried to reproduce high XEB scores with less than ideal simulation, and results have been debated.",
+      "Beyond supremacy experiments, XEB is used as a calibration tool. Google applies it to individual gates and layers to measure speckle-based errors including coherent ones, and uses it to optimize gate parameters. Because it works on random circuits with entangling gates across the whole chip, it captures crosstalk and correlated errors that single-qubit benchmarking misses.",
+    ],
+    keyFacts: [
+      { label: "Formula", value: "F equals 2^n times the average ideal probability of observed strings, minus 1" },
+      { label: "Range", value: "0 for uniform noise to about 1 for a perfect device" },
+      { label: "Sycamore (2019)", value: "Total XEB fidelity about 0.2 percent for 53 qubits and 20 cycles" },
+      { label: "Requirement", value: "Classical computation of ideal probabilities, feasible only for smaller circuits" },
+      { label: "Proposed", value: "Boixo and colleagues, 2018" },
+    ],
+    history: "XEB came from Google's quantum supremacy program. It was introduced in 2018, used in the 2019 Sycamore result, extended in the 2021 and 2022 experiments by USTC and Google, and used again for the 2024 Willow random circuit sampling benchmark.",
+    comparison: [
+      "Randomized benchmarking measures average gate error, and XEB measures whole-circuit fidelity on random circuits.",
+      "Quantum volume tests heavy output generation, which is related to XEB but defined with a threshold.",
+      "XEB can be spoofed by classical algorithms that exploit noise, so a high score alone is not a proof of advantage.",
+    ],
+    faq: [
+      { q: "What is cross-entropy benchmarking?", a: "A way to estimate the fidelity of a quantum computer on random circuits by checking how likely its outputs are under the ideal circuit." },
+      { q: "Why is it used for supremacy experiments?", a: "Because those circuits cannot be fully verified classically, so fidelity is estimated from samples and simulations of smaller circuits." },
+      { q: "What are its limits?", a: "It needs classical simulation for the ideal probabilities and can be approached by classical spoofing methods." },
+    ],
+    relatedAlgorithms: [
+      "quantum-supremacy-sampling",
+    ],
+    relatedHardware: [
+      "google-sycamore",
+      "google-willow",
+    ],
+  },
+  {
+    slug: "logical-error-rate",
+    term: "Logical Error Rate",
+    shortDefinition: "How often an error-corrected logical qubit fails, usually measured per round of error correction.",
+    category: "Benchmarks & Metrics",
+    definition: "The logical error rate tells you how reliable an error-corrected qubit is. A physical qubit might fail once in a thousand operations, but a logical qubit, built from many physical ones and constantly checked, should fail far less often. The logical error rate is the number to watch: if it falls as you add more qubits to the code, the machine is working below threshold, and if it does not, error correction is not helping yet.",
+    technicalDefinition: "The logical error rate is the probability that a logical qubit has an uncorrected error per error-correction cycle, per logical gate, or per unit time. It is estimated by running a logical memory experiment for many cycles and fitting the decay of the logical state's fidelity. The error suppression factor lambda is the ratio of logical error rates between code distances d and d plus 2.",
+    analogy: "Think of a team of people carrying a fragile vase together, with each person watching the others and fixing slips. How often the vase actually falls, despite all the teamwork, is the logical error rate, and it should drop as the team gets larger and better coordinated.",
+    useCases: [
+      "Demonstrating that error correction works below threshold.",
+      "Setting requirements for hardware and code distance in resource estimates.",
+      "Comparing platforms and decoders for error-correction performance.",
+      "Tracking progress toward fault-tolerant machines.",
+    ],
+    relatedTerms: [
+      { slug: "logical-qubit", term: "Logical Qubit" },
+      { slug: "code-distance", term: "Code Distance" },
+      { slug: "threshold-theorem", term: "Threshold Theorem" },
+      { slug: "surface-code", term: "Surface Code" },
+    ],
+    misconceptions: [
+      "A logical error rate that beats a physical qubit does not mean the machine is ready for useful work.",
+      "Lower is not always comparable. Different experiments define the rate differently.",
+      "The logical error rate is not a fixed property of a code. It depends on the physical noise and decoder.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "A useful quantum algorithm needs logical error rates far below anything achieved today. Breaking RSA-2048 or simulating a large molecule involves billions of logical operations, so the per-operation logical error must be around 10 to the minus 9 to 10 to the minus 12. Current experiments are at about 10 to the minus 3 per cycle. The gap is closed by raising the code distance and by improving physical error rates, since the logical error falls roughly exponentially with distance when the hardware is below threshold.",
+      "The milestone results are measured in these terms. In Google's 2024 Willow experiment, a distance-7 surface code memory had a logical error of about 0.143 percent per cycle, and its logical lifetime of about 291 microseconds exceeded that of the best physical qubit on the chip, about 85 microseconds, by roughly a factor of 2.4. This crossing is called break-even. Quantinuum, Harvard and QuEra, and other groups have reported logical error rates below physical ones on trapped-ion and neutral-atom devices, including for logical gates and magic states.",
+      "Interpreting the number needs care. Rates can be quoted per cycle, per logical operation, or per second, and a code that runs faster cycles has a different time scale. Logical memory, logical gates, and logical measurement have different error rates, and the rate depends on the decoder used. Comparing results across platforms requires matching these definitions, and ideally reporting the error suppression factor across distances.",
+    ],
+    keyFacts: [
+      { label: "Willow (2024)", value: "Distance-7 memory: about 0.143 percent logical error per cycle, lifetime about 2.4 times the best physical qubit" },
+      { label: "Error suppression factor", value: "About 2 per distance step on Willow" },
+      { label: "Target for useful algorithms", value: "10^-9 to 10^-12 per logical operation, depending on the algorithm" },
+      { label: "Break-even", value: "Logical qubit outlives its best physical qubit" },
+      { label: "Depends on", value: "Code, distance, decoder, physical error rate, and cycle time" },
+    ],
+    history: "Logical error rates were studied theoretically from the beginning of error correction research. Experimental reports began in 2021 with Google's distance-3 and distance-5 surface codes and became central to hardware progress in 2024 and 2025, as several groups showed logical qubits that beat their physical components.",
+    comparison: [
+      "The physical error rate describes a single qubit or gate, and the logical error rate describes an encoded qubit.",
+      "Logical error per cycle differs from logical error per gate, and both should be reported.",
+      "Break-even compares a logical qubit with its best physical qubit, which is a weaker test than meeting an algorithm's needs.",
+    ],
+    faq: [
+      { q: "What is the logical error rate?", a: "The probability that an error-corrected logical qubit fails per cycle or per operation." },
+      { q: "What value is needed for useful algorithms?", a: "Typically 10 to the minus 9 to 10 to the minus 12 per logical operation, depending on the algorithm." },
+      { q: "What did Willow show?", a: "A distance-7 surface code with about 0.143 percent logical error per cycle and a logical lifetime longer than the best physical qubit." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+      "quantinuum-h2",
+    ],
+  },
+  {
+    slug: "bqp",
+    term: "BQP Complexity Class",
+    shortDefinition: "The class of decision problems that a quantum computer can solve efficiently with a small chance of error.",
+    category: "Algorithms",
+    definition: "BQP is the formal name for the problems that quantum computers can solve quickly. The letters stand for bounded-error quantum polynomial time: a quantum computer gets the right answer with high probability, in a number of steps that grows only polynomially with the size of the input. It is the quantum counterpart of the class P for classical computers, and the question of how BQP relates to other classes tells us what quantum computers can and cannot be expected to do.",
+    technicalDefinition: "BQP is the set of decision problems solvable by a uniform family of polynomial-size quantum circuits that output the correct answer with probability at least 2 over 3 on every input. The constant 2 over 3 can be amplified to any value below 1 by repetition. Known relationships are P is contained in BPP, which is contained in BQP, which is contained in PSPACE.",
+    analogy: "Think of a team of problem-solvers sorted by speed. P holds the problems an ordinary computer solves quickly. BQP is a larger group that includes everything in P and some extra problems, like factoring, that a quantum computer can crack quickly. Where the boundary of the group lies is the interesting question.",
+    useCases: [
+      "Classifying which problems a quantum computer can solve efficiently.",
+      "Giving theoretical backing for quantum advantage claims.",
+      "Setting expectations on what quantum computers cannot do, such as solving NP-complete problems.",
+      "Guiding the search for new quantum algorithms.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-speedup", term: "Quantum Speedup" },
+      { slug: "quantum-advantage", term: "Quantum Advantage" },
+      { slug: "quantum-supremacy", term: "Quantum Supremacy" },
+      { slug: "quantum-oracle", term: "Quantum Oracle" },
+    ],
+    misconceptions: [
+      "BQP does not mean quantum computers solve all hard problems. It is believed to exclude NP-complete ones.",
+      "It has not been proven that BQP is larger than P. That would be a breakthrough in complexity theory.",
+      "Being in BQP does not mean a problem is practical, since the polynomial may be large.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Complexity classes let us ask precisely whether quantum computers are more powerful than classical ones. Factoring and discrete logarithms are in BQP because of Shor's algorithm, but they are not known to be in P, so if factoring is truly hard classically, BQP is larger than P. The classes BPP, probabilistic classical computation, and BQP are not known to differ, and no one has proven that quantum computers can solve any problem classically intractable, because that would also prove that P differs from PSPACE, a major open problem.",
+      "What is believed is that BQP does not contain NP-complete problems. Grover's algorithm gives only a quadratic speedup for search, and there is evidence in the oracle model that no quantum algorithm can solve NP-complete problems in polynomial time. Raz and Tal showed in 2018 that relative to an oracle, BQP is not contained in the polynomial hierarchy, which is evidence that quantum computers can do things beyond even large parts of classical complexity. Other classes matter too: QMA is the quantum analogue of NP, and the ground-state problem for local Hamiltonians is QMA-complete.",
+      "BQP is also the right frame for understanding quantum advantage experiments. Sampling tasks such as random circuit sampling and boson sampling are not decision problems, but hardness results show that efficient classical simulation would collapse the polynomial hierarchy, which gives the claims theoretical grounding. At the same time, practical advantage depends on constants, error correction overheads, and classical improvements, none of which the asymptotic class captures.",
+    ],
+    keyFacts: [
+      { label: "Definition", value: "Decision problems solvable by polynomial-size quantum circuits with error at most 1 over 3" },
+      { label: "Known relations", value: "P in BPP in BQP in PSPACE" },
+      { label: "Contains", value: "Factoring, discrete logarithm, and simulation of quantum systems" },
+      { label: "Believed not to contain", value: "NP-complete problems" },
+      { label: "Defined by", value: "Bernstein and Vazirani, 1993" },
+    ],
+    history: "Bernstein and Vazirani defined BQP in their 1993 paper Quantum Complexity Theory, building on Deutsch's 1985 quantum Turing machine. Shor's 1994 algorithm gave the first major problem in BQP not known to be in BPP, and Raz and Tal's 2018 oracle separation was a milestone.",
+    comparison: [
+      "P is solvable by classical computers in polynomial time, BPP by randomized ones, and BQP by quantum ones.",
+      "NP is checkable in polynomial time, and BQP is solvable in polynomial time. They are not known to be related by inclusion.",
+      "QMA is to BQP as NP is to P.",
+    ],
+    faq: [
+      { q: "What is BQP?", a: "The class of decision problems that quantum computers can solve in polynomial time with high probability of being correct." },
+      { q: "Can quantum computers solve NP-complete problems?", a: "There is no evidence they can in polynomial time. The best known generic speedup is quadratic from Grover's algorithm." },
+      { q: "Is factoring in BQP?", a: "Yes, by Shor's algorithm, although it is not known whether factoring is in P." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "grovers-algorithm",
+      "quantum-supremacy-sampling",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "hybrid-quantum-classical",
+    term: "Hybrid Quantum-Classical Computing",
+    shortDefinition: "A way of computing in which a quantum processor and a classical computer work together on one problem, each doing what it does best.",
+    category: "Algorithms",
+    definition: "Almost every real quantum computation today is hybrid. A classical computer prepares the problem, tells the quantum processor what to run, reads the results, and decides what to do next, often repeating the loop thousands of times. The quantum part handles a narrow task that is hard for classical machines, such as preparing a certain entangled state, and the classical part handles everything else, including optimization, data handling, and error decoding.",
+    technicalDefinition: "In a hybrid workflow, a classical controller executes a program that issues parameterized quantum circuits to a quantum processing unit, receives measurement samples, and updates parameters or decisions. Examples include variational algorithms such as VQE and QAOA, error-correction decoding with classical processors in real time, and quantum-centric supercomputing in which a QPU is integrated with HPC resources.",
+    analogy: "Think of a chef and a specialist tool, like a pasta machine. The chef plans the meal, prepares the sauce, and times everything, and uses the machine only for the one step it does best. The result is better than either could manage alone.",
+    useCases: [
+      "Variational algorithms for chemistry and optimization.",
+      "Real-time decoding in quantum error correction.",
+      "Quantum-centric supercomputing for materials and chemistry.",
+      "Cloud workflows that combine simulators, QPUs, and GPUs.",
+    ],
+    relatedTerms: [
+      { slug: "nisq", term: "NISQ" },
+      { slug: "ansatz", term: "Ansatz" },
+      { slug: "quantum-cloud-computing", term: "Quantum Cloud Computing" },
+      { slug: "barren-plateau", term: "Barren Plateau" },
+    ],
+    misconceptions: [
+      "Hybrid does not mean the quantum part is optional. The classical part cannot replace it for the target task.",
+      "Using a classical optimizer does not remove the need for many quantum shots.",
+      "Integration latency, not just qubit count, limits the performance of hybrid workflows.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Hybrid designs exist because quantum processors are small, noisy, and slow to access, while classical computers are cheap and powerful. In a variational algorithm, the QPU evaluates a cost for a set of circuit parameters and a classical optimizer chooses new parameters, repeating until it converges. A single run may need thousands of such iterations, each with thousands of shots, so the overall time is dominated by classical overhead and queueing for the quantum device unless the integration is tight.",
+      "The integration is getting tighter. Cloud runtimes such as Qiskit Runtime and AWS Braket Hybrid Jobs keep the classical loop next to the quantum hardware to cut latency. NVIDIA's CUDA-Q and NVQLink aim to connect GPUs and quantum processors with microsecond-scale links, and supercomputing centers in the United States, Europe, and Japan have installed quantum machines next to HPC clusters. IBM promotes quantum-centric supercomputing, where a quantum computer samples configurations and a classical supercomputer processes them, as demonstrated in chemistry experiments combining a Heron processor with the Fugaku supercomputer in 2024 and 2025.",
+      "Error correction makes the hybrid nature even stronger. A fault-tolerant machine needs a classical decoder that reads syndrome data every microsecond and instructs corrections, and the decoding hardware may be as large as the quantum chip. Researchers use FPGAs, GPUs, and neural networks for this. So even a future fully error-corrected quantum computer is a hybrid system.",
+    ],
+    keyFacts: [
+      { label: "Common pattern", value: "Classical optimizer loop around parameterized quantum circuits" },
+      { label: "Latency targets", value: "Microseconds for error-correction decoding; milliseconds to seconds for variational loops" },
+      { label: "Software", value: "Qiskit Runtime, CUDA-Q, AWS Braket Hybrid Jobs, PennyLane" },
+      { label: "Example", value: "Quantum-centric supercomputing with IBM Heron and the Fugaku supercomputer" },
+      { label: "Always present", value: "Even fault-tolerant machines need real-time classical decoding" },
+    ],
+    history: "The hybrid model took shape with the variational quantum eigensolver of 2014, which was designed for hardware with short coherence. Since then, platforms have invested in tighter coupling of quantum and classical resources, with the CUDA-Q and NVQLink announcements in 2025 as a recent step.",
+    comparison: [
+      "A purely quantum algorithm such as Shor's runs entirely on a quantum computer, except for pre- and post-processing, while a hybrid algorithm alternates between the two.",
+      "Hybrid does not mean weak. Fault-tolerant machines will also be hybrid.",
+      "A quantum accelerator in HPC resembles a GPU accelerator, called for specific kernels.",
+    ],
+    faq: [
+      { q: "What is a hybrid quantum-classical algorithm?", a: "An algorithm that alternates between a quantum processor running circuits and a classical computer processing results and choosing the next circuits." },
+      { q: "Why are most algorithms hybrid today?", a: "Because current quantum devices are small and noisy, so they handle only a narrow part of the task while classical computers do the rest." },
+      { q: "Will future quantum computers still be hybrid?", a: "Yes. Even error-corrected machines need classical decoders and control, and most applications will combine both." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
+      "variational-quantum-linear-solver",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedIndustries: [
+      "artificial-intelligence-data-centers",
+    ],
+  },
+  {
+    slug: "variational-quantum-algorithm",
+    term: "Variational Quantum Algorithm",
+    shortDefinition: "A hybrid method that tunes the parameters of a short quantum circuit with a classical optimizer to minimize a cost function.",
+    category: "Algorithms",
+    definition: "A variational quantum algorithm is a recipe for getting something useful from today's small, noisy quantum computers. You write a short quantum circuit with adjustable knobs, run it, measure how good the result is by some cost, and let an ordinary computer turn the knobs to improve the cost. Repeat until the cost stops improving. VQE for chemistry and QAOA for optimization are the best-known examples.",
+    technicalDefinition: "A variational quantum algorithm defines a parameterized unitary U(theta), a cost function C(theta) equal to the expectation value of an observable in the state U(theta) applied to a reference state, and a classical optimizer that updates theta using measured values of C and sometimes its gradients. Shallow circuits are chosen to fit the coherence limits of near-term hardware.",
+    analogy: "Think of tuning a radio by turning a dial and listening for the clearest signal. You do not know the right setting in advance, so you adjust, listen, and adjust again until the sound is as clear as it gets.",
+    useCases: [
+      "Finding ground-state energies of small molecules.",
+      "Approximate optimization of combinatorial problems.",
+      "Training quantum machine learning models.",
+      "Testing hardware and error mitigation techniques with a common workflow.",
+    ],
+    relatedTerms: [
+      { slug: "ansatz", term: "Ansatz" },
+      { slug: "barren-plateau", term: "Barren Plateau" },
+      { slug: "hybrid-quantum-classical", term: "Hybrid Quantum-Classical Computing" },
+      { slug: "nisq", term: "NISQ" },
+    ],
+    misconceptions: [
+      "Variational does not mean better. It means adaptable to noisy hardware.",
+      "The optimizer cannot rescue an ansatz that cannot represent the answer.",
+      "Passing the problem to a quantum computer does not remove the classical cost, which can dominate.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The appeal of the approach is that it works with shallow circuits. Instead of long, precise computations, it uses many short runs and lets classical optimization absorb some hardware imperfections. The cost can often be written as the expectation of a Hamiltonian, as in VQE, or as the average value of a cut or objective, as in QAOA. Many variants exist, including quantum neural networks and variational linear solvers.",
+      "Serious difficulties have appeared. Barren plateaus, discovered by McClean and coauthors in 2018, are regions of the parameter landscape where gradients vanish exponentially with the number of qubits, which makes training infeasible for deep or random circuits and for global cost functions. Noise can also flatten the landscape. Measurement cost is another problem: estimating each expectation value to useful precision takes thousands of shots, and an optimizer may need thousands of iterations.",
+      "Theory has also raised questions about advantage. Cerezo and coauthors argued that circuits designed to avoid barren plateaus often have structure that makes them classically simulable, which would remove the case for quantum hardware. No variational algorithm has yet shown a clear advantage over classical methods on a practical problem, and the field is shifting toward fault-tolerant algorithms while using variational methods as testbeds.",
+    ],
+    keyFacts: [
+      { label: "Components", value: "Parameterized circuit, cost function, and classical optimizer" },
+      { label: "Examples", value: "VQE, QAOA, variational linear solvers, quantum neural networks" },
+      { label: "Main obstacle", value: "Barren plateaus, where gradients vanish exponentially" },
+      { label: "Gradient method", value: "Parameter-shift rule, two circuit runs per parameter" },
+      { label: "Status", value: "No clear practical advantage demonstrated" },
+    ],
+    history: "Peruzzo and coauthors introduced the variational eigensolver in 2014, and Farhi, Goldstone, and Gutmann's QAOA followed that year. Interest peaked around 2018 to 2021 and has since been tempered by trainability and classical simulability results.",
+    comparison: [
+      "Phase estimation gives guaranteed accuracy but needs deep circuits, while variational methods use shallow circuits with no guarantee.",
+      "Quantum annealing runs an analog protocol, while variational algorithms use gate-based circuits.",
+      "Classical machine learning optimizes a model on classical hardware, and a variational algorithm optimizes a quantum circuit with classical help.",
+    ],
+    faq: [
+      { q: "What is a variational quantum algorithm?", a: "A hybrid algorithm that adjusts the parameters of a short quantum circuit using a classical optimizer to minimize a cost function." },
+      { q: "What is a barren plateau?", a: "A region where gradients become exponentially small, making training impossible." },
+      { q: "Do variational algorithms beat classical ones?", a: "Not on practical problems so far, and some designs may be classically simulable." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
+      "quantum-natural-gradient",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+  },
+  {
+    slug: "quantum-annealing",
+    term: "Quantum Annealing",
+    shortDefinition: "A method that finds low-energy states of a problem by slowly changing a quantum system from a simple Hamiltonian to a problem-encoding one.",
+    category: "Algorithms",
+    definition: "Quantum annealing is a way to solve optimization problems by letting a physical quantum system settle into its lowest-energy state. The problem is encoded into the interactions among many qubits, and the system starts in a simple quantum state that is gradually transformed into the problem. If the transformation is slow enough, the system ends in the best answer, or a good approximation. D-Wave builds commercial machines of this type with thousands of qubits.",
+    technicalDefinition: "Quantum annealing evolves under H(s) equal to A(s) times a transverse-field driver Hamiltonian plus B(s) times a problem Ising Hamiltonian, with s going from 0 to 1. The adiabatic theorem says that, for slow enough evolution relative to the minimum spectral gap, the system stays in its ground state. Real devices are noisy and operate at finite temperature, so they act as heuristic samplers.",
+    analogy: "Imagine pouring water over a rough landscape and letting it settle into the lowest valley. A classical method might need to push the water uphill to escape shallow dips, but the quantum version can also seep through the walls, which is the tunneling picture of annealing.",
+    useCases: [
+      "Scheduling, routing, and portfolio optimization pilots.",
+      "Sampling from Boltzmann distributions for machine learning.",
+      "Simulating magnetic and spin-glass systems.",
+      "Benchmarking quantum and classical heuristics.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-tunneling", term: "Quantum Tunneling" },
+      { slug: "hamiltonian", term: "Hamiltonian" },
+      { slug: "quantum-speedup", term: "Quantum Speedup" },
+      { slug: "hybrid-quantum-classical", term: "Hybrid Quantum-Classical Computing" },
+    ],
+    misconceptions: [
+      "Annealers do not try all solutions at once. They settle into low-energy states.",
+      "Thousands of annealing qubits do not equal a thousand gate-model qubits.",
+      "A reported speedup relative to simulated annealing is not proof of advantage over the best classical solver.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Quantum annealing is a different style of quantum computing from the gate model. There are no circuits or discrete gates: the user sets biases and couplings and starts a physical process that takes microseconds. This makes devices simpler to scale in qubit count, and D-Wave's Advantage2 has more than 4,400 qubits, but it limits the problems to optimization and sampling, and the qubit counts are not comparable with gate-model counts.",
+      "Evidence about advantage is mixed. Experiments showed that for specially designed problems, annealers can outperform simulated annealing by large factors, and a 2025 D-Wave paper claimed beyond-classical results in simulating magnetic materials. Other studies find that quantum Monte Carlo and tensor network methods match annealers on many problems, and no broad advantage on commercial optimization problems has been established. Whether tunneling plays the key role is an active research question.",
+      "In practice, users encode problems as QUBOs, quadratic unconstrained binary optimization problems, embed them into the hardware graph, run thousands of anneals, and take the best sample. Hybrid solvers split large problems into pieces, which has produced most of the industrial pilots in logistics, scheduling, and finance.",
+    ],
+    keyFacts: [
+      { label: "Origin", value: "Kadowaki and Nishimori, 1998; first commercial machine, D-Wave One, 2011" },
+      { label: "Largest machine", value: "D-Wave Advantage2, more than 4,400 qubits" },
+      { label: "Problem form", value: "Ising or QUBO models" },
+      { label: "Run time", value: "Microseconds per anneal" },
+      { label: "Open question", value: "Whether it gives practical advantage over classical solvers" },
+    ],
+    history: "The idea of using quantum fluctuations in optimization appeared in the late 1980s, and Kadowaki and Nishimori's 1998 paper is the standard reference. D-Wave Systems commercialized it starting in 2011, and the technology has been tested in many industry pilots.",
+    comparison: [
+      "Gate-model computers can run general algorithms, while annealers target optimization.",
+      "Simulated annealing uses thermal hops, while quantum annealing uses quantum fluctuations.",
+      "Adiabatic quantum computation is the idealized version with guarantees, and annealing is its noisy hardware implementation.",
+    ],
+    faq: [
+      { q: "What is quantum annealing?", a: "An optimization method that uses a quantum system's evolution from a simple state to a problem-encoding state to find low-energy solutions." },
+      { q: "Who makes quantum annealers?", a: "D-Wave Systems is the main commercial maker." },
+      { q: "Does it solve NP-hard problems quickly?", a: "No. It is a heuristic with no proven polynomial-time guarantee." },
+    ],
+    relatedAlgorithms: [
+      "quantum-annealing",
+      "adiabatic-quantum-computation",
+      "qaoa",
+    ],
+    relatedHardware: [
+      "dwave-advantage2",
+    ],
+    relatedIndustries: [
+      "logistics",
+      "manufacturing",
+    ],
+  },
+  {
+    slug: "quantum-speedup",
+    term: "Quantum Speedup",
+    shortDefinition: "An advantage in running time, queries, or resources that a quantum algorithm has over the best classical algorithm for the same problem.",
+    category: "Algorithms",
+    definition: "A quantum speedup means that a quantum computer can solve a problem using fewer steps than any classical computer. Speedups come in different sizes: exponential, such as Shor's algorithm for factoring, quadratic, such as Grover's search, and none for many problems. The size matters because a quadratic speedup can be wiped out by the overhead of error correction, while an exponential one can survive it.",
+    technicalDefinition: "A quantum speedup is a separation between the complexity of the best known quantum algorithm and the best known (or provably best) classical algorithm for a task, measured in query, gate, or time complexity. Provable speedups exist in the query model, such as Grover's quadratic and Simon's exponential, while speedups in gate complexity for end-to-end problems, such as factoring, rely on unproven assumptions about classical hardness.",
+    analogy: "Compare two ways of finding a name in a phone book. One reads every entry, and the other cleverly narrows down the possibilities. The second is faster, and whether it is quadratically or exponentially faster determines whether it stays useful when the clever method needs a much slower machine.",
+    useCases: [
+      "Judging whether a proposed quantum application is likely to be worth its cost.",
+      "Comparing algorithms in resource estimates.",
+      "Interpreting advantage claims in the news.",
+      "Directing research toward problems with large, robust speedups.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-advantage", term: "Quantum Advantage" },
+      { slug: "quantum-supremacy", term: "Quantum Supremacy" },
+      { slug: "bqp", term: "BQP Complexity Class" },
+      { slug: "quantum-oracle", term: "Quantum Oracle" },
+    ],
+    misconceptions: [
+      "Quantum computers are not faster at everything. For many tasks there is no known speedup.",
+      "A speedup in theory does not guarantee a practical benefit.",
+      "Doubling qubits does not double speed. The relationship depends on the algorithm.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Not all speedups are equally valuable. Quadratic speedups, such as those from Grover search, amplitude estimation, and many quantum walk algorithms, are broad but modest. Babbush, McClean, Newman, and coauthors showed in 2021 that, once the overhead of error-corrected hardware is included, a quadratic speedup needs very large problem sizes and fast logical gates to pay off, so the focus should be on larger speedups. Super-polynomial speedups are known for factoring, discrete logarithms, simulating quantum systems, and some problems in the oracle model.",
+      "A fair statement of a speedup should specify four things: the problem, the classical baseline, the cost model, and the input and output assumptions. A speedup claim in terms of queries to an oracle does not automatically carry over to a real problem where the oracle must be built. An algorithm that is exponentially faster in terms of the number of qubits may need exponentially large data to be loaded, which erases the gain. The history of dequantization shows how classical algorithms can catch up when assumptions are made explicit.",
+      "The distinction between theoretical speedup and practical advantage is important. Practical advantage involves wall-clock time and cost on real hardware compared with the best classical hardware and software available. Even a provable speedup might not reach practical advantage if constants are large, and a heuristic method without a proof might still win on specific instances.",
+    ],
+    keyFacts: [
+      { label: "Exponential", value: "Shor's factoring, Simon's problem, and simulation of quantum dynamics" },
+      { label: "Quadratic", value: "Grover search, amplitude estimation, minimum finding" },
+      { label: "None proven", value: "NP-complete problems in general, and most of machine learning on classical data" },
+      { label: "Overhead warning", value: "Quadratic speedups are hard to realize on error-corrected hardware (Babbush et al., 2021)" },
+      { label: "Dequantization", value: "Classical algorithms that match claimed quantum speedups under the same assumptions" },
+    ],
+    history: "The first speedup was Deutsch and Jozsa's in 1992, followed by Simon's exponential separation in 1994, Shor's algorithm the same year, and Grover's in 1996. Later work refined the picture, including the 2018 dequantization results and the 2021 analysis of overheads.",
+    comparison: [
+      "A theoretical speedup is a statement about algorithms, while quantum advantage is a statement about real devices solving real tasks.",
+      "Query speedups are proven, and gate-complexity speedups often rest on conjectures.",
+      "A speedup over a naive classical method is not a speedup over the best one.",
+    ],
+    faq: [
+      { q: "What is a quantum speedup?", a: "A reduction in the resources needed to solve a problem with a quantum algorithm compared with the best classical algorithm." },
+      { q: "Which problems have an exponential speedup?", a: "Factoring and discrete logarithms through Shor's algorithm, and simulation of quantum systems. For many other problems the speedup is smaller or unproven." },
+      { q: "Why can a quadratic speedup fail in practice?", a: "Because error correction and logical gate speeds add large overheads that can cancel a square-root gain unless the problem is very large." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "grovers-algorithm",
+      "quantum-amplitude-estimation",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+  },
+  {
+    slug: "quantum-key-distribution",
+    term: "Quantum Key Distribution",
+    shortDefinition: "A method for two parties to share a secret key using quantum states of light, where any eavesdropping disturbs the states and is detected.",
+    category: "Cryptography & Communication",
+    definition: "Quantum key distribution, or QKD, lets two people agree on a secret key that no one else knows, using single particles of light sent between them. Because measuring a quantum state changes it, anyone listening in leaves traces that the two parties can find by comparing a sample of their data. The key can then be used to encrypt messages with a standard cipher. QKD is among the most mature quantum technologies, with commercial products and national networks.",
+    technicalDefinition: "In prepare-and-measure protocols such as BB84, Alice sends photons in randomly chosen bases and Bob measures in random bases. They keep matching-basis results, estimate the quantum bit error rate on a sample, and if it is below a threshold of about 11 percent they apply error correction and privacy amplification to produce a shorter secret key. Security follows from the uncertainty principle and the no-cloning theorem, and it holds against adversaries with unlimited computing power if the implementation matches the model.",
+    analogy: "Imagine sending a series of sealed glass vials, each containing a fragile colored liquid that changes color if anyone opens and reseals it. If the vials arrive unchanged in the agreed proportion, nobody tampered with them, and the colors you agree on become your secret key.",
+    useCases: [
+      "Securing links between government sites, data centers, and banks.",
+      "Satellite-based key distribution across long distances.",
+      "Providing keys for symmetric encryption and one-time pads.",
+      "Research on quantum networks and device-independent security.",
+    ],
+    relatedTerms: [
+      { slug: "no-cloning-theorem", term: "No-Cloning Theorem" },
+      { slug: "uncertainty-principle", term: "Uncertainty Principle" },
+      { slug: "post-quantum-cryptography", term: "Post-Quantum Cryptography" },
+      { slug: "quantum-repeater", term: "Quantum Repeater" },
+    ],
+    misconceptions: [
+      "QKD does not make communication unhackable. It protects the key exchange, and implementation flaws can be exploited.",
+      "It does not transmit the message. It generates a shared key.",
+      "It is not a replacement for post-quantum cryptography in most deployments.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "QKD differs from ordinary encryption in the source of its security. Standard public-key cryptography relies on mathematical problems that are believed to be hard, which Shor's algorithm would break. QKD relies on physical laws, so its security does not depend on assumptions about computing power. The catch is that real devices differ from ideal models: detectors can be blinded, sources can leak information about photon number, and attacks on commercial systems have been demonstrated. Practical protocols such as decoy-state BB84 and measurement-device-independent QKD close many of these loopholes.",
+      "Range and rate are the main limits. Photons are lost in fiber at about 0.2 decibels per kilometer, so key rates fall exponentially with distance, and direct fiber links reach a few hundred kilometers, with a record of around 400 kilometers in ultra-low-loss fiber. Twin-field protocols have reached about 1,000 kilometers in laboratory spools at very low rates. Longer distances use trusted relay nodes, as in China's Beijing to Shanghai backbone of more than 2,000 kilometers, or satellites, as with the Micius satellite, which demonstrated links of about 1,200 kilometers.",
+      "Policy views are divided. QKD products are certified under frameworks such as ETSI and ISO/IEC 23837, and the European Union is building a QKD infrastructure called EuroQCI. The U.S. National Security Agency and the UK National Cyber Security Centre, however, do not recommend QKD for most uses, favoring post-quantum cryptography, because QKD needs special hardware, point-to-point links, and separate authentication, and it addresses only key exchange.",
+    ],
+    keyFacts: [
+      { label: "Best-known protocol", value: "BB84, proposed in 1984 by Bennett and Brassard" },
+      { label: "Error threshold", value: "About 11 percent for BB84 in the ideal single-photon case" },
+      { label: "Fiber range", value: "A few hundred kilometers directly; about 400 km record in ultra-low-loss fiber" },
+      { label: "Networks", value: "China's 2,000 km backbone, EuroQCI, and city networks in several countries" },
+      { label: "Agency view", value: "NSA and NCSC prefer post-quantum cryptography over QKD for most uses" },
+    ],
+    history: "Wiesner's unpublished conjugate coding around 1970 inspired Bennett and Brassard's 1984 protocol, and Ekert proposed an entanglement-based version in 1991. The first prototype worked in 1989 over 32 centimeters, and commercial systems appeared in the 2000s.",
+    comparison: [
+      "QKD is based on physics, and post-quantum cryptography is based on mathematical hardness assumptions.",
+      "QKD distributes keys, and it does not itself encrypt data or authenticate users.",
+      "Classical key exchange can run over any network, while QKD needs a dedicated quantum channel.",
+    ],
+    faq: [
+      { q: "What is quantum key distribution?", a: "A way of creating a shared secret key using quantum states, with eavesdropping detected through the disturbance it causes." },
+      { q: "How far can QKD reach?", a: "A few hundred kilometers in fiber without relays, and thousands of kilometers using trusted nodes or satellites." },
+      { q: "Is QKD better than post-quantum cryptography?", a: "They solve different problems. Many agencies recommend post-quantum cryptography for general use and QKD for specific high-assurance links." },
+    ],
+    relatedAlgorithms: [
+      "bb84-protocol",
+      "e91-protocol",
+      "device-independent-qkd",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+      "cybersecurity",
+    ],
+  },
+  {
+    slug: "quantum-random-number-generator",
+    term: "Quantum Random Number Generator",
+    shortDefinition: "A device that produces random numbers from quantum processes, whose outcomes are fundamentally unpredictable.",
+    category: "Cryptography & Communication",
+    definition: "A quantum random number generator uses a quantum event, such as which way a single photon goes at a beam splitter, as the source of randomness. According to quantum mechanics, that outcome is not just hard to predict but genuinely undetermined in advance, so the numbers are random in a deeper sense than the pseudo-random numbers computers usually make with formulas. Such devices already appear in commercial hardware, including phones, and the strongest versions can even prove their randomness.",
+    technicalDefinition: "Quantum random number generators measure quantum processes with intrinsic randomness: photon path or arrival time, vacuum fluctuations, or the phase noise of a laser. Raw output is processed by randomness extractors to remove bias and classical noise. Device-independent generators certify randomness by observing a violation of a Bell inequality, without trusting the internals of the device.",
+    analogy: "A coin toss seems random but follows physics, so a perfect camera could in principle predict it. A quantum random generator is like a coin that, by the laws of nature, has no hidden mechanism to predict, even in principle.",
+    useCases: [
+      "Generating cryptographic keys with strong entropy sources.",
+      "Seeding simulations, lotteries, and gaming systems.",
+      "Providing public randomness beacons for audits and fair selection.",
+      "Testing quantum devices through certified randomness protocols.",
+    ],
+    relatedTerms: [
+      { slug: "born-rule", term: "Born Rule" },
+      { slug: "bell-inequality", term: "Bell Inequality" },
+      { slug: "quantum-key-distribution", term: "Quantum Key Distribution" },
+      { slug: "measurement-collapse", term: "Measurement Collapse" },
+    ],
+    misconceptions: [
+      "Quantum random numbers are not automatically better for every purpose. Good classical generators are adequate for most uses.",
+      "Raw quantum output still needs processing to remove bias and technical noise.",
+      "A quantum generator that is not certified can still be flawed by engineering defects.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Randomness is essential for cryptography: keys, nonces, and protocol challenges must be unpredictable. Most systems use pseudo-random generators seeded from physical noise in hardware, which is fine when the entropy source is good, and a disaster when it is not. Quantum sources offer a clear physical basis for entropy. A simple design sends photons to a half-silvered mirror and records which of two detectors fires, and compact versions based on image sensors, which detect shot noise, are small enough for phones.",
+      "Commercial products are widespread. ID Quantique's Quantis chips went into a Samsung phone developed with SK Telecom in 2020, and quantum entropy sources are sold as PCIe cards and chips. Standards bodies assess them: the NIST SP 800-90B framework evaluates entropy sources, and certification bodies test devices against it.",
+      "The strongest form is certified randomness. A device-independent generator uses a Bell test to prove that its outputs cannot have been predetermined, even if the manufacturer is untrusted. In 2025 NIST and the University of Colorado launched a public randomness beacon whose bits are certified by a Bell test, and JPMorgan Chase with Quantinuum and U.S. national laboratories published in Nature a protocol that uses a 56-qubit quantum computer to generate randomness that can be verified with classical supercomputers.",
+    ],
+    keyFacts: [
+      { label: "Sources", value: "Photon path, arrival time, vacuum noise, laser phase noise" },
+      { label: "Commercial examples", value: "ID Quantique Quantis, and the Samsung and SK Telecom quantum phone (2020)" },
+      { label: "Standards", value: "NIST SP 800-90B for entropy sources" },
+      { label: "Certified randomness", value: "Bell-test beacons (NIST and CU Boulder, 2025) and the JPMorgan, Quantinuum protocol (Nature, 2025)" },
+      { label: "Output rates", value: "Megabits to gigabits per second for photonic generators" },
+    ],
+    history: "Early quantum random number generators were demonstrated in the 1990s, commercial devices appeared around 2001, and compact chip-scale versions emerged in the 2010s. Certified randomness moved from theory to experiment in the 2010s and 2020s.",
+    comparison: [
+      "Pseudo-random generators are deterministic algorithms seeded with entropy, and quantum generators draw on intrinsic randomness.",
+      "Classical physical generators use thermal noise, which is random in practice but not fundamentally unpredictable.",
+      "Certified generators prove their randomness from the observed statistics, and simple quantum generators rely on trust in the device.",
+    ],
+    faq: [
+      { q: "What is a quantum random number generator?", a: "A device that gets random bits from quantum processes, such as which detector a photon hits." },
+      { q: "Why use quantum randomness?", a: "Its unpredictability is guaranteed by physics, which gives a firm basis for cryptographic keys, and some designs can prove it." },
+      { q: "Are QRNGs in consumer devices?", a: "Yes. A Samsung phone in 2020 included an ID Quantique chip, and similar chips are sold for embedded use." },
+    ],
+    relatedAlgorithms: [
+      "quantum-supremacy-sampling",
+      "e91-protocol",
+    ],
+    relatedHardware: [
+      "quantinuum-h2",
+    ],
+    relatedIndustries: [
+      "finance",
+      "cybersecurity",
+    ],
+  },
+  {
+    slug: "quantum-internet",
+    term: "Quantum Internet",
+    shortDefinition: "A proposed network that distributes entanglement between distant quantum devices, enabling quantum communication, sensing, and distributed computing.",
+    category: "Cryptography & Communication",
+    definition: "A quantum internet would connect quantum computers, sensors, and clocks so that they can share entanglement and send quantum states, not just ordinary bits. Today's internet moves classical data and cannot do this. The quantum version would not replace the classical internet but run alongside it, adding abilities such as unconditionally secure communication, linking many small quantum computers into a larger one, and combining distant sensors into one more precise instrument.",
+    technicalDefinition: "A quantum network consists of nodes with quantum memories and processors connected by quantum channels, typically optical fibers or free space, plus a classical network for control. Entanglement is distributed between neighbors and extended by quantum repeaters using entanglement swapping and purification. Wehner, Elkouss, and Hanson described six stages of development, from trusted-repeater networks to networks of fault-tolerant quantum computers.",
+    analogy: "The classical internet sends letters that can be copied and forwarded. A quantum internet is more like a system that links pairs of special coins that always match in a mysterious way, and uses that link to do things that letters cannot, such as proving no one has read a message.",
+    useCases: [
+      "Distributing entanglement for key distribution and secure communication.",
+      "Connecting small quantum processors into larger distributed machines.",
+      "Networking sensors and clocks for improved precision.",
+      "Blind quantum computing, where clients keep their data private from servers.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-repeater", term: "Quantum Repeater" },
+      { slug: "entanglement-swapping", term: "Entanglement Swapping" },
+      { slug: "quantum-teleportation", term: "Quantum Teleportation" },
+      { slug: "quantum-key-distribution", term: "Quantum Key Distribution" },
+    ],
+    misconceptions: [
+      "A quantum internet is not faster than the classical internet. It offers different capabilities.",
+      "It does not allow faster-than-light messaging.",
+      "It is not built yet beyond prototypes.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "The central difficulty is that quantum states cannot be copied or amplified. A photon carrying a qubit through fiber is lost with a probability that grows exponentially with distance, and there is no way to boost its signal as in a classical network. The solution is quantum repeaters: devices that create entanglement over short links, store it in quantum memories, and connect the links using entanglement swapping. Building memories with long coherence times and efficient light-matter interfaces is the main hardware challenge.",
+      "Prototypes demonstrate the pieces. Researchers at QuTech in Delft linked three nitrogen-vacancy nodes in 2021 with entanglement and a quantum network protocol, and a Harvard and AWS team in 2024 distributed entanglement between silicon-vacancy memories across about 35 kilometers of fiber in the Boston area. Chinese groups created a space-ground network, using the Micius satellite, extending over about 4,600 kilometers, and EPB in Chattanooga operates a commercial quantum network with IonQ technology. The Quantum Internet Alliance in Europe coordinates a roadmap to a prototype network.",
+      "Potential applications fall into three families. Secure communication includes quantum key distribution and device-independent protocols. Distributed quantum computing connects separate processors, which could scale beyond what one chip or cryostat can hold, and blind quantum computing lets a client run a computation on a remote server without revealing it. Networked sensing could combine telescopes and clocks into larger, more accurate instruments.",
+    ],
+    keyFacts: [
+      { label: "Key problem", value: "Entanglement cannot be amplified, so repeaters are needed beyond a few hundred kilometers" },
+      { label: "Six stages", value: "Described by Wehner, Elkouss, and Hanson in 2018, from trusted repeaters to quantum computing networks" },
+      { label: "Prototypes", value: "Delft three-node network (2021), Harvard and AWS 35 km Boston link (2024), EPB Chattanooga" },
+      { label: "Space-ground link", value: "Micius-based network spanning about 4,600 km (2021)" },
+      { label: "Timeline", value: "Regional networks in the 2030s; global scale is a longer-term goal" },
+    ],
+    history: "The idea grew from the work on teleportation and quantum repeaters in the late 1990s, with H. Jeff Kimble's 2008 vision paper The Quantum Internet drawing wide attention. The first multi-node entanglement networks were demonstrated in the 2020s.",
+    comparison: [
+      "The classical internet copies and amplifies signals, while a quantum internet cannot copy states and needs repeaters.",
+      "A QKD network distributes keys, while a quantum internet distributes entanglement for many applications.",
+      "It will run alongside the classical internet, which carries the control and classical communication.",
+    ],
+    faq: [
+      { q: "What is the quantum internet?", a: "A network that distributes entanglement and quantum states between distant quantum devices, working alongside the classical internet." },
+      { q: "Does it exist today?", a: "Only as small prototypes and research networks, such as those in Delft, Boston, and Chattanooga." },
+      { q: "Why are repeaters needed?", a: "Because quantum signals cannot be amplified or copied, repeaters extend entanglement over long distances." },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
+      "e91-protocol",
+      "quantum-secret-sharing",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+      "space-defense",
+    ],
+  },
+  {
+    slug: "entanglement-swapping",
+    term: "Entanglement Swapping",
+    shortDefinition: "A protocol that entangles two particles that have never interacted, by measuring their partners together.",
+    category: "Cryptography & Communication",
+    definition: "Entanglement swapping is a way to make two particles entangled even though they have never met. Suppose Alice shares an entangled pair with a middle station, and Bob shares another pair with the same station. If the station measures its two particles together in a special way, then Alice's and Bob's particles become entangled with each other, instantly and without any direct contact. It is the basic move that quantum repeaters use to extend entanglement over long distances.",
+    technicalDefinition: "Given Bell pairs between A and C and between D and B, a Bell-state measurement on C and D projects A and B onto a Bell state, with the particular Bell state determined by the measurement outcome, which is sent to the endpoints as two classical bits. It is teleportation applied to half of an entangled pair. With linear optics, a Bell-state measurement succeeds with at most 50 percent probability for photonic qubits.",
+    analogy: "Imagine two pairs of friends who each share a secret handshake with a person in the middle. When the middle person brings the other halves of the handshakes together and checks them against each other, the two outer friends end up sharing a handshake with one another, though they have never met.",
+    useCases: [
+      "Extending entanglement distance in quantum repeaters.",
+      "Building multi-node quantum networks.",
+      "Entangling independent sources and matter qubits.",
+      "Experiments on non-locality and quantum foundations.",
+    ],
+    relatedTerms: [
+      { slug: "entanglement", term: "Entanglement" },
+      { slug: "quantum-teleportation", term: "Quantum Teleportation" },
+      { slug: "bell-state", term: "Bell State" },
+      { slug: "quantum-repeater", term: "Quantum Repeater" },
+    ],
+    misconceptions: [
+      "The two end particles are not entangled until the middle measurement result is known and applied. No signal is faster than light.",
+      "Swapping does not create entanglement from nothing. It rearranges existing entanglement.",
+      "It does not remove loss. It works around loss by dividing the distance.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Entanglement swapping solves the distance problem for quantum networks. A direct entangled photon pair across 1,000 kilometers of fiber almost never survives, but a chain of short links does. Each link is entangled separately, and swapping at the intermediate nodes joins them one after another, doubling the length of the entangled segment each time. Because swapping works only if both links succeed, repeaters store the entanglement from the first successful link in a quantum memory while waiting for its neighbor, which is why memory quality is critical.",
+      "The protocol was proposed in 1993 by Żukowski, Zeilinger, Horne, and Ekert, and first demonstrated with photons by Pan and colleagues in 1998. Later experiments swapped entanglement between independent sources, between matter nodes in diamond at Delft, and across fibers in city networks. Each swap multiplies fidelities, so errors accumulate along the chain, and long networks need entanglement purification or error correction to maintain quality.",
+      "Entanglement swapping also has foundational interest, since it produces entanglement between systems with no common past, and it is a ingredient in tests of quantum non-locality such as loophole-free Bell experiments. In practice, high success probability Bell measurements, high-efficiency memories, and good photon indistinguishability are the engineering goals.",
+    ],
+    keyFacts: [
+      { label: "Proposed", value: "Żukowski, Zeilinger, Horne, and Ekert, 1993" },
+      { label: "First experiment", value: "Pan and colleagues with photons, 1998" },
+      { label: "Success probability", value: "At most 50 percent for linear-optics Bell measurements on photonic qubits" },
+      { label: "Fidelity", value: "Roughly multiplies across swaps, so purification or error correction is needed" },
+      { label: "Role", value: "Core operation of quantum repeaters and network nodes" },
+    ],
+    history: "The 1993 paper introduced the idea as a variant of teleportation. After the 1998 experiments, matter-based demonstrations followed in the 2010s and 2020s, and swapping is now a routine element of quantum network testbeds.",
+    comparison: [
+      "Teleportation moves a state, while swapping entangles two distant particles by teleporting half of an entangled pair.",
+      "Entanglement distribution over a single link is limited by loss, while swapping joins short links into a long one.",
+      "Purification improves the quality of entanglement, while swapping extends its range.",
+    ],
+    faq: [
+      { q: "What is entanglement swapping?", a: "A procedure that entangles two particles that never interacted, by performing a joint measurement on their entangled partners." },
+      { q: "Why is it important?", a: "It is the key operation in quantum repeaters, which extend entanglement across long distances." },
+      { q: "What limits it?", a: "The success probability of the Bell measurement and the fidelity loss at each swap, which need memories and purification." },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
+      "e91-protocol",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+    ],
+  },
+  {
+    slug: "quantum-simulator",
+    term: "Quantum Simulator",
+    shortDefinition: "Either a classical program that mimics a quantum computer, or a controllable quantum system built to mimic another quantum system.",
+    category: "Software & Tools",
+    definition: "The phrase quantum simulator has two meanings. In software, it is a program running on an ordinary computer that tracks the state of a quantum circuit so developers can test algorithms without real hardware, which works up to about 40 to 50 qubits. In hardware, it is a quantum device, such as an array of cold atoms, built to imitate a specific quantum system, such as the electrons in a material. Both are used heavily in research and development.",
+    technicalDefinition: "A classical state-vector simulator stores 2^n complex amplitudes and applies gates as matrix operations, with memory of 16 times 2^n bytes in double precision, so 30 qubits need 16 gigabytes and 40 qubits need 16 terabytes. Stabilizer simulators handle Clifford circuits in polynomial time, and tensor network simulators exploit limited entanglement. An analog quantum simulator engineers a Hamiltonian in a controllable system to study another system's dynamics.",
+    analogy: "A flight simulator mimics a plane without leaving the ground, which is useful for training and testing. A software quantum simulator does the same for a quantum computer, and an analog simulator is more like a scale model in a wind tunnel, a real physical system standing in for another.",
+    useCases: [
+      "Developing and debugging quantum programs before running on hardware.",
+      "Studying noise and error correction with exact models.",
+      "Benchmarking claims of quantum advantage.",
+      "Analog simulation of materials and quantum many-body dynamics.",
+    ],
+    relatedTerms: [
+      { slug: "hilbert-space", term: "Hilbert Space" },
+      { slug: "tensor-product", term: "Tensor Product" },
+      { slug: "clifford-group", term: "Clifford Group" },
+      { slug: "quantum-sdk", term: "Quantum SDK" },
+    ],
+    misconceptions: [
+      "A simulator that handles 30 qubits does not mean a quantum computer with 30 qubits is useless. Hardware has different advantages and limits.",
+      "Classical simulators cannot simulate all circuits. They fail on deep, highly entangled ones at scale.",
+      "An analog simulator is not a general-purpose quantum computer.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Software simulators are the everyday tool of quantum programmers. They let you debug circuits, test algorithms, and study noise with exact results that real hardware cannot provide. The memory wall is steep: each added qubit doubles the memory, so laptops handle around 28 to 32 qubits, GPU servers reach 35 to 40, and the largest supercomputer runs have simulated about 45 qubits of generic circuits in state-vector form. Methods that exploit structure go further: the stabilizer simulator Stim handles error-correction circuits with thousands of qubits, and tensor network methods simulate shallow or weakly entangled circuits with hundreds of qubits.",
+      "Classical simulation is also the benchmark against which quantum advantage is judged. Claims of beyond-classical computation depend on the best classical simulation methods, which have improved considerably through tensor networks, GPU clusters, and approximation techniques. This interplay means that simulator research directly affects what counts as advantage.",
+      "Analog quantum simulators, as proposed by Feynman in 1982, use ultracold atoms in optical lattices, trapped ions, superconducting circuits, or Rydberg atom arrays to realize models such as the Hubbard model. They do not run arbitrary programs, but they can reach regimes that classical methods cannot, and they have produced results on magnetism, phase transitions, and dynamics. QuEra's Aquila and Pasqal's Fresnel machines offer programmable analog simulation through the cloud.",
+    ],
+    keyFacts: [
+      { label: "Memory rule", value: "State-vector simulation needs 16 times 2^n bytes; 30 qubits is 16 GB and 40 qubits is 16 TB" },
+      { label: "Practical limits", value: "About 30 qubits on laptops, 35 to 40 on GPU servers, around 45 on supercomputers for generic circuits" },
+      { label: "Stabilizer simulators", value: "Handle Clifford circuits with thousands of qubits (for example, Stim)" },
+      { label: "Tensor networks", value: "Efficient when entanglement is limited" },
+      { label: "Analog simulators", value: "Cold atoms, ions, and superconducting circuits emulating model Hamiltonians" },
+    ],
+    history: "Feynman proposed quantum simulators in 1982 to overcome the classical difficulty of simulating quantum physics. Software simulators accompanied every quantum SDK from the 2010s, and GPU and tensor network methods advanced rapidly in the 2020s.",
+    comparison: [
+      "A software simulator is exact but limited by memory, while a real quantum computer scales with qubits but has noise.",
+      "Digital simulation uses gates, while analog simulation engineers a Hamiltonian directly.",
+      "A noise-model simulator imitates a particular device's errors, which is different from an ideal one.",
+    ],
+    faq: [
+      { q: "What is a quantum simulator?", a: "Either a classical program that mimics a quantum computer, or a quantum device built to mimic another quantum system." },
+      { q: "How many qubits can be simulated classically?", a: "About 30 on a laptop and around 45 on the largest supercomputers for generic circuits, more for structured circuits." },
+      { q: "Why do simulators matter for quantum advantage?", a: "Because advantage claims are measured against the best classical simulation methods." },
+    ],
+    relatedAlgorithms: [
+      "quantum-supremacy-sampling",
+      "trotter-suzuki-decomposition",
+    ],
+    relatedHardware: [
+      "quera-aquila",
+      "pasqal-fresnel",
+    ],
+  },
+  {
+    slug: "quantum-sdk",
+    term: "Quantum SDK",
+    shortDefinition: "A software toolkit, usually in Python, for writing quantum circuits, simulating them, and running them on real hardware.",
+    category: "Software & Tools",
+    definition: "A quantum software development kit is the set of tools programmers use to work with quantum computers. It lets you describe a quantum circuit in code, test it on a simulator, translate it for a particular device, and send it to real hardware over the cloud, then analyze the results. Qiskit from IBM, Cirq from Google, PennyLane from Xanadu, and Amazon Braket's SDK are among the most common, and nearly all are built on Python.",
+    technicalDefinition: "A quantum SDK provides a circuit-construction API, gate libraries, simulators, a transpiler that maps circuits to hardware constraints, and interfaces to quantum processors through cloud services. Intermediate representations such as OpenQASM 3 and QIR allow interoperability between toolchains, and higher-level libraries provide chemistry, optimization, and machine learning modules.",
+    analogy: "Think of a game engine for building video games. You describe what you want in a high-level way, and the engine handles the details of graphics hardware. A quantum SDK does the same for quantum devices, hiding the pulses and wiring behind circuits.",
+    useCases: [
+      "Learning quantum programming on simulators and small devices.",
+      "Developing algorithms and running experiments on cloud hardware.",
+      "Building hybrid workflows with classical optimization libraries.",
+      "Comparing hardware from several vendors through common interfaces.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-circuit", term: "Quantum Circuit" },
+      { slug: "transpilation", term: "Transpilation" },
+      { slug: "quantum-cloud-computing", term: "Quantum Cloud Computing" },
+      { slug: "quantum-simulator", term: "Quantum Simulator" },
+    ],
+    misconceptions: [
+      "Learning an SDK does not require advanced physics. Basic linear algebra and Python are enough to start.",
+      "Code written for one SDK does not always run on another without conversion.",
+      "A simulator result is not a hardware result. Noise and connectivity change the outcome.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Qiskit, released by IBM in 2017, is the most widely used, with modules for circuits, a transpiler, primitives for sampling and estimation, and runtime services. Cirq, from Google, emphasizes control over hardware-specific details and is used with its processors. PennyLane focuses on differentiable programming, making it popular for quantum machine learning, and works with many hardware backends. Microsoft's Q# and Azure Quantum tools, Amazon's Braket SDK, Quantinuum's tket and Guppy, Xanadu's tools, and NVIDIA's CUDA-Q provide other options, and commercial platforms such as Classiq raise the level of abstraction.",
+      "Interoperability is an ongoing issue. Each SDK has its own circuit format, so the community developed OpenQASM, an assembly-style language now in version 3, and the Quantum Intermediate Representation based on LLVM, which lets compilers target multiple devices. Cloud services let users choose hardware from different vendors using a single account, though pricing and queues vary.",
+      "For learners, an SDK is the easiest way into the field: you can run small circuits on a laptop simulator within minutes and on real hardware within an hour. Important practices include checking transpiled circuit depth, using noise-aware simulation, and applying error mitigation options provided by runtimes. Because SDKs change quickly, with APIs deprecated and rewritten, pinning versions matters for reproducibility.",
+    ],
+    keyFacts: [
+      { label: "Common SDKs", value: "Qiskit (IBM), Cirq (Google), PennyLane (Xanadu), Braket SDK (AWS), Q# (Microsoft), tket and Guppy (Quantinuum), CUDA-Q (NVIDIA)" },
+      { label: "Language", value: "Python is the main language for nearly all of them" },
+      { label: "Interchange formats", value: "OpenQASM 3 and the LLVM-based Quantum Intermediate Representation" },
+      { label: "Typical features", value: "Circuit builder, simulators, transpiler, hardware access, and algorithm libraries" },
+      { label: "Release dates", value: "Qiskit 2017, Cirq 2018, PennyLane 2018, Braket 2020" },
+    ],
+    history: "The first open-source SDKs, such as ProjectQ and Qiskit, appeared around 2016 to 2017 as cloud quantum computers became available. The ecosystem has since grown to dozens of tools, with vendors standardizing on Python.",
+    comparison: [
+      "An SDK is the programming layer, and a quantum cloud service is the access layer to hardware.",
+      "High-level platforms such as Classiq generate circuits from functional descriptions, while low-level SDKs expose gates directly.",
+      "Pulse-level tools go below the gate level to control the analog signals.",
+    ],
+    faq: [
+      { q: "What is the best quantum SDK for beginners?", a: "Qiskit and PennyLane both have extensive tutorials. Choose the one that matches your target hardware or interest in machine learning." },
+      { q: "Do I need a quantum computer to use an SDK?", a: "No. Every SDK includes simulators that run on a laptop, and many offer free cloud access to small real devices." },
+      { q: "What is OpenQASM?", a: "An assembly-style language for describing quantum circuits, used as an interchange format between tools." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "iqm-garnet",
+    ],
+  },
+  {
+    slug: "pulse-level-control",
+    term: "Pulse-Level Control",
+    shortDefinition: "Programming a quantum computer at the level of the analog microwave or laser pulses that implement each gate.",
+    category: "Software & Tools",
+    definition: "Behind every quantum gate in a circuit is a carefully shaped pulse of microwaves or laser light applied to the qubits. Pulse-level control means working with those pulses directly, choosing their shape, strength, and timing, instead of using the gates that the manufacturer has already calibrated. It gives researchers and advanced users a way to squeeze more performance out of hardware, to build new kinds of gates, and to study the physics of the device.",
+    technicalDefinition: "A pulse schedule specifies waveforms, such as Gaussian, DRAG, or flat-top envelopes with carrier frequency and phase, played on hardware channels at defined times. A gate is a calibrated pulse sequence implementing a target unitary, with parameters tuned by experiments such as Rabi oscillations, Ramsey fringes, and randomized benchmarking. Optimal control methods such as GRAPE and CRAB design pulses that maximize fidelity under constraints.",
+    analogy: "A pianist playing printed music relies on the notes, while a composer can shape each key press, with exactly how hard and how long. Gates are the notes, and pulse-level control is how the key is pressed.",
+    useCases: [
+      "Calibrating and optimizing gates on new devices.",
+      "Designing faster gates, robust gates, and custom operations.",
+      "Implementing pulse-based error mitigation such as noise amplification.",
+      "Studying qubit physics, noise, and crosstalk.",
+    ],
+    relatedTerms: [
+      { slug: "quantum-gate", term: "Quantum Gate" },
+      { slug: "rotation-gate", term: "Rotation Gate" },
+      { slug: "gate-fidelity", term: "Gate Fidelity" },
+      { slug: "crosstalk", term: "Crosstalk" },
+    ],
+    misconceptions: [
+      "Pulse-level control does not automatically give better results. It needs careful calibration and can introduce errors.",
+      "Most users do not need pulse access. Gate-level tools are adequate for typical algorithms.",
+      "Pulses are analog, and small errors in amplitude and timing matter.",
+    ],
+    lastUpdated: "September 30, 2026",
+    inDepth: [
+      "Superconducting qubits are driven with microwave pulses of tens of nanoseconds. A simple Gaussian pulse can excite unwanted transitions, such as leakage to the second excited state of a transmon, so engineers use shaped pulses such as DRAG, which adds a quadrature component to cancel them. Calibration finds the amplitude that gives a precise pi rotation, the frequency that matches the qubit, and the timing for two-qubit gates, and it must be repeated frequently because parameters drift over hours.",
+      "Direct pulse access has several uses. Researchers design faster or more robust gates using optimal control, implement gates that are not in the standard set, such as arbitrary two-qubit rotations, and study noise by probing the device. It enables error mitigation methods, for example stretching pulses to amplify noise for zero-noise extrapolation, and it allows hardware-efficient variational circuits tuned to the device's native interactions.",
+      "Access varies by vendor. IBM offered a pulse interface through Qiskit Pulse and OpenPulse for several years, but retired it from the main Qiskit library in 2025 as it shifted to higher-level primitives and error-mitigation services. Other companies such as Quantum Machines with its QUA language and Zurich Instruments provide control systems that give laboratories full pulse-level access, and some cloud devices allow pulse programming for approved users. Control-system latency and the integration of real-time feedback are active areas of development.",
+    ],
+    keyFacts: [
+      { label: "Typical pulse lengths", value: "Tens of nanoseconds for superconducting single-qubit gates; microseconds for ions" },
+      { label: "Common shapes", value: "Gaussian and DRAG envelopes" },
+      { label: "Calibration", value: "Rabi, Ramsey, and benchmarking experiments, repeated as parameters drift" },
+      { label: "Optimal control", value: "GRAPE and CRAB algorithms design high-fidelity pulses" },
+      { label: "Tools", value: "Quantum Machines QUA, Zurich Instruments, Qblox, and lab-built systems" },
+    ],
+    history: "Pulse control comes from nuclear magnetic resonance and atomic physics, where pulse sequences have been used since the 1950s. In quantum computing, the DRAG technique of Motzoi and coauthors in 2009 and the GRAPE algorithm from NMR (Khaneja et al., 2005) became standard tools.",
+    comparison: [
+      "Gate-level programming uses calibrated gates, while pulse-level programming controls the waveforms that realize them.",
+      "Optimal control designs pulses numerically, while hand-tuned pulses rely on standard shapes.",
+      "Pulse access gives more freedom but demands more expertise and re-calibration.",
+    ],
+    faq: [
+      { q: "What is pulse-level control?", a: "Programming the actual microwave or laser pulses that implement quantum gates, instead of using pre-calibrated gates." },
+      { q: "Why would someone need it?", a: "To design better gates, calibrate devices, study noise, and implement specialized operations." },
+      { q: "Is pulse access available on cloud devices?", a: "It depends on the vendor. Some offer it to approved users, and laboratory control systems provide full access." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+      "quantum-signal-processing",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "iqm-garnet",
     ],
   },
 ];
