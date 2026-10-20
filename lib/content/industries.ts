@@ -158,9 +158,9 @@ export const industries: Industry[] = [
       "manufacturing",
     ],
     relatedResearch: [
-      "qaoa-portfolio-optimization-benchmark",
-      "quantum-machine-learning-kernel-methods",
-      "post-quantum-migration-case-study",
+      "farhi-qaoa-2014",
+      "tang-quantum-inspired-recommendation-2019",
+      "gidney-rsa-million-qubits-2025",
     ],
   },
   {
@@ -282,8 +282,7 @@ export const industries: Industry[] = [
       "agriculture",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -403,8 +402,7 @@ export const industries: Industry[] = [
       "automotive",
     ],
     relatedResearch: [
-      "qaoa-hardware-aware-circuit-compilation",
-      "qaoa-warm-start-techniques",
+      "farhi-qaoa-2014",
     ],
   },
   {
@@ -525,8 +523,8 @@ export const industries: Industry[] = [
       "space-defense",
     ],
     relatedResearch: [
-      "post-quantum-migration-case-study",
-      "quantum-repeater-prototype-demonstration",
+      "gidney-rsa-million-qubits-2025",
+      "bennett-quantum-teleportation-1993",
     ],
   },
   {
@@ -648,8 +646,7 @@ export const industries: Industry[] = [
       "automotive",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -770,8 +767,8 @@ export const industries: Industry[] = [
       "materials-science",
     ],
     relatedResearch: [
-      "qaoa-hardware-aware-circuit-compilation",
-      "variational-quantum-linear-solver-comparison",
+      "farhi-qaoa-2014",
+      "harrow-hassidim-lloyd-linear-systems-2009",
     ],
   },
   {
@@ -891,8 +888,8 @@ export const industries: Industry[] = [
       "finance",
     ],
     relatedResearch: [
-      "quantum-repeater-prototype-demonstration",
-      "post-quantum-migration-case-study",
+      "bennett-quantum-teleportation-1993",
+      "gidney-rsa-million-qubits-2025",
     ],
   },
   {
@@ -1012,7 +1009,7 @@ export const industries: Industry[] = [
       "manufacturing",
     ],
     relatedResearch: [
-      "quantum-advantage-claim-independent-verification",
+      "arute-quantum-supremacy-2019",
     ],
   },
   {
@@ -1132,8 +1129,8 @@ export const industries: Industry[] = [
       "energy",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "qaoa-hardware-aware-circuit-compilation",
+      "peruzzo-variational-eigensolver-2014",
+      "farhi-qaoa-2014",
     ],
   },
   {
@@ -1251,8 +1248,7 @@ export const industries: Industry[] = [
       "climate-environment",
     ],
     relatedResearch: [
-      "quantum-chemistry-active-space-selection",
-      "vqe-molecular-simulation-accuracy",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -1369,8 +1365,7 @@ export const industries: Industry[] = [
       "agriculture",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -1492,9 +1487,8 @@ export const industries: Industry[] = [
       "agriculture",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
-      "quantum-advantage-claim-independent-verification",
+      "peruzzo-variational-eigensolver-2014",
+      "arute-quantum-supremacy-2019",
     ],
   },
   {
@@ -1614,8 +1608,8 @@ export const industries: Industry[] = [
       "telecommunications",
     ],
     relatedResearch: [
-      "quantum-repeater-prototype-demonstration",
-      "post-quantum-migration-case-study",
+      "bennett-quantum-teleportation-1993",
+      "gidney-rsa-million-qubits-2025",
     ],
   },
   {
@@ -1733,8 +1727,7 @@ export const industries: Industry[] = [
       "energy",
     ],
     relatedResearch: [
-      "qaoa-hardware-aware-circuit-compilation",
-      "qaoa-warm-start-techniques",
+      "farhi-qaoa-2014",
     ],
   },
   {
@@ -1857,8 +1850,7 @@ export const industries: Industry[] = [
       "materials-science",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -1978,8 +1970,7 @@ export const industries: Industry[] = [
       "energy",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -2100,7 +2091,7 @@ export const industries: Industry[] = [
       "cybersecurity",
     ],
     relatedResearch: [
-      "quantum-advantage-claim-independent-verification",
+      "arute-quantum-supremacy-2019",
     ],
   },
   {
@@ -2217,7 +2208,7 @@ export const industries: Industry[] = [
       "climate-environment",
     ],
     relatedResearch: [
-      "post-quantum-migration-case-study",
+      "gidney-rsa-million-qubits-2025",
     ],
   },
   {
@@ -2334,7 +2325,7 @@ export const industries: Industry[] = [
       "finance",
     ],
     relatedResearch: [
-      "qaoa-hardware-aware-circuit-compilation",
+      "farhi-qaoa-2014",
     ],
   },
   {
@@ -2453,7 +2444,7 @@ export const industries: Industry[] = [
       "logistics",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
   {
@@ -2572,7 +2563,7 @@ export const industries: Industry[] = [
       "energy",
     ],
     relatedResearch: [
-      "qaoa-hardware-aware-circuit-compilation",
+      "farhi-qaoa-2014",
     ],
   },
   {
@@ -2691,7 +2682,7 @@ export const industries: Industry[] = [
       "government-public-sector",
     ],
     relatedResearch: [
-      "surface-code-decoder-neural-network",
+      "google-below-threshold-2024",
     ],
   },
   {
@@ -2811,8 +2802,8 @@ export const industries: Industry[] = [
       "telecommunications",
     ],
     relatedResearch: [
-      "post-quantum-migration-case-study",
-      "quantum-advantage-claim-independent-verification",
+      "gidney-rsa-million-qubits-2025",
+      "arute-quantum-supremacy-2019",
     ],
   },
   {
@@ -2934,8 +2925,7 @@ export const industries: Industry[] = [
       "chemicals",
     ],
     relatedResearch: [
-      "vqe-molecular-simulation-accuracy",
-      "quantum-chemistry-active-space-selection",
+      "peruzzo-variational-eigensolver-2014",
     ],
   },
 ];
