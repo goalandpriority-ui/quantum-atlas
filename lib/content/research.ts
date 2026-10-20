@@ -1,3 +1,5 @@
+export type ResearchFaq = { q: string; a: string };
+
 export type ResearchPaper = {
   slug: string;
   title: string;
@@ -10,411 +12,1597 @@ export type ResearchPaper = {
   keyFindings: string[];
   realWorldImpact: string;
   technicalAbstract: string;
+  // Citation information
+  venue?: string;
+  arxiv?: string;
+  reference?: string;
+  lastUpdated?: string;
+  // Long-form explanation sections. Pages render each section only when present.
+  background?: string[];
+  whatTheyDid?: string[];
+  results?: string[];
+  limitations?: string[];
+  legacy?: string[];
+  keyNumbers?: { label: string; value: string }[];
+  howToRead?: string[];
+  faq?: ResearchFaq[];
+  relatedAlgorithms?: string[];
+  relatedHardware?: string[];
+  relatedTerms?: string[];
+  relatedIndustries?: string[];
 };
 
 export const researchPapers: ResearchPaper[] = [
   {
-    slug: "surface-code-logical-qubit-improvement",
-    title: "Improved Logical Qubit Lifetimes Using Optimized Surface Code Decoders",
-    authors: "Chen, Martinez, Patel et al.",
-    institution: "Quantum hardware research collaboration",
-    date: "2026",
-    category: "error-correction",
-    difficulty: 4,
-    plainSummary:
-      "Researchers found a smarter way to detect and fix errors in quantum computers, making 'logical qubits' (the reliable, error-protected qubits built from many physical ones) last noticeably longer before failing.",
+    slug: "feynman-simulating-physics-1982",
+    title: "Simulating Physics with Computers",
+    authors: "Richard P. Feynman",
+    institution: "California Institute of Technology",
+    date: "1982",
+    category: "theory",
+    difficulty: 2,
+    plainSummary: "Richard Feynman's 1982 paper argues that ordinary computers cannot efficiently simulate quantum physics, and suggests building computers out of quantum parts so that they can. It is the paper most often credited with starting the idea of quantum computing.",
     keyFindings: [
-      "A new decoding algorithm processes error signals faster, allowing corrections to keep up with the pace of computation",
-      "Logical qubit error rates dropped by a measurable margin compared to previous decoding approaches",
-      "The technique works with existing superconducting hardware — no new chip design required",
+      "A classical computer needs resources that grow exponentially with system size to simulate a general quantum system exactly.",
+      "Probabilistic classical computers do not fix the problem, because quantum correlations cannot be reproduced by local hidden variables.",
+      "A computer built from quantum mechanical elements could, in principle, simulate quantum physics efficiently.",
+      "Simulating nature exactly is a worthwhile target for computer design, in the paper's view.",
     ],
-    realWorldImpact:
-      "This is the kind of incremental but essential progress needed before quantum computers can run long, complex algorithms reliably. Better decoders mean fewer physical qubits are needed per logical qubit — directly reducing the overhead discussed in our Quantum Error Correction article.",
-    technicalAbstract:
-      "The paper presents an optimized minimum-weight perfect matching decoder for surface codes, achieving reduced decoding latency while maintaining comparable logical error suppression, tested on a superconducting processor with a moderate-distance surface code implementation.",
+    realWorldImpact: "Quantum simulation of molecules and materials, the main reason many companies invest in quantum hardware today, follows directly from the question Feynman asked: use a quantum system to compute the behavior of another quantum system.",
+    technicalAbstract: "The paper examines whether a computer can simulate physics exactly. It argues that classical probabilistic computers cannot simulate quantum mechanics efficiently, discusses reversible computation and the limits imposed by the discreteness of space and time, and proposes a universal quantum simulator built from interacting quantum systems.",
+    venue: "International Journal of Theoretical Physics, volume 21, pages 467 to 488",
+    reference: "Feynman, R. P. (1982). Simulating physics with computers. International Journal of Theoretical Physics, 21(6-7), 467-488.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "By the early 1980s, computer simulation was a standard tool in physics, used for fluid flow, planetary motion, and the behavior of many-particle systems. Feynman gave the talk behind this paper at a 1981 conference on the physics of computation, held at MIT and co-organized by Edward Fredkin, Rolf Landauer, and Tommaso Toffoli. The meeting brought together physicists and computer scientists who were asking what physical limits apply to computation, including the energy cost of erasing information and the possibility of reversible machines.",
+      "Feynman's question was sharper than most. Suppose you want to simulate a physical system exactly, not approximately. For classical systems, such as a swarm of billiard balls, the amount of information to track grows in proportion to the number of balls. For quantum systems, the situation looks different, because the state of N interacting particles is described by an amount of data that grows exponentially with N. A chain of 50 spin-one-half particles already needs about 10 to the 15 numbers.",
+    ],
+    whatTheyDid: [
+      "The paper first sets out what it would mean for one machine to simulate another exactly. Feynman considers a computer made of discrete components and asks whether its behavior could imitate a physical law that involves continuous quantities and chance. He discusses cellular automata as a model of a classical physical computer, with local rules that update cells in parallel, and notes that such machines can mimic many classical physical laws.",
+      "He then turns to probability. A classical simulation of a quantum system could try to use random numbers to generate outcomes with the right statistics. Feynman argues that this fails for quantum mechanics in the general case, because the correlations between distant measurements cannot be produced by any local classical rule. He connects this to the work of John Bell on hidden variables, and describes the problem as the impossibility of a local probabilistic classical simulator of quantum behavior.",
+      "The proposed way out is to change the machine. If the computer is itself made of quantum mechanical elements, its state space grows in the same exponential way as the system being simulated, so no exponential overhead is needed. Feynman sketches a universal quantum simulator, a lattice of interacting spins whose interactions can be chosen to imitate the Hamiltonian of a target system. He does not give a full circuit model or an error analysis. The paper is a statement of a problem and a direction, not a blueprint.",
+    ],
+    results: [
+      "The central result is a claim about feasibility rather than a theorem: exact simulation of general quantum systems by classical machines is believed to require exponential resources, and quantum machines could avoid that cost.",
+      "The paper also points out that quantum simulation would be useful even if no other quantum algorithm were ever found, because the physical sciences are full of quantum systems whose properties are hard to compute.",
+      "Later developments confirmed the main thread. Seth Lloyd proved in 1996 that a quantum computer can efficiently simulate local quantum systems, which turned Feynman's suggestion into a theorem, and the first digital quantum simulations on trapped ions were reported in 2011.",
+    ],
+    limitations: [
+      "The paper does not provide an algorithm, a gate set, or an error-correction strategy. Error correction for quantum computers was not invented until 1995.",
+      "Its argument for the failure of classical simulation is informal. No one has proved that classical computers cannot simulate quantum systems efficiently, since that would imply a separation between complexity classes that remains open.",
+      "Many quantum systems are well handled by classical approximations such as density functional theory and tensor networks, so the exponential barrier applies to the hardest cases, not to all of them.",
+    ],
+    legacy: [
+      "The paper is the standard citation for the origin of quantum computing. David Deutsch's 1985 paper then defined the universal quantum computer formally, and Shor's 1994 algorithm showed that quantum computers could do more than simulation.",
+      "Quantum simulation remains the application with the strongest scientific case. Analog simulators built from cold atoms, ions, and superconducting circuits are the closest descendants of Feynman's proposal, and chemistry and materials simulation dominate resource estimates for fault-tolerant machines.",
+    ],
+    keyNumbers: [
+      { label: "Year and venue", value: "1982, International Journal of Theoretical Physics" },
+      { label: "Origin", value: "Talk at the 1981 MIT Physics of Computation conference" },
+      { label: "Size of the problem", value: "A system of N spin-one-half particles needs 2^N amplitudes to describe exactly" },
+      { label: "Follow-up theorem", value: "Lloyd (1996): quantum computers can efficiently simulate local quantum systems" },
+      { label: "First digital simulations", value: "Trapped-ion experiments reported in 2011" },
+    ],
+    howToRead: [
+      "Read the first few pages for the central argument, and skim the sections on cellular automata and reversible computation, which are more technical. The key passage is where Feynman explains why a probabilistic classical computer cannot reproduce quantum correlations.",
+      "Compare it with Deutsch's 1985 paper, which is written in a very different style and defines the computational model that Feynman only sketched.",
+    ],
+    faq: [
+      { q: "Did Feynman invent the quantum computer?", a: "He proposed the idea of simulating quantum physics with a quantum machine. Deutsch defined a universal quantum computer in 1985, and others built the theory and hardware over the following decades." },
+      { q: "Why can't classical computers simulate quantum systems?", a: "Not in general, in an exact and efficient way. The description of a quantum state grows exponentially with the number of particles, and no efficient classical method is known for the hardest cases." },
+      { q: "Is the paper still relevant?", a: "Yes. Quantum simulation of chemistry and materials is still regarded as the most promising application of quantum computers." },
+    ],
+    relatedAlgorithms: [
+      "trotter-suzuki-decomposition",
+      "quantum-phase-estimation",
+    ],
+    relatedHardware: [
+      "quera-aquila",
+      "google-willow",
+    ],
+    relatedTerms: [
+      "hilbert-space",
+      "quantum-simulator",
+      "quantum-chemistry-simulation",
+    ],
+    relatedIndustries: [
+      "materials-science",
+      "chemicals",
+    ],
   },
   {
-    slug: "vqe-molecular-simulation-accuracy",
-    title: "Higher-Accuracy Molecular Energy Estimation Using Adaptive VQE Ansätze",
-    authors: "Okafor, Lindqvist, Tanaka et al.",
-    institution: "Academic-industry chemistry collaboration",
-    date: "2026",
-    category: "applications",
+    slug: "deutsch-universal-quantum-computer-1985",
+    title: "Quantum Theory, the Church-Turing Principle and the Universal Quantum Computer",
+    authors: "David Deutsch",
+    institution: "University of Oxford",
+    date: "1985",
+    category: "theory",
     difficulty: 3,
-    plainSummary:
-      "Scientists improved a quantum chemistry technique (VQE) so it gives more accurate predictions about how molecules behave — using a 'smarter template' that adapts itself to each specific molecule instead of using one rigid approach for everything.",
+    plainSummary: "David Deutsch defines what a universal quantum computer is, shows that it could perform tasks no classical computer can, and gives the first example of a quantum algorithm. The paper turns Feynman's idea into a precise model of computation.",
     keyFindings: [
-      "The adaptive approach reduced energy calculation errors compared to standard, fixed VQE templates",
-      "Successfully simulated small molecules relevant to early-stage drug candidates",
-      "Required fewer quantum circuit executions to reach a given accuracy level than previous methods",
+      "A quantum Turing machine is a well-defined model of computation, and a universal quantum computer can simulate any physical process.",
+      "The Church-Turing principle, restated in physical terms, says that every finitely realizable physical system can be perfectly simulated by a universal computing machine operating by finite means.",
+      "A quantum computer can use quantum parallelism to determine a global property of a function with fewer evaluations than a classical computer.",
+      "Classical computers cannot be universal in this physical sense, because they cannot simulate quantum systems efficiently.",
     ],
-    realWorldImpact:
-      "More accurate, more efficient molecular simulation is one of the most credible near-term applications of quantum computing. This kind of improvement moves the field closer to quantum computers contributing meaningfully to real drug discovery pipelines, rather than just toy demonstrations.",
-    technicalAbstract:
-      "The authors introduce an adaptive derivative-assembled pseudo-Trotter (ADAPT) VQE ansatz construction method, demonstrating improved chemical accuracy and reduced circuit depth for ground-state energy estimation of small molecular systems on NISQ-era hardware.",
+    realWorldImpact: "The quantum Turing machine and the quantum circuit model that grew from it are the formal foundation for every quantum algorithm and every complexity result about quantum computing, including the definition of the class BQP.",
+    technicalAbstract: "The paper argues that the Church-Turing hypothesis should be understood as a statement about physics, formulates it as a physical principle, and shows that it holds for a quantum generalization of the Turing machine. It describes the universal quantum computer, discusses quantum parallelism, and gives an example of a task, deciding a property of a function, that a quantum computer can perform with a probability of success that no classical computer matches.",
+    venue: "Proceedings of the Royal Society of London A, volume 400, pages 97 to 117",
+    reference: "Deutsch, D. (1985). Quantum theory, the Church-Turing principle and the universal quantum computer. Proceedings of the Royal Society of London A, 400(1818), 97-117.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The Church-Turing thesis, formulated in the 1930s by Alonzo Church and Alan Turing, says that anything that can be computed by an effective procedure can be computed by a Turing machine. For decades it was treated as a statement about mathematics. Deutsch observed that it is also a claim about what physical machines can do, since a computer is a physical object subject to the laws of physics, and those laws might allow more than a Turing machine can do.",
+      "The timing mattered. Feynman had suggested in 1982 that quantum systems might compute in ways classical machines cannot, and Paul Benioff had written in 1980 about quantum mechanical models of Turing machines. What was missing was a general model of a quantum computer, a precise definition that could be analyzed mathematically, and a demonstration that such a machine does something qualitatively new.",
+    ],
+    whatTheyDid: [
+      "Deutsch begins by restating the Church-Turing principle as a physical law: every finitely realizable physical system can be perfectly simulated by a universal model computing machine operating by finite means. Classical Turing machines do not satisfy this version of the principle, since quantum systems have continuous state spaces and interference effects that a classical machine can only approximate with increasing cost.",
+      "He then defines the quantum Turing machine, in which the machine's tape and control are quantum systems, so that the machine can be in superpositions of configurations. The machine evolves by a unitary operation, and a universal quantum computer is one that can simulate any other such machine. He shows that this construction obeys the physical Church-Turing principle, at least within the limits of the model.",
+      "The paper includes the first example of a quantum computation that beats classical ones. Deutsch considers a function that takes one bit and returns one bit and asks whether it is constant or balanced. A classical computer must evaluate the function twice, once for each input. A quantum computer can evaluate it once on a superposition of both inputs and use interference to read out a global property. In the original version the algorithm succeeds only with probability one half. The improved version, which always succeeds, was found later by Cleve, Ekert, Macchiavello, and Mosca in 1998.",
+    ],
+    results: [
+      "The quantum Turing machine is shown to be a consistent computational model, and Deutsch argues that it is the right framework for asking what physics allows.",
+      "The one-bit example establishes the principle of quantum parallelism and interference, though the speedup is small and probabilistic in the original form.",
+      "Deutsch connects the work to the many-worlds interpretation of quantum mechanics and argues that quantum parallelism is evidence for it. That interpretive claim is controversial, and the technical results do not depend on it.",
+    ],
+    limitations: [
+      "The quantum Turing machine has technical gaps. Bernstein and Vazirani in 1993 and Yao in 1993 later gave a more rigorous treatment, and Yao showed that the quantum circuit model is equivalent to it.",
+      "The example algorithm gives no meaningful speedup, since it saves one function evaluation and succeeds with probability one half.",
+      "The paper does not address noise, decoherence, or error correction. The possibility of correcting errors in quantum computers was shown only in 1995 and 1996.",
+    ],
+    legacy: [
+      "Deutsch's 1989 paper on quantum computational networks introduced the circuit model that nearly all of the field uses today, and the 1992 Deutsch-Jozsa algorithm extended the one-bit example to n bits with a real exponential separation over deterministic algorithms.",
+      "The paper is also a founding document for quantum complexity theory. The class BQP, defined by Bernstein and Vazirani in 1993, is the quantum analogue of the classical class BPP, and it rests on the model Deutsch proposed.",
+    ],
+    keyNumbers: [
+      { label: "Year and venue", value: "1985, Proceedings of the Royal Society of London A" },
+      { label: "Model introduced", value: "The quantum Turing machine and the universal quantum computer" },
+      { label: "First algorithm", value: "One-bit constant-or-balanced problem, solved with one function evaluation and success probability one half" },
+      { label: "Improved version", value: "Cleve, Ekert, Macchiavello, and Mosca (1998): always succeeds" },
+      { label: "Later extension", value: "Deutsch-Jozsa algorithm (1992) for n-bit functions" },
+    ],
+    howToRead: [
+      "The first sections on the Church-Turing principle are conceptual and accessible. The sections that define quantum Turing machines are more technical, and modern readers may prefer the circuit-model treatments in textbooks.",
+      "Read it alongside the Deutsch-Jozsa algorithm page on this site for a clean modern treatment of the example.",
+    ],
+    faq: [
+      { q: "What is a universal quantum computer?", a: "A quantum machine that can simulate any other quantum machine, and by Deutsch's argument any finitely realizable physical system, with finite resources." },
+      { q: "What was Deutsch's algorithm?", a: "A procedure that decides whether a one-bit function is constant or balanced using one quantum evaluation instead of two classical ones, though in the original version it succeeds only half of the time." },
+      { q: "Why is the paper important?", a: "It gave quantum computing a precise mathematical model and linked computation to physics, which allowed later work on quantum algorithms and complexity." },
+    ],
+    relatedAlgorithms: [
+      "deutsch-jozsa",
+      "bernstein-vazirani",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "quantum-circuit",
+      "quantum-oracle",
+      "bqp",
+      "superposition",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+    ],
   },
   {
-    slug: "qaoa-portfolio-optimization-benchmark",
-    title: "Benchmarking QAOA Against Classical Heuristics for Portfolio Optimization",
-    authors: "Singh, Rossi, Müller et al.",
-    institution: "Finance-quantum computing research group",
-    date: "2026",
-    category: "applications",
-    difficulty: 3,
-    plainSummary:
-      "Researchers directly compared a quantum optimization algorithm (QAOA) against well-established classical methods for the kind of problem financial firms solve when balancing investment portfolios — and found the quantum approach is not yet winning, but the gap is narrowing.",
-    keyFindings: [
-      "Classical heuristics still outperformed QAOA on most tested portfolio sizes",
-      "QAOA showed competitive results on a specific subset of constrained problems",
-      "Performance gap narrowed compared to similar benchmarks from previous years, suggesting steady (if slow) progress",
-    ],
-    realWorldImpact:
-      "Honest benchmarking like this is valuable precisely because it resists hype — it tells financial institutions exactly where quantum optimization stands today, helping them make realistic decisions about when (and whether) to invest in quantum-based optimization tools.",
-    technicalAbstract:
-      "The study benchmarks QAOA implementations against simulated annealing and tabu search on Markowitz-style portfolio optimization instances of varying size, reporting solution quality and convergence behavior across classical and quantum approaches.",
-  },
-  {
-    slug: "trapped-ion-gate-fidelity-record",
-    title: "Record Two-Qubit Gate Fidelity Demonstrated in Trapped-Ion System",
-    authors: "Whitfield, Nakamura, Olsen et al.",
-    institution: "Trapped-ion hardware research group",
-    date: "2026",
-    category: "hardware",
-    difficulty: 3,
-    plainSummary:
-      "A research team achieved one of the most accurate two-qubit operations ever recorded, using trapped-ion qubits — meaning their quantum computer makes mistakes even less often when performing one of its most important operations.",
-    keyFindings: [
-      "Two-qubit gate fidelity exceeded previous published records for trapped-ion systems",
-      "Improvement attributed to refined laser pulse shaping and reduced motional heating of the trapped ions",
-      "Results were stable across repeated measurements over several hours of operation",
-    ],
-    realWorldImpact:
-      "Higher gate fidelity directly reduces the number of physical qubits needed for error correction, and improves the depth of circuits that can run before errors dominate — both contribute directly to bringing fault-tolerant quantum computing closer to reality.",
-    technicalAbstract:
-      "The team reports two-qubit gate fidelities achieved via amplitude- and phase-modulated laser pulses on a chain of trapped ytterbium ions, with randomized benchmarking confirming fidelity improvements over baseline gate implementations.",
-  },
-  {
-    slug: "quantum-machine-learning-kernel-methods",
-    title: "Quantum Kernel Methods Show Advantage on a Specific Synthetic Dataset",
-    authors: "Huang, Becker, Alvarez et al.",
-    institution: "Quantum machine learning research group",
-    date: "2026",
+    slug: "shor-prime-factorization-1997",
+    title: "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer",
+    authors: "Peter W. Shor",
+    institution: "AT&T Bell Laboratories",
+    date: "1997 (conference version 1994)",
     category: "algorithms",
     difficulty: 4,
-    plainSummary:
-      "Researchers found a narrow but genuine example where a quantum approach to machine learning beats classical methods — but importantly, only on a dataset specifically designed to favor the quantum method, not on real-world data.",
+    plainSummary: "Peter Shor shows that a quantum computer could factor large numbers and compute discrete logarithms in polynomial time, problems whose difficulty protects most of today's public-key cryptography. The result turned quantum computing from a curiosity into a matter of national security.",
     keyFindings: [
-      "The quantum kernel method outperformed classical kernel methods on the specially constructed dataset",
-      "On standard, real-world benchmark datasets, no consistent quantum advantage was observed",
-      "The result reinforces that proven quantum ML advantages remain narrow and problem-specific so far",
+      "Integer factoring can be done on a quantum computer in a number of steps that grows polynomially with the number of digits.",
+      "The same method computes discrete logarithms, which breaks Diffie-Hellman and elliptic-curve cryptography as well as RSA.",
+      "The key quantum step is finding the period of a function, using the quantum Fourier transform to make the period visible through interference.",
+      "The algorithm is probabilistic and succeeds with high probability after a few repetitions.",
     ],
-    realWorldImpact:
-      "This kind of careful, honest research is important context for the broader 'quantum AI' conversation — genuine quantum advantages in machine learning exist, but they are currently confined to specially constructed cases rather than mainstream AI workloads.",
-    technicalAbstract:
-      "The paper constructs a synthetic classification dataset based on the discrete logarithm problem, demonstrating a provable separation between quantum and classical kernel methods, while showing no significant advantage on standard UCI benchmark datasets.",
+    realWorldImpact: "Shor's algorithm is the reason governments and companies are migrating to post-quantum cryptography. NIST published its first post-quantum standards in 2024, and resource estimates for running the algorithm against RSA-2048 drive hardware roadmaps.",
+    technicalAbstract: "A computer is generally considered to be a universal computational device. The paper shows that on a quantum computer, the problems of finding the prime factors of an integer and of finding discrete logarithms can be solved in polynomial time with bounded error. It describes the order-finding subroutine using modular exponentiation and the quantum Fourier transform, and the classical reduction from factoring to order finding.",
+    venue: "SIAM Journal on Computing, volume 26, pages 1484 to 1509 (conference version: IEEE FOCS 1994)",
+    arxiv: "quant-ph/9508027",
+    reference: "Shor, P. W. (1997). Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer. SIAM Journal on Computing, 26(5), 1484-1509. arXiv:quant-ph/9508027. Conference version: Proceedings of the 35th Annual Symposium on Foundations of Computer Science (1994), 124-134.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "In 1994 public-key cryptography rested on a handful of computational problems believed to be hard. RSA, invented in 1977, depends on the difficulty of factoring the product of two large primes, and the Diffie-Hellman and ElGamal systems depend on the difficulty of discrete logarithms. The best known classical factoring algorithms, such as the number field sieve, run in sub-exponential time, which is fast enough to defeat short keys and too slow for keys of a few thousand bits.",
+      "Quantum computing was then a small field. Deutsch had defined the quantum computer in 1985, and Deutsch and Jozsa in 1992, Bernstein and Vazirani in 1993, and especially Daniel Simon in 1994 had found problems where quantum computers beat classical ones in an artificial oracle setting. Simon's algorithm, which finds a hidden period of a function using a Fourier transform over bit strings, was the direct inspiration for Shor's work.",
+    ],
+    whatTheyDid: [
+      "Shor starts with a classical reduction. To factor N, pick a random number a that shares no factor with N and look at the order r, the smallest positive integer with a to the power r equal to 1 modulo N. If r is even and a to the r over 2 is not minus 1 modulo N, then the greatest common divisor of N with a to the r over 2 plus or minus 1 gives a nontrivial factor. This works for a random a with probability at least one half, so a few attempts suffice. The hard part for a classical computer is finding r.",
+      "The quantum part finds r. The algorithm prepares a register in an equal superposition of the integers from 0 to Q minus 1, where Q is a power of two larger than N squared. It computes a to the x modulo N into a second register, then measures the second register, which leaves the first in a superposition of values of x that are spaced r apart. Applying the quantum Fourier transform to the first register produces a state whose probability is concentrated near multiples of Q over r. Measuring gives a number close to such a multiple, and the continued fractions algorithm recovers r from it with good probability.",
+      "The paper gives the circuit for the quantum Fourier transform over the integers modulo 2 to the n, building on Coppersmith's 1994 work, and shows that modular exponentiation can be done with a polynomial number of gates by repeated squaring. It then adapts the same method to the discrete logarithm problem, using a two-dimensional version of the Fourier transform. The total running time is polynomial in the number of bits of N, roughly cubic in the simplest implementation.",
+    ],
+    results: [
+      "Factoring and discrete logarithms are in BQP, the class of problems solvable with bounded error in polynomial time on a quantum computer. Since the best known classical algorithms are sub-exponential, this is a super-polynomial speedup.",
+      "The paper implies that RSA, Diffie-Hellman, DSA, and elliptic-curve cryptography are all insecure against a large enough quantum computer. Symmetric ciphers and hash functions are not broken, since Grover's 1996 algorithm gives only a quadratic speedup against them.",
+      "Subsequent work refined the cost. Gidney and Ekerå estimated in 2019 that RSA-2048 could be factored in about eight hours with 20 million noisy qubits, and Gidney reduced this in 2025 to under one million noisy qubits running for less than a week, under stated assumptions about error rates and cycle time.",
+    ],
+    limitations: [
+      "Running the algorithm on cryptographically relevant numbers needs fault-tolerant hardware with thousands of logical qubits, which does not exist. Small demonstrations, such as factoring 15 or 21, used shortcuts and do not indicate scalable capability.",
+      "The algorithm is specific to problems with a hidden periodic structure and does not speed up most other problems.",
+      "The classical reduction and the classical post-processing are part of the algorithm, and only the order-finding step is quantum.",
+    ],
+    legacy: [
+      "The paper changed the status of quantum computing and began the work on error correction. Shor himself proposed the first quantum error-correcting code in 1995, partly to answer the objection that decoherence would make machines like this impossible.",
+      "It is the main driver of post-quantum cryptography. The harvest-now-decrypt-later concern, in which adversaries store encrypted data until quantum computers can read it, follows directly, and government timelines for migration run to the early and mid 2030s.",
+    ],
+    keyNumbers: [
+      { label: "Year", value: "1994 conference version; 1997 journal version" },
+      { label: "Running time", value: "Polynomial in the number of bits; roughly O(n cubed) gates in the basic form" },
+      { label: "Best classical", value: "Number field sieve, sub-exponential time" },
+      { label: "RSA-2048 estimate (2019)", value: "About 20 million noisy qubits for 8 hours (Gidney and Ekerå)" },
+      { label: "RSA-2048 estimate (2025)", value: "Fewer than 1 million noisy qubits for under a week (Gidney)" },
+    ],
+    howToRead: [
+      "The first sections, which give the overview and the classical reduction, are readable with basic number theory. The sections on the quantum Fourier transform and the analysis of the measurement probabilities are technical.",
+      "For an easier route, read the Shor's algorithm and quantum Fourier transform pages on this site first, and then return to the paper.",
+    ],
+    faq: [
+      { q: "Can Shor's algorithm break RSA today?", a: "No. It needs a fault-tolerant quantum computer with thousands of logical qubits, and today's machines are far from that." },
+      { q: "What did Shor actually prove?", a: "That factoring and discrete logarithms can be solved in polynomial time with bounded error on a quantum computer." },
+      { q: "Does it threaten all encryption?", a: "No. It breaks public-key systems based on factoring and discrete logarithms, while symmetric ciphers such as AES-256 and hash functions remain secure." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "quantum-fourier-transform",
+      "simons-algorithm",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+    relatedTerms: [
+      "post-quantum-cryptography",
+      "harvest-now-decrypt-later",
+      "bqp",
+      "quantum-speedup",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+      "finance",
+      "government-public-sector",
+    ],
   },
   {
-    slug: "photonic-qubit-room-temperature-operation",
-    title: "Stable Room-Temperature Photonic Qubit Operation Over Extended Duration",
-    authors: "Dubois, Yamamoto, Singh et al.",
-    institution: "Photonic quantum computing research group",
-    date: "2026",
-    category: "hardware",
-    difficulty: 2,
-    plainSummary:
-      "A team demonstrated that their light-based ('photonic') quantum computer could run reliably at room temperature for several hours straight — a meaningful practical step, since most quantum computers need extreme, expensive cooling.",
-    keyFindings: [
-      "Photonic qubit operations remained stable for several hours without active recalibration",
-      "No cryogenic cooling was required, unlike superconducting approaches",
-      "Error rates remained within acceptable bounds for the small-scale circuits tested",
-    ],
-    realWorldImpact:
-      "Room-temperature operation could make quantum hardware dramatically cheaper and easier to deploy outside specialized physics labs, potentially accelerating commercial adoption — though photonic approaches still face challenges scaling up qubit-qubit interactions.",
-    technicalAbstract:
-      "The authors report continuous operation of a photonic qubit processor at ambient temperature over multiple hours, characterizing gate stability and error rates using standard process tomography techniques on a small-scale linear optical circuit.",
-  },
-  {
-    slug: "neutral-atom-array-scaling",
-    title: "Scaling Neutral Atom Arrays to Larger Qubit Counts with Maintained Fidelity",
-    authors: "Larsen, Abubakar, Chen et al.",
-    institution: "Neutral atom hardware research group",
-    date: "2026",
-    category: "hardware",
-    difficulty: 3,
-    plainSummary:
-      "Researchers showed they could increase the number of atoms held in their laser-based quantum computer without the accuracy of operations getting noticeably worse — an important test for whether this type of hardware can keep growing.",
-    keyFindings: [
-      "Qubit count was increased substantially compared to the team's previous generation system",
-      "Two-qubit gate fidelity remained statistically consistent across the larger array",
-      "Atom loading and rearrangement times improved through refined laser control techniques",
-    ],
-    realWorldImpact:
-      "Demonstrating that fidelity doesn't degrade as neutral atom systems scale up is an important signal for this hardware approach's long-term viability, relevant to the kind of reconfigurable architectures discussed in our Hardware Database.",
-    technicalAbstract:
-      "The paper reports scaling of a neutral atom array using optical tweezers, with randomized benchmarking confirming maintained two-qubit gate fidelity across the expanded array, alongside improved atom-loading success rates via refined laser cooling protocols.",
-  },
-  {
-    slug: "qaoa-warm-start-techniques",
-    title: "Warm-Start Initialization Techniques Improve QAOA Convergence Speed",
-    authors: "Petrov, Nakashima, Oyelaran et al.",
-    institution: "Quantum optimization research group",
-    date: "2026",
+    slug: "grover-database-search-1996",
+    title: "A Fast Quantum Mechanical Algorithm for Database Search",
+    authors: "Lov K. Grover",
+    institution: "Bell Laboratories, Lucent Technologies",
+    date: "1996",
     category: "algorithms",
     difficulty: 3,
-    plainSummary:
-      "Researchers found that giving QAOA a smart starting point (based on a quick classical approximation) instead of starting from scratch helped it find good solutions faster — like giving a search a useful hint instead of starting blind.",
+    plainSummary: "Lov Grover shows that a quantum computer can search an unsorted list of N items in about the square root of N steps, where any classical method needs about N. The speedup is smaller than Shor's but applies to a very wide range of problems.",
     keyFindings: [
-      "Warm-start initialization reduced the number of optimization iterations needed to reach comparable solution quality",
-      "The technique worked across multiple optimization problem types tested",
-      "Benefits were most pronounced on larger problem instances",
+      "Searching an unstructured list with N entries takes about the square root of N quantum queries, compared with about N classically.",
+      "The algorithm alternates two steps, one that flips the sign of the target's amplitude and one that reflects all amplitudes about their average.",
+      "After roughly pi over 4 times the square root of N rounds, measuring returns the target with high probability.",
+      "The method does not require any structure in the data beyond the ability to recognize a correct answer.",
     ],
-    realWorldImpact:
-      "Faster convergence directly translates to less quantum hardware time needed per problem solved, which matters given how limited and expensive quantum computing access remains — a practical efficiency gain relevant to the optimization applications discussed in our Finance and Logistics industry pages.",
-    technicalAbstract:
-      "The paper introduces a classically-computed warm-start initialization strategy for QAOA parameters, derived from a relaxed continuous version of the target combinatorial optimization problem, demonstrating reduced iteration counts to reach target approximation ratios across Max-Cut and portfolio optimization benchmark instances.",
+    realWorldImpact: "Grover's algorithm sets the baseline for what quantum computers can do on unstructured problems, shapes the choice of symmetric key lengths such as AES-256, and underlies amplitude amplification, which is used inside many other quantum algorithms.",
+    technicalAbstract: "The paper presents a quantum algorithm that finds a marked item among N unsorted items using O of the square root of N queries to an oracle that recognizes the item. The algorithm uses a sequence of unitary operations that rotate the state vector toward the marked item, and the final measurement yields the item with high probability.",
+    venue: "Proceedings of the 28th Annual ACM Symposium on Theory of Computing (STOC), pages 212 to 219",
+    arxiv: "quant-ph/9605043",
+    reference: "Grover, L. K. (1996). A fast quantum mechanical algorithm for database search. Proceedings of the 28th Annual ACM Symposium on Theory of Computing (STOC '96), 212-219. arXiv:quant-ph/9605043.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "After Shor's algorithm appeared in 1994, many researchers expected quantum computers to help only with problems that have hidden algebraic structure, such as factoring, where a Fourier transform can expose the structure. Searching a list, in which nothing is known about how the items are arranged, seemed to offer nothing for interference to work with. Classical computers need to examine about half the entries on average to find one marked item, and nothing smarter is possible without structure.",
+      "Grover, working at Bell Labs, found that even this task benefits from quantum mechanics. His paper appeared at the Symposium on Theory of Computing in 1996, and a longer version was published in Physical Review Letters in 1997. Bennett, Bernstein, Brassard, and Vazirani proved at about the same time that no quantum algorithm can do better than order square root of N queries for this problem, so the result is optimal.",
+    ],
+    whatTheyDid: [
+      "The algorithm begins with n qubits, where N equals 2 to the n, and applies Hadamard gates to create an equal superposition of all N states, each with amplitude one over the square root of N. It then repeats a two-step operation. In the first step, the oracle flips the sign of the amplitude of the marked state and leaves the others alone. In the second step, a diffusion operator reflects every amplitude about the average amplitude of all the states.",
+      "Each round increases the amplitude of the marked state a little and decreases the others. In geometric terms, the state lives in a plane spanned by the marked state and the equal superposition of the unmarked states, and each round rotates it toward the marked state by a fixed angle of about two over the square root of N radians. After roughly pi over 4 times the square root of N rounds, the state is nearly aligned with the marked item, and a measurement finds it with probability close to one.",
+      "The paper explains why the number of rounds matters. If the process runs too long, the state rotates past the target and the probability of success falls again, so the number of iterations has to be chosen in advance. When the number of marked items is not known, Boyer, Brassard, Høyer, and Tapp showed in 1998 how to find one by trying a schedule of iteration counts, with the same square-root scaling.",
+    ],
+    results: [
+      "The main result is a quadratic speedup for unstructured search: O of the square root of N quantum queries versus order N classical ones.",
+      "The algorithm is optimal. The lower bound of Bennett and coauthors shows that no quantum algorithm can find a marked item in fewer than about the square root of N queries.",
+      "Because the algorithm needs only an oracle that recognizes a solution, it applies to any problem where verifying an answer is easy, such as satisfiability, constraint solving, and exhaustive key search, though the speedup is always limited to quadratic.",
+    ],
+    limitations: [
+      "A quadratic speedup is modest compared with Shor's. When error correction and slow logical gates are included, the advantage over classical hardware appears only for very large problems.",
+      "The oracle has to be implemented, and its circuit may cost more than the search itself. Loading classical data into the oracle is expensive, so Grover search does not accelerate searching a conventional database.",
+      "The algorithm parallelizes poorly. With k quantum machines running in parallel, the speedup is only a factor of the square root of k, which is worse than classical parallelism.",
+    ],
+    legacy: [
+      "Amplitude amplification, developed by Brassard, Høyer, Mosca, and Tapp, generalizes Grover's method to any quantum algorithm with a chance of success, and it is used in quantum counting, minimum finding, and Monte Carlo estimation.",
+      "For cryptography, the result implies that a symmetric key of k bits offers about k over 2 bits of security against a quantum attacker, which is the reason for recommendations to use 256-bit keys.",
+    ],
+    keyNumbers: [
+      { label: "Year and venue", value: "1996, STOC; extended in Physical Review Letters (1997)" },
+      { label: "Queries", value: "About (pi over 4) times the square root of N" },
+      { label: "Classical", value: "About N over 2 on average, and N in the worst case" },
+      { label: "Optimality", value: "Proved by Bennett, Bernstein, Brassard, and Vazirani (1997)" },
+      { label: "Example", value: "For one million items, about 785 iterations instead of about 500,000" },
+    ],
+    howToRead: [
+      "The paper is short and readable. The geometric picture of rotation by a fixed angle is the key idea, and later expositions by Nielsen and Chuang and by Aaronson provide additional intuition.",
+      "The Grover's algorithm page on this site walks through a worked example with four items, where a single round finds the answer with certainty.",
+    ],
+    faq: [
+      { q: "How much faster is Grover's algorithm?", a: "Quadratically: about the square root of N steps instead of about N, so one million items need roughly 785 quantum iterations." },
+      { q: "Does Grover's algorithm break encryption?", a: "It weakens symmetric keys by effectively halving their length in an idealized model, so 256-bit keys are still considered secure." },
+      { q: "Can it speed up a normal database search?", a: "No. Real databases have structure and indexes, and loading data into a quantum state costs more than the search saves." },
+    ],
+    relatedAlgorithms: [
+      "grovers-algorithm",
+      "quantum-amplitude-amplification",
+      "quantum-counting",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedTerms: [
+      "quantum-oracle",
+      "quantum-interference",
+      "quantum-speedup",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+      "logistics",
+    ],
   },
   {
-    slug: "quantum-volume-benchmark-comparison",
-    title: "Cross-Platform Quantum Volume Comparison Across Five Hardware Architectures",
-    authors: "Iverson, Park, Castellanos et al.",
-    institution: "Independent quantum benchmarking consortium",
-    date: "2026",
-    category: "hardware",
+    slug: "bennett-brassard-bb84-1984",
+    title: "Quantum Cryptography: Public Key Distribution and Coin Tossing",
+    authors: "Charles H. Bennett and Gilles Brassard",
+    institution: "IBM Thomas J. Watson Research Center; Université de Montréal",
+    date: "1984",
+    category: "theory",
     difficulty: 2,
-    plainSummary:
-      "A team ran the same standardized 'quantum volume' test across multiple different types of quantum computers (superconducting, trapped-ion, neutral atom) to compare them fairly — like giving different brands of cars the same standardized test track instead of comparing spec sheets.",
+    plainSummary: "Charles Bennett and Gilles Brassard describe the first quantum key distribution protocol, now called BB84. Two parties send single photons prepared in randomly chosen bases to create a shared secret key, and any eavesdropper unavoidably disturbs the photons and can be detected.",
     keyFindings: [
-      "No single hardware architecture dominated across all tested metrics",
-      "Trapped-ion systems generally showed higher quantum volume scores relative to qubit count",
-      "Superconducting systems showed advantages in raw operation speed",
+      "Information encoded in non-orthogonal quantum states cannot be copied or measured without disturbing it, which makes eavesdropping detectable.",
+      "Alice sends photons in one of two bases, Bob measures in randomly chosen bases, and they keep the results where their bases matched.",
+      "A comparison of a sample of the key reveals the error rate, and a high error rate signals an eavesdropper.",
+      "The same ideas can be used for protocols such as coin tossing between mistrustful parties.",
     ],
-    realWorldImpact:
-      "Standardized cross-platform benchmarks like this help cut through marketing claims from different quantum hardware companies, giving researchers and potential users a clearer, more apples-to-apples picture — directly relevant to comparing the processors covered in our Hardware Database.",
-    technicalAbstract:
-      "The study applies the standardized Quantum Volume benchmark protocol across five publicly accessible quantum processors spanning superconducting, trapped-ion, and neutral atom architectures, reporting comparative results alongside gate speed and total job throughput measurements.",
+    realWorldImpact: "BB84 is the basis of the commercial and national quantum key distribution networks that exist today, including the 2,000-kilometer Beijing to Shanghai backbone, and it launched the field of quantum cryptography.",
+    technicalAbstract: "The paper describes a method of public key distribution based on the transmission of single photons in two conjugate polarization bases. Security derives from the fact that measuring a quantum state in the wrong basis disturbs it. The authors also present a coin tossing protocol and outline the use of quantum states to detect eavesdropping.",
+    venue: "Proceedings of the IEEE International Conference on Computers, Systems and Signal Processing, Bangalore, pages 175 to 179",
+    arxiv: "2003.06557",
+    reference: "Bennett, C. H., & Brassard, G. (1984). Quantum cryptography: Public key distribution and coin tossing. Proceedings of the IEEE International Conference on Computers, Systems and Signal Processing, Bangalore, India, 175-179. Reprinted in Theoretical Computer Science, 560, 7-11 (2014). arXiv:2003.06557.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The idea behind the paper came from Stephen Wiesner, a physicist who proposed around 1970 that quantum states could be used to make banknotes that cannot be counterfeited. Wiesner called the idea conjugate coding. He could not get the work published at the time, and it appeared in 1983. Bennett, who had been a friend of Wiesner, and Brassard began to think about using the same principle for communication.",
+      "The problem they addressed was key distribution. Two people who want to communicate securely with a one-time pad, which is unbreakable in theory, need a shared random key as long as the message. Distributing that key over a public channel without it being copied was an open problem. Classical solutions rely on the difficulty of mathematical problems, as in RSA, and so offer no absolute guarantee.",
+    ],
+    whatTheyDid: [
+      "The protocol uses single photons whose polarization is prepared in one of four states, drawn from two bases: horizontal and vertical, or the two diagonal directions. The two bases are conjugate, which means that a measurement in one basis gives a completely random result for a state prepared in the other. Alice picks a random bit and a random basis for each photon and sends it to Bob. Bob measures each photon in a randomly chosen basis.",
+      "After the transmission, Alice and Bob announce over an ordinary public channel which basis they used for each photon, but not the bit values. They keep only the photons for which the bases agree, which is about half. For those, Bob's result equals Alice's bit if nothing disturbed the photon. They then compare a random subset of the kept bits. If an eavesdropper had measured the photons in transit, she would have guessed the wrong basis half the time, and when the photon is then measured by Bob in the right basis, an error occurs a quarter of the time on those photons, so the error rate would show up in the comparison.",
+      "The paper also describes a protocol for coin tossing by telephone using quantum states, which was an early example of quantum cryptography beyond key distribution. The error correction and privacy amplification steps that turn the raw key into a final secret key were added in later work by Bennett, Brassard, Crépeau, and Maurer in the late 1980s and 1990s.",
+    ],
+    results: [
+      "The protocol shows that a secret key can be established with security based on the laws of quantum mechanics and not on computational assumptions.",
+      "Peter Shor and John Preskill proved in 2000 that BB84 is secure against any attack allowed by quantum mechanics for an error rate below about 11 percent, in the idealized single-photon model.",
+      "A prototype by Bennett and colleagues in 1989 sent photons over about 32 centimeters of free space, and commercial fiber systems followed in the 2000s.",
+    ],
+    limitations: [
+      "The original proposal assumes ideal single-photon sources and detectors. Real systems that use weak laser pulses are vulnerable to photon-number-splitting attacks, which decoy-state methods, proposed in 2003 to 2005, address.",
+      "Photon loss in fiber limits the distance to a few hundred kilometers without trusted nodes or repeaters.",
+      "The protocol needs an authenticated classical channel, so QKD alone does not provide full communication security.",
+    ],
+    legacy: [
+      "BB84 inspired Ekert's 1991 entanglement-based protocol, the six-state protocol, device-independent QKD, and measurement-device-independent QKD. It has been deployed in satellite experiments, including China's Micius satellite, and in national networks in Europe and Asia.",
+      "The paper remains cited both as a landmark in quantum information and as a reminder that physical principles can provide security beyond that of mathematical assumptions, even if agencies such as the NSA and the UK NCSC prefer post-quantum cryptography for general use.",
+    ],
+    keyNumbers: [
+      { label: "Year", value: "1984, presented in Bangalore in December" },
+      { label: "Key sifting", value: "About half of the photons are kept after basis comparison" },
+      { label: "Intercept-resend error", value: "25 percent errors in the kept bits if every photon is intercepted" },
+      { label: "Security bound", value: "Shor and Preskill (2000): secure for error rates below about 11 percent in the ideal case" },
+      { label: "First prototype", value: "1989, about 32 centimeters of free-space transmission" },
+    ],
+    howToRead: [
+      "The paper is only five pages and is written for a general audience in computer science. The central section is the description of the protocol with the two bases. Later sections on coin tossing are less often cited.",
+      "The reprint in Theoretical Computer Science in 2014 includes a short commentary by the authors about the history of the idea.",
+    ],
+    faq: [
+      { q: "What is BB84?", a: "The first quantum key distribution protocol, in which Alice sends photons in random bases and Bob measures them to create a shared secret key, with eavesdropping detectable." },
+      { q: "Why is it called BB84?", a: "After the two authors, Bennett and Brassard, and the year, 1984." },
+      { q: "Is BB84 used in practice?", a: "Yes. Variants with decoy states are used in commercial QKD systems and national networks." },
+    ],
+    relatedAlgorithms: [
+      "bb84-protocol",
+      "e91-protocol",
+      "kitaev-six-state-protocol",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedTerms: [
+      "quantum-key-distribution",
+      "no-cloning-theorem",
+      "uncertainty-principle",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+      "cybersecurity",
+      "space-defense",
+    ],
   },
   {
-    slug: "post-quantum-migration-case-study",
-    title: "Case Study: Post-Quantum Cryptography Migration in a Large Financial Institution",
-    authors: "Bergström, Adeyemi, Fontaine et al.",
-    institution: "Cybersecurity and financial systems research group",
-    date: "2026",
-    category: "applications",
-    difficulty: 2,
-    plainSummary:
-      "Researchers documented what actually happened when a large financial company tried to upgrade its systems to the new quantum-resistant encryption standards — including the unexpected technical headaches that came up along the way.",
+    slug: "bennett-quantum-teleportation-1993",
+    title: "Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels",
+    authors: "Charles H. Bennett, Gilles Brassard, Claude Crépeau, Richard Jozsa, Asher Peres, and William K. Wootters",
+    institution: "IBM Research; Université de Montréal; Technion; Williams College",
+    date: "1993",
+    category: "theory",
+    difficulty: 3,
+    plainSummary: "Six physicists show that the state of a quantum particle can be transferred to another particle far away, without sending the particle itself, by using a shared entangled pair and two classical bits. The original state is destroyed in the process, so nothing is copied and nothing travels faster than light.",
     keyFindings: [
-      "Migration took substantially longer than initially planned due to legacy system dependencies",
-      "Performance overhead from new post-quantum algorithms was measurable but manageable for most use cases",
-      "Several previously undocumented third-party software dependencies on older encryption were discovered during the process",
+      "An unknown qubit state can be transferred between distant locations using one shared entangled pair and two classical bits of communication.",
+      "The sender performs a joint measurement of the unknown qubit and her half of the entangled pair, and the receiver applies one of four corrections that depends on the result.",
+      "The protocol does not violate the no-cloning theorem, since the original state is destroyed by the measurement.",
+      "No information about the state is revealed to anyone along the way, and no signal travels faster than light, since the receiver needs the classical bits.",
     ],
-    realWorldImpact:
-      "Real-world case studies like this are valuable precisely because they reveal practical implementation challenges that purely theoretical papers miss — directly useful for other organizations planning the same migration discussed in our Cybersecurity industry page.",
-    technicalAbstract:
-      "The paper documents a 14-month post-quantum cryptography migration project at an undisclosed large financial institution, detailing the transition to NIST-standardized lattice-based algorithms across customer-facing and internal systems, with quantitative performance overhead measurements.",
+    realWorldImpact: "Teleportation is a building block of quantum networks, quantum repeaters, and fault-tolerant quantum computers, where gate teleportation is used to apply operations on encoded qubits.",
+    technicalAbstract: "An unknown quantum state of a spin-one-half particle can be disassembled into, and later reconstructed from, purely classical information and purely nonclassical Einstein-Podolsky-Rosen correlations. The sender needs to know neither the state nor the location of the receiver. The paper describes the protocol, shows that it works for any state of a two-level system, and discusses its generalization.",
+    venue: "Physical Review Letters, volume 70, pages 1895 to 1899",
+    reference: "Bennett, C. H., Brassard, G., Crépeau, C., Jozsa, R., Peres, A., & Wootters, W. K. (1993). Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels. Physical Review Letters, 70(13), 1895-1899.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "By 1993 entanglement had been a subject of debate for nearly sixty years, since Einstein, Podolsky, and Rosen's 1935 argument and Bell's 1964 theorem. The no-cloning theorem of 1982 had shown that unknown quantum states cannot be copied. Together these facts raised a puzzle: if a quantum state cannot be copied, and cannot be measured without being disturbed, how can it be sent from one place to another when the channel between the two places is noisy or not available?",
+      "The paper grew out of conversations between Bennett and Brassard and Crépeau, Jozsa, Peres, and Wootters, who met at a workshop in Montréal. The group realized that shared entanglement could play the role of a quantum channel, provided it was supplemented by classical communication, and that the combination allows a state to move without ever being measured completely.",
+    ],
+    whatTheyDid: [
+      "Alice and Bob share a pair of qubits in the maximally entangled Bell state, with Alice holding one qubit and Bob the other. Alice has a third qubit in an unknown state that she wants to send to Bob. She performs a joint measurement on her two qubits, the unknown one and her half of the pair, in the Bell basis, which has four possible outcomes. The measurement collapses her two qubits and, through the entanglement, projects Bob's qubit into a state that is related to the unknown state by one of four simple operations.",
+      "Alice sends the two-bit outcome to Bob over an ordinary channel. Bob applies the operation corresponding to the outcome: nothing, a bit flip, a phase flip, or both. After the correction, Bob's qubit is in exactly the state that Alice's qubit had before the measurement. The state has moved, and the original has been destroyed, so the protocol is consistent with the no-cloning theorem.",
+      "The authors check the protocol for arbitrary input states and show that the outcome statistics are uniform, so the two bits tell Bob nothing about the state by themselves. They also note a resource count: one shared pair and two classical bits transfer one qubit, which is a trade between classical bits and entanglement that anticipates later theory on resource inequalities.",
+    ],
+    results: [
+      "Teleportation works for every state of a two-level system, with perfect fidelity in the ideal case.",
+      "The protocol shows that entanglement and classical communication together can substitute for a quantum channel.",
+      "Experimental teleportation of photon states was reported in 1997 by groups in Innsbruck, led by Anton Zeilinger, and in Rome. Distances have since extended to over 100 kilometers on the ground and more than 1,400 kilometers from the ground to the Micius satellite in 2017.",
+    ],
+    limitations: [
+      "The protocol needs a Bell-state measurement, which is hard to do perfectly with photons, where linear optics can distinguish at most two of the four Bell states, limiting the success probability to one half.",
+      "Entanglement must be created and distributed first, and it is easily degraded by noise, so practical systems need purification or error correction.",
+      "Teleportation cannot transmit information faster than light, since the classical message is required.",
+    ],
+    legacy: [
+      "Entanglement swapping, quantum repeaters, and gate teleportation all derive from the protocol. Gottesman and Chuang showed in 1999 that teleporting through a prepared state can apply gates, which is how non-Clifford gates are implemented in fault-tolerant machines using magic states.",
+      "The concept also became a standard way to teach quantum information, and Zeilinger shared the 2022 Nobel Prize in Physics for experiments with entangled photons that include teleportation.",
+    ],
+    keyNumbers: [
+      { label: "Resources per qubit", value: "One Bell pair and two classical bits" },
+      { label: "Bell measurement outcomes", value: "Four, corresponding to four corrections" },
+      { label: "First experiments", value: "1997, in Innsbruck and Rome with photons" },
+      { label: "Ground-to-satellite record", value: "Over 1,400 km (Micius satellite, 2017)" },
+      { label: "Linear-optics Bell measurement", value: "Success probability at most one half" },
+    ],
+    howToRead: [
+      "The paper is short and mostly self-contained. Read the section on the protocol first, then the discussion of the information content of the classical channel.",
+      "For a modern circuit-model treatment, compare the quantum teleportation page on this site, which uses a CNOT and Hadamard gate for the Bell measurement.",
+    ],
+    faq: [
+      { q: "Is quantum teleportation faster than light?", a: "No. The receiver cannot recover the state without the two classical bits, which travel no faster than light." },
+      { q: "Does teleportation copy the state?", a: "No. The original state is destroyed in the measurement, so the no-cloning theorem is respected." },
+      { q: "Why was this paper important?", a: "It showed how entanglement can serve as a resource for moving quantum information, and led to quantum repeaters and gate teleportation." },
+    ],
+    relatedAlgorithms: [
+      "quantum-teleportation-protocol",
+      "e91-protocol",
+    ],
+    relatedHardware: [
+      "ionq-forte",
+    ],
+    relatedTerms: [
+      "quantum-teleportation",
+      "entanglement",
+      "bell-state",
+      "no-cloning-theorem",
+    ],
+    relatedIndustries: [
+      "telecommunications",
+    ],
   },
   {
-    slug: "surface-code-decoder-neural-network",
-    title: "Neural Network-Based Decoders Improve Real-Time Surface Code Error Correction",
-    authors: "Ferreira, Wojciechowski, Khatri et al.",
-    institution: "Quantum error correction research group",
-    date: "2026",
+    slug: "shor-error-correcting-code-1995",
+    title: "Scheme for Reducing Decoherence in Quantum Computer Memory",
+    authors: "Peter W. Shor",
+    institution: "AT&T Bell Laboratories",
+    date: "1995",
     category: "error-correction",
-    difficulty: 4,
-    plainSummary:
-      "Researchers trained a small AI model to do the job of identifying and fixing quantum errors faster than traditional mathematical decoding methods — an interesting case of classical AI directly helping quantum computing hardware work better.",
+    difficulty: 3,
+    plainSummary: "Peter Shor shows that quantum information can be protected from errors by encoding one qubit into nine. The paper answered the main objection to quantum computing, that quantum states are too fragile to survive long computations.",
     keyFindings: [
-      "Neural network decoders processed error syndromes faster than traditional matching-based decoders",
-      "Decoding accuracy remained comparable to established classical decoding algorithms",
-      "The approach showed particular promise for codes with irregular or non-standard structures",
+      "One qubit can be encoded into nine qubits so that any error on a single qubit, not just a bit flip, can be detected and corrected.",
+      "The code combines a three-qubit code against bit flips with a three-qubit code against phase flips.",
+      "Measuring parity checks reveals which error occurred without revealing the encoded state, so the information survives.",
+      "Continuous errors are reduced to a discrete set of possibilities by the act of checking, so a finite set of corrections is enough.",
     ],
-    realWorldImpact:
-      "This is a concrete example of the 'AI helping quantum computing' direction discussed in our Quantum vs AI comparison — classical machine learning assisting with a very specific, well-defined quantum hardware problem rather than claims about quantum speeding up AI.",
-    technicalAbstract:
-      "The paper trains a convolutional neural network to decode surface code error syndromes, benchmarking decoding latency and logical error suppression against minimum-weight perfect matching decoders across several code distances on simulated noise models.",
+    realWorldImpact: "The paper started the field of quantum error correction, which underlies every roadmap to a fault-tolerant quantum computer, including Google's surface code experiments and IBM's plan for the Starling machine.",
+    technicalAbstract: "A scheme is presented for storing one qubit in nine qubits so that the original state can be recovered after an arbitrary error on any one of the nine qubits. The scheme uses the redundancy of the code and measurement of syndrome information, and it is argued that it can be applied repeatedly to reduce the effect of decoherence in a quantum memory.",
+    venue: "Physical Review A, volume 52, pages R2493 to R2496",
+    reference: "Shor, P. W. (1995). Scheme for reducing decoherence in quantum computer memory. Physical Review A, 52(4), R2493-R2496.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "In the early 1990s there were two strong arguments against building a quantum computer. The first was the no-cloning theorem: classical error correction works by making copies of data and taking a majority vote, and quantum states cannot be copied. The second was that quantum errors are continuous. A qubit can drift by any small angle, and it seemed that correcting such errors would require infinite precision, as in an analog computer.",
+      "Rolf Landauer and others argued that decoherence would limit any quantum computation to a few steps. Shor's factoring algorithm, announced in 1994, made the stakes higher. If the algorithm could not be run on a noisy machine, then the speedup would be only theoretical. This created an urgent need for a method that could protect quantum information.",
+    ],
+    whatTheyDid: [
+      "The construction starts from two simple ideas. To protect against bit flips, encode 0 as 000 and 1 as 111, and fix errors by majority vote, without measuring the qubits themselves. Instead, measure whether neighbors agree, which indicates an error without revealing the value. To protect against phase flips, apply the same idea in a rotated basis, using plus and minus states.",
+      "Shor concatenates the two. He first encodes the qubit in three qubits to protect against phase flips, and then encodes each of those three in three qubits to protect against bit flips, giving nine in total. Any single-qubit error, whether a bit flip, a phase flip, or both, can be detected by measuring eight parity checks and corrected by applying the appropriate gate.",
+      "The paper also explains why continuous errors are not a problem. Any error on a single qubit can be written as a combination of four basic operations: no error, a bit flip, a phase flip, and both. Measuring the parity checks projects the state onto one of these cases, and the correction then removes the error exactly. The measurement thus converts a continuous error into a discrete one, which is why finite precision suffices.",
+    ],
+    results: [
+      "The nine-qubit code corrects any error that affects a single qubit, and it does so without learning the encoded state.",
+      "The result demonstrated that error correction is possible in principle for quantum information, which changed expectations about the field.",
+      "Andrew Steane independently found a seven-qubit code in 1996, and Calderbank and Shor, and Steane, developed the CSS construction that generalizes both. Within two years, threshold theorems showed that arbitrarily long quantum computations are possible if error rates are below a threshold.",
+    ],
+    limitations: [
+      "The code corrects only one error at a time, and it assumes that the correction operations and syndrome measurements are themselves perfect, which a real computer cannot guarantee.",
+      "Nine physical qubits for one logical qubit is a high overhead, and the construction is not the most efficient. The five-qubit code is the smallest that corrects an arbitrary single error.",
+      "The paper addresses memory, not computation. Performing gates on encoded qubits without spreading errors needed the fault-tolerance techniques developed afterward.",
+    ],
+    legacy: [
+      "The stabilizer formalism of Gottesman in 1996 and 1997 unified the codes, and the surface code of Kitaev and later Fowler and coauthors became the leading practical design. Experimental demonstrations of repetition codes and surface codes followed over the 2010s and 2020s.",
+      "The work also changed how the field was regarded. Before 1995, a quantum computer seemed like a delicate experiment, and afterward it looked like an engineering challenge with a known route to a solution.",
+    ],
+    keyNumbers: [
+      { label: "Physical qubits", value: "Nine to protect one logical qubit against any single-qubit error" },
+      { label: "Syndrome checks", value: "Eight parity measurements" },
+      { label: "Smallest perfect code", value: "Five qubits (found by Bennett et al. and by Laflamme et al. in 1996)" },
+      { label: "Independent discovery", value: "Steane's seven-qubit code, 1996" },
+      { label: "Follow-up theorem", value: "Threshold theorems, 1996 to 1998" },
+    ],
+    howToRead: [
+      "The paper is four pages. Focus on the encoding of the state in nine qubits and the argument for why a general error reduces to a few cases.",
+      "Read the quantum error correction and stabilizer code pages on this site for the modern formalism that makes the construction easier to see.",
+    ],
+    faq: [
+      { q: "What did Shor's 1995 paper show?", a: "That quantum information can be protected from errors by encoding a qubit in nine qubits and measuring parity checks, so errors can be corrected without measuring the data." },
+      { q: "How can you correct a quantum error if you cannot copy a qubit?", a: "By spreading information across entangled qubits and measuring parities that reveal errors but not the encoded state." },
+      { q: "Is the nine-qubit code used today?", a: "Not in practice. Modern machines use codes such as the surface code, but the nine-qubit code established the principle." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+    relatedTerms: [
+      "stabilizer-code",
+      "logical-qubit",
+      "syndrome-measurement",
+      "fault-tolerance",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+    ],
   },
   {
-    slug: "quantum-chemistry-active-space-selection",
-    title: "Automated Active Space Selection Improves Practical VQE Chemistry Simulations",
-    authors: "Lindholm, Osei, Tanaka et al.",
-    institution: "Quantum chemistry research collaboration",
-    date: "2026",
-    category: "applications",
-    difficulty: 4,
-    plainSummary:
-      "Scientists developed a smarter, automated way to decide which parts of a molecule's electron behavior actually need the expensive quantum computer treatment versus which parts can be handled with cheaper classical approximations — like deciding which parts of a problem genuinely need a specialist versus a generalist.",
+    slug: "preskill-nisq-era-2018",
+    title: "Quantum Computing in the NISQ Era and Beyond",
+    authors: "John Preskill",
+    institution: "California Institute of Technology",
+    date: "2018",
+    category: "theory",
+    difficulty: 2,
+    plainSummary: "John Preskill names the current era of quantum computing, the noisy intermediate-scale quantum or NISQ era, and argues about what such devices can and cannot do. The paper became the standard framing for near-term quantum computing.",
     keyFindings: [
-      "Automated active space selection reduced the number of qubits required for comparable simulation accuracy",
-      "The method generalized well across several different molecule types tested",
-      "Reduced qubit requirements directly translate to feasibility on smaller, more accessible quantum hardware",
+      "Devices with 50 to a few hundred qubits and no error correction are coming, and they may be able to do things that classical computers cannot simulate.",
+      "Noise limits such devices to circuits of limited depth, so they will not run algorithms like Shor's at cryptographic scale.",
+      "Whether NISQ devices can solve useful problems better than classical computers is an open question, and Preskill is cautious about near-term promises.",
+      "The NISQ era is likely to be a stepping stone toward fault-tolerant machines, not the destination.",
     ],
-    realWorldImpact:
-      "Techniques that reduce the quantum resources needed per chemistry simulation directly extend what's practically achievable on today's limited quantum hardware, relevant to the molecular simulation applications discussed in our Healthcare industry page.",
-    technicalAbstract:
-      "The authors present an automated active space selection algorithm for VQE-based quantum chemistry simulations, using classically computed orbital importance metrics to reduce the qubit count required while preserving chemical accuracy across a benchmark set of small organic molecules.",
+    realWorldImpact: "The NISQ framing shaped the research agenda of the late 2010s, including variational algorithms and quantum supremacy experiments, and still provides the vocabulary for discussing the gap between today's hardware and fault-tolerant machines.",
+    technicalAbstract: "Noisy Intermediate-Scale Quantum (NISQ) technology will be available in the near future. Quantum computers with 50 to 100 qubits may be able to perform tasks which surpass the capabilities of today's classical digital computers, but noise in quantum gates will limit the size of quantum circuits that can be executed reliably. NISQ devices will be useful tools for exploring many-body quantum physics, and may have other useful applications, but the 100-qubit quantum computer will not change the world right away.",
+    venue: "Quantum, volume 2, article 79",
+    arxiv: "1801.00862",
+    reference: "Preskill, J. (2018). Quantum Computing in the NISQ era and beyond. Quantum, 2, 79. arXiv:1801.00862.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "By late 2017, IBM had put a 50-qubit machine on the road map, Google was preparing a 72-qubit device, and Intel and others had announced chips of 49 and 17 qubits. Press coverage suggested that quantum computers were about to outperform classical ones. Preskill, a theoretical physicist who had worked on quantum information since the 1990s, gave the keynote at the Quantum Computing for Business conference in December 2017, and this paper is the written version of that talk.",
+      "The paper appeared at a time when two ideas were in tension. One was quantum supremacy, a term Preskill had coined in 2012, which meant a quantum device performing a task beyond classical reach. The other was the long-run expectation that useful quantum computing needs error correction, which requires far more qubits than anyone had. The NISQ label described the space in between.",
+    ],
+    whatTheyDid: [
+      "Preskill defines the NISQ regime by two properties. Intermediate scale means about 50 to a few hundred qubits, enough that exact classical simulation becomes infeasible, since a 50-qubit state needs about 10 to the 15 amplitudes. Noisy means that gates and measurements have error rates of order one in a thousand or worse, with no error correction, so the number of gates before the output becomes unreliable is limited to roughly a thousand.",
+      "He then surveys what such devices might do. Candidates include quantum simulation of many-body physics, hybrid quantum-classical optimization methods such as the quantum approximate optimization algorithm, the variational eigensolver for chemistry, and sampling tasks designed to show supremacy. For each, he discusses the evidence for and against advantage, and stresses that the answers are unknown.",
+      "The paper also discusses the long-term outlook. Error correction might eventually need thousands of physical qubits per logical qubit, and the transition from NISQ devices to fault-tolerant ones is likely to be a large engineering project, not a simple scaling up. He argues that progress in the NISQ era is valuable partly because it will teach researchers about the hardware and may lead to useful, if modest, applications.",
+    ],
+    results: [
+      "The paper's contribution is a framework and a set of questions, not a theorem or an experiment. It gives researchers a shared term and sets realistic expectations for the period.",
+      "Subsequent events fit the framing. Google's 2019 supremacy experiment on 53 qubits, IBM's 2023 utility experiment on 127 qubits, and the many variational algorithm studies all lie within the NISQ regime.",
+      "The term entered common use, though Preskill and others have noted that hardware has now moved beyond the original definition, with early error-correction experiments and devices with over a thousand qubits.",
+    ],
+    limitations: [
+      "The paper is deliberately qualitative. It does not give concrete thresholds for when NISQ devices would show useful advantage.",
+      "Some predictions about variational algorithms proved optimistic, since barren plateaus and measurement costs were not appreciated in 2018, and no clear practical advantage from NISQ machines has been demonstrated.",
+      "The label NISQ has been criticized as vague, and some prefer to talk about early fault-tolerant devices in current hardware.",
+    ],
+    legacy: [
+      "The paper is among the most cited in quantum computing. It framed the 2018 to 2023 period and gave a name to the approach of making the most of imperfect hardware, which led to error mitigation, hybrid algorithms, and benchmarking methods.",
+      "By 2025 the discussion has turned to what Preskill and others call the early fault-tolerant era, in which devices have a small number of error-corrected logical qubits, and the NISQ paper remains the reference point for how the field got there.",
+    ],
+    keyNumbers: [
+      { label: "Year and venue", value: "2018, Quantum (open access); based on a December 2017 keynote" },
+      { label: "Scale", value: "About 50 to a few hundred qubits" },
+      { label: "Noise", value: "Gate errors of order 10^-3, limiting circuits to about a thousand gates" },
+      { label: "Classical state size", value: "A 50-qubit state needs about 10^15 amplitudes" },
+      { label: "Term coined earlier", value: "Quantum supremacy, by Preskill in 2012" },
+    ],
+    howToRead: [
+      "The paper is written for a broad audience of scientists and business readers and has little mathematics. Read it through, paying attention to the sections on quantum optimization and on the long road to fault tolerance.",
+      "Compare it with the 2019 Google supremacy paper and the 2023 IBM utility paper to see how the questions Preskill raised were tested.",
+    ],
+    faq: [
+      { q: "What does NISQ mean?", a: "Noisy intermediate-scale quantum: devices with roughly 50 to a few hundred qubits and no error correction." },
+      { q: "Who coined the term?", a: "John Preskill, in a 2017 talk and the 2018 paper." },
+      { q: "Is the NISQ era over?", a: "Hardware now includes early error-corrected demonstrations, and many describe the field as moving toward early fault-tolerant machines, though noisy devices remain widely used." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "ibm-eagle",
+      "google-sycamore",
+    ],
+    relatedTerms: [
+      "nisq",
+      "quantum-supremacy",
+      "variational-quantum-algorithm",
+    ],
+    relatedIndustries: [
+      "finance",
+      "materials-science",
+    ],
   },
   {
-    slug: "ion-trap-shuttling-speed-improvement",
-    title: "Faster Ion Shuttling Reduces Overhead in QCCD Trapped-Ion Architectures",
-    authors: "Moreau, Takahashi, Adebayo et al.",
-    institution: "Trapped-ion hardware research group",
-    date: "2026",
+    slug: "arute-quantum-supremacy-2019",
+    title: "Quantum Supremacy Using a Programmable Superconducting Processor",
+    authors: "Frank Arute, Kunal Arya, Ryan Babbush, John M. Martinis, Hartmut Neven, and the Google AI Quantum team",
+    institution: "Google AI Quantum",
+    date: "2019",
     category: "hardware",
     difficulty: 3,
-    plainSummary:
-      "Researchers found a way to physically move trapped ions between different zones of their quantum computer faster, without losing the careful quantum state they're carrying — like moving a fragile package faster without it breaking.",
+    plainSummary: "Google reports that its 53-qubit Sycamore processor sampled the output of random quantum circuits in about 200 seconds, a task the team estimated would take the best classical supercomputer thousands of years. The claim of quantum supremacy was disputed, but the experiment remains a landmark.",
     keyFindings: [
-      "Ion shuttling speed increased substantially compared to previous reported benchmarks",
-      "Qubit state fidelity after shuttling remained within acceptable bounds for practical use",
-      "The technique reduces a key source of time overhead in QCCD-style trapped-ion architectures",
+      "A superconducting processor with 53 working qubits ran random circuits of 20 cycles and sampled their outputs a million times in about 200 seconds.",
+      "Google estimated that simulating the same task on the Summit supercomputer would take about 10,000 years.",
+      "The fidelity of the full circuit was low, about 0.2 percent, but statistically significant over a million samples.",
+      "The result was verified by cross-entropy benchmarking, with the ideal probabilities computed for smaller circuits and extrapolated.",
     ],
-    realWorldImpact:
-      "Faster, more reliable ion shuttling directly improves the practical throughput of QCCD-architecture systems like those covered in our Hardware Database, since shuttling time is a significant overhead in this approach to achieving flexible qubit connectivity.",
-    technicalAbstract:
-      "The paper reports improved ion shuttling protocols for quantum charge-coupled device architectures, using optimized voltage control sequences to reduce transport time between trap zones while maintaining motional ground-state cooling and minimal heating-induced fidelity loss.",
+    realWorldImpact: "The experiment demonstrated that a programmable superconducting processor could operate at the scale of 50 qubits with controlled entanglement, spurred work in classical simulation, and started the debate over how to define and verify quantum advantage.",
+    technicalAbstract: "The promise of quantum computers is that certain computational tasks might be executed exponentially faster on a quantum processor than on a classical processor. A fundamental challenge is to build a high-fidelity processor capable of running quantum algorithms in an exponentially large computational space. The paper reports the use of a processor with programmable superconducting qubits to create quantum states on 53 qubits, corresponding to a computational state-space of dimension 2 to the 53, and uses it to perform a random circuit sampling task that would take a classical supercomputer thousands of years.",
+    venue: "Nature, volume 574, pages 505 to 510",
+    arxiv: "1910.11333",
+    reference: "Arute, F., Arya, K., Babbush, R., et al. (2019). Quantum supremacy using a programmable superconducting processor. Nature, 574, 505-510. arXiv:1910.11333.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The idea of using random circuits as a supremacy test came from Boixo and colleagues at Google in 2018. The task has no practical use, but it is the simplest one for which there is strong theoretical evidence of classical hardness, and it fits what a noisy device can do: apply random single-qubit and two-qubit gates and measure. The output probabilities follow a distribution, called Porter-Thomas, that is difficult to sample from classically as the number of qubits and depth grow.",
+      "Google's quantum hardware group, led by John Martinis, had moved from a 72-qubit device called Bristlecone to a new design with tunable couplers between qubits, which reduced unwanted interactions. The resulting chip, Sycamore, had 54 transmon qubits, one of which did not work, leaving 53 qubits in a grid with nearest-neighbor couplings.",
+    ],
+    whatTheyDid: [
+      "The team built Sycamore with a two-qubit gate that is a variant of the iSWAP with a controlled phase, with median error of about 0.6 percent when all qubits run simultaneously, single-qubit gate error of about 0.15 percent, and readout error of about 3 percent. The circuits consisted of cycles, each with random single-qubit gates followed by two-qubit gates arranged in patterns across the grid. The largest circuits had 20 cycles.",
+      "To check that the processor worked, they used cross-entropy benchmarking. For circuits small enough to simulate classically, they computed the ideal probabilities of the measured bit strings and estimated the fidelity. For circuits of full size, they used simplified versions that were easier to simulate and extrapolated, based on a model in which errors multiply. The estimated fidelity for the largest circuits was about 0.002, which can be distinguished from zero with a million samples.",
+      "For the classical side, they estimated the cost of simulating the full circuits using a state-vector and a hybrid Schrödinger-Feynman algorithm, and arrived at about 10,000 years on the Summit supercomputer. The quantum run took 200 seconds to collect a million samples, with about 600 seconds including overhead.",
+    ],
+    results: [
+      "The experiment demonstrated controlled operation of a 53-qubit processor with enough fidelity to see the signature of the ideal distribution.",
+      "The headline claim of quantum supremacy was contested. IBM researchers argued within days that using disk storage, a better classical simulation would take about two and a half days, and later work using tensor networks and GPU clusters reported hours or less for similar circuits.",
+      "Even with the disputed classical estimate, the experiment showed a regime in which exact classical simulation is extremely costly, and the later Willow results in 2024 pushed far beyond what the Sycamore classical estimates could reach.",
+    ],
+    limitations: [
+      "The task has no known practical application, and the output is noise-dominated, with only a small part carrying the quantum signal.",
+      "The classical comparison depends on the best available algorithm, which improved after publication, so the quoted 10,000 years does not hold.",
+      "The extrapolation of fidelity assumes a simple error model, and verification of the full circuit is indirect.",
+    ],
+    legacy: [
+      "The paper started a series of supremacy and advantage experiments by groups in China and elsewhere, and many tests of classical spoofing. Cross-entropy benchmarking became a common tool.",
+      "It also changed the public narrative. The term supremacy drew criticism, and the field has moved toward discussing quantum advantage on useful tasks, while this paper remains the first widely accepted demonstration of a processor operating in the regime beyond brute-force classical simulation.",
+    ],
+    keyNumbers: [
+      { label: "Qubits", value: "53 working qubits (54 fabricated, one inoperative)" },
+      { label: "Circuit depth", value: "20 cycles in the largest circuits" },
+      { label: "Samples", value: "One million in about 200 seconds" },
+      { label: "Google's classical estimate", value: "About 10,000 years on Summit" },
+      { label: "IBM's counter-estimate", value: "About 2.5 days using disk storage" },
+      { label: "Total fidelity", value: "About 0.2 percent" },
+    ],
+    howToRead: [
+      "Read the main text for the experiment and its argument, and the supplementary information for the hardware details and the classical simulation estimates, which is where most of the technical content is.",
+      "Compare it with IBM's rebuttal and with the 2024 Willow paper to see how claims and counterclaims evolve.",
+    ],
+    faq: [
+      { q: "Did Google really achieve quantum supremacy?", a: "Google claimed it, and IBM and others disputed the classical estimate. The experiment is widely seen as a technical milestone even though the specific classical cost estimate was reduced." },
+      { q: "What task did Sycamore perform?", a: "It sampled outputs of random quantum circuits, a task with no practical use, chosen because it is hard to simulate classically." },
+      { q: "How was the result verified?", a: "By cross-entropy benchmarking, comparing measured samples with ideal probabilities computed for smaller circuits and extrapolating." },
+    ],
+    relatedAlgorithms: [
+      "quantum-supremacy-sampling",
+    ],
+    relatedHardware: [
+      "google-sycamore",
+      "google-willow",
+    ],
+    relatedTerms: [
+      "quantum-supremacy",
+      "random-circuit-sampling",
+      "cross-entropy-benchmarking",
+      "transmon",
+    ],
+    relatedIndustries: [
+      "aerospace-defense",
+    ],
   },
   {
-    slug: "quantum-error-mitigation-zero-noise-extrapolation-scaling",
-    title: "Limits of Zero-Noise Extrapolation as Circuit Size Increases",
-    authors: "Reyes, Holmqvist, Adesanya et al.",
-    institution: "Quantum error mitigation research group",
-    date: "2026",
+    slug: "google-below-threshold-2024",
+    title: "Quantum Error Correction Below the Surface Code Threshold",
+    authors: "Google Quantum AI and Collaborators (Rajeev Acharya, Hartmut Neven, Julian Kelly, and many others)",
+    institution: "Google Quantum AI",
+    date: "2024 (published 2025)",
     category: "error-correction",
     difficulty: 4,
-    plainSummary:
-      "Researchers tested how well a popular error-reduction trick (running the same circuit at different 'noise levels' and mathematically extrapolating back to a cleaner result) holds up as quantum circuits get bigger and more complex — and found it works less reliably than hoped at larger scales.",
+    plainSummary: "Google reports that on its Willow processor, a surface-code logical qubit became more reliable as the code was made larger, from distance 3 to 5 to 7. This is the first clear experimental evidence that a superconducting machine operates below the error-correction threshold.",
     keyFindings: [
-      "Zero-noise extrapolation accuracy degraded measurably as circuit depth increased beyond a certain threshold",
-      "The technique remained reliable and useful for the smaller circuit sizes common in current NISQ experiments",
-      "Results suggest zero-noise extrapolation alone won't be sufficient for much larger near-term algorithms without complementary techniques",
+      "Logical error per cycle fell by a factor of about 2.14 each time the code distance increased by 2, for distances 3, 5, and 7.",
+      "The distance-7 logical memory had an error of about 0.143 percent per cycle, and its lifetime was about 2.4 times longer than that of the best physical qubit on the chip.",
+      "A real-time decoder kept up with the error-correction cycles of about one microsecond at distance 5, with average latency of about 63 microseconds.",
+      "A repetition code reached very low logical error, near 10 to the minus 10 per cycle, until rare bursts of correlated errors limited it.",
     ],
-    realWorldImpact:
-      "Honest, limitation-focused research like this is exactly the kind of result that doesn't make headlines but matters enormously for realistic expectations — it tells practitioners precisely where this widely-used error mitigation technique from our Algorithms Database starts to break down.",
-    technicalAbstract:
-      "The study systematically benchmarks zero-noise extrapolation accuracy as a function of circuit depth and qubit count across multiple superconducting processors, identifying a depth threshold beyond which extrapolation error exceeds the underlying noise being mitigated.",
+    realWorldImpact: "Below-threshold scaling is the central requirement for fault-tolerant quantum computing. The experiment is the main evidence that adding qubits to an error-correcting code can make a superconducting logical qubit better, which supports the roadmaps of several companies.",
+    technicalAbstract: "Quantum error correction provides a path to reach practical quantum computing by combining multiple physical qubits into a logical qubit, where the logical error rate is suppressed exponentially as more qubits are added. The paper presents a surface code memory operating below threshold on a 105-qubit superconducting processor, with logical error suppressed by a factor of 2.14 when increasing the code distance by two, and with real-time decoding.",
+    venue: "Nature, volume 638, pages 920 to 926 (published online December 2024)",
+    arxiv: "2408.13687",
+    reference: "Google Quantum AI and Collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926. arXiv:2408.13687.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The threshold theorem of the late 1990s says that if physical errors are low enough, bigger error-correcting codes give better logical qubits. Experiments had shown pieces of this for years, but there was always a doubt: would the improvement appear in a real device, where errors are correlated, qubits leak out of their computational states, and decoding must keep up with the hardware? Earlier work by Google in 2021 and 2023 showed distance-3 and distance-5 surface codes that were roughly equal to each other, a result at the threshold but not clearly below it.",
+      "Between 2023 and 2024 the team built a new chip, Willow, with 105 qubits and improved coherence, with mean T1 of about 70 to 100 microseconds. The question for the experiment was simple: does the logical error rate keep dropping when the code distance is raised?",
+    ],
+    whatTheyDid: [
+      "The team ran a surface code memory on a distance-3, a distance-5, and a distance-7 patch of Willow. Each cycle, ancilla qubits measure the parity checks of the code, and the data qubits hold a logical state. After many cycles, the logical state is read out and compared with the original, and the logical error per cycle is estimated by fitting the decay. Cycle time was about 1.1 microseconds.",
+      "At each distance they measured the logical error, using software decoders including a tensor-network decoder and a neural network decoder, and a minimum-weight matching decoder with machine-learned weights. The ratio between consecutive distances, called lambda, quantifies the suppression. They also built a real-time decoder that ran alongside the experiment for distance 3 and 5, and demonstrated that it kept pace with the cycles.",
+      "To study the limits, the team also ran repetition codes, which protect against only one type of error but can be made much larger, up to distance 29. These reached logical errors near 10 to the minus 10 per cycle, and the authors identified rare events in which many qubits fail at once, at a rate of about once per hour, as a floor on performance.",
+    ],
+    results: [
+      "The suppression factor lambda was about 2.14 with an uncertainty of about 0.02: each increase of distance by two cut the logical error roughly in half. The distance-7 logical error was about 0.143 percent per cycle.",
+      "The distance-7 logical qubit lasted about 291 microseconds, compared with about 85 microseconds for the best single physical qubit, a factor of about 2.4. This crossing, called beyond break-even, shows that encoding improved on the best available unencoded qubit.",
+      "The real-time decoder was an important engineering result because slow decoding creates a backlog that would grow with the length of the computation.",
+    ],
+    limitations: [
+      "The experiment shows a quantum memory, not logical computation. Performing gates between logical qubits and implementing non-Clifford gates was not demonstrated in this work.",
+      "A logical error of 0.14 percent per cycle is far above the 10 to the minus 9 to 10 to the minus 12 needed for useful algorithms, so many orders of magnitude of improvement remain.",
+      "Correlated error events, such as those from cosmic rays and other sources, limited the repetition code, and mitigating them is an open engineering problem.",
+    ],
+    legacy: [
+      "The paper is cited as the first demonstration of scalable error correction in a superconducting device, and it set a benchmark for other groups to match. Experiments with trapped ions, neutral atoms, and bosonic codes followed or ran in parallel.",
+      "It also supports the surface code as the baseline architecture. Estimates of the resources for useful algorithms built on this result rely on exponential suppression continuing as the code grows, and the next milestones are logical gates, magic states, and larger distances.",
+    ],
+    keyNumbers: [
+      { label: "Processor", value: "Willow, 105 superconducting qubits" },
+      { label: "Distances tested", value: "3, 5, and 7 in the surface code" },
+      { label: "Suppression factor", value: "About 2.14 per distance step" },
+      { label: "Distance-7 logical error", value: "About 0.143 percent per cycle" },
+      { label: "Lifetime gain", value: "About 2.4 times the best physical qubit (about 291 versus 85 microseconds)" },
+      { label: "Cycle time", value: "About 1.1 microseconds" },
+    ],
+    howToRead: [
+      "Read the main text for the logical memory results and the figure on error versus distance. The supplementary information contains the decoder details and the analysis of correlated errors.",
+      "For background, read the surface code, code distance, and logical error rate pages on this site.",
+    ],
+    faq: [
+      { q: "What does below threshold mean?", a: "The physical qubits are good enough that making the error-correcting code larger reduces the logical error instead of increasing it." },
+      { q: "Does this mean a fault-tolerant quantum computer exists?", a: "No. It shows a logical memory that improves with size. Logical gates and much lower error rates are still needed." },
+      { q: "How was the improvement measured?", a: "By running surface codes at distances 3, 5, and 7 and measuring how the logical error per cycle fell by a factor of about 2.14 per step." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "google-willow",
+      "google-sycamore",
+    ],
+    relatedTerms: [
+      "surface-code",
+      "code-distance",
+      "logical-error-rate",
+      "threshold-theorem",
+      "syndrome-measurement",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+      "materials-science",
+    ],
   },
   {
-    slug: "quantum-machine-learning-barren-plateau-mitigation",
-    title: "New Initialization Strategy Reduces Barren Plateau Effects in Quantum Neural Networks",
-    authors: "Castillo, Mbeki, Sørensen et al.",
-    institution: "Quantum machine learning research group",
-    date: "2026",
+    slug: "kim-utility-before-fault-tolerance-2023",
+    title: "Evidence for the Utility of Quantum Computing Before Fault Tolerance",
+    authors: "Youngseok Kim, Andrew Eddins, Sajant Anand, Ken Xuan Wei, Ewout van den Berg, Sami Rosenblatt, Hasan Nayfeh, Yantao Wu, Michael Zaletel, Kristan Temme, and Abhinav Kandala",
+    institution: "IBM Quantum; University of California, Berkeley",
+    date: "2023",
+    category: "hardware",
+    difficulty: 4,
+    plainSummary: "IBM and UC Berkeley used a 127-qubit processor with error mitigation to compute properties of a model magnet in a regime where some classical methods struggled. The paper claims utility, meaning a useful, trustworthy result from a noisy machine, and not advantage. Classical groups reproduced the results within months.",
+    keyFindings: [
+      "A 127-qubit superconducting processor ran circuits of up to 60 layers and 2,880 two-qubit gates, simulating the dynamics of a kicked Ising model.",
+      "Zero-noise extrapolation, with noise deliberately amplified and a learned noise model, produced accurate estimates of expectation values.",
+      "For some settings, the quantum results agreed with exact classical results, and for others went beyond the reach of the brute-force classical methods that the authors tried.",
+      "The authors describe the result as evidence of utility, a step on the way to quantum advantage, and not as advantage itself.",
+    ],
+    realWorldImpact: "The paper showed that error mitigation can extend the reach of a noisy machine, set a bar for classical simulation methods, and led to a productive back-and-forth between quantum experimentalists and tensor network theorists.",
+    technicalAbstract: "The paper reports measurements of the dynamics of a two-dimensional transverse-field Ising model on a 127-qubit superconducting processor. Using probabilistic error amplification and zero-noise extrapolation, the authors obtain accurate expectation values for circuits up to depth 60 with 2,880 two-qubit gates, in regimes where brute-force classical simulation is infeasible, and compare with state-of-the-art approximate classical methods.",
+    venue: "Nature, volume 618, pages 500 to 505",
+    reference: "Kim, Y., Eddins, A., Anand, S., Wei, K. X., van den Berg, E., Rosenblatt, S., Nayfeh, H., Wu, Y., Zaletel, M., Temme, K., & Kandala, A. (2023). Evidence for the utility of quantum computing before fault tolerance. Nature, 618, 500-505.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "In 2022 and 2023 IBM had processors with 127 qubits, named Eagle, with a heavy-hex layout that gives each qubit two or three neighbors. Gate errors of about one in a hundred to one in a thousand meant that circuits with thousands of gates produced results that were mostly noise. The conventional view was that without error correction, such devices could not give trustworthy answers beyond what classical computers can calculate.",
+      "Error mitigation offered another route. Rather than correct each error, mitigation methods estimate what the answer would have been without noise, at the cost of many extra circuit runs. IBM's team had developed probabilistic error cancellation and, in a variant, probabilistic error amplification, which uses a learned model of the noise to scale it up deliberately and then extrapolate back to zero noise.",
+    ],
+    whatTheyDid: [
+      "The team chose the kicked Ising model, a spin model on the same heavy-hex lattice as the chip, in which each time step applies a rotation of each spin by an angle and a two-spin ZZ interaction along each edge. The model is a good test because for some parameters it is exactly solvable, for others it can be simulated by tensor networks, and for a regime with strong entanglement it is hard for classical methods.",
+      "They learned a sparse Pauli-Lindblad noise model of the processor's two-qubit gate layers, then ran each circuit at several amplified noise levels, by scaling the learned noise by factors such as 1.2 and 1.6, and extrapolated the measured expectation values, such as the magnetization and weight-10 operators, to zero noise. They used up to 60 layers, with a total of 2,880 CNOT gates, and compared against exact results where available and against approximate classical simulations using matrix product states and isometric tensor network states.",
+      "In the regime with strong entanglement, they found that the approximate classical methods they tried disagreed with each other and could not be verified, while the quantum results at shallower depths agreed with exact simulation, which the authors took as evidence that the mitigated results at greater depth were also reliable.",
+    ],
+    results: [
+      "The mitigated results matched exact classical results for circuits and observables where those could be computed, even at depths with hundreds of two-qubit gates.",
+      "For the deepest and most entangled circuits, the authors argued that the quantum results were more trustworthy than the classical approximations available at the time, but they could not be checked by exact simulation.",
+      "Within weeks of the preprint, groups led by Tindall, by Begušić and Chan, by Kechedzhi and colleagues, and others reproduced the results using improved tensor network methods and Pauli propagation, in some cases with modest classical computing. The classical results matched the quantum data for the quantities reported.",
+    ],
+    limitations: [
+      "The paper makes a careful claim of utility, and many reports in the media described it as quantum advantage. Later classical simulations showed that the specific results could be obtained classically.",
+      "Mitigation has a sampling cost that grows exponentially with the circuit's noise, so the approach does not scale to long circuits.",
+      "The model, a kicked Ising system, is chosen for convenience and is not directly tied to a practical application.",
+    ],
+    legacy: [
+      "The paper led to many studies that treat the experiment as a benchmark for classical simulation, and to the public quantum advantage tracker that IBM and partners launched in 2025 to record claims and classical responses.",
+      "It also set the tone for IBM's strategy of improving hardware and mitigation together. The authors and others have described the result as a proof of concept for using noisy devices for scientific problems while error-corrected machines are being built.",
+    ],
+    keyNumbers: [
+      { label: "Processor", value: "IBM Eagle, 127 qubits, heavy-hex layout" },
+      { label: "Circuit size", value: "Up to 60 layers and 2,880 CNOT gates" },
+      { label: "Method", value: "Zero-noise extrapolation with probabilistic error amplification" },
+      { label: "Classical response", value: "Reproduced by tensor network and Pauli propagation methods within weeks to months" },
+      { label: "Claim", value: "Utility, not advantage" },
+    ],
+    howToRead: [
+      "Read the main text for the experiment and the comparison of methods, and the supplementary information for the noise learning protocol. Then read the classical rebuttals by Tindall and colleagues and by Begušić and Chan to see how the field handles such claims.",
+      "The error mitigation pages on this site explain zero-noise extrapolation and probabilistic error cancellation in simpler terms.",
+    ],
+    faq: [
+      { q: "Did this experiment show quantum advantage?", a: "No. The authors claimed utility, and classical methods reproduced the results soon after publication." },
+      { q: "What is zero-noise extrapolation?", a: "A method that runs a circuit at several amplified noise levels and extrapolates the results back to what they would be with no noise." },
+      { q: "Why does the paper matter?", a: "It showed that mitigated results from a noisy 127-qubit device can reach regimes that challenge classical methods, and it led to better classical algorithms." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-mitigation",
+      "trotter-suzuki-decomposition",
+    ],
+    relatedHardware: [
+      "ibm-eagle",
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "quantum-error-mitigation",
+      "nisq",
+      "quantum-advantage",
+      "circuit-depth",
+    ],
+    relatedIndustries: [
+      "materials-science",
+    ],
+  },
+  {
+    slug: "peruzzo-variational-eigensolver-2014",
+    title: "A Variational Eigenvalue Solver on a Photonic Quantum Processor",
+    authors: "Alberto Peruzzo, Jarrod McClean, Peter Shadbolt, Man-Hong Yung, Xiao-Qi Zhou, Peter J. Love, Alán Aspuru-Guzik, and Jeremy L. O'Brien",
+    institution: "University of Bristol; Harvard University; and collaborating institutions",
+    date: "2014",
     category: "algorithms",
+    difficulty: 3,
+    plainSummary: "This paper introduces the variational quantum eigensolver, a hybrid method in which a short quantum circuit prepares a trial state and a classical optimizer adjusts it to find the lowest energy of a molecule. The authors demonstrate it on a two-qubit photonic chip for the helium hydride ion.",
+    keyFindings: [
+      "A quantum computer can estimate the energy of a trial state, and a classical computer can adjust the state to lower that energy, with the variational principle guaranteeing an upper bound on the true ground-state energy.",
+      "The method uses much shorter circuits than phase estimation, making it suitable for devices with limited coherence.",
+      "On a two-qubit silicon photonic chip, the method found the ground-state energy of helium hydride at several bond distances.",
+      "The approach separates the problem into measuring many simple terms of the Hamiltonian, which reduces the demands on coherence.",
+    ],
+    realWorldImpact: "VQE became the template for near-term quantum algorithms and for hybrid quantum-classical workflows, and it is built into the major quantum chemistry toolkits.",
+    technicalAbstract: "Quantum computers promise to efficiently solve important problems that are intractable on a conventional computer. For quantum systems, where the physical dimension grows exponentially, finding the eigenvalues of certain operators is one such intractable problem. The paper introduces an alternative to phase estimation that reduces the coherence time requirements by using a hybrid quantum-classical approach, and demonstrates it on a photonic quantum processor to find the ground-state energy of a molecule.",
+    venue: "Nature Communications, volume 5, article 4213",
+    arxiv: "1304.3061",
+    reference: "Peruzzo, A., McClean, J., Shadbolt, P., Yung, M.-H., Zhou, X.-Q., Love, P. J., Aspuru-Guzik, A., & O'Brien, J. L. (2014). A variational eigenvalue solver on a photonic quantum processor. Nature Communications, 5, 4213. arXiv:1304.3061.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The established method for finding molecular energies on a quantum computer was quantum phase estimation, proposed for chemistry by Aspuru-Guzik and coauthors in 2005. It gives energies with high precision but needs long, coherent circuits, with a number of gates that grows rapidly with the desired accuracy, and error correction is required for realistic molecules.",
+      "In 2013 researchers wanted algorithms for the noisy devices that would be available soon. The variational principle from quantum mechanics gave a way: any trial state has an energy at least as high as the ground-state energy, so one can search over trial states to get as low as possible. The question was how to split the work between a quantum device, which can represent states that are hard for classical computers, and a classical optimizer.",
+    ],
+    whatTheyDid: [
+      "The authors write the molecular Hamiltonian as a sum of Pauli operators, a few terms for a small molecule after mapping the electronic problem onto qubits. They prepare a trial state on the quantum processor with a short circuit that has adjustable parameters, then measure the expectation value of each Pauli term, which requires only simple measurements. The classical computer adds the terms with their coefficients to get the energy and uses an optimizer, in this case the Nelder-Mead simplex method, to choose new parameters, repeating until the energy stops decreasing.",
+      "The experiment used a silicon photonic chip with two qubits encoded in the path of single photons. The target was the helium hydride cation, HeH+, whose Hamiltonian reduces to two qubits in a minimal basis. The team varied the bond distance and measured the energy at each point, tracing a potential energy curve, and compared the results with exact calculations.",
+      "The paper also discusses how the method scales. The number of measurements grows with the number of terms in the Hamiltonian, and the choice of trial state determines how close the result can get to the true energy. It notes that trial states chosen from chemistry, such as unitary coupled cluster, can be prepared efficiently on a quantum computer but not on a classical one, which is where an advantage might arise.",
+    ],
+    results: [
+      "The photonic experiment reproduced the ground-state energy curve of HeH+ within experimental error, showing the method working end to end on hardware.",
+      "The paper showed that the quantum device only needs to hold a state for the duration of a short circuit, and that errors in the measurements can be partly absorbed by the optimization.",
+      "Later experiments extended VQE to superconducting and trapped-ion devices: O'Malley and coauthors at Google and UC Santa Barbara computed the energy of molecular hydrogen in 2016, and Kandala and coauthors at IBM used a hardware-efficient ansatz for molecules up to beryllium hydride in 2017.",
+    ],
+    limitations: [
+      "VQE gives no guarantee of finding the true ground state, since the result depends on the trial state and the optimizer, and the optimization landscape can be rugged.",
+      "The number of measurements needed grows quickly with molecule size, and noise limits accuracy. Subsequent work found barren plateaus, where gradients vanish, in many circuit designs.",
+      "Experiments so far have treated small molecules that classical methods solve exactly, and no advantage over classical chemistry has been shown.",
+    ],
+    legacy: [
+      "The paper started the field of variational quantum algorithms. QAOA, quantum neural networks, and variational linear solvers use the same loop. The name variational quantum eigensolver was introduced in a 2016 paper by McClean and coauthors that gave the general theory.",
+      "The experience with VQE also taught the community about the costs of measurement, the problem of trainability, and the need for error mitigation, and it led many groups to shift toward fault-tolerant algorithms for chemistry while using VQE as a test case for hardware.",
+    ],
+    keyNumbers: [
+      { label: "Year and venue", value: "2014, Nature Communications (preprint 2013)" },
+      { label: "Hardware", value: "Two-qubit silicon photonic chip" },
+      { label: "Molecule", value: "Helium hydride cation, HeH+" },
+      { label: "Optimizer", value: "Nelder-Mead simplex" },
+      { label: "Key principle", value: "The variational principle bounds the ground-state energy from above" },
+    ],
+    howToRead: [
+      "The paper is accessible, with a clear explanation of the algorithm in the first sections. The details of the photonic chip are in the experimental section and can be skipped on a first read.",
+      "Follow it with McClean and coauthors' 2016 paper The theory of variational hybrid quantum-classical algorithms, which formalizes the approach.",
+    ],
+    faq: [
+      { q: "What is VQE?", a: "A hybrid algorithm in which a quantum computer prepares a trial state and measures its energy while a classical optimizer adjusts the state to find the lowest energy." },
+      { q: "Why is VQE suited to noisy devices?", a: "Its circuits are short compared with phase estimation, and the classical optimization can compensate for some errors." },
+      { q: "Has VQE beaten classical methods?", a: "Not so far. Experiments have treated small molecules that classical methods solve exactly." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "quantum-phase-estimation",
+      "quantum-natural-gradient",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "variational-quantum-algorithm",
+      "ansatz",
+      "hamiltonian",
+      "quantum-chemistry-simulation",
+    ],
+    relatedIndustries: [
+      "pharmaceuticals",
+      "chemicals",
+      "materials-science",
+    ],
+  },
+  {
+    slug: "farhi-qaoa-2014",
+    title: "A Quantum Approximate Optimization Algorithm",
+    authors: "Edward Farhi, Jeffrey Goldstone, and Sam Gutmann",
+    institution: "Massachusetts Institute of Technology",
+    date: "2014",
+    category: "algorithms",
+    difficulty: 4,
+    plainSummary: "Farhi, Goldstone, and Gutmann introduce the quantum approximate optimization algorithm, or QAOA, which alternates two simple operations to find good approximate solutions to combinatorial problems. For the MaxCut problem on three-regular graphs, a single round already guarantees a cut of at least 0.6924 of the optimum.",
+    keyFindings: [
+      "QAOA builds a state by alternating a cost operator, which depends on the problem, with a mixing operator, with 2p adjustable angles for p rounds.",
+      "The expected cost of the resulting state is measured, and a classical optimizer tunes the angles to improve it.",
+      "For MaxCut on three-regular graphs, p equal to 1 guarantees an approximation ratio of at least 0.6924.",
+      "As p increases, the algorithm can approach the exact solution, in the limit connecting to adiabatic quantum computation.",
+    ],
+    realWorldImpact: "QAOA is the leading gate-based candidate for optimization on near-term quantum devices and the standard benchmark for hybrid optimization on hardware from every major vendor.",
+    technicalAbstract: "We introduce a quantum algorithm that produces approximate solutions for combinatorial optimization problems. The algorithm depends on an integer p and the quality of the approximation improves as p is increased. The quantum circuit that implements the algorithm consists of unitary gates whose locality is at most the locality of the objective function whose optimum is sought. The depth of the circuit grows linearly with p times the number of constraints. We show that for MaxCut on three-regular graphs the algorithm with p equal to 1 achieves an approximation ratio of at least 0.6924.",
+    venue: "arXiv preprint",
+    arxiv: "1411.4028",
+    reference: "Farhi, E., Goldstone, J., & Gutmann, S. (2014). A quantum approximate optimization algorithm. arXiv:1411.4028.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "By 2014 the first experiments on noisy qubits were running, and Peruzzo and coauthors had introduced the variational eigensolver in a form for chemistry. A natural question was whether a similar hybrid approach could address combinatorial optimization, a field of great commercial interest, where problems such as scheduling and routing are hard for classical computers in the worst case.",
+      "The authors, at MIT, had earlier developed adiabatic quantum computation, in which a system is slowly changed from an easy Hamiltonian to a problem Hamiltonian whose ground state is the answer. Adiabatic evolution requires long run times when the energy gap is small, and the idea behind QAOA was to replace the slow, continuous change with a fixed number of discrete steps whose sizes are optimized.",
+    ],
+    whatTheyDid: [
+      "A combinatorial problem is described by a cost function on n-bit strings, for instance the number of edges cut by a partition of a graph. The algorithm starts with an equal superposition of all bit strings. It then applies, in alternation, a unitary generated by the cost function, e to the minus i gamma times C, which gives each bit string a phase that depends on its cost, and a unitary generated by the sum of single-qubit X operators, e to the minus i beta times B, which mixes amplitude between strings that differ by one bit. After p rounds, the state depends on 2p angles.",
+      "The authors analyze the expected cost of the final state for MaxCut. For p equal to 1 on three-regular graphs, each edge's contribution depends only on a small neighborhood of the graph, so the expectation can be computed analytically as a function of the two angles. Optimizing the angles gives a guaranteed approximation ratio of 0.6924 of the maximum cut. The classical Goemans-Williamson algorithm guarantees 0.878, so the result is below the best classical guarantee, but it was a first analytic bound for a quantum optimization circuit.",
+      "They also argue that for any p, the algorithm can be made arbitrarily accurate as p goes to infinity, since it can mimic a discretized adiabatic evolution. Finding the best angles for large p is a classical optimization problem, and the authors discuss strategies for it. A follow-up paper in 2016 by Farhi and Harrow argued that sampling from the output distribution of even the p equal to 1 circuit cannot be done efficiently by classical computers under standard complexity assumptions.",
+    ],
+    results: [
+      "The p equal to 1 guarantee of 0.6924 for three-regular MaxCut was the first rigorous performance bound for QAOA.",
+      "Later calculations by Wurtz and Love gave about 0.7559 for p equal to 2 and 0.7924 for p equal to 3, still below the 0.878 classical bound.",
+      "Experiments by Google in 2021 on up to 23 qubits, by a trapped-ion group in 2020 on up to 40 qubits, and many others have implemented QAOA, mostly on small graphs with performance comparable to or worse than classical heuristics.",
+    ],
+    limitations: [
+      "No proof exists that QAOA outperforms the best classical algorithms, and results by Farhi, Gamarnik, and Gutmann in 2020 show that low-depth QAOA is limited on random graphs because of a structural property called the overlap gap.",
+      "The angle optimization is nonconvex, and measurement cost grows with problem size. Noise limits the depth that can be used on current hardware.",
+      "Constrained problems need modified mixers or penalty terms, which complicate implementation.",
+    ],
+    legacy: [
+      "QAOA led to a large literature, including the quantum alternating operator ansatz of Hadfield and coauthors, which extends the framework to constrained problems, and studies of parameter concentration and warm starts.",
+      "In 2024 a team from JPMorgan Chase and Quantinuum reported evidence of a scaling advantage over some classical solvers for a hard problem called low autocorrelation binary sequences, a claim still being examined by other researchers.",
+    ],
+    keyNumbers: [
+      { label: "Year", value: "2014 (arXiv, November)" },
+      { label: "Parameters", value: "2p angles for p rounds" },
+      { label: "p = 1 guarantee", value: "At least 0.6924 for MaxCut on three-regular graphs" },
+      { label: "Classical baseline", value: "Goemans-Williamson guarantees 0.878" },
+      { label: "Circuit depth", value: "Grows linearly with p times the number of constraints" },
+    ],
+    howToRead: [
+      "The first sections define the algorithm and are readable with some linear algebra. The MaxCut analysis involves counting subgraphs and can be skipped in a first reading.",
+      "The QAOA and Max-Cut pages on this site explain the algorithm and its benchmarks in simpler terms.",
+    ],
+    faq: [
+      { q: "What does QAOA stand for?", a: "Quantum Approximate Optimization Algorithm." },
+      { q: "Does QAOA beat classical optimization?", a: "Not conclusively. Analytic results show that low-depth QAOA falls short of the best classical guarantees on some problems, and experiments are on small instances." },
+      { q: "What does the parameter p mean?", a: "The number of alternating cost and mixer layers. Larger p gives a more expressive circuit and a deeper, noisier computation." },
+    ],
+    relatedAlgorithms: [
+      "qaoa",
+      "quantum-max-cut",
+      "adiabatic-quantum-computation",
+      "quantum-annealing",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "variational-quantum-algorithm",
+      "quantum-annealing",
+      "barren-plateau",
+      "hybrid-quantum-classical",
+    ],
+    relatedIndustries: [
+      "finance",
+      "logistics",
+      "transportation",
+    ],
+  },
+  {
+    slug: "harrow-hassidim-lloyd-linear-systems-2009",
+    title: "Quantum Algorithm for Linear Systems of Equations",
+    authors: "Aram W. Harrow, Avinatan Hassidim, and Seth Lloyd",
+    institution: "Massachusetts Institute of Technology; University of Bristol",
+    date: "2009",
+    category: "algorithms",
+    difficulty: 4,
+    plainSummary: "The HHL algorithm prepares a quantum state proportional to the solution of a linear system of equations in a time that grows only with the logarithm of the size of the system, an exponential speedup under certain conditions. The conditions matter a great deal, and they limit where the speedup applies.",
+    keyFindings: [
+      "For a sparse, well-conditioned N by N matrix A, a quantum computer can prepare a state proportional to the solution of A x equals b in time polylogarithmic in N.",
+      "The runtime depends on the sparsity s, the condition number kappa, and the target precision epsilon, scaling roughly as log N times s squared times kappa squared over epsilon.",
+      "The output is a quantum state, from which one can estimate quantities such as an inner product, but not read out the entire solution vector efficiently.",
+      "Matrix inversion in this setting is BQP-complete, so the algorithm solves a problem that is universal for quantum computation.",
+    ],
+    realWorldImpact: "HHL started the field of quantum linear algebra and quantum machine learning. Its limitations, discussed by Aaronson in 2015, and the dequantization results that followed taught the field to examine input and output assumptions closely.",
+    technicalAbstract: "Solving linear systems of equations is a common problem that arises both on its own and as a subroutine in more complex problems. The paper shows that a quantum computer can obtain information about the solution vector x of Ax equals b in time poly(log N, kappa), where N is the number of variables and kappa is the condition number, by preparing a quantum state proportional to x, and compares this with the best classical algorithms, which take at least time proportional to N.",
+    venue: "Physical Review Letters, volume 103, article 150502",
+    arxiv: "0811.3171",
+    reference: "Harrow, A. W., Hassidim, A., & Lloyd, S. (2009). Quantum algorithm for linear systems of equations. Physical Review Letters, 103, 150502. arXiv:0811.3171.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "Linear systems arise in nearly every area of science and engineering, from solving differential equations to training regression models. For a sparse system, the best classical iterative methods, such as conjugate gradient, take time roughly linear in N. In 2008, Harrow, Hassidim, and Lloyd asked whether a quantum computer could do much better, using the fact that a quantum state of log N qubits can hold N amplitudes.",
+      "The idea sits on top of quantum phase estimation and Hamiltonian simulation. Lloyd and others had shown that sparse Hamiltonians can be simulated efficiently on a quantum computer, and phase estimation can extract eigenvalues. A linear system can be solved if the right-hand side is expanded in the eigenvectors of the matrix and each component divided by its eigenvalue.",
+    ],
+    whatTheyDid: [
+      "The algorithm starts with a quantum state proportional to the vector b, assumed to be available. It uses Hamiltonian simulation to apply e to the i A t, then phase estimation to write the eigenvalues of A into an ancilla register in superposition. A controlled rotation then sets the amplitude of an extra qubit to be proportional to the inverse of each eigenvalue. The phase estimation is undone to clear the eigenvalue register, and the extra qubit is measured. When the result is one, the remaining register holds a state proportional to the solution x.",
+      "The authors analyze the running time. The cost is dominated by Hamiltonian simulation for a time of order kappa over epsilon, repeated to boost the success probability, and the final cost scales as log N times s squared times kappa squared over epsilon. A classical algorithm that outputs the full solution needs at least N steps, and even the best classical methods for finding a specific property of the solution scale polynomially in N.",
+      "The paper is explicit about what the algorithm does not do. It does not output the vector x. It outputs a quantum state, and extracting all N entries would take N measurements, destroying the speedup. What can be estimated efficiently are expectation values, such as the overlap of x with a given vector, or the total electromagnetic scattering cross section in a physical application.",
+    ],
+    results: [
+      "The central result is an exponential speedup in N for estimating certain properties of the solution of a sparse, well-conditioned linear system, assuming the input state can be prepared efficiently.",
+      "The authors show that the problem is BQP-complete under appropriate definitions, which means that any quantum computation can be encoded as a matrix inversion problem of this kind, and that a similar classical algorithm is unlikely.",
+      "The first experiments, in 2013, solved two-by-two systems on photonic and nuclear magnetic resonance devices, demonstrating the structure and not a speedup.",
+    ],
+    limitations: [
+      "Preparing the vector b as a quantum state can cost as much as solving the problem classically unless b has special structure, and the matrix must be sparse and given by an efficient oracle.",
+      "The dependence on the condition number kappa is steep, and well-conditioned systems are often easy for classical iterative methods as well.",
+      "Scott Aaronson's 2015 essay Read the Fine Print listed the caveats. In 2018, Ewin Tang's dequantization work showed that for machine learning applications with low-rank assumptions, classical algorithms with sampling access can match the quantum ones.",
+    ],
+    legacy: [
+      "Improvements by Childs, Kothari, and Somma in 2017 and by Gilyén and coauthors in 2019 reduced the dependence on precision and the condition number. Quantum singular value transformation now gives matrix inversion with a cost linear in kappa.",
+      "HHL inspired quantum algorithms for regression, support vector machines, principal component analysis, and differential equations, and also the variational linear solvers designed for near-term hardware. It remains a standard example in discussions of the assumptions behind quantum speedups.",
+    ],
+    keyNumbers: [
+      { label: "Runtime", value: "About log N times s squared times kappa squared over epsilon" },
+      { label: "Classical comparison", value: "At least linear in N for the sparse conjugate gradient method" },
+      { label: "Output", value: "A quantum state proportional to the solution, not the explicit vector" },
+      { label: "Complexity", value: "The problem is BQP-complete" },
+      { label: "First experiments", value: "2013, two-by-two systems on photonic and NMR devices" },
+    ],
+    howToRead: [
+      "The paper is short, and the algorithm is described in the main text. The supplementary material has the error analysis. Read Aaronson's Read the Fine Print afterward for the caveats.",
+      "The HHL and quantum singular value transformation pages on this site compare the original algorithm with its modern improvements.",
+    ],
+    faq: [
+      { q: "What does the HHL algorithm do?", a: "It prepares a quantum state proportional to the solution of a linear system, in time that grows only logarithmically with the size of the system under certain conditions." },
+      { q: "Is the speedup real?", a: "In its model, yes, but it requires efficient state preparation, a sparse and well-conditioned matrix, and a limited kind of output. In many applications those conditions undo the advantage." },
+      { q: "Can HHL read out the full solution?", a: "No. Reading all entries would take about N measurements. It is useful for estimating properties of the solution." },
+    ],
+    relatedAlgorithms: [
+      "hhl-algorithm",
+      "quantum-singular-value-transformation",
+      "variational-quantum-linear-solver",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "hamiltonian",
+      "unitary-operator",
+      "bqp",
+      "quantum-speedup",
+    ],
+    relatedIndustries: [
+      "manufacturing",
+      "aerospace-defense",
+      "oil-gas-mining",
+    ],
+  },
+  {
+    slug: "mcclean-barren-plateaus-2018",
+    title: "Barren Plateaus in Quantum Neural Network Training Landscapes",
+    authors: "Jarrod R. McClean, Sergio Boixo, Vadim N. Smelyanskiy, Ryan Babbush, and Hartmut Neven",
+    institution: "Google AI Quantum",
+    date: "2018",
+    category: "algorithms",
+    difficulty: 4,
+    plainSummary: "The authors show that for many randomly initialized parameterized quantum circuits, the gradients that guide training shrink exponentially with the number of qubits. This makes large variational circuits untrainable, and it changed how researchers design them.",
+    keyFindings: [
+      "For random circuits that are sufficiently deep, the variance of the gradient of the cost function decreases exponentially in the number of qubits.",
+      "The landscape is mostly flat, so gradient-based and gradient-free optimizers both fail to find a direction to improve.",
+      "The effect arises from the concentration of measure in the high-dimensional Hilbert space explored by a random circuit.",
+      "Structured, shallow circuits and careful initialization can avoid the problem.",
+    ],
+    realWorldImpact: "The paper explains why many hybrid algorithms struggle to scale, and drove research on local cost functions, smart initialization, and circuit design, as well as the question of whether trainable circuits are classically simulable.",
+    technicalAbstract: "Many quantum algorithms use parameterized quantum circuits whose parameters are trained by classical optimization. The paper shows that for a large class of random parameterized circuits, the gradient of the cost function with respect to any parameter has expected value zero and variance that vanishes exponentially with the number of qubits, so that the landscape is dominated by barren plateaus, and discusses implications for the design of quantum neural networks and variational algorithms.",
+    venue: "Nature Communications, volume 9, article 4812",
+    arxiv: "1803.11173",
+    reference: "McClean, J. R., Boixo, S., Smelyanskiy, V. N., Babbush, R., & Neven, H. (2018). Barren plateaus in quantum neural network training landscapes. Nature Communications, 9, 4812. arXiv:1803.11173.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "By 2018 variational quantum algorithms had become the main idea for using noisy devices, with VQE and QAOA as examples. A common recipe was to build a parameterized circuit with a layered structure, initialize the parameters randomly, and train with gradient descent, in analogy with classical neural networks. Researchers at Google, who were building 72-qubit hardware, wanted to understand how the training would scale.",
+      "Classical neural networks face vanishing gradients in deep networks, but the problem can be handled with changes to architecture and initialization. The authors asked whether quantum circuits have a more serious version, one that arises from the structure of quantum mechanics itself.",
+    ],
+    whatTheyDid: [
+      "The authors consider a parameterized circuit made of layers of random gates and a cost function that is the expectation value of a simple observable. They use the fact that if the circuit is deep enough to form a 2-design, meaning it reproduces the first two moments of the uniform distribution over unitaries, then the average over parameters of the gradient is zero and its variance can be computed exactly using properties of random unitary matrices.",
+      "The result is that the variance of the gradient scales as 2 to the power of minus n for n qubits, up to constants. In practice, that means that to estimate the gradient to a precision comparable to its typical size, the number of measurements must grow exponentially. Gradient-free optimizers also fail, since the cost function itself varies by exponentially small amounts across the landscape.",
+      "They support the analysis with numerical experiments on circuits of up to 24 qubits, showing the exponential decay of the gradient variance as the number of qubits increases and the circuits get deeper. They also explain why shallow circuits can avoid the problem: a circuit with few layers does not form a 2-design, and its gradients remain larger.",
+    ],
+    results: [
+      "The main theoretical result is the exponential vanishing of gradient variance for random deep parameterized circuits.",
+      "The numerical results match the formula and show the transition as depth increases.",
+      "The paper suggests that initialization with structured circuits, such as those motivated by chemistry, may avoid the plateau, and that the choice of cost function and circuit design are central to trainability.",
+    ],
+    limitations: [
+      "The theorem applies to circuits that are random enough to form a 2-design. Circuits with structure, such as shallow ones, are not covered, and later work showed that they can also have barren plateaus under certain conditions.",
+      "The analysis assumes noiseless circuits. Wang and coauthors showed in 2021 that hardware noise alone can cause barren plateaus.",
+      "The paper does not provide a general recipe to avoid the problem. Subsequent research by Cerezo, Larocca, and others developed mitigation strategies.",
+    ],
+    legacy: [
+      "The paper is one of the most cited in quantum machine learning. It prompted work on local cost functions by Cerezo and coauthors in 2021, noise-induced barren plateaus in 2021, a broad review by Larocca and coauthors in 2025, and the argument that circuits proven to avoid barren plateaus are often classically simulable.",
+      "It also shaped the field's expectations: variational algorithms are now treated as heuristics whose trainability must be demonstrated, and many groups have shifted attention to fault-tolerant algorithms.",
+    ],
+    keyNumbers: [
+      { label: "Gradient variance", value: "Scales roughly as 2^(-n) for n qubits in random deep circuits" },
+      { label: "Numerical tests", value: "Up to 24 qubits" },
+      { label: "Condition", value: "Circuits forming approximate 2-designs" },
+      { label: "Follow-up", value: "Noise-induced barren plateaus (2021) and local cost functions (2021)" },
+      { label: "Review", value: "Larocca et al. (2025)" },
+    ],
+    howToRead: [
+      "The main text states the result, and the supplementary information derives it using random matrix theory. The numerical section is easy to follow.",
+      "The barren plateau and variational quantum algorithm pages on this site summarize the causes and mitigation strategies.",
+    ],
+    faq: [
+      { q: "What is a barren plateau?", a: "A flat region in a variational circuit's cost landscape where gradients are exponentially small in the number of qubits, so training cannot make progress." },
+      { q: "What causes it?", a: "Deep random circuits, global cost functions, high entanglement, and hardware noise." },
+      { q: "How can it be avoided?", a: "With local cost functions, shallow or structured circuits, careful initialization, and layerwise training." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "qaoa",
+      "quantum-natural-gradient",
+    ],
+    relatedHardware: [
+      "google-sycamore",
+    ],
+    relatedTerms: [
+      "barren-plateau",
+      "variational-quantum-algorithm",
+      "ansatz",
+      "quantum-machine-learning",
+    ],
+    relatedIndustries: [
+      "artificial-intelligence-data-centers",
+    ],
+  },
+  {
+    slug: "tang-quantum-inspired-recommendation-2019",
+    title: "A Quantum-Inspired Classical Algorithm for Recommendation Systems",
+    authors: "Ewin Tang",
+    institution: "University of Texas at Austin",
+    date: "2019 (preprint 2018)",
+    category: "algorithms",
+    difficulty: 4,
+    plainSummary: "Ewin Tang, then an undergraduate, shows that a classical algorithm can solve the recommendation problem in time polylogarithmic in the size of the data, matching the speed of a celebrated quantum algorithm under comparable assumptions. The result removed a prominent claim of exponential quantum speedup in machine learning.",
+    keyFindings: [
+      "A classical algorithm with sampling access to the data matrix can produce recommendations in time polylogarithmic in the matrix dimensions, for low-rank matrices.",
+      "The algorithm matches the Kerenidis-Prakash quantum recommendation algorithm of 2016 up to polynomial factors.",
+      "The quantum speedup in that setting came from the data-access model, in which the quantum algorithm assumes a fast quantum-accessible data structure, and a classical analogue of that access gives the same scaling.",
+      "The technique, now called dequantization, applies to other machine learning problems.",
+    ],
+    realWorldImpact: "The paper changed how researchers evaluate quantum machine learning claims, by showing that apparent exponential speedups can disappear when classical algorithms are given the same kind of input access. It led to a wave of dequantized algorithms for principal component analysis, clustering, and regression.",
+    technicalAbstract: "The paper gives a classical algorithm for the recommendation systems problem, assuming a low-rank preference matrix and the ability to sample from rows and entries according to their squared magnitudes. The algorithm runs in time polynomial in the rank, the inverse of the error, and the logarithm of the matrix dimensions, and is only polynomially slower than the quantum algorithm of Kerenidis and Prakash, which it proves cannot offer an exponential speedup in this model.",
+    venue: "Proceedings of the 51st Annual ACM Symposium on Theory of Computing (STOC 2019), pages 217 to 228",
+    arxiv: "1807.04271",
+    reference: "Tang, E. (2019). A quantum-inspired classical algorithm for recommendation systems. Proceedings of the 51st Annual ACM SIGACT Symposium on Theory of Computing (STOC '19), 217-228. arXiv:1807.04271.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "A recommendation system predicts which products a user would like from a large matrix of past preferences, such as users by movies. A common model is that the matrix is approximately low rank, since people's tastes can be described by a small number of factors. Classical methods, such as the singular value decomposition, take time polynomial in the matrix dimensions, which can be millions.",
+      "In 2016 Iordanis Kerenidis and Anupam Prakash proposed a quantum algorithm that produced recommendations in time polylogarithmic in the dimensions, an exponential speedup, and it was widely cited as a leading example of quantum machine learning. The speedup depended on assuming that the preference data were stored in a quantum-accessible data structure that allows quantum states of rows to be prepared quickly.",
+    ],
+    whatTheyDid: [
+      "Tang, advised by Scott Aaronson, asked whether the data structure assumption was doing the work. The quantum algorithm used the structure to prepare states whose amplitudes are proportional to a row of the matrix, and then used quantum linear algebra on those states. A classical analogue of the same assumption is the ability to sample an index of a row or an entry with probability proportional to its squared magnitude, which is the kind of access a classical data structure can also provide.",
+      "With this access, Tang designed a randomized algorithm based on length-squared sampling and low-rank approximation. The algorithm samples a small number of rows and columns, computes a small matrix that approximates the original in the sense relevant for the singular values, and uses it to estimate the quantity needed for the recommendation. Techniques from randomized numerical linear algebra, due to Frieze, Kannan, and Vempala, underpin it.",
+      "The paper proves that the running time is polynomial in the rank k, in one over the error, and in the logarithm of the dimensions, though the polynomial in k is of fairly high degree. It acknowledges that the quantum algorithm is faster in the exponents, so a polynomial advantage for the quantum algorithm may remain, but not an exponential one.",
+    ],
+    results: [
+      "The headline result is that the exponential quantum speedup for recommendation systems, under the stated input model, does not exist.",
+      "The result was posted in July 2018, and within the following two years Tang and others, including Chia, Gilyén, Li, Lin, and Wang, extended the approach to quantum-inspired algorithms for principal component analysis, supervised clustering, low-rank linear systems, and semidefinite programming.",
+      "The work also pointed to the importance of input and output models in comparing quantum and classical algorithms, which Aaronson had stressed in his earlier essay on the HHL algorithm.",
+    ],
+    limitations: [
+      "The classical algorithm's polynomial dependence on rank and error is large, so it is not practical for typical sizes. The result is about asymptotic scaling.",
+      "The result applies to low-rank problems with sampling access. Quantum algorithms for other problems, such as simulation of quantum systems, are not affected.",
+      "It does not show that quantum machine learning is worthless. It shows that for this class of problems, the claimed exponential advantage vanishes.",
+    ],
+    legacy: [
+      "The paper is a standard example in discussions about how to evaluate claims of quantum advantage, and it is cited in resource estimates and reviews that consider data loading as a bottleneck. The sampling-based methods it introduced became known as dequantization.",
+      "The work also had a human side that attracted attention: Tang was 18 when he began it, and his result was welcomed by the quantum computing community, which treated the correction of a major claim as a sign of the field's maturity.",
+    ],
+    keyNumbers: [
+      { label: "Year", value: "Preprint July 2018; STOC 2019" },
+      { label: "Target", value: "Kerenidis-Prakash quantum recommendation algorithm (2016)" },
+      { label: "Classical runtime", value: "Polynomial in rank and inverse error, polylogarithmic in dimensions" },
+      { label: "Access model", value: "Length-squared sampling of rows and entries" },
+      { label: "Follow-ups", value: "Dequantized PCA, clustering, regression, and semidefinite programming" },
+    ],
+    howToRead: [
+      "The introduction explains the problem and the comparison clearly. The algorithm relies on randomized linear algebra and is technical, so a reader new to the subject can skip the analysis and focus on the discussion of what the result means.",
+      "For context, read Aaronson's essay Read the Fine Print, and the quantum PCA and quantum support vector machine pages on this site.",
+    ],
+    faq: [
+      { q: "What did Ewin Tang prove?", a: "That a classical algorithm with sampling access to the data can solve the recommendation problem about as fast as the quantum algorithm, removing its claimed exponential speedup." },
+      { q: "Does this mean quantum machine learning does not work?", a: "No. It shows that some proposed speedups depend on assumptions that classical algorithms can also exploit, and it encourages careful comparisons." },
+      { q: "What is dequantization?", a: "The process of finding a classical algorithm that matches a quantum one by using a classical analogue of its data-access assumptions." },
+    ],
+    relatedAlgorithms: [
+      "quantum-pca",
+      "quantum-k-means",
+      "hhl-algorithm",
+      "quantum-support-vector-machine",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+    ],
+    relatedTerms: [
+      "quantum-machine-learning",
+      "quantum-speedup",
+      "hilbert-space",
+    ],
+    relatedIndustries: [
+      "retail-consumer-goods",
+      "artificial-intelligence-data-centers",
+    ],
+  },
+  {
+    slug: "gidney-rsa-million-qubits-2025",
+    title: "How to Factor 2048 Bit RSA Integers with Less than a Million Noisy Qubits",
+    authors: "Craig Gidney",
+    institution: "Google Quantum AI",
+    date: "2025",
+    category: "algorithms",
+    difficulty: 4,
+    plainSummary: "Craig Gidney estimates that a quantum computer with fewer than one million noisy qubits could factor a 2048-bit RSA number in under a week, about twenty times fewer qubits than his own 2019 estimate. The paper shows how software and error-correction improvements can bring a cryptographically relevant machine closer.",
+    keyFindings: [
+      "RSA-2048 could be factored with fewer than one million noisy physical qubits in less than a week, under stated hardware assumptions.",
+      "The assumptions include a square grid with nearest-neighbor connections, a gate error rate of 0.1 percent, a surface-code cycle time of 1 microsecond, and a classical control reaction time of 10 microseconds.",
+      "The 2019 estimate by Gidney and Ekerå was 20 million noisy qubits for about eight hours, so the qubit count fell by roughly a factor of twenty while runtime rose.",
+      "The improvement comes from combining approximate residue arithmetic, yoked surface codes, and magic state cultivation.",
+    ],
+    realWorldImpact: "The paper moved timelines for planning the migration to post-quantum cryptography, since it showed that the hardware needed to break RSA-2048 is far smaller than many earlier estimates, and it is widely cited by agencies and companies when discussing harvest-now-decrypt-later risk.",
+    technicalAbstract: "The paper shows that 2048-bit RSA integers can be factored in less than a week by a quantum computer with fewer than a million noisy qubits, assuming a square grid of qubits with nearest-neighbor connections, a uniform gate error rate of 0.1 percent, a surface-code cycle time of 1 microsecond, and a reaction time of 10 microseconds. This is a twentyfold reduction from the previous estimate of 20 million qubits, achieved by using approximate residue arithmetic, yoked surface codes for idle qubits, and magic state cultivation.",
+    venue: "arXiv preprint",
+    arxiv: "2505.15917",
+    reference: "Gidney, C. (2025). How to factor 2048 bit RSA integers with less than a million noisy qubits. arXiv:2505.15917.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "Estimating the cost of Shor's algorithm for realistic key sizes is an exercise in resource counting. One must choose an implementation of modular exponentiation, an error-correcting code, a way to perform the non-Clifford gates, and hardware assumptions, and then count qubits and time. Early estimates in 2012 by Fowler and coauthors gave about a billion physical qubits, and Gidney and Ekerå in 2019 brought it down to about 20 million qubits for eight hours.",
+      "Since 2019, several ideas had appeared that could cut the cost further. Chevignard, Fouque, and Schrottenloher proposed in 2024 a way to do the arithmetic with far fewer logical qubits, using approximate residue number system techniques. Gidney developed yoked surface codes in 2023, which encode idle logical qubits at much lower overhead, and magic state cultivation in 2024, which produces the T states needed for non-Clifford gates much more cheaply than distillation.",
+    ],
+    whatTheyDid: [
+      "Gidney combines these ideas in a single design. The modular exponentiation is done with an approximate residue arithmetic that lowers the number of logical qubits to about 1,400, compared with about 6,000 in the previous design. The logical qubits are protected by surface codes, with idle qubits stored in a denser yoked code that uses fewer physical qubits per logical qubit, and active qubits using a standard surface code.",
+      "The non-Clifford gates, which in earlier designs required large magic state distillation factories that took up much of the machine, are produced by magic state cultivation, which grows a high-quality T state inside a small patch. The cost of the Toffoli gates that dominate the algorithm falls accordingly. The factoring needs on the order of a billion Toffoli gates, and the runtime is set by the rate of these operations.",
+      "The paper gives a detailed accounting of the physical layout and the time, based on simulations of the error rates of the surface code at a gate error of 0.1 percent, and states clearly how the estimate would change with different assumptions. At the quoted assumptions, the total comes to fewer than a million physical qubits and a runtime of less than a week.",
+    ],
+    results: [
+      "The central estimate is a machine with fewer than a million noisy qubits running for under a week, which is a major reduction from the 20 million qubits of 2019.",
+      "The paper also discusses tradeoffs, since a machine with more qubits could be faster, and the estimate depends strongly on the physical error rate and cycle time.",
+      "The result does not mean that RSA-2048 is broken. Current devices have a few thousand physical qubits at best, and logical qubits are in the dozens, so there is a gap of several orders of magnitude.",
+    ],
+    limitations: [
+      "The estimate relies on assumptions that no existing machine has yet met at scale, including a uniform 0.1 percent error rate across a million qubits, fast classical decoding, and a cycle time of one microsecond.",
+      "It covers RSA-2048. Elliptic-curve cryptography has different costs, and other estimates are needed for it.",
+      "Resource estimates are not predictions. They give a sense of scale, and can change with new ideas in either direction.",
+    ],
+    legacy: [
+      "The paper is a main reference for security planning. Agencies including the U.S. NSA and the UK NCSC already advise migration by about 2030 to 2035, and the paper strengthened the argument that long-lived secrets need protection now.",
+      "It also showed how fast algorithmic ideas can change timelines. The reduction by a factor of twenty came from software and architecture changes, without any change in hardware, which is why many cryptographers treat estimates as moving downward over time.",
+    ],
+    keyNumbers: [
+      { label: "Physical qubits", value: "Fewer than one million noisy qubits" },
+      { label: "Runtime", value: "Less than one week" },
+      { label: "Assumed gate error", value: "0.1 percent" },
+      { label: "Cycle time", value: "1 microsecond, with 10 microsecond control reaction time" },
+      { label: "2019 estimate", value: "About 20 million qubits for 8 hours (Gidney and Ekerå)" },
+      { label: "Key ideas", value: "Approximate residue arithmetic, yoked surface codes, magic state cultivation" },
+    ],
+    howToRead: [
+      "The introduction and the results table give the key numbers. The later sections on the arithmetic and the layout are technical and can be read selectively. Read the earlier 2019 paper by Gidney and Ekerå for comparison.",
+      "The Shor's algorithm, post-quantum cryptography, and harvest-now-decrypt-later pages on this site explain the context.",
+    ],
+    faq: [
+      { q: "Can a quantum computer break RSA-2048 today?", a: "No. The paper estimates fewer than a million noisy qubits running for under a week, while today's machines have at most a few thousand physical qubits." },
+      { q: "Why did the estimate fall so much?", a: "Because of algorithmic and architectural improvements: approximate residue arithmetic, yoked surface codes, and magic state cultivation." },
+      { q: "What should organizations do?", a: "Plan the migration to post-quantum cryptography now, because the migration takes years and encrypted data can be recorded today." },
+    ],
+    relatedAlgorithms: [
+      "shors-algorithm",
+      "quantum-error-correction-codes",
+      "quantum-fourier-transform",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+    relatedTerms: [
+      "post-quantum-cryptography",
+      "harvest-now-decrypt-later",
+      "magic-state-distillation",
+      "surface-code",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+      "finance",
+      "government-public-sector",
+    ],
+  },
+  {
+    slug: "bravyi-high-threshold-low-overhead-memory-2024",
+    title: "High-Threshold and Low-Overhead Fault-Tolerant Quantum Memory",
+    authors: "Sergey Bravyi, Andrew W. Cross, Jay M. Gambetta, Dmitri Maslov, Patrick Rall, and Theodore J. Yoder",
+    institution: "IBM Quantum, IBM Research",
+    date: "2024",
+    category: "error-correction",
     difficulty: 5,
-    plainSummary:
-      "Quantum machine learning models often get 'stuck' during training because the training signal becomes vanishingly small as the model gets bigger — researchers found a smarter way to set up the model initially that reduces how often this happens.",
+    plainSummary: "IBM researchers present a family of quantum LDPC codes, including the gross code, that store 12 logical qubits in 288 physical qubits with a high error threshold. The codes need about ten times fewer qubits than the surface code for similar protection, but they require long-range connections between qubits.",
     keyFindings: [
-      "The proposed initialization strategy delayed the onset of barren plateau effects to larger qubit counts than standard initialization",
-      "Training success rates improved measurably on the tested benchmark problems",
-      "The technique adds minimal computational overhead compared to standard approaches",
+      "The bivariate bicycle codes are quantum LDPC codes that can be implemented with circuits of modest depth and a circuit-level error threshold of about 0.8 percent.",
+      "The gross code has parameters [[144, 12, 12]], encoding 12 logical qubits with distance 12 in 144 data qubits, and needs 144 more qubits for check measurements.",
+      "A surface code with similar protection for 12 logical qubits would need on the order of 3,000 physical qubits, so the saving is about a factor of ten.",
+      "The codes need qubit connectivity that is not planar: each qubit connects to six others, in a graph of thickness two that can be drawn on two layers.",
     ],
-    realWorldImpact:
-      "Barren plateaus are one of the most significant practical obstacles to scaling up quantum machine learning, directly relevant to the narrow, problem-specific nature of proven QML advantages discussed in our Quantum vs AI comparison — this kind of incremental fix matters even though it doesn't solve the fundamental scaling challenge.",
-    technicalAbstract:
-      "The paper introduces a layer-wise initialization scheme for parameterized quantum circuits used in quantum neural networks, demonstrating empirically reduced gradient variance collapse compared to random initialization across increasing qubit counts on classification benchmark tasks.",
+    realWorldImpact: "The paper provided the basis for IBM's roadmap to a fault-tolerant machine, with the Loon, Kookaburra, and Starling processors, and it energized the study of quantum LDPC codes as an alternative to the surface code.",
+    technicalAbstract: "Quantum error correction offers a promising path for performing high-fidelity quantum computations. The paper presents an end-to-end quantum error correction protocol that implements fault-tolerant memory based on a family of low-density parity-check codes, with an error threshold of 0.8 percent for the standard circuit-based noise model, and shows that the protocol can encode 12 logical qubits for nearly one million syndrome cycles using 288 physical qubits, about ten times fewer than the surface code at the same level of protection.",
+    venue: "Nature, volume 627, pages 778 to 782",
+    arxiv: "2308.07915",
+    reference: "Bravyi, S., Cross, A. W., Gambetta, J. M., Maslov, D., Rall, P., & Yoder, T. J. (2024). High-threshold and low-overhead fault-tolerant quantum memory. Nature, 627, 778-782. arXiv:2308.07915.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "The surface code, the leading approach, uses a two-dimensional grid and needs only nearest-neighbor connections, but its efficiency is poor. Each logical qubit needs about 2 d squared physical qubits, and the number of logical qubits per physical qubit falls as the distance grows. Estimates for useful algorithms suggested millions of physical qubits.",
+      "Quantum LDPC codes had been studied theoretically since the 2000s as an alternative. Panteleev and Kalachev proved in 2021 that good codes exist, with constant rate and linear distance. But these constructions were asymptotic and difficult to implement, and the challenge was to find codes with practical sizes and high thresholds that could be run with realistic circuits.",
+    ],
+    whatTheyDid: [
+      "The team studied bivariate bicycle codes, which are constructed from two polynomials in two commuting cyclic shift operators acting on a toroidal grid of qubits. The structure gives checks of weight six, each qubit participating in three X-type and three Z-type checks, and translational symmetry that simplifies the circuits. They searched over small polynomials to find codes with good parameters, including [[72, 12, 6]], [[90, 8, 10]], [[108, 8, 10]], [[144, 12, 12]], and [[288, 12, 18]].",
+      "They designed a syndrome measurement circuit that uses 7 layers of CNOT gates to measure all checks, with ancilla qubits arranged so that the required connectivity forms a graph of thickness two, meaning it can be laid out on two planar layers connected by vias. They proposed a decoder based on belief propagation with ordered statistics post-processing, and simulated the circuit-level performance with a depolarizing noise model, finding a threshold of about 0.8 percent.",
+      "At a physical error rate of 0.1 percent, the gross code achieves a logical error rate of about 10 to the minus 7 per round, and the authors compared the qubit count with surface codes of similar logical error rate and number of logical qubits. They noted that a full computer would also need ways to perform logical gates and measurements on these codes, which the paper does not solve.",
+    ],
+    results: [
+      "The gross code encodes 12 logical qubits in 144 data qubits plus 144 check qubits, and shows competitive performance in simulation with a threshold close to that of the surface code.",
+      "The saving relative to the surface code is about a factor of ten for the same number of logical qubits and similar protection, in the memory setting.",
+      "IBM followed the paper with a hardware program, including the Loon processor in 2025 to test the long-range couplers, and a roadmap with the 200-logical-qubit Starling machine planned for 2029.",
+    ],
+    limitations: [
+      "The paper addresses memory, not computation. Logical gates between qubits in these codes require new methods such as generalized lattice surgery, which were developed after the paper.",
+      "The connectivity needed, with degree-six nonplanar connections, is difficult for superconducting chips and requires new couplers. Neutral atoms and ions may find it easier.",
+      "The results are from simulations with a circuit-level noise model, and real devices have correlated errors, leakage, and other effects that could change the performance.",
+    ],
+    legacy: [
+      "The paper triggered work by many groups on qLDPC codes, decoders, and logical operations, and by Google, Quantinuum, QuEra, and others on how long-range connectivity can be realized. IBM's later work on the Relay-BP decoder and on logical gates builds on it.",
+      "It also changed the common comparison between hardware platforms. Qubit counts and connectivity trade off: a platform with flexible connectivity may need fewer qubits for the same task, which affects how roadmaps are compared.",
+    ],
+    keyNumbers: [
+      { label: "Gross code", value: "[[144, 12, 12]] with 144 check qubits, 288 physical qubits in total" },
+      { label: "Threshold", value: "About 0.8 percent for circuit-level noise" },
+      { label: "Saving", value: "About 10 times fewer qubits than the surface code for similar protection" },
+      { label: "Connectivity", value: "Degree six, thickness two" },
+      { label: "Decoder", value: "Belief propagation with ordered statistics" },
+    ],
+    howToRead: [
+      "The main text gives the code families and the results, and the supplementary information has the circuits and the decoder. Readers new to the subject should first read the surface code, qLDPC code, and stabilizer code pages on this site.",
+      "For the follow-up on logical operations, search for papers on generalized lattice surgery for bivariate bicycle codes.",
+    ],
+    faq: [
+      { q: "What is the gross code?", a: "A quantum LDPC code from IBM's bivariate bicycle family that encodes 12 logical qubits with distance 12 using 144 data qubits and 144 check qubits." },
+      { q: "Why is it better than the surface code?", a: "It needs about ten times fewer physical qubits for similar protection, at the cost of long-range connections." },
+      { q: "Does the paper show a full fault-tolerant computer?", a: "No. It shows a memory. Logical gates and the hardware connectivity were handled in later work." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+      "quantum-belief-propagation",
+    ],
+    relatedHardware: [
+      "ibm-heron",
+      "ibm-condor",
+    ],
+    relatedTerms: [
+      "qldpc-code",
+      "stabilizer-code",
+      "code-distance",
+      "surface-code",
+      "logical-qubit",
+    ],
+    relatedIndustries: [
+      "cybersecurity",
+    ],
   },
   {
-    slug: "quantum-repeater-prototype-demonstration",
-    title: "Prototype Quantum Repeater Demonstrates Entanglement Distribution Over Extended Fiber Distance",
-    authors: "Lindqvist, Osei, Fitzgerald et al.",
-    institution: "Quantum networking research group",
-    date: "2026",
-    category: "hardware",
-    difficulty: 4,
-    plainSummary:
-      "Researchers built and tested an early version of a 'quantum repeater' — a device needed to extend entanglement-based quantum networks over long distances without the signal simply fading away, similar to how classical internet signals need repeater stations.",
-    keyFindings: [
-      "The prototype successfully extended entanglement distribution beyond the distance achievable without repetition",
-      "Entanglement fidelity after repeater operation remained above the threshold needed for practical quantum key distribution",
-      "The system operated using standard telecom fiber infrastructure",
-    ],
-    realWorldImpact:
-      "Quantum repeaters are explicitly identified in our Future Predictions coverage as the key missing technology for a large-scale quantum internet — early prototype demonstrations like this represent genuine, if incremental, progress toward that longer-term vision.",
-    technicalAbstract:
-      "The paper demonstrates a quantum repeater prototype based on entanglement swapping between two elementary links, achieving extended-distance entanglement distribution over standard telecommunications fiber while maintaining fidelity above the threshold required for BB84-style quantum key distribution.",
-  },
-  {
-    slug: "variational-quantum-linear-solver-comparison",
-    title: "Comparing Variational Quantum Linear Solvers Against Classical Methods for Small Systems",
-    authors: "Andersson, Mwangi, Delacroix et al.",
-    institution: "Quantum algorithms research group",
-    date: "2026",
-    category: "algorithms",
-    difficulty: 4,
-    plainSummary:
-      "Researchers tested a NISQ-friendly alternative to the HHL algorithm (which requires hardware that doesn't exist yet) for solving systems of linear equations, comparing it honestly against classical methods on small test problems.",
-    keyFindings: [
-      "Variational quantum linear solvers successfully solved the small test problems but did not outperform classical methods at the tested scale",
-      "Circuit depth requirements remained within reach of current NISQ hardware, unlike the original HHL algorithm",
-      "Solution accuracy was sensitive to the choice of variational circuit structure",
-    ],
-    realWorldImpact:
-      "This kind of honest negative-or-neutral result is valuable context for the linear algebra speedups discussed in our HHL Algorithm entry — showing that practical, near-term implementations don't yet deliver the dramatic speedups promised by the original theoretical algorithm.",
-    technicalAbstract:
-      "The study benchmarks a variational quantum linear solver against classical conjugate gradient methods on small sparse linear systems, reporting solution accuracy and circuit resource requirements across several variational ansatz choices on simulated and real NISQ hardware.",
-  },
-  {
-    slug: "diamond-defect-qubit-coherence-improvement",
-    title: "Extended Coherence Times in Diamond Nitrogen-Vacancy Center Qubits",
-    authors: "Haugen, Olawale, Pettersson et al.",
-    institution: "Solid-state quantum hardware research group",
-    date: "2026",
-    category: "hardware",
-    difficulty: 3,
-    plainSummary:
-      "Researchers improved how long a less commonly discussed type of qubit — based on defects in diamond crystals — can hold its quantum state, an approach distinct from the superconducting, trapped-ion, neutral atom, and photonic systems covered in our main Hardware Database.",
-    keyFindings: [
-      "Coherence times for diamond nitrogen-vacancy center qubits were extended substantially through improved isotopic purification of the diamond material",
-      "The qubits operated at higher temperatures than competing platforms, simplifying cooling requirements",
-      "Results suggest potential for room-temperature quantum sensing applications",
-    ],
-    realWorldImpact:
-      "Diamond defect qubits are particularly promising for quantum sensing applications (discussed in our Future Predictions and Aerospace & Defense coverage) rather than general-purpose quantum computing, due to their relative ease of operation at higher temperatures.",
-    technicalAbstract:
-      "The paper reports extended T2 coherence times in nitrogen-vacancy center qubits achieved through isotopically purified diamond substrates with reduced carbon-13 concentration, characterized via dynamical decoupling pulse sequences at varying operating temperatures.",
-  },
-  {
-    slug: "quantum-advantage-claim-independent-verification",
-    title: "Independent Verification Attempt of a Recent Quantum Advantage Claim",
-    authors: "Bjornsson, Kamau, Delgado et al.",
-    institution: "Independent computational complexity research group",
-    date: "2026",
+    slug: "huang-classical-shadows-2020",
+    title: "Predicting Many Properties of a Quantum System from Very Few Measurements",
+    authors: "Hsin-Yuan Huang, Richard Kueng, and John Preskill",
+    institution: "California Institute of Technology; Johannes Kepler University Linz",
+    date: "2020",
     category: "theory",
     difficulty: 4,
-    plainSummary:
-      "An independent team tried to reproduce and verify a recently published 'quantum advantage' claim using improved classical computing methods, continuing a long-running pattern in the field where such claims get carefully scrutinized rather than simply accepted at face value.",
+    plainSummary: "The authors introduce classical shadows, a way to record a small amount of data from random measurements of a quantum state and later predict many different properties of it. The number of measurements needed grows only logarithmically with the number of properties.",
     keyFindings: [
-      "The independent classical simulation substantially narrowed the originally claimed performance gap",
-      "The original quantum hardware result remained faster for the specific tested instance, but by a smaller margin than initially reported",
-      "The verification process took significantly longer and required more computational resources than the original quantum experiment",
+      "Applying a random unitary and measuring gives a snapshot from which an unbiased estimate of the state can be built, and a collection of snapshots forms a classical shadow.",
+      "With log M times a factor depending on the observables, snapshots suffice to estimate M observables to a given precision.",
+      "Random Pauli measurements are efficient for local observables, with a cost that grows as 3 to the k for k-local observables.",
+      "Random Clifford measurements are efficient for observables with small Hilbert-Schmidt norm, including fidelities with stabilizer states.",
     ],
-    realWorldImpact:
-      "This kind of follow-up scrutiny is a healthy and normal part of the scientific process, directly relevant to the pattern discussed in our Myths page regarding Google's 2019 quantum supremacy claim — 'quantum advantage' claims should generally be treated as provisional until independently verified.",
-    technicalAbstract:
-      "The paper presents an improved tensor-network-based classical simulation algorithm applied to a previously published random circuit sampling quantum advantage claim, reporting reduced but not eliminated performance gap between classical simulation and the original quantum hardware result.",
+    realWorldImpact: "Classical shadows reduced the measurement cost in variational algorithms, state verification, and entanglement estimation, and they are now a standard tool in quantum experiments and software libraries.",
+    technicalAbstract: "Predicting properties of complex, large-scale quantum systems is essential for developing quantum technologies. The paper presents an efficient method for constructing an approximate classical description of a quantum state using very few measurements of the state. This description, called a classical shadow, can be used to predict many different properties: order log M measurements suffice to accurately predict M different functions of the state with high success probability.",
+    venue: "Nature Physics, volume 16, pages 1050 to 1057",
+    arxiv: "2002.08953",
+    reference: "Huang, H.-Y., Kueng, R., & Preskill, J. (2020). Predicting many properties of a quantum system from very few measurements. Nature Physics, 16, 1050-1057. arXiv:2002.08953.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "Fully characterizing an n-qubit state by tomography needs a number of measurements that grows exponentially, roughly 4 to the n for general states. This is impractical beyond a handful of qubits. At the same time, experimenters usually do not need the whole state; they need specific numbers such as the energy, the correlations between pairs of qubits, the entanglement entropy, or the fidelity with a target state.",
+      "Scott Aaronson had shown in 2018 that, in principle, a quantum state can be learned well enough to predict the outcomes of many measurements with a number of copies that is only polynomial in the number of qubits, a result called shadow tomography. But his procedure was not practical to implement. The challenge was to find a version that could be run on real devices.",
+    ],
+    whatTheyDid: [
+      "The protocol is simple. Pick a random unitary from a chosen ensemble, apply it to the state, measure in the computational basis, and store a classical description of the unitary and the outcome. A single snapshot gives an unbiased estimate of the state, in the form of a matrix that is a known function of the unitary and outcome. Repeating the process gives a list of snapshots, the classical shadow, and the estimate of an observable is obtained by averaging the corresponding estimates from each snapshot, with medians of means used to control outliers.",
+      "The authors prove how many snapshots are needed. The variance of the estimator depends on a quantity called the shadow norm of the observable, which depends on the chosen ensemble. For random single-qubit Clifford unitaries, which amounts to measuring each qubit in a random Pauli basis, the shadow norm of a k-local Pauli observable is at most 3 to the k, so the method is efficient for estimating local properties such as two-point correlations. For random global Clifford unitaries, the shadow norm is related to the Hilbert-Schmidt norm of the observable, so the method is efficient for properties such as the fidelity with a pure stabilizer state.",
+      "The key point is that the same data set can be used to estimate any observable, chosen after the measurements, and the number of snapshots scales with the logarithm of the number of observables. The paper includes numerical experiments and applications, including estimating entanglement entropies and the energy of a molecular Hamiltonian.",
+    ],
+    results: [
+      "The main theorem gives rigorous sample complexity bounds for estimating M observables in terms of their shadow norms, with only a logarithmic dependence on M.",
+      "The method gives exponential savings over tomography for local and low-norm observables, and it also provides a way to test properties such as entanglement in many-body states.",
+      "Extensions include derandomized shadows, which pick measurements to suit a given list of observables, and shadows for noisy devices, and experiments that apply them to up to dozens of qubits.",
+    ],
+    limitations: [
+      "For observables with large shadow norm, such as global operators under local measurements, the number of snapshots still grows exponentially. The method cannot make hard properties easy.",
+      "The classical post-processing of shadows can be costly for some observables, and the storage is modest but the estimation time can grow with the number of snapshots and observables.",
+      "The protocol assumes accurate random unitaries and measurements. Errors in these steps can bias the estimates unless calibrated.",
+    ],
+    legacy: [
+      "Classical shadows are implemented in software libraries such as PennyLane, Qiskit, and Cirq extensions, and used in experiments on entanglement and variational algorithms. They also connected to the theory of learning from quantum data, in which Huang and coauthors later showed that classical machine learning with data from quantum experiments can predict ground-state properties.",
+      "The paper is one of the most cited in quantum information from 2020 onward, and it showed that carefully designed measurement schemes can sidestep the exponential cost of tomography for many tasks.",
+    ],
+    keyNumbers: [
+      { label: "Sample complexity", value: "Order log M snapshots to estimate M observables, with factors that depend on the shadow norm" },
+      { label: "Random Pauli measurements", value: "k-local observables cost about 3^k" },
+      { label: "Random Clifford measurements", value: "Efficient for observables with small Hilbert-Schmidt norm" },
+      { label: "Comparison", value: "Full tomography needs about 4^n measurements for n qubits" },
+      { label: "Precursor", value: "Aaronson's shadow tomography (2018)" },
+    ],
+    howToRead: [
+      "The main text is accessible and has clear figures. The supplementary information contains the proofs, which use representation theory and are demanding.",
+      "The classical shadow page on this site gives a short summary, and the variational quantum algorithm page explains why measurement cost matters.",
+    ],
+    faq: [
+      { q: "What is a classical shadow?", a: "A compact classical record of a quantum state, made from random measurements, that can be used to estimate many properties of the state later." },
+      { q: "Why is it more efficient than tomography?", a: "Because it aims to predict selected properties and not to reconstruct the entire state, and the number of snapshots grows only logarithmically with the number of properties." },
+      { q: "Which properties are hard for shadows?", a: "Global properties with large shadow norm under local measurements, which still need exponentially many snapshots." },
+    ],
+    relatedAlgorithms: [
+      "vqe",
+      "quantum-error-mitigation",
+    ],
+    relatedHardware: [
+      "google-willow",
+    ],
+    relatedTerms: [
+      "classical-shadow",
+      "density-matrix",
+      "born-rule",
+      "variational-quantum-algorithm",
+    ],
+    relatedIndustries: [
+      "materials-science",
+    ],
   },
   {
-    slug: "qaoa-hardware-aware-circuit-compilation",
-    title: "Hardware-Aware Circuit Compilation Improves QAOA Performance on Real Devices",
-    authors: "Novak, Adeleke, Fitzpatrick et al.",
-    institution: "Quantum software and compilation research group",
-    date: "2026",
-    category: "algorithms",
-    difficulty: 3,
-    plainSummary:
-      "Researchers found that carefully adapting how a quantum algorithm's instructions get translated into the specific physical layout of a real quantum chip — rather than using a generic, one-size-fits-all translation — meaningfully improved real-world results.",
+    slug: "bluvstein-logical-quantum-processor-2023",
+    title: "Logical Quantum Processor Based on Reconfigurable Atom Arrays",
+    authors: "Dolev Bluvstein, Simon J. Evered, Alexandra A. Geim, Sophie H. Li, Hengyun Zhou, Tom Manovitz, Sepehr Ebadi, Madelyn Cain, Marcin Kalinowski, Dominik Hangleiter, J. Pablo Bonilla Ataides, Nishad Maskara, Iris Cong, Xun Gao, Pedro Sales Rodriguez, Thomas Karolyshyn, Giulia Semeghini, Michael J. Gullans, Markus Greiner, Vladan Vuletić, and Mikhail D. Lukin",
+    institution: "Harvard University; QuEra Computing; Massachusetts Institute of Technology; NIST and University of Maryland",
+    date: "2023 (published 2024)",
+    category: "error-correction",
+    difficulty: 4,
+    plainSummary: "A Harvard, QuEra, and MIT team used a neutral atom array with up to 280 physical qubits to run algorithms on up to 48 error-detecting logical qubits. They showed that encoded qubits and logical gates could outperform their unencoded counterparts, a landmark for neutral atom quantum computing.",
     keyFindings: [
-      "Hardware-aware compilation reduced the number of physical gates required to implement equivalent QAOA circuits",
-      "Resulting solution quality improved measurably on real quantum hardware compared to generic compilation",
-      "Improvements were most significant on devices with limited qubit connectivity",
+      "The processor used up to 280 rubidium atoms in optical tweezers, rearranged during the computation to give flexible connectivity.",
+      "Logical qubits were encoded in small codes, including the surface code, color codes, and a family of hypercube codes, with up to 48 logical qubits.",
+      "Logical entangling gates and circuits showed lower error than the same circuits on physical qubits, in several demonstrations.",
+      "Sampling circuits with 48 logical qubits and three-dimensional codes showed the scale of the platform.",
     ],
-    realWorldImpact:
-      "This is a reminder that quantum algorithm performance depends heavily on practical engineering details, not just the underlying algorithm's theoretical properties — directly relevant to why benchmark results for algorithms like QAOA, covered in our Algorithms Database, can vary significantly across different hardware platforms.",
-    technicalAbstract:
-      "The paper presents a hardware-aware qubit routing and gate scheduling compiler optimization specifically targeting QAOA circuit structures, demonstrating reduced two-qubit gate count and improved approximation ratios on real superconducting hardware with limited connectivity compared to generic compilation pipelines.",
+    realWorldImpact: "The experiment was an early demonstration of logical-level computation on neutral atoms, supported the roadmaps of QuEra and others, and encouraged work on moving atoms as a way to realize error-correcting codes with flexible connectivity.",
+    technicalAbstract: "Suppressing errors is the central challenge for useful quantum computing, requiring quantum error correction for large-scale processing. The paper reports the realization of a programmable quantum processor based on encoded logical qubits operating with up to 280 physical qubits, demonstrating improvement of a two-qubit logical gate relative to physical gates, scaling of the logical performance with code distance, the creation of entangled logical states, and the execution of algorithms with up to 48 logical qubits.",
+    venue: "Nature, volume 626, pages 58 to 65 (published online December 2023)",
+    arxiv: "2312.03982",
+    reference: "Bluvstein, D., Evered, S. J., Geim, A. A., et al. (2024). Logical quantum processor based on reconfigurable atom arrays. Nature, 626, 58-65. arXiv:2312.03982.",
+    lastUpdated: "September 30, 2026",
+    background: [
+      "Neutral atom arrays had advanced quickly after 2016, when groups learned to assemble defect-free arrays by moving atoms with optical tweezers, and Rydberg-mediated gates reached fidelities above 99 percent by 2023. The platform's flexible connectivity, which comes from the ability to move atoms, suggested that it could be well suited to codes that need long-range interactions.",
+      "The question was whether the platform could realize error correction at the level of logical qubits. Earlier experiments on other platforms had shown small codes, but the number of logical qubits was one or two. The Harvard group led by Mikhail Lukin, with QuEra, aimed for a processor with dozens of logical qubits and demonstration of logical algorithms.",
+    ],
+    whatTheyDid: [
+      "The processor consists of three zones: a storage zone, an entangling zone, and a readout zone. Atoms are moved between zones by optical tweezers, which are steered by acousto-optic deflectors. In the entangling zone, a global Rydberg laser pulse performs parallel controlled-Z gates on all pairs of atoms that are close enough, and the pattern of interactions is set by the rearrangement of the atoms. Single-qubit rotations are applied with a focused laser.",
+      "The team encoded logical qubits in several codes. They implemented a distance-3 surface code and a distance-2 color code, and a set of small codes of the [[8, 3, 2]] hypercube family, which encode three logical qubits in eight atoms. Using 16 such blocks, they prepared 48 logical qubits. Logical gates were done transversally, by applying the same physical gate to corresponding atoms in two code blocks, which is possible because atoms can be arranged in aligned blocks.",
+      "They measured the performance by comparing logical and physical errors. A logical two-qubit gate showed lower error than the corresponding physical gate in some settings, and the logical error decreased from distance 3 to distance 5 in color-code tests. They produced logical GHZ states with up to 24 and 48 logical qubits and ran sampling circuits, including a three-dimensional code, to show that the logical processor works as a programmable device.",
+    ],
+    results: [
+      "The main result is the demonstration that logical-level operations on a neutral-atom machine can improve on physical-level operations, with up to 48 logical qubits.",
+      "The logical qubits used error-detecting codes of small distance in many experiments, so the improvements came partly from post-selection on detected errors, which the authors discuss.",
+      "Follow-up work in 2024 and 2025 by the same and other groups showed continuous operation of arrays of thousands of atoms, magic state distillation at the logical level, and further logical gate demonstrations.",
+    ],
+    limitations: [
+      "Many of the logical-qubit results depend on detecting errors and discarding the runs in which they occur, which does not scale to long computations. Full error correction with real-time decoding was not demonstrated in this experiment.",
+      "The logical error rates are still orders of magnitude above what useful algorithms need, and the gate and measurement speeds are slow, with cycle times of milliseconds.",
+      "Atom loss and the time to rearrange atoms limit the repetition rate.",
+    ],
+    legacy: [
+      "The paper raised the profile of neutral atoms as a platform for fault-tolerant computing and was followed by related announcements from Atom Computing and Microsoft, Pasqal, Infleqtion, and others. It is cited as a milestone along with Google's below-threshold surface code experiment.",
+      "It also showed that moving atoms is a resource, since transversal gates and flexible connectivity reduce the overhead of some codes. This feeds into the design of qLDPC and hypercube codes tailored to atom arrays.",
+    ],
+    keyNumbers: [
+      { label: "Physical qubits", value: "Up to 280 rubidium atoms" },
+      { label: "Logical qubits", value: "Up to 48, using small error-detecting codes" },
+      { label: "Codes", value: "Surface code, color codes, and [[8, 3, 2]] hypercube blocks" },
+      { label: "Zones", value: "Storage, entangling, and readout" },
+      { label: "Logical GHZ states", value: "Up to 48 logical qubits entangled" },
+    ],
+    howToRead: [
+      "The main text describes the architecture and the main results, and the extended data contain the error analysis. Pay attention to which results use post-selection, since the interpretation of the logical improvement depends on it.",
+      "The neutral atom qubit, optical tweezers, Rydberg state, and logical qubit pages on this site provide the background.",
+    ],
+    faq: [
+      { q: "What did the Harvard and QuEra team show?", a: "A neutral atom processor with up to 280 atoms that ran algorithms on up to 48 logical qubits, with logical operations beating physical ones in several tests." },
+      { q: "Are the 48 logical qubits fully error-corrected?", a: "No. Many of them use small codes that detect errors, and some results rely on discarding runs with detected errors." },
+      { q: "Why are neutral atoms interesting for error correction?", a: "Atoms can be moved, which gives flexible connectivity and allows transversal gates between aligned code blocks." },
+    ],
+    relatedAlgorithms: [
+      "quantum-error-correction-codes",
+    ],
+    relatedHardware: [
+      "quera-aquila",
+      "pasqal-fresnel",
+    ],
+    relatedTerms: [
+      "neutral-atom-qubit",
+      "optical-tweezers",
+      "rydberg-state",
+      "logical-qubit",
+      "code-distance",
+    ],
+    relatedIndustries: [
+      "government-public-sector",
+    ],
   },
 ];
 
-export function getPaperBySlug(slug: string) {
+export function getResearchBySlug(slug: string) {
   return researchPapers.find((p) => p.slug === slug);
 }
