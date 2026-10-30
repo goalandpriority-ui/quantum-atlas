@@ -64,9 +64,9 @@ const nav: NavItem[] = [
     label: "Research",
     dropdown: [
       [
-        { href: "/research", label: "Research Papers", desc: "20 papers, plain language" },
+        { href: "/research", label: "Research Papers", desc: "100 papers with full references" },
         { href: "/news", label: "News", desc: "Live quantum news" },
-        { href: "/timeline", label: "Timeline", desc: "1900 to today" },
+        { href: "/timeline", label: "Timeline", desc: "150 events, 1900 to 2026" },
         { href: "/hype-cycle", label: "Hype Cycle Tracker" },
         { href: "/investment-tracker", label: "Investment Tracker" },
         { href: "/patents", label: "Patent Filings" },
