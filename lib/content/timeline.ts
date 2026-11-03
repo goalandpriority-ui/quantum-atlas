@@ -987,16 +987,23 @@ export const timelineEvents: TimelineEvent[] = [
       { label: "Company: IBM", href: "/companies/ibm" },
       { label: "Company: D-Wave Quantum", href: "/companies/d-wave" },
     ], id: "2026-147" },
+  { year: 2026, date: "2 June 2026", title: "Microsoft announces Majorana 2", description: "At its Build conference, Microsoft announced Majorana 2, a successor to its 2025 topological chip, built with a lead superconductor in a tetron-style device. The company reported parity lifetimes of about 20 seconds and described a roughly thousandfold improvement in reliability, and repeated its aim of useful quantum computing by 2029. The claims are from the company, independent verification is pending, and a long parity lifetime is not the same as a long-lived computational qubit.", why: "It is the main test of whether topological qubits can deliver, and the physics community is waiting for independent replication.", people: "Microsoft Quantum", category: "hardware", sources: [
+      "Quantum Computing Report (2026). Microsoft announces an improved Majorana qubit design. https://quantumcomputingreport.com/microsoft-announces-an-improved-majorana-qubit-design/",
+      "Redmond Magazine (2026). Microsoft ties Majorana 2 quantum chip to its Build AI push, 3 June 2026. https://redmondmag.com/articles/2026/06/03/microsoft-ties-majorana-2-quantum-chip-to-its-build-ai-push.aspx",
+    ], links: [
+      { label: "Company: Microsoft", href: "/companies/microsoft" },
+      { label: "Term: Topological Qubit", href: "/dictionary/topological-qubit" },
+    ], id: "2026-148" },
   { year: 2026, date: "2026", title: "IBM targets verified quantum advantage by the end of 2026", description: "IBM said it expected the first cases of verified quantum advantage by the end of 2026, using Nighthawk processors with an open tracker, developed with partners such as Algorithmiq, the Flatiron Institute, and BlueQubit, where claims can be tested by classical groups. Kookaburra, the first module to combine error-correcting memory with logic, is on IBM's roadmap for 2026.", why: "The industry's central question for 2026 is whether advantage claims survive classical scrutiny.", people: "IBM Quantum", category: "industry", sources: [
       "Tech Wire Asia (2025). IBM introduces new processor as it targets quantum advantage by 2026. https://techwireasia.com/2025/11/ibm-introduces-new-processor-as-it-targets-quantum-advantage-by-2026/",
     ], links: [
       { label: "Company: IBM", href: "/companies/ibm" },
       { label: "Term: Quantum Advantage", href: "/dictionary/quantum-advantage" },
-    ], id: "2026-148" },
+    ], id: "2026-149" },
   { year: 2026, date: "24 September 2026", title: "Infleqtion reports 30 entangled logical qubits", description: "Infleqtion reported 30 entangled logical qubits on its Sqale neutral-atom processor, according to the Quantum Computing Report. Several companies, including QuEra, Quantinuum, Atom Computing, and Microsoft, have reported logical qubit demonstrations on different codes and with different error rates.", why: "It is a recent data point in the growing set of logical-qubit results across platforms.", people: "Infleqtion", category: "error-correction", sources: [
       "Quantum Computing Report (2026). Infleqtion achieves 30 entangled logical qubits on Sqale neutral atom quantum processor. https://quantumcomputingreport.com/infleqtion-achieves-30-entangled-logical-qubits-on-sqale-neutral-atom-quantum-processor/amp/",
     ], links: [
       { label: "Term: Logical Qubit", href: "/dictionary/logical-qubit" },
       { label: "Term: Neutral Atom Qubit", href: "/dictionary/neutral-atom-qubit" },
-    ], id: "2026-149" },
+    ], id: "2026-150" },
 ];

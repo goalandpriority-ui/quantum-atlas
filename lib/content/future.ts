@@ -621,6 +621,600 @@ export const futureTopics: FutureTopic[] = [
       { label: "Term: Quantum Sensing", href: "/dictionary/quantum-sensing" },
       { label: "Term: Quantum Key Distribution", href: "/dictionary/quantum-key-distribution" },
     ], words: 1032 },
+  { slug: "superconducting-qubits-future", title: "Superconducting Qubits: The Road to 2030", category: "hardware", horizon: "2026 to 2035", confidence: "Medium", summary: "Superconducting circuits are the most mature qubit platform, backed by IBM and Google. The next five years are about turning hundreds of good physical qubits into tens to hundreds of error-corrected logical qubits, and the main obstacles are wiring, materials, and rare error bursts.", sections: [
+      { heading: "Where superconducting qubits stand today", paragraphs: [
+          "Superconducting qubits are tiny circuits of metal and Josephson junctions cooled to about 10 to 20 millikelvin. Since the transmon was introduced in 2007, coherence has risen from microseconds to hundreds of microseconds in processors and above a millisecond in laboratory devices, and two-qubit gate errors have fallen to roughly 0.1 to 0.5 percent. Their strength is speed: gates take tens of nanoseconds and error-correction cycles about a microsecond, so a given computation runs far faster than on ions or atoms.",
+          "The platform has also produced the clearest error-correction result so far. In December 2024, Google's Willow chip with 105 qubits showed a surface-code logical qubit whose error fell by about a factor of 2.14 each time the code distance increased from 3 to 5 to 7, with the distance-7 memory outliving its best physical qubit by roughly 2.4 times. IBM has put processors with 127, 133, 156, and 120 qubits into service and has shown that a bivariate bicycle code can store 12 logical qubits in 288 physical qubits on paper, with hardware to test the ideas under way. Fujitsu and RIKEN announced a 256-qubit machine in 2025, and USTC's Zuchongzhi 3.0 reached 105 qubits.",
+        ] },
+      { heading: "What the roadmaps promise", paragraphs: [
+          "IBM's public roadmap is the most detailed. Its Nighthawk processor, announced in November 2025, has 120 qubits and 218 tunable couplers, aimed at circuits with thousands of two-qubit gates, with targets to raise that number each year through 2028. Loon is an experimental chip that tests the long-range connections needed for quantum LDPC codes, and Kookaburra and Cockatoo are planned modules that combine error-correcting memory with logic and link chips together. The goal is Starling in 2029, a machine with about 200 logical qubits able to run on the order of 100 million logical operations, followed by Blue Jay around 2033 with about 2,000 logical qubits and a billion operations.",
+          "Google describes six milestones: beating classical computers on a benchmark (2019), a prototype of error correction (Willow, 2024), a long-lived logical qubit with error near one in a million, a logical gate, an engineering scale-up to about 100 logical qubits, and finally a large error-corrected machine with roughly a million physical qubits. Company leaders have said they aim for a useful error-corrected computer by the end of the decade. Microsoft, Amazon, and other companies pursue related ideas with different qubit designs.",
+          "Roadmaps are statements of intent and marketing as well as engineering, and they have slipped before. IBM revised its 2020 roadmap after concluding that raising qubit counts without improving quality was not enough, and shifted emphasis to Heron-class quality and error correction in 2023.",
+        ] },
+      { heading: "The technical hurdles", paragraphs: [
+          "Materials and fabrication come first. Coherence is limited by microscopic defects, tiny two-level systems in oxides and interfaces, and by quasiparticles. Switching to tantalum films on high-resistivity silicon has produced transmons with coherence above 0.3 milliseconds in 2021 and above a millisecond in later work, but yield and uniformity across many qubits matter more than the best single device. Frequency collisions, where neighboring qubits accidentally resonate, reduce yield and are partly addressed by laser trimming and tunable couplers.",
+          "Error correction adds its own problems. Leakage out of the two computational levels, crosstalk, and correlated errors from rare events such as cosmic-ray impacts can corrupt many qubits at once. McEwen and coauthors showed in 2021 that cosmic rays cause bursts of errors across large arrays, and Google's repetition-code experiments found a floor near one error in ten billion cycles caused by such events. Mitigations include shielding, gap engineering, and decoders that detect bursts.",
+          "Scaling the hardware is the third problem. Each qubit needs control and readout lines, and the dilution refrigerator has limited cooling power at the coldest stage. Cryogenic control chips, multiplexed readout, flip-chip packaging, and modular designs with microwave or optical links between chips are all in development. Finally, fast classical decoding must keep pace with microsecond cycles, which requires dedicated hardware and has motivated neural and parallel decoders.",
+        ] },
+      { heading: "Why superconducting may win, or lose", paragraphs: [
+          "The case for superconducting qubits is that they use the lithography and packaging methods of the semiconductor industry, run fast, and have the longest record of continuous improvement. Speed matters for algorithms that need very large numbers of operations, such as factoring or chemistry, because a slower platform takes proportionally longer for the same code distance.",
+          "The case against is the cryogenic and wiring burden at the scale of a million qubits, the limit on connectivity for fixed planar layouts, and the stubborn defect physics. Neutral atoms and ions have better connectivity and higher fidelities per gate but are slower, and photonic and spin approaches have different bottlenecks. We do not think the platform race will have a single winner by 2030. More likely, several platforms will reach tens of logical qubits and diverge in cost, speed, and suitability for particular codes.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect superconducting machines to demonstrate error-corrected systems with logical qubit counts in the tens by 2028 and around 100 or somewhat more by 2030, with logical error rates well below physical rates but still above the 10 to the minus 9 or lower needed for long algorithms. Machines with a thousand or more logical qubits, which would run chemistry and cryptanalysis workloads, are more likely in the mid-2030s than before 2030. A reasonable range is wide, because progress depends on rare events such as a materials breakthrough or a decoding bottleneck.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Nighthawk-class processors deliver circuits of thousands of gates; first qLDPC memory modules; Google targets a long-lived logical qubit." },
+      { label: "2028 to 2029", value: "Tens of logical qubits with logical gates; IBM Starling-class prototype targeted for 2029, with a meaningful chance of slipping." },
+      { label: "2030 to 2033", value: "Roughly 100 to several hundred logical qubits; modular machines linking several chips." },
+      { label: "2034 onward", value: "Machines with about a thousand logical qubits are plausible and would begin to address chemistry and cryptanalysis workloads." },
+    ], signals: [
+      "Logical error per cycle below 10^-4 and then 10^-6 in published experiments.",
+      "Chips with more than 1,000 qubits that keep two-qubit errors near 0.1 percent.",
+      "Demonstrated long-range couplers and chip-to-chip links.",
+      "Real-time decoders running at hardware speed on large codes.",
+    ], risks: [
+      "Materials defects or error bursts could cap performance.",
+      "Wiring and cryogenic costs could make million-qubit machines impractical.",
+      "Neutral atoms or ions could overtake on logical qubit count.",
+      "Roadmap dates could slip by several years.",
+    ], faq: [
+      { q: "Why do superconducting qubits need such cold temperatures?", a: "To keep the metal superconducting and to prevent thermal energy from exciting the qubits, so they run at about 10 to 20 millikelvin." },
+      { q: "Is Google or IBM ahead?", a: "They emphasize different things. Google leads on demonstrated surface-code scaling, and IBM on public roadmaps, qLDPC codes, and cloud access." },
+      { q: "How many physical qubits will a useful machine need?", a: "Estimates range from hundreds of thousands to millions for cryptanalysis, and depend on error rates and codes." },
+    ], references: [
+      "Kjaergaard, M., et al. (2020). Superconducting qubits: Current state of play. Annual Review of Condensed Matter Physics, 11, 369-395.",
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+      "Bravyi, S., et al. (2024). High-threshold and low-overhead fault-tolerant quantum memory. Nature, 627, 778-782.",
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+      "Place, A. P. M., et al. (2021). New material platform for superconducting transmon qubits with coherence times exceeding 0.3 milliseconds. Nature Communications, 12, 1779.",
+      "McEwen, M., et al. (2022). Resolving catastrophic error bursts from cosmic rays in large arrays of superconducting qubits. Nature Physics, 18, 107-111.",
+      "Krinner, S., et al. (2019). Engineering cryogenic setups for 100-qubit scale superconducting circuit systems. EPJ Quantum Technology, 6, 2.",
+      "Koch, J., et al. (2007). Charge-insensitive qubit design derived from the Cooper pair box. Physical Review A, 76, 042319.",
+    ], links: [
+      { label: "Paper: Quantum Error Correction Below the Surface Code Threshold", href: "/research/google-below-threshold-2024" },
+      { label: "Paper: High-Threshold and Low-Overhead Fault-Tolerant Quantum Memory", href: "/research/bravyi-high-threshold-low-overhead-memory-2024" },
+      { label: "Paper: Charge-Insensitive Qubit Design Derived from the Cooper Pair Box", href: "/research/koch-transmon-charge-insensitive-qubit-2007" },
+      { label: "Hardware: Google Willow", href: "/hardware/google-willow" },
+      { label: "Hardware: IBM Heron (r1, r2, and r3)", href: "/hardware/ibm-heron" },
+      { label: "Term: Superconducting Qubit", href: "/dictionary/superconducting-qubit" },
+    ], words: 1119 },
+  { slug: "trapped-ion-quantum-computing-future", title: "Trapped-Ion Quantum Computing: Accuracy First, Scale Next", category: "hardware", horizon: "2026 to 2035", confidence: "Medium", summary: "Trapped ions have the highest gate fidelities and all-to-all connectivity within a trap. The challenge is speed and scale, and companies are betting on moving ions around chips and linking modules with light.", sections: [
+      { heading: "Where trapped ions stand", paragraphs: [
+          "A trapped-ion qubit is an atom, such as ytterbium, barium, or calcium, held in a vacuum by electric fields, with two internal states serving as 0 and 1. Because every ion of a species is identical and well isolated, coherence reaches seconds to minutes and gate fidelities are the best of any platform: two-qubit fidelities of 99.9 percent are routine on leading machines and 99.99 percent has been reported in laboratory and company results. Single-qubit errors below one in a million have been shown in the laboratory.",
+          "These qualities have made ions the leader in several benchmarks. Quantinuum's H2 system reached a quantum volume of more than 33 million in 2025, a record, and the company showed real-time error correction with feedback as early as 2021. Quantinuum's Helios system, launched in late 2025 with 98 barium ions, and later reports of dozens of logical qubits with error-detecting codes, show a platform moving from small demonstrations toward logical-qubit machines. IonQ, Alpine Quantum Technologies, and Oxford Ionics, which IonQ agreed to acquire in 2025, pursue different engineering routes.",
+        ] },
+      { heading: "Two scaling strategies", paragraphs: [
+          "A single chain of ions becomes hard to control beyond a few dozen to about a hundred ions, because the vibrational modes crowd together and gates slow. The first strategy, the quantum charge-coupled device, moves ions between zones of a segmented trap chip: memory zones store qubits, gate zones perform entangling operations in small groups, and readout zones measure. Pino and coauthors demonstrated the architecture in 2021, and Quantinuum's racetrack and later designs scale it up. Transport takes tens to hundreds of microseconds, which slows circuits but gives flexible connectivity.",
+          "The second strategy links separate traps with photons. Each module holds a modest number of ions, and an ion emits a photon entangled with its state, so that entanglement can be established between modules, as in the demonstration of distributed quantum computing across an optical link by an Oxford team in 2025. IonQ has described roadmaps with tens of thousands of qubits on a chip by 2027 and millions of physical qubits around 2030, which are targets we treat with caution until demonstrated.",
+          "A third thread is control. Oxford Ionics and others use microwave and electronic control instead of lasers for gates, which could lower cost and improve stability, and integrated photonics aims to deliver light to many ions on a chip. These advances matter because laser delivery and stability are among the largest engineering burdens.",
+        ] },
+      { heading: "Technical hurdles", paragraphs: [
+          "Speed is the central issue. Two-qubit gates take tens to hundreds of microseconds, a thousand times slower than superconducting gates, and syndrome extraction in error correction involves measurement and reset that are also slow. For algorithms that need billions of operations, such as Shor's algorithm, the run time could stretch from hours to months at the same logical error rate, unless parallelism across many gate zones compensates.",
+          "Scale brings heating, crosstalk between zones, and the control of thousands of electrodes with low-noise electronics. Ion loss and the cooling needed after transport add overhead. Photonic links currently have low success rates, so entanglement between modules is generated at rates of perhaps tens to hundreds of pairs per second, far below internal gate rates, and improving that rate requires better photon collection and multiplexing. Finally, the vacuum, laser, and optical systems are bulky, and miniaturization is a major engineering task.",
+        ] },
+      { heading: "Where ions fit in the platform race", paragraphs: [
+          "Ions are likely to remain the accuracy leader and the preferred platform for early fault-tolerant demonstrations that depend on very low physical error rates, such as logical gates and magic state experiments. Quantinuum's roadmap aims at a universal fault-tolerant machine called Apollo in 2029, with hundreds of logical qubits. The tradeoff is cost per logical operation and speed, which may favor other platforms for the largest algorithms unless parallelism and modular scaling work.",
+          "A comparison with neutral atoms is instructive. Atoms scale to thousands of qubits more easily and are cheap per qubit, but have slower cycles and lower gate fidelities so far. Ions have the opposite profile. We expect both to reach tens of logical qubits in the next few years and to converge on hybrid ideas, such as atoms moved on a chip and ions linked by photons.",
+        ] },
+      { heading: "What error correction on ions has shown so far", paragraphs: [
+          "Trapped ions were the first platform to show real-time fault-tolerant error correction with mid-circuit measurement and feedback, in the 2021 experiment of Ryan-Anderson and coauthors on a Quantinuum system, and they have since demonstrated small logical qubits protected by codes such as color codes and the Steane code, as well as logical teleportation and magic states at the logical level. The joint work with Microsoft reported logical error rates many times below physical ones for a handful of logical qubits.",
+          "These results are encouraging but should be read with care. Most use small codes with distance two or three and some rely on post-selection, which discards runs in which errors were detected. The real test is whether logical error decreases steadily as the code distance grows, with active correction and no post-selection, on enough qubits to reach error rates below 10 to the minus 6. Ions are better placed to show that test than most platforms because of their fidelity, and we expect such results within a few years.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect trapped-ion systems to demonstrate error-corrected logical operations with logical error rates of about one in ten thousand to one in a million before 2030, and to scale to a few hundred physical qubits per module with several modules linked by 2030. A machine with a thousand logical qubits in this platform is more likely in the mid-2030s, if modular links work. We give the claims of millions of physical qubits by 2030 a low probability, though we would be glad to be wrong.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Helios-class machines with about 100 qubits and dozens of logical qubits; microwave-controlled chips; first multi-module demonstrations." },
+      { label: "2028 to 2029", value: "Hundreds of physical qubits per system; logical gates at 10^-4 to 10^-6 error; Quantinuum targets a fault-tolerant Apollo system in 2029." },
+      { label: "2030 to 2035", value: "Modular machines with hundreds of logical qubits, if photonic links and speed improve." },
+    ], signals: [
+      "Entanglement rates between modules above a kilohertz.",
+      "Two-qubit gate times below 10 microseconds with high fidelity.",
+      "Chips with hundreds of ions and integrated optics.",
+      "Logical error rates reported for logical gates, not only memory.",
+    ], risks: [
+      "Slow clock speed could make large algorithms impractical.",
+      "Photonic interconnects may remain too slow.",
+      "Claims of rapid scaling may not be met.",
+    ], faq: [
+      { q: "Why are trapped ions so accurate?", a: "The ions are identical, well isolated from the environment, and controlled with precise lasers or microwaves." },
+      { q: "What is the main weakness?", a: "Speed. Gates and measurements take much longer than on superconducting chips." },
+      { q: "What is QCCD?", a: "An architecture in which ions are shuttled between zones for storage, gates, and readout." },
+    ], references: [
+      "Bruzewicz, C. D., Chiaverini, J., McConnell, R., & Sage, J. M. (2019). Trapped-ion quantum computing: Progress and challenges. Applied Physics Reviews, 6, 021314.",
+      "Kielpinski, D., Monroe, C., & Wineland, D. J. (2002). Architecture for a large-scale ion-trap quantum computer. Nature, 417, 709-711.",
+      "Pino, J. M., et al. (2021). Demonstration of the trapped-ion quantum CCD computer architecture. Nature, 592, 209-213.",
+      "Ryan-Anderson, C., et al. (2021). Realization of real-time fault-tolerant quantum error correction. Physical Review X, 11, 041058.",
+      "Moses, S. A., et al. (2023). A race-track trapped-ion quantum processor. Physical Review X, 13, 041052.",
+      "Main, D., et al. (2025). Distributed quantum computing across an optical network link. Nature, 638, 383-388.",
+      "Monroe, C., & Kim, J. (2013). Scaling the ion trap quantum processor. Science, 339, 1164-1169.",
+      "Quantinuum (2025). Quantinuum launches Helios. Press release, November 2025.",
+    ], links: [
+      { label: "Paper: Quantum Computations with Cold Trapped Ions", href: "/research/cirac-zoller-trapped-ions-1995" },
+      { label: "Paper: Architecture for a Large-Scale Ion-Trap Quantum Computer", href: "/research/kielpinski-ion-trap-architecture-2002" },
+      { label: "Paper: Multiparticle Entanglement of Hot Trapped Ions", href: "/research/molmer-sorensen-hot-ions-1999" },
+      { label: "Hardware: Quantinuum H2", href: "/hardware/quantinuum-h2" },
+      { label: "Hardware: IonQ Forte (and Forte Enterprise)", href: "/hardware/ionq-forte" },
+      { label: "Term: Trapped-Ion Qubit", href: "/dictionary/trapped-ion-qubit" },
+      { label: "Term: QCCD Architecture", href: "/dictionary/qccd-architecture" },
+    ], words: 1114 },
+  { slug: "neutral-atom-quantum-computing-future", title: "Neutral-Atom Quantum Computing: Thousands of Atoms and the Race to Logical Qubits", category: "hardware", horizon: "2026 to 2035", confidence: "Medium", summary: "Neutral atoms held by laser tweezers scale to thousands of qubits and can be rearranged during a computation. They have moved fast from simulators to logical-qubit demonstrations, and speed and atom loss are the main constraints.", sections: [
+      { heading: "Where neutral atoms stand", paragraphs: [
+          "A neutral-atom quantum computer holds individual atoms, usually rubidium, cesium, strontium, or ytterbium, in optical tweezers, with laser light exciting them to Rydberg states for entangling gates. Atoms are identical, qubit coherence reaches seconds, and arrays are assembled by imaging the random loading and moving atoms into place, a technique shown in 2016. The platform needs no dilution refrigerator, which removes the cryogenic wiring bottleneck.",
+          "Progress since 2021 has been rapid. A Harvard and MIT team built a 256-atom programmable simulator in 2021. In 2023 the same collaboration reported two-qubit gate fidelities of about 99.5 percent and a logical processor with up to 48 logical qubits. In 2025, a Caltech team demonstrated an array of more than 6,100 atoms, and a Harvard team operated a 3,000-atom system continuously for hours by reloading atoms during operation. QuEra and collaborators published logical-level magic state distillation in 2025 and later reports of up to 96 logical qubits, and Infleqtion reported 30 entangled logical qubits in September 2026.",
+        ] },
+      { heading: "Roadmaps", paragraphs: [
+          "QuEra's roadmap, published in 2024, targeted 10 logical qubits in 2024, 30 in 2025, and 100 logical qubits in 2026 using about ten thousand physical qubits, so the pace has roughly matched the plan in counts, though many of the logical qubits use small codes with error detection. Microsoft and Atom Computing have announced a machine called Magne for Denmark, with about 50 logical qubits planned for operation around 2026 to 2027. Pasqal, Infleqtion, planqc, and others have comparable aims.",
+          "These targets use different error-correcting codes. Atom arrays can move atoms, which allows codes that need nonlocal connections, such as the high-rate quantum LDPC codes and hypercube codes. Xu and coauthors proposed in 2024 a constant-overhead scheme for reconfigurable arrays, which promises to reduce the number of physical qubits per logical qubit compared with the surface code, if it can be realized.",
+        ] },
+      { heading: "Technical hurdles", paragraphs: [
+          "The first is speed. A cycle of loading, rearranging, computing, and imaging takes milliseconds, so atoms run about a thousand times slower than superconducting qubits. For a long algorithm, that means a long wall-clock time unless many operations run in parallel, which atoms can do because a single laser pulse can entangle many pairs at once. Faster rearrangement and mid-circuit readout are active research areas.",
+          "The second is atom loss. Atoms are lost during operation and imaging, and each loss is an error. A positive twist is that loss can be detected, which makes it an erasure error that is easier to correct, and several groups have designed erasure conversion schemes in which the dominant errors are turned into detectable losses, as in the 2022 and 2023 proposals and experiments on alkaline-earth atoms. The third is gate fidelity, which at 99.5 percent is below that of ions and the best superconducting devices, and requires stable lasers and precise control to improve.",
+          "The fourth is the engineering of control at scale: millions of laser pulses with high power at specific wavelengths, optical systems for thousands of tweezers, and classical control and decoding electronics with low latency.",
+        ] },
+      { heading: "How neutral atoms compare", paragraphs: [
+          "Atoms combine large numbers, flexible connectivity, and good coherence, at the cost of speed. Their cost per physical qubit is low, which makes the arithmetic of codes with large overhead more attractive. They may be the platform that first reaches hundreds of logical qubits, even if the logical clock is slow, and slow clocks matter less for tasks such as simulation of quantum systems or algorithms in which parallelism is high.",
+          "A caveat is that many logical qubit counts reported so far use small distance-two or distance-three codes, often with post-selection on detected errors. Such results show architecture progress but do not yet show the exponential error suppression that large-scale computing needs. The community will need experiments in which logical error decreases with code size on atom arrays, as Google showed on superconducting chips.",
+        ] },
+      { heading: "Applications that fit atoms best", paragraphs: [
+          "Because atoms combine large numbers, parallel gates, and flexible geometry, they suit certain applications first. Analog simulation of quantum magnets and other many-body systems already works at scales beyond exact classical simulation, as in the 256-atom experiments, and programmable analog and digital-analog modes are available through cloud services such as QuEra's Aquila. Optimization problems that map to maximum independent set on graphs match the Rydberg blockade naturally, and several groups have explored such mappings, although a clear advantage over classical solvers has not been shown.",
+          "For fault-tolerant algorithms, atoms may be well matched to codes with high rates, because moving atoms allows long-range gates. If the cycle time can be reduced and the logical error rates improved, atom machines could run chemistry and materials simulations in the 2030s with fewer physical qubits per logical qubit than a surface code requires. The cost of that choice is speed, so tasks that can be parallelized across many logical qubits are favored over deep sequential circuits.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect neutral-atom machines to show below-threshold scaling with logical error falling as codes grow within the next two to three years, and to reach on the order of 100 logical qubits by 2028 to 2030, with logical error rates around 10 to the minus 3 to 10 to the minus 4. Reaching error rates of 10 to the minus 6 and a thousand logical qubits, the scale for chemistry and cryptanalysis, is plausible by the mid-2030s. Speed is the principal risk, and architecture choices that exploit parallelism will decide the outcome.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Tens of logical qubits across vendors; first below-threshold scaling with atoms; Magne-class machines; arrays beyond 10,000 atoms." },
+      { label: "2028 to 2030", value: "About 100 logical qubits; logical gates and magic states at scale; qLDPC and hypercube codes on arrays." },
+      { label: "2031 to 2035", value: "Hundreds to a thousand logical qubits if speed and fidelity improve." },
+    ], signals: [
+      "Logical error falling with code distance on an atom array.",
+      "Two-qubit gate fidelity of 99.9 percent across large arrays.",
+      "Cycle times below a millisecond for error-correction rounds.",
+      "Continuous operation of arrays with more than 10,000 atoms.",
+    ], risks: [
+      "Slow cycle times could limit the algorithms that can be run.",
+      "Atom loss and laser noise may limit scaling.",
+      "Logical qubit counts may be inflated by post-selection.",
+    ], faq: [
+      { q: "Do neutral atoms need a dilution refrigerator?", a: "No. The atoms are cooled by lasers in a vacuum chamber, which avoids cryogenic wiring." },
+      { q: "Why are neutral atoms slower?", a: "Loading, rearranging, and imaging atoms take milliseconds, so cycles are much slower than on chips." },
+      { q: "Who builds neutral-atom machines?", a: "QuEra, Pasqal, Atom Computing, Infleqtion, planqc, and several university groups." },
+    ], references: [
+      "Saffman, M. (2016). Quantum computing with atomic qubits and Rydberg interactions: progress and challenges. Journal of Physics B, 49, 202001.",
+      "Henriet, L., et al. (2020). Quantum computing with neutral atoms. Quantum, 4, 327.",
+      "Endres, M., et al. (2016). Atom-by-atom assembly of defect-free one-dimensional cold atom arrays. Science, 354, 1024-1027.",
+      "Evered, S. J., et al. (2023). High-fidelity parallel entangling gates on a neutral-atom quantum computer. Nature, 622, 268-272.",
+      "Bluvstein, D., et al. (2024). Logical quantum processor based on reconfigurable atom arrays. Nature, 626, 58-65.",
+      "Xu, Q., et al. (2024). Constant-overhead fault-tolerant quantum computation with reconfigurable atom arrays. Nature Physics, 20, 1084-1090.",
+      "Wu, Y., Kolkowitz, S., Puri, S., & Thompson, J. D. (2022). Erasure conversion for fault-tolerant quantum computing in alkaline earth Rydberg atom arrays. Nature Communications, 13, 4657.",
+      "Manetsch, H. J., et al. (2025). A tweezer array with 6100 highly coherent atom qubits. Nature (2025).",
+      "Quantum Computing Report (2026). Infleqtion achieves 30 entangled logical qubits on Sqale neutral atom quantum processor. https://quantumcomputingreport.com/infleqtion-achieves-30-entangled-logical-qubits-on-sqale-neutral-atom-quantum-processor/amp/",
+    ], links: [
+      { label: "Paper: Atom-by-Atom Assembly of Defect-Free One-Dimensional Cold Atom Arrays", href: "/research/endres-atom-by-atom-assembly-2016" },
+      { label: "Paper: High-Fidelity Parallel Entangling Gates on a Neutral-Atom Quantum Computer", href: "/research/evered-parallel-entangling-gates-atoms-2023" },
+      { label: "Paper: Logical Quantum Processor Based on Reconfigurable Atom Arrays", href: "/research/bluvstein-logical-quantum-processor-2023" },
+      { label: "Paper: Fast Quantum Gates for Neutral Atoms", href: "/research/jaksch-fast-gates-neutral-atoms-2000" },
+      { label: "Hardware: QuEra Aquila", href: "/hardware/quera-aquila" },
+      { label: "Term: Neutral Atom Qubit", href: "/dictionary/neutral-atom-qubit" },
+      { label: "Term: Optical Tweezers", href: "/dictionary/optical-tweezers" },
+    ], words: 1063 },
+  { slug: "photonic-quantum-computing-future", title: "Photonic Quantum Computing: Chips, Loss, and Million-Qubit Plans", category: "hardware", horizon: "2026 to 2035", confidence: "Low", summary: "Photonic quantum computers use light on silicon chips made in semiconductor foundries. They promise room-temperature operation and natural networking, but photon loss is a brutal constraint, and large-scale claims remain to be demonstrated.", sections: [
+      { heading: "Where photonic quantum computing stands", paragraphs: [
+          "A photonic qubit is encoded in a particle of light, in properties such as path, polarization, or arrival time. Photons are fast, travel through fiber, and rarely interact with their surroundings, which makes them ideal for networking, but they also rarely interact with each other, so entangling gates are hard. The theoretical answer, from Knill, Laflamme, and Milburn in 2001, is that measurement can supply the missing interaction: linear optics, single-photon sources, and detectors suffice for universal computation, at a high resource cost.",
+          "Modern designs reduce that cost. PsiQuantum's fusion-based quantum computation builds small entangled states of photons and joins them with two-photon fusion measurements, with errors handled by a topological code. Xanadu uses squeezed light and GKP encoding in a modular design, and its Aurora system, reported in Nature in 2025, linked multiple chips and demonstrated 12 qubits across 35 photonic chips and 86 kilometers of fiber. Quandela, ORCA Computing, and others build smaller photonic machines. Experiments on Gaussian boson sampling, such as Jiuzhang and Borealis, show photonic devices operating beyond easy classical simulation, though classical algorithms have since narrowed their claims.",
+        ] },
+      { heading: "The plans", paragraphs: [
+          "PsiQuantum has raised more than a billion dollars, including a round of about one billion dollars in September 2025, and is building utility-scale sites in Brisbane, Australia, and Chicago, Illinois. Its 2025 Nature paper described a manufacturable platform with single-photon sources, detectors, and low-loss waveguides built in a commercial foundry, and it presented the Omega chipset. The company aims at a machine with about a million physical qubits, and has targeted operation of its first utility-scale facilities in the later part of this decade. Xanadu's roadmap targets fault-tolerant machines by around 2029.",
+          "These are among the most ambitious plans in the field, and the least verified. The company has not published a complete fault-tolerant logical qubit demonstration, and success depends on loss performance across millions of components.",
+        ] },
+      { heading: "The central problem: loss", paragraphs: [
+          "Every optical component absorbs or scatters a little light. In a fusion-based machine, the threshold for photon loss is a few percent per component, and the system must hold the total loss budget across sources, waveguides, switches, and detectors. Losses of a fraction of a decibel in each of hundreds of elements add up, so each element must be extraordinarily clean. Bartolucci and coauthors calculated thresholds for different constructions in the range of a few percent loss and about ten percent for erasure of fusion outcomes, and designs aim for margins below those values.",
+          "Other problems include sources that emit single photons on demand with high purity and indistinguishability, fast low-loss optical switches, detectors with efficiencies above 90 percent that run at cryogenic temperatures of a few kelvin, and the control electronics. Photonic machines are often described as operating at room temperature, but the detectors need cooling, so large systems still require cryogenics, though at higher temperatures than superconducting qubits.",
+        ] },
+      { heading: "What photonics can do in the shorter term", paragraphs: [
+          "Even if a full fault-tolerant photonic computer takes longer than hoped, photonic technology has useful near-term roles. Single-photon sources and detectors are the basis of quantum key distribution and of the quantum networks discussed elsewhere in this series, and integrated photonics reduces the cost of those systems. Gaussian boson sampling machines may find uses in graph problems and molecular vibronic spectra, although claims of practical advantage are weak. Photonic chips are used as interconnects between other kinds of quantum modules, such as ion traps and superconducting chips, where optical links carry entanglement between modules.",
+          "Photonics also supplies the classical side of quantum computing. Laser delivery for ions and atoms is moving to integrated optics, and optical links can carry control signals into cryostats with less heat than coaxial cables. A company that fails to build a million-qubit photonic computer might still sell the components that other platforms need. This breadth is one reason photonic investment has persisted despite the long timelines.",
+        ] },
+      { heading: "Advantages that remain real", paragraphs: [
+          "Foundry manufacturing is a real advantage. If the components can be made with the yield and uniformity of modern silicon photonics, the cost of scaling to millions of components is lower than for hand-assembled systems. Photonic machines are also naturally networked, since fibers connect modules, and they may be the way different quantum computers will talk to each other. Finally, photons are well suited to specific tasks, such as sampling problems and certain simulations of molecular vibrations.",
+        ] },
+      { heading: "How to judge progress in photonic claims", paragraphs: [
+          "A few indicators separate real progress from announcements. First, look for published measurements of the total optical loss budget of a complete logical qubit, including sources, waveguides, switches, and detectors, rather than the loss of individual parts. Second, look for the fidelity and indistinguishability of single photons as measured by independent groups. Third, look for demonstrations of error correction in which logical error decreases with code size, as in superconducting and atom platforms. Fourth, check whether the claimed qubit counts refer to physical components, resource states, or logical qubits, because photonic announcements often use terms that differ from other platforms.",
+          "If those indicators improve steadily, confidence in the platform should rise. If announcements continue to emphasize future sites and funding without data, caution is warranted. We will revise this forecast as evidence appears.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We give photonic quantum computing a low confidence rating because the main claims are still ahead of public evidence. Over the next three years we expect progress in component performance, small logical qubit demonstrations, and networking between chips. A fault-tolerant photonic machine with a hundred logical qubits before 2030 would be a major surprise to us, and by the mid-2030s the outcome is wide open. Photonic technology will likely be central to quantum networking and interconnects regardless of whether it wins the computing race.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Improved low-loss components; small logical-qubit experiments; modular photonic networking demonstrations." },
+      { label: "2029 to 2032", value: "First fault-tolerant-scale tests at utility-scale sites; independent evidence of loss budgets." },
+      { label: "2033 to 2035", value: "Outcome uncertain: either a large photonic machine or a niche role in networking and interconnects." },
+    ], signals: [
+      "Published logical-qubit results with measured loss budgets.",
+      "Detector efficiencies above 95 percent in foundry-made devices.",
+      "Resource states generated at scale with high fidelity.",
+      "Independent verification of PsiQuantum or Xanadu milestones.",
+    ], risks: [
+      "Loss may exceed the thresholds needed.",
+      "Cryogenic detectors and switches may be harder to scale than expected.",
+      "Competing platforms may reach fault tolerance first.",
+    ], faq: [
+      { q: "Do photonic quantum computers work at room temperature?", a: "Most optical components do, but the best single-photon detectors need cooling to a few kelvin." },
+      { q: "Why is photon loss so important?", a: "Every lost photon is an error, and large machines contain millions of components, so tiny losses add up." },
+      { q: "Has a photonic machine shown quantum advantage?", a: "Gaussian boson sampling experiments claimed advantage, but classical algorithms have since reduced those claims." },
+    ], references: [
+      "Knill, E., Laflamme, R., & Milburn, G. J. (2001). A scheme for efficient quantum computation with linear optics. Nature, 409, 46-52.",
+      "Bartolucci, S., et al. (2023). Fusion-based quantum computation. Nature Communications, 14, 912.",
+      "Alexander, K., et al. (2025). A manufacturable platform for photonic quantum computing. Nature, 641, 876-883.",
+      "Aghaee Rad, H., et al. (2025). Scaling and networking a modular photonic quantum computer. Nature, 638, 912-919.",
+      "Bourassa, J. E., et al. (2021). Blueprint for a scalable photonic fault-tolerant quantum computer. Quantum, 5, 392.",
+      "Slussarenko, S., & Pryde, G. J. (2019). Photonic quantum information processing: A concise review. Applied Physics Reviews, 6, 041303.",
+      "Madsen, L. S., et al. (2022). Quantum computational advantage with a programmable photonic processor. Nature, 606, 75-81.",
+      "Oh, C., Liu, M., Alexeev, Y., Fefferman, B., & Jiang, L. (2024). Classical algorithm for simulating experimental Gaussian boson sampling. Nature Physics, 20, 1461-1468.",
+    ], links: [
+      { label: "Paper: A Scheme for Efficient Quantum Computation with Linear Optics", href: "/research/knill-laflamme-milburn-linear-optics-2001" },
+      { label: "Paper: Fusion-Based Quantum Computation", href: "/research/bartolucci-fusion-based-quantum-computation-2023" },
+      { label: "Paper: Quantum Computational Advantage with a Programmable Photonic Processor", href: "/research/madsen-borealis-photonic-advantage-2022" },
+      { label: "Hardware: Xanadu Borealis", href: "/hardware/xanadu-borealis" },
+      { label: "Term: Photonic Qubit", href: "/dictionary/photonic-qubit" },
+      { label: "Term: GKP Qubit", href: "/dictionary/gkp-qubit" },
+    ], words: 1092 },
+  { slug: "silicon-spin-qubits-future", title: "Silicon Spin Qubits: Quantum Chips from Transistor Factories", category: "hardware", horizon: "2026 to 2040", confidence: "Medium", summary: "Spin qubits in silicon are tiny, can be made with chip-factory processes, and now meet the fidelity needed for error correction. The challenge is to scale from a dozen qubits to millions with uniform devices, short control lines, and local control electronics.", sections: [
+      { heading: "Where spin qubits stand", paragraphs: [
+          "A silicon spin qubit stores a bit of information in the spin of one electron trapped in a quantum dot, a nanoscale pocket defined by gate electrodes, or in a hole spin in germanium. The proposal by Loss and DiVincenzo in 1998 was followed by decades of slow progress, and then rapid improvements after groups moved to isotopically purified silicon-28, which has no nuclear spins to disturb the electron. In January 2022 three groups, at Delft, RIKEN, and UNSW, reported two-qubit gate fidelities above about 99 percent in papers published together in Nature.",
+          "Industry has followed. Intel released Tunnel Falls, a 12-qubit chip made in its fabrication line, to researchers in 2023. Diraq, working with imec, reported devices made on 300-millimeter wafers in an industrial CMOS line with two-qubit fidelities above 99 percent in 2025. Quantum Motion in the UK has built a full-stack silicon quantum computer system, and groups in Australia, the Netherlands, Japan, and France work on related devices. Germanium hole-spin qubits have reached four-qubit processors and offer fast electrical control.",
+        ] },
+      { heading: "Why scaling might be easier here", paragraphs: [
+          "The qubits are tiny, about the size of a transistor, so in principle a million fit on one chip, compared with a superconducting circuit that is millimeters across. They can be made with the processes used for transistors, so progress in the semiconductor industry may transfer. Operating temperatures are around 100 millikelvin to 1 kelvin in some devices, higher than the 10 millikelvin of superconducting qubits, so cooling and wiring are less demanding, and cryogenic CMOS control chips can sit next to the qubits, as Vandersypen and coauthors argued in 2017 for hot, dense, and coherent spin qubits.",
+          "Several groups showed in 2020 that silicon spin qubits can operate above one kelvin, and the Delft and UNSW teams have shown shuttling of electrons across a chip to connect distant qubits. These properties suggest an architecture in which small groups of qubits are tightly controlled by local electronics and linked by shuttling or couplers.",
+        ] },
+      { heading: "Technical hurdles", paragraphs: [
+          "Uniformity is the first hurdle. Each quantum dot is defined by tiny differences in gate shape and in the charge environment, so qubit frequencies and couplings vary from device to device, and each must be tuned. Automated tuning with machine learning is a main research area. Charge noise at interfaces limits gate fidelity, and the exchange interaction used for two-qubit gates decays quickly with distance, so qubits must be close, which creates crosstalk.",
+          "Control and readout are the second. Each qubit needs several gate voltages, microwave or magnetic control, and a sensor for readout, and the line count grows with the number of qubits. Local cryogenic electronics, multiplexed readout, and shared control lines are key, but add heat and noise. Spin qubits have also shown fewer large-scale entangled demonstrations than other platforms, with devices of a dozen qubits at most.",
+          "The third is the maturity of the error-correction stack. Fast measurement and reset, parallel operation, and decoding must be demonstrated, and the surface code needs nearest-neighbor connectivity in two dimensions that spin arrays can provide, but so far only in small tiles.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect silicon spin qubits to show a few dozen qubits with high-fidelity operation by about 2028, using industrial wafers and cryogenic control, and error-correction experiments such as small surface-code patches around 2028 to 2030. The platform's potential is long-term. If uniformity and control problems are solved, spin qubits could reach millions of qubits on one chip in the 2030s or later, which is why large technology companies and governments continue to invest. If not, the platform may stay at tens of qubits and serve niche roles such as sensors and small processors.",
+          "We rate confidence as medium because the physics is solid and fidelity milestones are reached, but scaling has not been demonstrated.",
+        ] },
+      { heading: "The control electronics problem in numbers", paragraphs: [
+          "The control problem can be estimated with simple arithmetic. A spin qubit needs about three to five control signals: voltages on several gates, a microwave or magnetic drive, and a readout channel. A million qubits would therefore need millions of connections. A dilution refrigerator can carry perhaps hundreds to a few thousand lines, so wiring every qubit directly is impossible, and shared lines, multiplexing, and local electronics are essential.",
+          "Cryogenic CMOS chips running at 4 kelvin or lower have been demonstrated by Intel and by university groups, and spin qubits that operate at 1 kelvin ease the heat budget because cooling power rises quickly with temperature, from microwatts at 20 millikelvin to a watt at 4 kelvin. A design with qubits and control transistors on the same chip, or stacked in a three-dimensional package, is the long-term picture, and imec and others are working on it. The success of this line of research, more than qubit physics, will decide how large silicon quantum chips can become.",
+        ] },
+      { heading: "What would convince us the platform is on track", paragraphs: [
+          "We would update toward optimism if a group demonstrated a chip with at least 50 qubits made in an industrial line, with two-qubit fidelities near 99.9 percent on all pairs, tuned automatically, and operating with local cryogenic control. We would also want to see a surface-code patch with logical error that falls with distance, and electron shuttling used routinely to connect qubit groups.",
+          "We would update toward pessimism if variability continued to demand per-qubit hand tuning, if fidelity fell as arrays grew beyond a dozen qubits, or if the control electronics consumed too much power at the needed temperatures. These checks can be made within three to five years, which makes the platform's outlook more testable than many longer-term roadmaps.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Arrays of dozens of qubits on 300 mm wafers; automated tuning; cryo-CMOS integration." },
+      { label: "2029 to 2032", value: "Small error-correcting patches; several hundred qubits with local control; modular links by shuttling." },
+      { label: "2033 to 2040", value: "Possible chips with thousands to millions of qubits if uniformity and control scale." },
+    ], signals: [
+      "Two-qubit fidelity above 99.9 percent across entire wafers.",
+      "Demonstrations of surface-code patches in silicon.",
+      "Operation at 1 kelvin or above with high fidelity.",
+      "Yield and variability data from industrial lines.",
+    ], risks: [
+      "Device variability could limit scaling.",
+      "Control wiring and electronics may dominate cost and heat.",
+      "Other platforms could reach fault tolerance first.",
+    ], faq: [
+      { q: "Why silicon?", a: "Because it is the material of the chip industry, and purified silicon-28 gives a quiet environment for electron spins." },
+      { q: "Can silicon qubits run at higher temperatures?", a: "Some have operated above one kelvin, which would ease cooling compared with superconducting qubits." },
+      { q: "Who builds them?", a: "Intel, Diraq, imec, Quantum Motion, Silicon Quantum Computing, and several universities." },
+    ], references: [
+      "Loss, D., & DiVincenzo, D. P. (1998). Quantum computation with quantum dots. Physical Review A, 57, 120-126.",
+      "Burkard, G., Ladd, T. D., Pan, A., Nichol, J. M., & Petta, J. R. (2023). Semiconductor spin qubits. Reviews of Modern Physics, 95, 025003.",
+      "Xue, X., et al. (2022). Quantum logic with spin qubits crossing the surface code threshold. Nature, 601, 343-347.",
+      "Noiri, A., et al. (2022). Fast universal quantum gate above the fault-tolerance threshold in silicon. Nature, 601, 338-342.",
+      "Veldhorst, M., et al. (2017). Silicon CMOS architecture for a spin-based quantum computer. Nature Communications, 8, 1766.",
+      "Vandersypen, L. M. K., et al. (2017). Interfacing spin qubits in quantum dots and donors: hot, dense, and coherent. npj Quantum Information, 3, 34.",
+      "Hendrickx, N. W., et al. (2021). A four-qubit germanium quantum processor. Nature, 591, 580-585.",
+      "Yang, C. H., et al. (2020). Operation of a silicon quantum processor unit cell above one kelvin. Nature, 580, 350-354.",
+    ], links: [
+      { label: "Paper: Quantum Computation with Quantum Dots", href: "/research/loss-divincenzo-spin-qubits-quantum-dots-1998" },
+      { label: "Paper: Quantum Logic with Spin Qubits Crossing the Surface Code Threshold", href: "/research/xue-spin-qubits-surface-code-threshold-2022" },
+      { label: "Paper: Fast Universal Quantum Gate Above the Fault-Tolerance Threshold in Silicon", href: "/research/noiri-fast-universal-gate-silicon-2022" },
+      { label: "Hardware: Diraq Silicon Spin-Qubit Devices (imec 300 mm CMOS)", href: "/hardware/diraq-core1" },
+      { label: "Term: Spin Qubit", href: "/dictionary/spin-qubit" },
+      { label: "Term: Cryogenic CMOS Control", href: "/dictionary/cryo-cmos" },
+      { label: "Industry: Quantum Computing and the Semiconductor Industry", href: "/industries/semiconductors-electronics" },
+    ], words: 1063 },
+  { slug: "topological-qubits-future", title: "Topological Qubits: Will Majorana Machines Deliver?", category: "hardware", horizon: "2026 to 2040", confidence: "Low", summary: "Topological qubits promise built-in protection from errors, but after twenty years of work the evidence for them is still disputed. Microsoft's 2025 and 2026 chips are the key tests, and independent verification matters more than announcements.", sections: [
+      { heading: "The idea and why it is attractive", paragraphs: [
+          "A topological qubit stores information in a global property of a material, so local noise cannot easily change it, much as a knot in a rope persists when you shake the rope. In the leading proposal, pairs of Majorana zero modes at the ends of semiconductor-superconductor nanowires encode a qubit in the parity of electrons, and gates are done by braiding or by measurement. Kitaev described the idea in 1997, and Nayak and coauthors reviewed the physics of non-Abelian anyons in 2008.",
+          "If it works, the payoff is large. A qubit with intrinsic protection could need far less error-correction overhead, because physical error rates could be orders of magnitude lower. That is why Microsoft has pursued the approach for about two decades, and why DARPA selected Microsoft and PsiQuantum for the final phase of its US2QC program in 2025. The risk is equally large: the physics is subtle, the materials are demanding, and the experimental signatures are easy to misread.",
+        ] },
+      { heading: "The record so far", paragraphs: [
+          "The field has a history of claims that did not hold. A 2018 Nature paper reporting quantized Majorana conductance from a Microsoft-linked group was retracted in 2021 after data selection problems were found. Many experiments in the 2010s saw zero-bias conductance peaks that can arise from ordinary states and disorder, and critics, including Vincent Mourik, Sergey Frolov, and others, have argued that such signals are not proof of Majorana modes.",
+          "In February 2025, Microsoft announced Majorana 1, a chip it described as the first with a topological core and eight qubits, and published a Nature paper on interferometric parity measurement in indium arsenide-aluminum devices. The journal added an editorial note that the paper does not by itself show that Majorana modes are present. Many physicists welcomed the engineering progress and asked for more evidence. On 2 June 2026, Microsoft announced Majorana 2, built with a lead superconductor and described as a tetron device, reporting parity lifetimes of about 20 seconds and a roughly thousandfold improvement in reliability, and repeating a target of useful quantum computing by 2029. Coverage notes that these are company claims with skepticism still present, and a long parity lifetime is not the same as a long-lived computational qubit.",
+        ] },
+      { heading: "What would count as proof", paragraphs: [
+          "Several tests would be convincing. First, independent groups should reproduce key signatures in devices made by different processes. Second, there should be evidence of non-Abelian statistics, such as the result of braiding or fusion experiments that cannot be explained by trivial states. Third, the qubit should show coherent control with error rates and lifetimes that beat comparable conventional qubits, including on a sequence of operations such as a complete logical gate. Fourth, the data and analysis should be open for scrutiny.",
+          "Synthetic demonstrations offer a related but different route. In 2023, Google and Quantinuum created and braided non-Abelian anyons on superconducting and trapped-ion processors, simulating the physics on conventional qubits. These experiments show that the theory is sound but do not give the hardware protection that a topological material would.",
+        ] },
+      { heading: "Alternatives and competition", paragraphs: [
+          "Conventional qubits are improving, with error-corrected logical qubits showing exponential suppression. Bosonic cat qubits give strong protection against bit flips, and erasure qubits make errors visible. In that setting, a topological qubit has to compete not with today's physical qubits but with the combination of conventional qubits and codes that will exist by 2030. If Majorana qubits reach error rates of one in a million at the physical level, the advantage would still be large. If they reach only one in a thousand, the advantage would be modest.",
+          "Other topological platforms exist, such as fractional quantum Hall states and certain materials proposed to host non-Abelian anyons, but they are earlier-stage, and none has a demonstrated qubit.",
+        ] },
+      { heading: "A short guide to reading Majorana news", paragraphs: [
+          "Announcements in this area follow a pattern worth recognizing. A press release describes a new chip and a large improvement factor, a preprint or paper presents measurements, and independent physicists comment on whether the data prove the claimed physics. When you read such news, ask which quantity improved: a parity lifetime, a measurement fidelity, or a qubit coherence time are different things, and only the last matters directly for computing. Ask whether the device performed a computation, such as a gate or a logical operation, or only a measurement.",
+          "Ask also whether the result has been reproduced outside the company, and whether the data are available for others to analyze. Companies sometimes report results first through press events and conferences, with peer review later. That is normal for industry, but in a field with a history of retractions, it is reasonable to wait for the peer-reviewed record and independent replication before updating strongly.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We keep a low confidence rating. A fair summary is that the engineering of nanowire devices and fast parity measurement has advanced, but the claim that the devices are topological qubits with the required protection is not yet established to the community's satisfaction. We think there is a meaningful chance, perhaps one in four, that a topological qubit with convincingly demonstrated protection appears by 2030, and a larger chance that the effort contributes tools useful elsewhere. We would revise sharply upward if independent groups reproduce the results and demonstrate braiding or logical operations.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Peer review and replication attempts of Majorana 2 results; more detailed data and independent analysis." },
+      { label: "2028 to 2030", value: "First demonstrations of logical operations on topological qubits, if the physics holds; DARPA program decisions." },
+      { label: "2031 to 2040", value: "Either a scalable topological platform or an eventual consensus that the approach does not work as hoped." },
+    ], signals: [
+      "Independent replication in other laboratories.",
+      "Evidence of braiding or non-Abelian fusion.",
+      "Gate error rates and coherence of topological qubits compared with conventional ones.",
+      "Peer-reviewed publication with full data access.",
+    ], risks: [
+      "The devices may not be topological.",
+      "Parity lifetimes may not translate into computational qubit performance.",
+      "Conventional qubits may reach fault tolerance first.",
+    ], faq: [
+      { q: "Did Microsoft build a topological qubit?", a: "Microsoft says so, but many physicists say the evidence for topological protection is not yet conclusive." },
+      { q: "What is a Majorana zero mode?", a: "An exotic quasiparticle at the ends of certain nanowires that could store quantum information in a protected way." },
+      { q: "Is the 2018 Majorana paper still valid?", a: "No. The Nature paper from a Microsoft-linked group was retracted in 2021." },
+    ], references: [
+      "Kitaev, A. Yu. (2003). Fault-tolerant quantum computation by anyons. Annals of Physics, 303, 2-30.",
+      "Nayak, C., Simon, S. H., Stern, A., Freedman, M., & Das Sarma, S. (2008). Non-Abelian anyons and topological quantum computation. Reviews of Modern Physics, 80, 1083-1159.",
+      "Mourik, V., et al. (2012). Signatures of Majorana fermions in hybrid superconductor-semiconductor nanowire devices. Science, 336, 1003-1007.",
+      "Microsoft Azure Quantum (2025). Interferometric single-shot parity measurement in InAs-Al hybrid devices. Nature, 638, 651-655.",
+      "Andersen, T. I., et al. (2023). Non-Abelian braiding of graph vertices in a superconducting processor. Nature, 618, 264-269.",
+      "Quantum Computing Report (2026). Microsoft announces an improved Majorana qubit design. https://quantumcomputingreport.com/microsoft-announces-an-improved-majorana-qubit-design/",
+      "Redmond Magazine (2026). Microsoft ties Majorana 2 quantum chip to its Build AI push, 3 June 2026. https://redmondmag.com/articles/2026/06/03/microsoft-ties-majorana-2-quantum-chip-to-its-build-ai-push.aspx",
+    ], links: [
+      { label: "Paper: Fault-Tolerant Quantum Computation by Anyons", href: "/research/kitaev-fault-tolerant-anyons-2003" },
+      { label: "Term: Topological Qubit", href: "/dictionary/topological-qubit" },
+      { label: "Company: Microsoft", href: "/companies/microsoft" },
+    ], words: 1026 },
+  { slug: "bosonic-cat-gkp-qubits-future", title: "Bosonic Qubits: Cat, GKP, and Dual-Rail Designs", category: "hardware", horizon: "2026 to 2035", confidence: "Medium", summary: "Bosonic and erasure-style qubits trade complex hardware for simpler error correction. Cat qubits suppress one kind of error, GKP qubits fix small shifts, and dual-rail qubits make errors visible, and each could cut the number of qubits needed for a logical qubit.", sections: [
+      { heading: "The core idea", paragraphs: [
+          "Conventional error correction spends many physical qubits on correcting errors of every type. Bosonic approaches take advantage of the physics of oscillators, such as microwave cavities, to make errors rarer, easier to detect, or biased toward one type, so that the code on top can be smaller. Three families lead the field.",
+          "Cat qubits encode a qubit in two opposite-phase coherent states of a cavity and use engineered two-photon dissipation to suppress bit flips exponentially in the size of the cat, leaving phase flips as the main error, which a simple repetition code can correct. GKP qubits, proposed by Gottesman, Kitaev, and Preskill in 2001, store a qubit as a comb-shaped state in the oscillator's phase space so that small shifts can be detected and undone. Dual-rail qubits store a qubit as a single excitation shared between two resonators or transmons, so that the dominant error, loss of the excitation, is detected as the loss of the signal and becomes an erasure, which is easier to correct than an unknown error.",
+        ] },
+      { heading: "What has been shown", paragraphs: [
+          "Cat qubits: Lescanne and coauthors showed exponential suppression of bit flips in 2020, and Alice and Bob reported bit-flip times of many minutes in 2024. Amazon Web Services announced Ocelot in February 2025, combining cat qubits with a repetition code and claiming a large reduction in error-correction overhead. Guillaud and Mirrahimi and Chamberland and coauthors worked out how to build fault-tolerant machines from cat qubits, including bias-preserving gates.",
+          "GKP qubits: A Yale team passed break-even in 2023, with a corrected GKP qubit outliving the best physical qubit in the system by about 2.3 times. Xanadu generated GKP states on a photonic chip in 2025, and Nord Quantique has reported multimode bosonic codes in superconducting cavities with the aim of building machines with far fewer components.",
+          "Dual-rail and erasure qubits: Levine and coauthors demonstrated a long-coherence dual-rail erasure qubit using tunable transmons in 2024, and Quantum Circuits, Inc. has built systems using dual-rail qubits with erasure detection. Erasure conversion has also been demonstrated in neutral atoms and trapped ions in different forms.",
+        ] },
+      { heading: "Why they might matter", paragraphs: [
+          "The cost of fault tolerance is dominated by the number of physical qubits per logical qubit. A surface code with good hardware can need hundreds to a thousand. If a bosonic scheme reduces this by an order of magnitude, as AWS and Alice and Bob claim, it could bring a useful machine closer by several years or lower its cost. Erasure qubits also raise the error threshold of the surface code, because known-location errors are easier to correct than unknown ones.",
+          "There is also an engineering benefit: some designs need fewer control lines per logical qubit, and a cavity with many modes can in principle hold several qubits. Those advantages matter most for platforms where wiring and cryogenic capacity limit scale, such as superconducting circuits.",
+        ] },
+      { heading: "Challenges", paragraphs: [
+          "Each approach has hard problems. Cat qubits need gates that keep the noise bias, especially entangling gates, and the dissipation engineering must work at scale without introducing new errors. Phase flips grow with the cat size, which sets a tradeoff. GKP qubits need high squeezing, about 10 to 12 decibels or more, and fast, accurate ancilla operations, and they are sensitive to loss. Dual-rail qubits double the number of components per qubit, and the erasure detection circuits themselves must be reliable.",
+          "A more general challenge is that all these schemes add a layer to the architecture: bosonic modes, ancillas, control of nonlinear elements, and an outer code. The overall benefit depends on the full system, not on the numbers for a single qubit, and no group has yet demonstrated a full logical qubit with scaling in an architecture built from them. Surface-code experiments with conventional transmons are ahead on that measure.",
+        ] },
+      { heading: "How the three approaches compare", paragraphs: [
+          "Cat qubits offer the simplest architecture if bias-preserving gates work: a line of cat qubits and a repetition code protects against the remaining error type. Their weakness is the need for nonlinear elements and careful dissipation engineering, and the phase-flip rate that grows with cat size. GKP qubits offer protection against a broad class of small errors in a single oscillator and fit both superconducting and photonic platforms, at the price of demanding squeezing and measurement quality. Dual-rail and erasure qubits are the most conservative: they use familiar components, make errors visible, and raise code thresholds, at the price of using two components per qubit.",
+          "None has a clear lead, and a hybrid is plausible: a transmon-based chip with erasure detection for the dominant error, a surface code for the rest, and perhaps cat-like bias in some components. The architecture that wins will be the one that gives the lowest cost per logical operation at the target error rate, which can only be measured in system-level experiments that have not yet been done.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect bosonic and erasure-based designs to remain strong contenders, especially in superconducting and ion platforms, and to show logical qubit demonstrations with lower overhead within the next three years. Whether they overtake conventional qubits depends on demonstrating bias-preserving gates and logical operations at scale. We think it is more likely that some hybrid, with conventional qubits plus erasure detection or bias, becomes standard than that any single bosonic scheme wins outright.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Repetition-code logical qubits from cat qubits with improved gates; GKP and multimode demonstrations; commercial dual-rail systems." },
+      { label: "2028 to 2030", value: "Logical gates with bosonic codes; first surface-code-on-cat or erasure-enhanced surface code demonstrations." },
+      { label: "2031 to 2035", value: "Lower-overhead machines if bias-preserving gates scale; otherwise niche roles." },
+    ], signals: [
+      "Entangling gates that preserve noise bias with high fidelity.",
+      "Logical error falling with code size for cat-qubit repetition codes.",
+      "GKP states with more than 12 decibels of squeezing in practical devices.",
+      "Resource estimates that include the full bosonic architecture.",
+    ], risks: [
+      "Added complexity may erase the savings.",
+      "Gate errors may break the bias.",
+      "Conventional qubits may improve faster.",
+    ], faq: [
+      { q: "What is a cat qubit?", a: "A qubit stored in two opposite-phase coherent states of a cavity, engineered so that bit flips become exponentially rare." },
+      { q: "What is an erasure qubit?", a: "A qubit designed so that its main errors are detectable, which makes them easier to correct." },
+      { q: "Who builds these?", a: "Alice and Bob, Amazon Web Services, Nord Quantique, Xanadu, Quantum Circuits, and academic groups." },
+    ], references: [
+      "Gottesman, D., Kitaev, A., & Preskill, J. (2001). Encoding a qubit in an oscillator. Physical Review A, 64, 012310.",
+      "Mirrahimi, M., et al. (2014). Dynamically protected cat-qubits: a new paradigm for universal quantum computation. New Journal of Physics, 16, 045014.",
+      "Lescanne, R., et al. (2020). Exponential suppression of bit-flips in a qubit encoded in an oscillator. Nature Physics, 16, 509-513.",
+      "Sivak, V. V., et al. (2023). Real-time quantum error correction beyond break-even. Nature, 616, 50-55.",
+      "Putterman, H., et al. (2025). Hardware-efficient quantum error correction via concatenated bosonic qubits. Nature, 638, 927-934.",
+      "Terhal, B. M., Conrad, J., & Vuillot, C. (2020). Towards scalable bosonic quantum error correction. Quantum Science and Technology, 5, 043001.",
+      "Guillaud, J., & Mirrahimi, M. (2019). Repetition cat qubits for fault-tolerant quantum computation. Physical Review X, 9, 041053.",
+      "Levine, H., et al. (2024). Demonstrating a long-coherence dual-rail erasure qubit using tunable transmons. Physical Review X, 14, 011051.",
+      "Wu, Y., Kolkowitz, S., Puri, S., & Thompson, J. D. (2022). Erasure conversion for fault-tolerant quantum computing in alkaline earth Rydberg atom arrays. Nature Communications, 13, 4657.",
+    ], links: [
+      { label: "Paper: Encoding a Qubit in an Oscillator", href: "/research/gottesman-kitaev-preskill-encoding-oscillator-2001" },
+      { label: "Paper: Dynamically Protected Cat-Qubits: A New Paradigm for Universal Quantum Computation", href: "/research/mirrahimi-dynamically-protected-cat-qubits-2014" },
+      { label: "Paper: Exponential Suppression of Bit-Flips in a Qubit Encoded in an Oscillator", href: "/research/lescanne-exponential-bit-flip-suppression-2020" },
+      { label: "Paper: Real-Time Quantum Error Correction Beyond Break-Even", href: "/research/sivak-error-correction-beyond-break-even-2023" },
+      { label: "Term: Cat Qubit", href: "/dictionary/cat-qubit" },
+      { label: "Term: GKP Qubit", href: "/dictionary/gkp-qubit" },
+      { label: "Hardware: Alice & Bob Boson 4 (cat qubit chip)", href: "/hardware/alice-bob-cat-qubit" },
+    ], words: 1027 },
+  { slug: "quantum-annealing-future", title: "Quantum Annealing: What D-Wave and Its Competitors Can Do", category: "hardware", horizon: "2026 to 2035", confidence: "Medium", summary: "Quantum annealers are the only quantum machines with thousands of qubits on sale, but they solve a narrow class of problems. The central question, whether they beat the best classical solvers, remains open and contested.", sections: [
+      { heading: "What annealers are", paragraphs: [
+          "A quantum annealer is a special-purpose machine that finds low-energy states of an Ising-type problem. The user encodes an optimization problem as couplings and fields among qubits, the machine starts in a state dominated by quantum fluctuations from a transverse field, and the field is reduced until the system settles in a configuration that encodes a good solution. Kadowaki and Nishimori formulated the method in 1998, and Farhi and coauthors framed it as adiabatic quantum computation in 2000. D-Wave Systems commercialized it starting in 2011.",
+          "The hardware differs from gate-model computers. D-Wave's Advantage2 system has more than 4,400 superconducting flux qubits with higher connectivity than earlier generations, available through the company's cloud service since 2025. Machines can run thousands of anneals per second, each lasting microseconds, and are used through hybrid solvers that split large problems into pieces. Fujitsu's digital annealer, Toshiba's simulated bifurcation machine, and coherent Ising machines are classical or photonic competitors that attack the same class of problems.",
+        ] },
+      { heading: "The evidence on speedups", paragraphs: [
+          "Since 2011, many studies have compared annealers with classical algorithms. Rønnow and coauthors in 2014 set out careful definitions of quantum speedup and found no clear speedup on random instances at that time. Denchev and coauthors at Google in 2016 reported a large speedup over simulated annealing for specially built instances, and Albash and Lidar in 2018 reported a scaling advantage over simulated annealing in some regimes, but specialized classical algorithms such as quantum Monte Carlo and the Hamze-de Freitas-Selby algorithm matched or surpassed the annealer in many cases. The pattern is that speedups appear against particular classical methods and not against the best available.",
+          "In March 2025, D-Wave published in Science a claim of beyond-classical computation, simulating the quench dynamics of quantum magnetic materials, with an estimate that classical simulation would take about a million years. Other groups reproduced parts of the results with tensor networks and belief-propagation methods using modest classical resources, which disputes the strongest form of the claim. The exchange shows that the science is productive, since analog quantum simulation is a valid use, and that the advantage question is contested.",
+        ] },
+      { heading: "Where annealers may find a place", paragraphs: [
+          "Realistic use cases fall in three groups. The first is analog quantum simulation of magnetic and spin-glass systems, which suits the hardware's natural Hamiltonian. The second is sampling from Boltzmann-like distributions, with uses in machine learning and statistical physics. The third is optimization for industrial problems such as scheduling, routing, and portfolio construction, where hybrid solvers produce good solutions and where customers value convenience and integration, but where classical solvers are often equally good.",
+          "Commercial reports describe pilots in logistics, manufacturing, telecommunications, and finance, with some production deployments for scheduling and routing in specific companies. These are modest in scale. Whether customers would pay for annealers without a proven advantage depends on cost, ease of use, and the value of exploring a new tool, and revenue figures for the industry remain small relative to the hype.",
+        ] },
+      { heading: "Technical limits and the gate-model question", paragraphs: [
+          "Annealers use stoquastic Hamiltonians, which can often be simulated efficiently by classical quantum Monte Carlo, so the hardware as built may not be universal. Aharonov and coauthors proved in 2007 that adiabatic computation with non-stoquastic interactions is equivalent to the circuit model, but implementing such interactions at scale and with low noise is a challenge. Noise, finite temperature, and limited control precision also restrict the problems that can be solved accurately, and mapping real problems to the hardware graph has overhead.",
+          "D-Wave has said it is working on gate-model hardware in addition to annealing, and other companies are exploring new annealing designs with improved coherence. The long-term question is whether annealing remains a niche or evolves into something more general.",
+        ] },
+      { heading: "Practical advice for anyone considering an annealer", paragraphs: [
+          "If you are thinking about trying an annealer for a business problem, treat it as an experiment. Start by formulating the problem as a quadratic unconstrained binary optimization problem or an Ising model and note how many variables and constraints it has. Solve the same problem with a strong classical solver, for example a commercial integer programming solver or a well-tuned heuristic, and record time, cost, and solution quality. Then run the annealer, usually through a hybrid solver, and compare under the same conditions.",
+          "Pay attention to the cost of formulating the problem. Constraints must be turned into penalty terms, embedded in the hardware graph, and tuned, and this takes expertise. Also check whether the result is robust to small changes in the data, since annealers are noisy. If the annealer wins on your problem, check again at a larger size, because small instances are easy for every method. If it does not win, the exercise still teaches your team how to model optimization problems in a form that other quantum and classical methods can use, which is a modest but real benefit.",
+        ] },
+      { heading: "What could change the picture", paragraphs: [
+          "Three developments could change this assessment. A demonstration of non-stoquastic couplings at useful scale would move annealing hardware toward universality and away from problems that classical Monte Carlo handles. An independent, reproducible result in which an annealer outperforms the best classical solver on a practical optimization benchmark would justify wider adoption. A sharp reduction in noise and an increase in coherence would make the pure adiabatic picture more accurate. None of these has happened yet.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect annealers to remain commercially available and to continue to be used for pilots and some production applications, with the analog simulation of quantum magnets as the most defensible quantum use. A broad, verified advantage for industrial optimization is unlikely in this decade. If you consider using one, benchmark against a strong classical solver on your actual problem and measure total cost and time.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Advantage2 deployments; more hybrid solver users; continued claim-and-rebuttal cycles on simulation advantage." },
+      { label: "2029 to 2032", value: "Annealers coexist with gate-model machines; analog simulation results become more rigorous." },
+      { label: "2033 to 2035", value: "Niche but stable role, or consolidation into broader quantum platforms." },
+    ], signals: [
+      "Independent benchmarks against the best classical solvers.",
+      "Non-stoquastic interactions realized at scale.",
+      "Customer deployments that persist after pilots.",
+      "Peer-reviewed analog simulation results not reproduced classically.",
+    ], risks: [
+      "Classical solvers keep improving.",
+      "The hardware may not be universal.",
+      "Gate-model machines may absorb the optimization market.",
+    ], faq: [
+      { q: "Is a quantum annealer a real quantum computer?", a: "It is a special-purpose quantum device that exploits quantum effects but solves only a restricted class of problems." },
+      { q: "Does D-Wave beat classical computers?", a: "On some problems against some classical methods. Claims of broad advantage are contested." },
+      { q: "What can I use an annealer for?", a: "Scheduling, routing, sampling, and simulating magnetic systems, ideally compared against classical solvers first." },
+    ], references: [
+      "Kadowaki, T., & Nishimori, H. (1998). Quantum annealing in the transverse Ising model. Physical Review E, 58, 5355-5363.",
+      "Farhi, E., Goldstone, J., Gutmann, S., & Sipser, M. (2000). Quantum computation by adiabatic evolution. arXiv:quant-ph/0001106.",
+      "Aharonov, D., et al. (2007). Adiabatic quantum computation is equivalent to standard quantum computation. SIAM Journal on Computing, 37, 166-194.",
+      "Rønnow, T. F., et al. (2014). Defining and detecting quantum speedup. Science, 345, 420-424.",
+      "Denchev, V. S., et al. (2016). What is the computational value of finite-range tunneling? Physical Review X, 6, 031015.",
+      "Albash, T., & Lidar, D. A. (2018). Demonstration of a scaling advantage for a quantum annealer over simulated annealing. Physical Review X, 8, 031016.",
+      "Hauke, P., Katzgraber, H. G., Lechner, W., Nishimori, H., & Oliver, W. D. (2020). Perspectives of quantum annealing: Methods and implementations. Reports on Progress in Physics, 83, 054401.",
+      "King, A. D., et al. (2025). Beyond-classical computation in quantum simulation. Science, 388, 199-204.",
+    ], links: [
+      { label: "Paper: Quantum Annealing in the Transverse Ising Model", href: "/research/kadowaki-nishimori-quantum-annealing-1998" },
+      { label: "Paper: Quantum Computation by Adiabatic Evolution", href: "/research/farhi-adiabatic-evolution-2000" },
+      { label: "Paper: Adiabatic Quantum Computation Is Equivalent to Standard Quantum Computation", href: "/research/aharonov-adiabatic-equivalent-circuit-2007" },
+      { label: "Paper: Beyond-Classical Computation in Quantum Simulation", href: "/research/king-beyond-classical-quantum-simulation-2025" },
+      { label: "Hardware: D-Wave Advantage2", href: "/hardware/dwave-advantage2" },
+      { label: "Company: D-Wave Quantum", href: "/companies/d-wave" },
+      { label: "Term: Quantum Annealing", href: "/dictionary/quantum-annealing" },
+    ], words: 1073 },
+  { slug: "quantum-cryogenics-wiring-future", title: "Cryogenics, Wiring, and Control Electronics: The Hidden Scaling Problem", category: "hardware", horizon: "2026 to 2038", confidence: "Medium", summary: "Beyond qubits, quantum computers need refrigerators, cables, and classical electronics. These supporting systems may decide how large machines can get and how much they cost, and several fixes are under way: cryogenic control chips, optical links, and modular designs.", sections: [
+      { heading: "Why the plumbing matters", paragraphs: [
+          "Headlines about qubit counts hide a larger physical system. A superconducting quantum computer sits inside a dilution refrigerator with stages at about 50 kelvin, 4 kelvin, 1 kelvin, 100 millikelvin, and 10 millikelvin, and each qubit needs control and readout lines that run from room-temperature electronics to the coldest stage. Every cable carries heat and noise, and the cooling power at the coldest stage is only tens of microwatts. A thousand-qubit machine already needs thousands of coaxial lines, and a million-qubit machine cannot be built by repeating the same approach.",
+          "Neutral atoms, ions, and photonic systems avoid dilution refrigerators in part, but they have their own supporting systems: lasers and optics for thousands of beams, vacuum chambers, high-bandwidth control electronics, and detectors, some of which need cooling. In every platform, the classical hardware needed to control and read out qubits and to decode errors in real time is a large share of cost and complexity.",
+        ] },
+      { heading: "Cooling", paragraphs: [
+          "Dilution refrigerators have become a business of their own. Bluefors, Oxford Instruments, Maybell, and others sell systems, and IBM built a large system called Goldeneye to test the cooling needs of larger processors. Krinner and coauthors laid out in 2019 how to engineer cryogenic setups for 100-qubit systems, and the lessons scale in a straightforward way: more lines need more cooling power, bigger plates, and better filtering.",
+          "The supply chain has limits. Dilution refrigerators use helium-3, a rare isotope produced mainly as a byproduct of tritium decay in nuclear weapons programs, whose supply is limited, as the Congressional Research Service documented in 2010. Demand from quantum computing, medical imaging, and neutron detection has raised prices, and companies are exploring alternatives and recycling. Systems with larger cooling power and cryogen-free designs are improving, and modular designs, in which several smaller refrigerators are linked, are an answer to the size limit.",
+        ] },
+      { heading: "Wiring and control electronics", paragraphs: [
+          "There are four main strategies. The first is multiplexing: sending several control signals over one cable using frequency division, and reading out many qubits through a shared feedline, which is already standard for readout. The second is cryogenic control electronics. Complementary metal-oxide-semiconductor chips designed to operate at 4 kelvin or lower, as in Intel's Horse Ridge chips and work at universities and Google, generate pulses near the qubits and cut the number of lines to the outside. Patra and coauthors and Charbon and coauthors described the design of cryo-CMOS circuits for quantum computing, and the limits are power dissipation and noise.",
+          "The third is superconducting digital logic, in which single-flux-quantum circuits dissipate far less power at millikelvin temperatures than CMOS, as McDermott and coauthors proposed, though they are less mature. The fourth is optical delivery: sending control signals into the cryostat through optical fiber, which carries little heat, and converting them to microwaves near the qubits with photodetectors, an approach being developed by several groups. A related need is microwave-to-optical transduction for linking cryogenic modules, discussed in the context of quantum networks, which currently has low efficiency.",
+          "Photonic and trapped-ion systems face similar problems with different technology: integrated photonics to deliver light, electronic control of ions by microwaves, and high-speed digital electronics.",
+        ] },
+      { heading: "Decoding and classical processing", paragraphs: [
+          "Fault-tolerant machines need real-time decoders that process syndrome data every microsecond or so and feed corrections back. This is a classical computing problem at large scale, with data rates of terabits per second for large codes. Solutions use FPGAs and custom chips, parallel decoders, and, in some designs, neural networks. IBM's relay belief-propagation decoder and Google's real-time decoders are examples, and NVIDIA has announced hardware links aimed at connecting GPUs to quantum processors with low latency.",
+          "The classical side may consume as much power and space as the quantum chip. For this reason, many roadmaps treat the quantum computer as a system with a classical co-processor, and resource estimates that ignore classical overhead can be misleading.",
+        ] },
+      { heading: "What it costs and what to expect", paragraphs: [
+          "The cost of cryogenic and control infrastructure is a large part of the price of a quantum computer, and published estimates suggest that for superconducting systems the refrigerators, cables, and control electronics can account for a major share of the hardware cost. Systems currently sold to research customers cost from several million to tens of millions of dollars, and the price per qubit depends on the platform and the number of qubits. As volumes grow and designs mature, costs should fall, but the pace is unclear, and the supply chain for specialized components such as cryogenic amplifiers, superconducting cables, and cryo-CMOS chips is young.",
+          "For readers following the field, the practical lesson is to look at the whole system when comparing roadmaps. A claim of a million qubits is incomplete without the number of fridges, the number of control lines, the power consumption, and the decoder hardware. Teams that publish these numbers are signaling that they have thought about scale, and teams that do not may have unsolved problems behind the headlines.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect incremental progress: more lines per fridge, multiplexed readout everywhere, cryo-CMOS chips in commercial systems by about 2028, and modular multi-fridge systems for the first machines with hundreds of logical qubits. A step change, such as practical optical delivery and efficient transduction, could arrive around 2030 to 2035 if research succeeds. These advances are less visible than qubit records, but they will decide cost per logical qubit, and so the economic viability of fault-tolerant machines.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Larger and modular dilution refrigerator systems; multiplexing standard; first commercial cryo-CMOS control in systems." },
+      { label: "2029 to 2032", value: "Optical control links and chip-to-chip couplers in prototype machines; decoders on custom hardware." },
+      { label: "2033 to 2038", value: "Mature supply chain for million-qubit class systems if the economics work." },
+    ], signals: [
+      "Lines per qubit falling below one in published architectures.",
+      "Cryo-CMOS controllers with power below the cooling budget at 4 kelvin and below.",
+      "Microwave-to-optical transduction with efficiency above 50 percent.",
+      "Helium-3 supply and price trends.",
+    ], risks: [
+      "Control electronics may add noise that limits qubit performance.",
+      "Supply constraints may raise costs.",
+      "Decoder latency may limit code size.",
+    ], faq: [
+      { q: "Why do superconducting qubits need so many cables?", a: "Each qubit needs lines for control and readout, and every line carries heat and noise into the cold stage." },
+      { q: "What is cryo-CMOS?", a: "Control chips made with standard transistor technology but designed to work at very low temperatures next to the qubits." },
+      { q: "Is helium-3 a real constraint?", a: "Yes. It is scarce, and demand from quantum computing is raising prices." },
+    ], references: [
+      "Krinner, S., et al. (2019). Engineering cryogenic setups for 100-qubit scale superconducting circuit systems. EPJ Quantum Technology, 6, 2.",
+      "Patra, B., et al. (2018). Cryo-CMOS circuits and systems for quantum computing applications. IEEE Journal of Solid-State Circuits, 53, 309-321.",
+      "Charbon, E., et al. (2016). Cryo-CMOS for quantum computing. IEEE International Electron Devices Meeting (IEDM).",
+      "McDermott, R., et al. (2018). Quantum-classical interface based on single flux quantum digital logic. Quantum Science and Technology, 3, 024004.",
+      "Lauk, N., et al. (2020). Perspectives on quantum transduction. Quantum Science and Technology, 5, 020501.",
+      "Shea, D. A., & Morgan, D. (2010). The helium-3 shortage: Supply, demand, and options for Congress. Congressional Research Service Report R41419.",
+      "Higgott, O., & Gidney, C. (2025). Sparse blossom: correcting a million errors per core second with minimum-weight matching. Quantum.",
+    ], links: [
+      { label: "Term: Dilution Refrigerator", href: "/dictionary/dilution-refrigerator" },
+      { label: "Term: Cryogenic CMOS Control", href: "/dictionary/cryo-cmos" },
+      { label: "Term: Syndrome Measurement", href: "/dictionary/syndrome-measurement" },
+      { label: "Industry: Quantum Computing and the Semiconductor Industry", href: "/industries/semiconductors-electronics" },
+    ], words: 1047 },
+  { slug: "quantum-hpc-integration-future", title: "Quantum Meets Supercomputing: Hybrid Systems and Quantum Data Centers", category: "hardware", horizon: "2026 to 2035", confidence: "High", summary: "Quantum processors are being installed next to supercomputers and GPU clusters, and most useful workflows will be hybrid. The integration of fast classical control, decoding, and shared software is as important as the quantum chip.", sections: [
+      { heading: "Why hybrid is the default", paragraphs: [
+          "Almost every real quantum workload combines quantum and classical computing. A variational algorithm alternates between circuits on a quantum processor and optimization on a classical computer. Error correction needs a classical decoder that reads measurements every microsecond. Chemistry workflows use classical computers to choose active spaces and prepare Hamiltonians, and to post-process results. Even a fault-tolerant machine is a hybrid system, so the real question is how tightly the two are connected.",
+          "This is why national laboratories and supercomputing centers have become major customers. Humble and coauthors described in 2021 how quantum computers could be integrated into high-performance computing as accelerators, much like GPUs, called by classical programs for specific tasks. Alexeev and coauthors in 2021 described the systems view for scientific discovery.",
+        ] },
+      { heading: "What is happening now", paragraphs: [
+          "Quantum machines are being placed inside HPC centers. RIKEN in Japan pairs IBM and Quantinuum systems with the Fugaku supercomputer, Jülich in Germany, the Leibniz Supercomputing Centre, Oak Ridge National Laboratory, and others host quantum systems from several vendors, and many European centers are integrating machines under EuroHPC. IBM and RIKEN reported in 2025 a quantum-centric supercomputing workflow in which a Heron processor samples configurations and Fugaku processes them in a method called sample-based quantum diagonalization, applied to molecules beyond the scale of exact classical diagonalization, though classical methods can approximate such systems well.",
+          "NVIDIA has built a software and hardware stack for the integration: CUDA-Q for programming hybrid workflows, and NVQLink, announced in 2025, a connection aimed at linking quantum processors with GPUs at microsecond latency, with many vendors and national laboratories as partners. The stack targets uses such as decoding, calibration, and real-time control.",
+        ] },
+      { heading: "Technical issues", paragraphs: [
+          "Latency is the main issue. Variational algorithms involve thousands of iterations, so queueing and network delays dominate unless the classical loop is close to the hardware, which is why runtimes such as Qiskit Runtime and Braket Hybrid Jobs keep the loop on the provider's side. Error correction demands far tighter latency: decoding for superconducting machines must keep up with cycles of about a microsecond, and the delay between measurement and feedback limits the speed of logical operations.",
+          "Software is the second. Programs must describe workflows across different processors, and compilers must optimize across the boundary. Standards such as OpenQASM 3 and the Quantum Intermediate Representation help, but the ecosystem is fragmented. Scheduling is the third issue: quantum machines are scarce, calibrations drift over hours, and queues vary, so HPC schedulers need to learn how to manage them.",
+          "The fourth is data and cost. Quantum workloads produce small outputs compared with simulation, but the preparation can involve large classical data, so data movement and cost per job matter. Customers will judge the combination on time to solution and total cost against classical alternatives, including GPU clusters, which are improving quickly.",
+        ] },
+      { heading: "Quantum data centers", paragraphs: [
+          "Several companies describe quantum data centers: facilities that house many quantum systems with shared cryogenics, power, and classical infrastructure, offering cloud access. IBM has opened a quantum data center in Poughkeepsie and plans for others, IonQ and Quantinuum are expanding facilities, and PsiQuantum is building large sites. Over time, these facilities may look like a co-located mix of GPU racks and quantum modules linked by fast networks. For large customers, such as governments and pharmaceutical firms, on-premises systems may be purchased, while others will use the cloud.",
+        ] },
+      { heading: "What a hybrid workload looks like in practice", paragraphs: [
+          "A typical hybrid chemistry workflow shows the division of labor. A classical program selects the molecule and the active space, computes integrals, and builds the Hamiltonian. The quantum processor runs circuits that prepare trial states and returns measurement samples. A classical program turns those samples into energy estimates or into a reduced problem that it solves with supercomputer resources, and an optimizer decides the next circuits. The loop repeats until the result converges.",
+          "In error-corrected machines the same split appears at a faster timescale: the quantum chip runs syndrome extraction, the classical decoder interprets the results within microseconds, and the controller applies corrections. In both cases the classical part is not a detail. It determines the speed, cost, and reliability of the whole system, and teams that treat quantum and classical engineering as one project tend to progress faster.",
+        ] },
+      { heading: "Standards and organizational readiness", paragraphs: [
+          "Organizations that want to use quantum resources can prepare in practical ways. Teams should learn the common programming tools, such as Qiskit and CUDA-Q, and run workloads on simulators and small devices to understand the workflow. Procurement and security teams should consider how data will be handled in cloud quantum services, and how post-quantum cryptography applies to the connections. Scheduling and accounting systems at HPC centers will need to support quantum jobs with different characteristics from classical ones.",
+          "At the standards level, work continues on circuit languages, runtime interfaces, and benchmarks, and industry consortia and national laboratories publish reference architectures. We expect convergence on a few widely used interfaces by the late 2020s, which would reduce vendor lock-in and make hybrid workflows portable.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We have high confidence that hybrid integration will define the field through the 2030s. Expect most announcements to emphasize quantum-centric supercomputing, GPU-quantum links, and shared software. The first real value is likely to come from workflows in which the quantum processor handles a narrow subroutine and the classical system does most of the work, which makes honest benchmarking against classical-only workflows essential. Standardization of interfaces will accelerate adoption.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Quantum systems installed at most major HPC centers; GPU-quantum links in production use for calibration and decoding." },
+      { label: "2029 to 2032", value: "Fault-tolerant prototypes with tightly integrated decoders; standard hybrid programming interfaces." },
+      { label: "2033 to 2035", value: "Quantum modules as routine accelerators in some HPC centers, if advantage appears." },
+    ], signals: [
+      "Microsecond-latency links between GPUs and quantum processors in routine use.",
+      "Standards for hybrid workflows and scheduling.",
+      "Published hybrid workflows beating classical-only baselines.",
+      "Procurement of quantum systems by supercomputing centers.",
+    ], risks: [
+      "Hybrid workflows may not beat strong classical ones.",
+      "Fragmented software may slow adoption.",
+      "Quantum hardware may remain too scarce for production use.",
+    ], faq: [
+      { q: "Will quantum computers replace supercomputers?", a: "No. They will work alongside them as accelerators for specific tasks." },
+      { q: "What is quantum-centric supercomputing?", a: "A workflow in which quantum processors and classical supercomputers cooperate, as IBM and RIKEN demonstrated." },
+      { q: "Why is latency so important?", a: "Because error correction and variational loops need fast classical feedback." },
+    ], references: [
+      "Humble, T. S., et al. (2021). Quantum computers for high-performance computing. IEEE Micro, 41(5), 15-23.",
+      "Alexeev, Y., et al. (2021). Quantum computer systems for scientific discovery. PRX Quantum, 2, 017001.",
+      "Britt, K. A., & Humble, T. S. (2017). High-performance computing with quantum processing units. ACM Journal on Emerging Technologies in Computing Systems, 13, 39.",
+      "Robledo-Moreno, J., et al. (2025). Chemistry beyond the scale of exact diagonalization on a quantum-centric supercomputer. Science Advances, 11, eadu9991.",
+      "Bharti, K., et al. (2022). Noisy intermediate-scale quantum algorithms. Reviews of Modern Physics, 94, 015004.",
+      "Cerezo, M., et al. (2021). Variational quantum algorithms. Nature Reviews Physics, 3, 625-644.",
+      "NVIDIA (2025). NVQLink announcement: connecting quantum processors to GPU supercomputing. NVIDIA press release, October 2025.",
+    ], links: [
+      { label: "Term: Quantum Cloud Computing", href: "/dictionary/quantum-cloud-computing" },
+      { label: "Term: Quantum SDK", href: "/dictionary/quantum-sdk" },
+      { label: "Term: Variational Quantum Algorithm", href: "/dictionary/variational-quantum-algorithm" },
+      { label: "Industry: Quantum Computing, AI, and Data Centers", href: "/industries/artificial-intelligence-data-centers" },
+      { label: "Company: IBM", href: "/companies/ibm" },
+    ], words: 1024 },
 ];
 
 export function getFutureTopic(slug: string) {
