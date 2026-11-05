@@ -1215,6 +1215,601 @@ export const futureTopics: FutureTopic[] = [
       { label: "Industry: Quantum Computing, AI, and Data Centers", href: "/industries/artificial-intelligence-data-centers" },
       { label: "Company: IBM", href: "/companies/ibm" },
     ], words: 1024 },
+  { slug: "logical-qubit-milestones-future", title: "Logical Qubits: How Many, How Good, and When", category: "error-correction", horizon: "2026 to 2035", confidence: "Medium", summary: "Logical qubit counts are the new headline number, but they are easy to misread. What matters is the logical error rate, the code distance, and whether logical gates work, and on those measures the field is moving from a handful of good logical qubits to tens by the end of the decade.", sections: [
+      { heading: "Why logical qubits are the right yardstick", paragraphs: [
+          "A physical qubit is an imperfect device. A logical qubit is a qubit encoded across many physical qubits by an error-correcting code so that errors can be detected and corrected, which makes it far more reliable than any single component. Useful algorithms need logical qubits because they run for billions of operations, and physical error rates of 0.1 percent would ruin them within a thousand steps. For that reason roadmaps have shifted from counting physical qubits to counting logical ones.",
+          "The shift also brings confusion. A claim of dozens of logical qubits can mean very different things depending on the code, the way errors are handled, and what operations were performed. A fair reading needs four numbers: the code distance, the logical error rate per cycle or per operation, the fraction of runs discarded by post-selection, and whether logical gates and not only memory were shown.",
+        ] },
+      { heading: "What has been shown", paragraphs: [
+          "The most convincing result is Google's 2024 surface-code experiment on the Willow chip. Logical error fell by about a factor of 2.14 each time the code distance rose from 3 to 5 to 7, ending at about 0.143 percent per cycle, with the logical memory outliving the best physical qubit by roughly 2.4 times. This is real error correction, in the sense that bigger codes do better, but it is a single logical qubit and a memory.",
+          "On other platforms, results emphasize counts. Harvard, QuEra, and collaborators reported 48 logical qubits on neutral atoms in 2023 using small codes, and later work extended the architecture to larger numbers, including reports of up to 96 logical qubits. Microsoft and Quantinuum reported logical qubits with error rates well below the physical ones on trapped ions in 2024, Microsoft and Atom Computing reported 24 entangled logical qubits, Quantinuum reported dozens of logical qubits on its Helios system in 2025 and 2026, and Infleqtion reported 30 entangled logical qubits in September 2026. Many of these use distance-two or distance-three codes that detect errors, together with post-selection, which does not scale to long computations.",
+          "The practical conclusion is that the field has shown the ingredients on different platforms, but not yet a machine with many logical qubits whose error rates fall steadily with code distance, with logical gates, and without post-selection.",
+        ] },
+      { heading: "Roadmaps and what to discount", paragraphs: [
+          "The published roadmaps are ambitious. IBM aims for about 200 logical qubits running 100 million operations on its Starling system in 2029, and about 2,000 logical qubits and a billion operations around 2033. Quantinuum targets a universal fault-tolerant machine named Apollo in 2029 with hundreds of logical qubits. QuEra's plan called for 100 logical qubits in 2026. Google's milestone list includes a long-lived logical qubit with error near one in a million, a logical gate, and then about 100 logical qubits. IonQ has described far larger numbers by 2030, based on millions of physical qubits, which we treat as the least certain.",
+          "A useful way to discount a roadmap is to ask which piece has been demonstrated at small scale. Logical memory below threshold has, on superconducting qubits. Logical gates with error correction have only partly. Magic states at the logical level have been shown in small experiments. Fast real-time decoding at scale has not. Each missing piece adds risk to the date.",
+        ] },
+      { heading: "How to compare claims", paragraphs: [
+          "We suggest a simple checklist for logical qubit claims. First, is the code able to correct errors or only to detect them? Second, was the logical error rate measured per cycle or per operation, and how does it compare with the physical error rate? Third, how does the error change with code distance, since that scaling is the signature of fault tolerance? Fourth, were logical gates shown, including entangling gates between logical qubits? Fifth, how many runs were discarded?",
+          "By these measures, a handful of logical qubits with decreasing error as distance grows is worth more than dozens of small-code logical qubits with post-selection. We expect the community to converge on reporting standards, and several groups have already begun to publish more complete tables.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect the first systems with tens of logical qubits that satisfy a strict definition, meaning below-threshold scaling, logical gates, and no post-selection, to appear around 2027 to 2029. Machines with about 100 logical qubits and logical error rates near one in ten thousand to one in a million are plausible around 2029 to 2031. A thousand logical qubits at error rates low enough for chemistry and cryptanalysis is more likely in the mid-2030s. These are central estimates, and the uncertainty is a few years in each direction because the problems are partly engineering and partly unknown.",
+        ] },
+      { heading: "Why the numbers will keep changing meaning", paragraphs: [
+          "As the field matures, the definition of a good logical qubit will tighten. Today a result can be called a logical qubit if it protects information better than a single physical qubit, even for a short time and with small codes. Within a few years the expectation will be a logical qubit that supports a universal set of gates, survives thousands of correction cycles, and has a logical error rate that can be projected to the needs of an algorithm. Companies and researchers will then report logical operations per second, the logical error per operation, and the resource cost of each logical gate, much as classical computing reports instructions per second and error rates for memory.",
+          "Readers should expect today's claims to look modest by those later standards, and should not read the absence of strict definitions as a sign that the progress is not real. The ingredients are being demonstrated, and the engineering to combine them is the main task of the next five years.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Several platforms report logical qubits with strict definitions; first logical gates with error correction below threshold." },
+      { label: "2028 to 2029", value: "Tens of logical qubits with logical error near 10^-4; roadmap targets of 2029 for 100 to 200 logical qubits tested." },
+      { label: "2030 to 2032", value: "About 100 to several hundred logical qubits at error near 10^-6 on leading platforms." },
+      { label: "2033 to 2035", value: "Roughly a thousand logical qubits plausible; algorithms for chemistry and cryptanalysis within reach." },
+    ], signals: [
+      "Logical error per cycle below 10^-4 and then 10^-6.",
+      "Logical entangling gates between error-corrected qubits with below-threshold scaling.",
+      "Results without post-selection on codes of distance five or more.",
+      "Independent replication of vendor logical qubit claims.",
+    ], risks: [
+      "Correlated errors or leakage could break the scaling at larger distances.",
+      "Decoding speed could limit logical clock rates.",
+      "Roadmap dates could slip by several years.",
+    ], faq: [
+      { q: "What is a logical qubit?", a: "A qubit encoded in many physical qubits with an error-correcting code, so that errors can be detected and fixed." },
+      { q: "Does a larger logical qubit count mean a better computer?", a: "Not by itself. The logical error rate, the code distance, and the ability to run logical gates matter more." },
+      { q: "Why do some claims use post-selection?", a: "Discarding runs with detected errors improves apparent quality but does not scale to long computations." },
+    ], references: [
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+      "Bluvstein, D., et al. (2024). Logical quantum processor based on reconfigurable atom arrays. Nature, 626, 58-65.",
+      "Ryan-Anderson, C., et al. (2021). Realization of real-time fault-tolerant quantum error correction. Physical Review X, 11, 041058.",
+      "da Silva, M. P., et al. (2024). Demonstration of logical qubits and repeated error correction with better-than-physical error rates. arXiv:2404.02280.",
+      "Terhal, B. M. (2015). Quantum error correction for quantum memories. Reviews of Modern Physics, 87, 307-346.",
+      "Campbell, E. T., Terhal, B. M., & Vuillot, C. (2017). Roads towards fault-tolerant universal quantum computation. Nature, 549, 172-179.",
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+      "Quantum Computing Report (2026). Infleqtion achieves 30 entangled logical qubits on Sqale neutral atom quantum processor. https://quantumcomputingreport.com/infleqtion-achieves-30-entangled-logical-qubits-on-sqale-neutral-atom-quantum-processor/amp/",
+    ], links: [
+      { label: "Paper: Quantum Error Correction Below the Surface Code Threshold", href: "/research/google-below-threshold-2024" },
+      { label: "Paper: Logical Quantum Processor Based on Reconfigurable Atom Arrays", href: "/research/bluvstein-logical-quantum-processor-2023" },
+      { label: "Paper: Suppressing Quantum Errors by Scaling a Surface Code Logical Qubit", href: "/research/google-suppressing-errors-surface-code-2023" },
+      { label: "Term: Logical Qubit", href: "/dictionary/logical-qubit" },
+      { label: "Term: Logical Error Rate", href: "/dictionary/logical-error-rate" },
+      { label: "Term: Code Distance", href: "/dictionary/code-distance" },
+    ], words: 1131 },
+  { slug: "qldpc-codes-future", title: "Beyond the Surface Code: Quantum LDPC Codes", category: "error-correction", horizon: "2026 to 2035", confidence: "Medium", summary: "Quantum LDPC codes could protect many logical qubits with far fewer physical qubits than the surface code, at the cost of longer-range connections. IBM has built its fault-tolerant roadmap on them, and neutral atoms and ions may suit them even better.", sections: [
+      { heading: "The overhead problem", paragraphs: [
+          "The surface code is easy to build, since it needs only nearest-neighbor connections on a flat chip, and it tolerates error rates around one percent. Its drawback is overhead. A logical qubit of distance d uses about 2 d squared physical qubits, so the logical error rate of one in a billion can need roughly a thousand physical qubits per logical qubit, and an algorithm with thousands of logical qubits needs millions of physical ones. These numbers drive the cost and size of fault-tolerant machines.",
+          "The classical error-correction world has long had better options. Low-density parity-check codes, introduced by Gallager in 1962, protect long messages with a constant fraction of redundancy using sparse checks, and they are used in Wi-Fi, 5G, and satellite links. The quantum analogs, in which each check involves only a few qubits and each qubit takes part in only a few checks, could in principle keep the rate of logical to physical qubits high.",
+        ] },
+      { heading: "How the theory developed", paragraphs: [
+          "The search for good quantum LDPC codes took more than twenty years. Hypergraph product codes by Tillich and Zémor in 2009 gave constant rate with distance growing as the square root of the length. Several improvements followed, and in 2021 Pavel Panteleev and Gleb Kalachev proved the existence of asymptotically good quantum LDPC codes, with constant rate and linear distance, using a lifted product construction. Leverrier and Zémor's quantum Tanner codes in 2022 achieved the same result by a different route, and Dinur and coauthors gave efficient decoders for related codes.",
+          "Practical codes are smaller and more structured. In 2024 IBM researchers showed bivariate bicycle codes, including the gross code that stores 12 logical qubits with distance 12 in 144 data qubits plus 144 check qubits, about ten times fewer qubits than the surface code for similar protection, with a circuit-level threshold near 0.8 percent. Other proposals, such as the constant-overhead scheme of Xu and coauthors for reconfigurable atom arrays, and the lifted-product codes explored by several groups, promise further savings.",
+        ] },
+      { heading: "What it costs", paragraphs: [
+          "The price of the saving is connectivity. Check circuits in a bivariate bicycle code need each qubit to interact with six others, in a pattern that is not planar, so a flat chip cannot lay it out with only nearest-neighbor couplers. IBM's design uses a two-layer arrangement with long-range couplers, and its Loon processor, announced in November 2025, tests such connections. Neutral atoms, which can be moved, and trapped ions in modular traps have more natural access to nonlocal connections, which is a reason that several atom groups are interested in the codes.",
+          "Logical operations are the second cost. The memory results are promising, but performing gates on qLDPC codes, such as measuring logical operators and teleporting between code blocks, is harder than lattice surgery on surface codes and has been the subject of active research since 2023, including generalized lattice surgery and code switching. Decoders are the third: belief propagation with ordered statistics post-processing works well in simulation and IBM has reported faster variants, but real-time operation at scale is not yet demonstrated.",
+        ] },
+      { heading: "Who is betting on what", paragraphs: [
+          "IBM's roadmap for Starling in 2029 uses bivariate bicycle codes for memory with logical processing units based on related ideas, and its Kookaburra and Cockatoo modules in 2026 and 2027 test the memory and the links between modules. Google continues to build on the surface code and has also studied alternatives. Neutral-atom companies such as QuEra and Atom Computing and academic groups study hypercube and lifted-product codes. Alice and Bob and AWS pair cat qubits with repetition codes that have an LDPC flavor. Quantinuum has explored high-rate codes on its connected ion hardware.",
+          "This diversity is healthy. The best code depends on the hardware's connectivity, speed, and error structure, and different platforms may converge on different codes.",
+        ] },
+      { heading: "A comparison with the surface code in numbers", paragraphs: [
+          "A rough comparison shows the stakes. To protect 12 logical qubits at a distance of 12, a surface code needs on the order of 12 times about 2 times 144, or roughly 3,000 physical qubits, while the gross code uses 288. For a machine with 200 logical qubits, that difference is the gap between hundreds of thousands and tens of thousands of physical qubits for memory alone. Savings of that size matter for cooling, wiring, and cost, and they help explain why IBM changed its roadmap to qLDPC codes in 2023 and 2024.",
+          "The comparison is not complete without the cost of the nonlocal connections, the larger control complexity, and the slower or more complex logical gates. A fair summary is that qLDPC codes win on memory and on qubit count, and the surface code still wins on simplicity and on the maturity of its decoders and operations. The two will probably coexist for years.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We think qLDPC codes will be used in some of the first fault-tolerant machines, most likely in IBM's modular superconducting systems and in atom-based systems, with surface codes remaining the baseline elsewhere. The reduction in physical qubits by a factor of about five to ten is significant but is not the only cost driver, since logical gate speed, decoding, and magic state supply also matter. We expect the first hardware demonstrations of qLDPC memory in 2026 and 2027, and demonstrations of logical operations in the following two years. A machine whose cost advantage from qLDPC codes is demonstrated end to end is a 2029 to 2031 event in our view.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Loon and Kookaburra-class tests of qLDPC memory and long-range couplers; atom-array experiments with high-rate codes." },
+      { label: "2028 to 2029", value: "Logical operations on qLDPC codes; IBM targets Starling in 2029." },
+      { label: "2030 to 2035", value: "qLDPC codes common in modular and atom-based machines; physical qubit counts for useful algorithms fall." },
+    ], signals: [
+      "Below-threshold scaling shown for a qLDPC memory on hardware.",
+      "Fast decoders running in real time for codes with hundreds of qubits.",
+      "Logical gates between qLDPC blocks with measured error rates.",
+      "Long-range couplers with high fidelity on superconducting chips.",
+    ], risks: [
+      "Long-range couplers may add noise and crosstalk.",
+      "Logical gate overhead may erase the memory savings.",
+      "Decoders may not scale to real time.",
+    ], faq: [
+      { q: "What is a qLDPC code?", a: "A quantum error-correcting code whose checks each involve only a few qubits, which allows high efficiency." },
+      { q: "Why is IBM using them?", a: "They need about ten times fewer qubits than the surface code for similar protection in memory." },
+      { q: "What is the catch?", a: "They need connections between distant qubits that planar chips do not provide." },
+    ], references: [
+      "Panteleev, P., & Kalachev, G. (2022). Asymptotically good quantum and locally testable classical LDPC codes. STOC '22, 375-388.",
+      "Bravyi, S., et al. (2024). High-threshold and low-overhead fault-tolerant quantum memory. Nature, 627, 778-782.",
+      "Breuckmann, N. P., & Eberhardt, J. N. (2021). Quantum low-density parity-check codes. PRX Quantum, 2, 040101.",
+      "Tillich, J.-P., & Zémor, G. (2014). Quantum LDPC codes with positive rate and minimum distance proportional to the square root of the blocklength. IEEE Transactions on Information Theory, 60, 1193-1202.",
+      "Xu, Q., et al. (2024). Constant-overhead fault-tolerant quantum computation with reconfigurable atom arrays. Nature Physics, 20, 1084-1090.",
+      "Roffe, J., White, D. R., Burton, S., & Campbell, E. (2020). Decoding across the quantum low-density parity-check code landscape. Physical Review Research, 2, 043423.",
+      "Yoder, T. J., et al. (2025). Tour de gross: A modular quantum computer based on bivariate bicycle codes. arXiv:2506.03094.",
+      "Cohen, L. Z., Kim, I. H., Bartlett, S. D., & Brown, B. J. (2022). Low-overhead fault-tolerant quantum computing using long-range connectivity. Science Advances, 8, eabn1717.",
+    ], links: [
+      { label: "Paper: High-Threshold and Low-Overhead Fault-Tolerant Quantum Memory", href: "/research/bravyi-high-threshold-low-overhead-memory-2024" },
+      { label: "Paper: Asymptotically Good Quantum and Locally Testable Classical LDPC Codes", href: "/research/panteleev-kalachev-good-qldpc-codes-2022" },
+      { label: "Term: Quantum LDPC Code", href: "/dictionary/qldpc-code" },
+      { label: "Term: Surface Code", href: "/dictionary/surface-code" },
+      { label: "Term: Stabilizer Code", href: "/dictionary/stabilizer-code" },
+    ], words: 1052 },
+  { slug: "magic-states-non-clifford-future", title: "Magic States and the Cost of Non-Clifford Gates", category: "error-correction", horizon: "2026 to 2033", confidence: "Medium", summary: "Error-corrected machines get most operations cheaply but need special resource states for the T gate. Magic state factories have consumed half or more of the qubits in resource estimates, and new methods such as cultivation could cut that cost by about an order of magnitude.", sections: [
+      { heading: "Why a special state is needed", paragraphs: [
+          "Fault-tolerant machines can perform some gates, the Clifford gates, easily and exactly on encoded qubits. Those gates alone cannot do a useful quantum computation, because circuits made only of Clifford gates can be simulated efficiently on a classical computer, by the Gottesman-Knill theorem. A non-Clifford gate such as the T gate is required, and the Eastin-Knill theorem of 2009 shows that no code that detects local errors can implement a universal gate set transversally, so some extra technique is unavoidable.",
+          "The standard solution, proposed by Bravyi and Kitaev in 2005, is to prepare a special state, a magic state, offline and consume it with a small circuit that teleports the gate onto the data, a method of gate teleportation described by Gottesman and Chuang in 1999. The difficulty is that the magic state itself must be of very high quality, often with error of one part in a billion or better, while raw preparation gives errors of about one percent.",
+        ] },
+      { heading: "The traditional approach: distillation", paragraphs: [
+          "Magic state distillation purifies many noisy states into fewer good ones using Clifford operations and measurements. The best-known protocol takes 15 noisy states with error p and produces one with error about 35 p cubed. Repeating rounds reaches the required quality, but each round multiplies the number of states consumed by 15, so full distillation uses hundreds of raw states per output and requires regions of the chip set aside as factories.",
+          "Resource estimates show the consequence. In the 2019 estimate by Gidney and Ekerå for RSA-2048, factories take a large fraction of the machine, and in estimates for chemistry, the number of T gates, which can reach billions to trillions, sets the run time as well as the size. Litinski showed in 2019 that careful layouts and lattice surgery reduce the cost substantially, but it remained a dominant term.",
+        ] },
+      { heading: "New methods: cultivation and logical-level experiments", paragraphs: [
+          "In 2024, Gidney, Shutty, and Jones proposed magic state cultivation. A small color code is prepared in a noisy T-like state and repeatedly checked by measurements, with runs discarded when errors are detected, and the code is enlarged in stages before the state is moved into a surface code. At a physical error rate of 0.1 percent, the method produces T states with error near a part in a billion at a cost of a few hundred qubit-rounds, roughly the cost of a few CNOT gates and about an order of magnitude below distillation. The 2025 estimate that RSA-2048 could be factored with under a million noisy qubits relied on it.",
+          "Experiments are beginning. QuEra and Harvard reported logical-level magic state distillation on a neutral-atom machine in 2025, and Quantinuum has reported logical magic states with fidelity beyond that of physical ones on its trapped-ion systems. These experiments are small and have not shown the full scaling, but they confirm that the steps work on real hardware.",
+        ] },
+      { heading: "Alternatives", paragraphs: [
+          "Other routes to non-Clifford gates exist. Some three-dimensional codes have transversal T gates, which avoids magic states but needs a three-dimensional layout that is natural in atom arrays and photonic architectures. Code switching moves a logical qubit between two codes that together have complementary transversal gates, at a cost in time and qubits. Gauge fixing and other techniques fall in a similar family. For rotations by arbitrary angles, which appear in simulation and chemistry, synthesis of rotations with T gates, as in the work of Ross and Selinger, costs several T gates per rotation, and algorithms that reduce the number of rotations lower the cost directly.",
+          "A different approach is to reduce the demand for T gates in the algorithm, with better arithmetic circuits, qubitization instead of Trotter steps, and tensor hypercontraction for chemistry, as in the work of Lee and coauthors. In practice, the future cost of non-Clifford gates will be set by both hardware methods and algorithm design.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect the cost of T gates to fall substantially over the next five years as cultivation and related methods are demonstrated and as architectures integrate them. By around 2030, we expect magic state production to be a smaller share of a large machine, perhaps a quarter or less, compared with half or more in older estimates, although the exact figure depends on hardware error rates and the algorithm. This change is one of the main reasons that estimates for cryptanalysis and chemistry keep falling. The remaining risk is that real devices have correlated errors or leakage that reduce the benefit of postselection-heavy methods such as cultivation.",
+        ] },
+      { heading: "What this means for algorithm designers", paragraphs: [
+          "Algorithm designers can reduce the burden on hardware by counting T gates as carefully as they count qubits. Qubitization and linear combination of unitaries methods use fewer T gates than Trotter-based simulation for the same accuracy, and tensor hypercontraction reduces the cost of chemistry Hamiltonians. Arithmetic circuits for factoring and elliptic curves have been rewritten to use fewer Toffoli gates, each of which needs several T gates. For rotations, using a small number of high-precision rotations is cheaper than many low-precision ones.",
+          "As hardware makes T gates cheaper, the balance may shift again, and different algorithms may become preferable. This interplay between algorithm and architecture is one of the reasons that resource estimates move, and it argues for keeping teams that work on algorithms close to those who design error-correcting architectures.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Experimental tests of cultivation and logical-level distillation at small scale on several platforms." },
+      { label: "2028 to 2030", value: "Magic state production integrated in architectures; T-gate cost near that of a few CNOT gates at target error rates." },
+      { label: "2031 to 2033", value: "Factories occupy a minor share of large machines; non-Clifford cost is no longer the main bottleneck." },
+    ], signals: [
+      "Experimental cultivation with measured output infidelity below 10^-6.",
+      "Estimates of the factory share of qubits in new resource studies.",
+      "3D codes with transversal T gates demonstrated in hardware.",
+      "Algorithms with lower T counts for chemistry.",
+    ], risks: [
+      "Correlated noise could undermine cultivation.",
+      "Postselection rates could be higher than assumed.",
+      "Factory throughput may limit logical clock speed.",
+    ], faq: [
+      { q: "What is a magic state?", a: "A special quantum state that, when consumed in a small circuit, lets an error-corrected machine apply a non-Clifford gate such as the T gate." },
+      { q: "Why is the T gate costly?", a: "Because it cannot be applied directly on most codes and needs high-quality magic states." },
+      { q: "What is magic state cultivation?", a: "A method that grows a high-quality T state inside a code through repeated checks, at a much lower cost than distillation." },
+    ], references: [
+      "Bravyi, S., & Kitaev, A. (2005). Universal quantum computation with ideal Clifford gates and noisy ancillas. Physical Review A, 71, 022316.",
+      "Gottesman, D., & Chuang, I. L. (1999). Demonstrating the viability of universal quantum computation using teleportation and single-qubit operations. Nature, 402, 390-392.",
+      "Eastin, B., & Knill, E. (2009). Restrictions on transversal encoded quantum gate sets. Physical Review Letters, 102, 110502.",
+      "Litinski, D. (2019). Magic state distillation: Not as costly as you think. Quantum, 3, 205.",
+      "Litinski, D. (2019). A game of surface codes: Large-scale quantum computing with lattice surgery. Quantum, 3, 128.",
+      "Gidney, C., Shutty, N., & Jones, C. (2024). Magic state cultivation: growing T states as cheap as CNOT gates. arXiv:2409.17595.",
+      "Rodriguez, P. S., et al. (2025). Experimental demonstration of logical magic state distillation. Nature, 645, 620-625.",
+      "Ross, N. J., & Selinger, P. (2016). Optimal ancilla-free Clifford+T approximation of z-rotations. Quantum Information and Computation, 16, 901-953.",
+    ], links: [
+      { label: "Paper: Universal Quantum Computation with Ideal Clifford Gates and Noisy Ancillas", href: "/research/bravyi-kitaev-magic-states-2005" },
+      { label: "Paper: Magic State Cultivation: Growing T States as Cheap as CNOT Gates", href: "/research/gidney-magic-state-cultivation-2024" },
+      { label: "Paper: Restrictions on Transversal Encoded Quantum Gate Sets", href: "/research/eastin-knill-transversal-gates-2009" },
+      { label: "Paper: Demonstrating the Viability of Universal Quantum Computation Using Teleportation and Single-Qubit Operations", href: "/research/gottesman-chuang-teleportation-gates-1999" },
+      { label: "Term: Magic State Distillation", href: "/dictionary/magic-state-distillation" },
+      { label: "Term: T Gate", href: "/dictionary/t-gate" },
+    ], words: 1051 },
+  { slug: "quantum-decoding-future", title: "Decoding at Scale: The Classical Brain of Fault Tolerance", category: "error-correction", horizon: "2026 to 2032", confidence: "Medium", summary: "Every error-corrected quantum computer needs a classical decoder that interprets measurements and decides on corrections, in microseconds. Decoder speed and accuracy will limit logical clock rates, and machine-learned and hardware decoders are developing quickly.", sections: [
+      { heading: "What a decoder does", paragraphs: [
+          "In error correction, a quantum computer repeatedly measures parity checks that reveal where errors may have occurred, without revealing the encoded information. The record of those measurements, the syndrome, is a stream of classical bits that a decoder must turn into a decision about which errors most likely happened, so that corrections can be applied or tracked. In a surface-code machine with a cycle time of about a microsecond, a decoder must process the syndrome data for thousands of qubits every cycle, with an accuracy that does not degrade the logical error rate.",
+          "The requirement is demanding. A decoder that is too slow causes a backlog: syndrome data accumulate faster than they are processed, and the delay grows exponentially with the number of operations that depend on the decoded result, as Terhal pointed out in 2015. The decoder must also be accurate, since decoding errors add to the logical error rate, and it must handle correlated errors and leakage that simple models ignore.",
+        ] },
+      { heading: "The main decoder families", paragraphs: [
+          "Minimum-weight perfect matching has been the standard for surface codes since Dennis, Kitaev, Landahl, and Preskill and Fowler's work in the 2000s and 2010s. Software such as PyMatching and the sparse blossom algorithm of Higgott and Gidney correct on the order of a million errors per core-second, which is fast enough for simulations and for moderate-size experiments. Union-find decoders, introduced by Delfosse and Nickerson in 2021, run in almost linear time and are suited to hardware implementation, with some loss of accuracy.",
+          "For qLDPC codes, belief propagation with ordered statistics post-processing is the leading approach, and IBM's relay belief propagation, published in 2025, improved speed and accuracy toward real-time operation. For the most accurate results on small codes, tensor-network decoders exist but are far too slow for real-time use. Neural decoders are the newest family: Google DeepMind and Google Quantum AI's AlphaQubit, reported in 2024, made fewer errors than the best conventional decoders on real Sycamore data, though it was not fast enough for real time.",
+        ] },
+      { heading: "Speed: parallel and hardware decoders", paragraphs: [
+          "Real-time operation requires parallelism. Parallel window decoding, described by Skoric and coauthors and by Tan and coauthors in 2023, splits the stream of syndrome data into overlapping windows that are decoded at the same time, which allows the decoder to scale with the number of processors. Modular decoding, which splits a large code into regions, is another approach. Hardware implementations on FPGAs and application-specific chips are under development: Riverlane reported in 2025 a real-time decoder with a collision clustering algorithm implemented in hardware, and Google reported a real-time decoder keeping pace with distance-five surface-code cycles with an average latency of about 63 microseconds on Willow.",
+          "The decoder's latency also sets the logical clock rate. When a logical operation depends on a decoded measurement, such as a T gate teleportation, the machine must wait for the decoder, so a slow decoder slows the algorithm even if it keeps up with the data. This reaction time is one of the parameters in resource estimates, and Gidney's 2025 RSA estimate assumed a control reaction time of 10 microseconds.",
+        ] },
+      { heading: "Where artificial intelligence fits", paragraphs: [
+          "Machine learning may help in three ways. Neural decoders can learn the actual correlated noise of a device and improve accuracy, as AlphaQubit showed. Learned components can be distilled into smaller, faster networks for hardware deployment. And machine learning can calibrate qubits and tune devices, which makes the noise that the decoder sees more predictable. The challenges are cost of training, the need for device-specific data, and the difficulty of certifying a learned decoder, since a failure mode that appears rarely in training could cause a logical error in production.",
+          "We expect hybrid approaches: fast conventional decoders for the bulk of the work, with learned components handling hard cases, similar to how modern speech and vision systems combine learned models with classical algorithms.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "Decoding is a solvable engineering problem and not a fundamental barrier, but it is easy to underestimate. We expect real-time decoders for surface codes with hundreds to thousands of physical qubits to be routine in the next two to three years, and decoders for qLDPC codes at comparable scale by about 2029. At the scale of a million physical qubits, the classical decoding system will be a significant machine in its own right, with power and cost comparable to a rack of servers or more. Reported logical clock rates should be read together with the decoder's latency.",
+        ] },
+      { heading: "The decoder as a product", paragraphs: [
+          "Decoding is also a business opportunity. Riverlane in the UK sells decoder technology as a layer for quantum hardware makers, and several hardware companies develop their own. Chip makers and GPU vendors see an opening as well, since decoding combines high data rates, parallel computation, and tight latency, which resembles other workloads they already serve. Open-source libraries, such as PyMatching and Stim, have made it possible for researchers to test ideas without building hardware, and they have helped establish common benchmarks.",
+          "For an organization evaluating a quantum vendor, a useful question is how the decoder scales: what is its latency at the target code distance, what hardware does it run on, how much power does it use, and what happens when the noise differs from the assumed model? A vendor that can answer in numbers has probably thought about the problem, and the answer is a good indicator of how mature the whole system is.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "Real-time decoders for distance-7 to 11 surface codes; hardware decoders in commercial systems." },
+      { label: "2028 to 2029", value: "Real-time decoders for qLDPC memory; learned decoders deployed in production for specific devices." },
+      { label: "2030 to 2032", value: "Decoder systems scaled to hundreds of logical qubits; reaction time of a few microseconds." },
+    ], signals: [
+      "Published decoder latency and throughput for the largest codes run on hardware.",
+      "Logical clock rates reported together with reaction times.",
+      "Neural decoders that meet latency targets in hardware.",
+      "Standard open benchmarks for decoders.",
+    ], risks: [
+      "Decoder cost may dominate system cost.",
+      "Correlated errors may degrade decoder accuracy.",
+      "Learned decoders may be hard to certify.",
+    ], faq: [
+      { q: "What is a decoder in quantum error correction?", a: "A classical algorithm that reads error-check measurements and infers which errors occurred." },
+      { q: "Why must decoding be so fast?", a: "Because syndrome data arrive every microsecond or so, and delays slow down logical operations or cause a backlog." },
+      { q: "Can AI help with decoding?", a: "Yes. Neural decoders have beaten conventional ones in accuracy, though they must be made fast enough for real time." },
+    ], references: [
+      "Dennis, E., Kitaev, A., Landahl, A., & Preskill, J. (2002). Topological quantum memory. Journal of Mathematical Physics, 43, 4452-4505.",
+      "Terhal, B. M. (2015). Quantum error correction for quantum memories. Reviews of Modern Physics, 87, 307-346.",
+      "Delfosse, N., & Nickerson, N. H. (2021). Almost-linear time decoding algorithm for topological codes. Quantum, 5, 595.",
+      "Higgott, O., & Gidney, C. (2025). Sparse blossom: correcting a million errors per core second with minimum-weight matching. Quantum.",
+      "Skoric, L., et al. (2023). Parallel window decoding enables scalable fault tolerant quantum computation. Nature Communications, 14, 7040.",
+      "Bausch, J., et al. (2024). Learning high-accuracy error decoding for quantum processors. Nature, 635, 834-840.",
+      "Barber, B., et al. (2025). A real-time, scalable, fast and resource-efficient decoder for a quantum computer. Nature Electronics, 8, 84-91.",
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+    ], links: [
+      { label: "Paper: Learning High-Accuracy Error Decoding for Quantum Processors", href: "/research/bausch-alphaqubit-decoder-2024" },
+      { label: "Paper: Topological Quantum Memory", href: "/research/dennis-topological-quantum-memory-2002" },
+      { label: "Term: Syndrome Measurement", href: "/dictionary/syndrome-measurement" },
+      { label: "Term: Surface Code", href: "/dictionary/surface-code" },
+      { label: "Term: Logical Error Rate", href: "/dictionary/logical-error-rate" },
+    ], words: 1048 },
+  { slug: "resource-estimates-future", title: "How the Cost of Useful Quantum Computing Keeps Falling", category: "error-correction", horizon: "2026 to 2035", confidence: "High", summary: "Estimates of the qubits and time needed to break RSA or simulate key molecules have fallen by factors of hundreds in a decade, mostly from better algorithms and codes. Understanding why they fall, and what assumptions they hide, helps judge any date.", sections: [
+      { heading: "Why resource estimates matter", paragraphs: [
+          "A resource estimate answers a concrete question: how many physical qubits and how much time does a given algorithm need on a stated hardware model? It is the best bridge between abstract speedups and real machines. Estimates tell cryptographers how seriously to take the quantum threat, tell chemists whether a molecule is within reach, and tell hardware teams what to build. They are not forecasts of when a machine will exist, but they define the target.",
+          "The key inputs are the physical error rate, the cycle time, the reaction time of the classical control, the connectivity of the qubits, and the error-correcting code. Change any of them and the estimate moves by large factors, which is why two estimates for the same problem can differ by a factor of ten while both being reasonable.",
+        ] },
+      { heading: "The record so far", paragraphs: [
+          "For factoring RSA-2048, the first detailed estimate by Fowler and coauthors in 2012 was about a billion physical qubits for roughly a day. In 2019, Gidney and Ekerå gave 20 million noisy qubits for eight hours. In 2025, Gidney reduced it to under a million noisy qubits for less than a week, with a physical error rate of 0.1 percent and a cycle time of one microsecond. For elliptic-curve cryptography, Litinski estimated in 2023 that a 256-bit key could be broken with about 50 million Toffoli gates, and Gouzien and coauthors estimated that a cat-qubit architecture could compute a 256-bit elliptic curve logarithm in about nine hours with about 126,000 cat qubits, under their assumptions.",
+          "For chemistry, the 2017 estimate for the nitrogenase cofactor FeMoco by Reiher and coauthors implied an enormous gate count, and Lee and coauthors in 2021 lowered it to about four million physical qubits and four days. Each of these steps came from several improvements acting together.",
+        ] },
+      { heading: "Where the savings came from", paragraphs: [
+          "Three kinds of improvement account for most of the progress. Algorithms and arithmetic: windowed arithmetic, approximate residue number systems, qubitization with tensor hypercontraction, and better ways to load data reduced the number of logical qubits and operations. Error correction: better layouts and lattice surgery, denser storage of idle qubits, and lower-cost magic states reduced the physical qubits per logical qubit. Hardware assumptions: faster cycles and lower error rates reduced the code distance needed.",
+          "Notably, little of the improvement for RSA came from hardware. It came from thinking. This pattern is encouraging for the field and a warning for security planners: estimates have repeatedly fallen faster than predicted, so planning around a fixed number is risky.",
+        ] },
+      { heading: "How to read an estimate", paragraphs: [
+          "A responsible reading starts with the assumptions table. What physical error rate does the estimate assume, and have any devices reached it at scale? What cycle time and reaction time? Does it assume nearest-neighbor connectivity on a planar grid, or long-range connections that need special hardware? Which code and which magic-state method? Does it include the classical decoder and control, or only the quantum chip? The Azure Quantum Resource Estimator described by Beverland and coauthors in 2022 is a tool that lets anyone vary these assumptions and see the effect.",
+          "Another caution is that estimates describe a computation, not a service. Running the algorithm many times, handling failures, and operating a system for days add cost. The total cost of ownership and the energy used are rarely included.",
+        ] },
+      { heading: "A worked example: why a factor of twenty fell off RSA", paragraphs: [
+          "The reduction from 20 million to under one million qubits for RSA-2048 shows how an estimate falls. The arithmetic changed first: an approximate residue method lowered the number of logical qubits from about 6,000 to about 1,400 and reduced the number of operations. Then idle qubits, which dominate the count, were stored in denser codes called yoked surface codes, using far fewer physical qubits per logical qubit. Finally, magic state cultivation shrank the factories that make T gates, which in the older design occupied a large part of the machine. Each change reduced the estimate by a factor of two to four, and together they gave about twenty.",
+          "Notably, the physical assumptions did not change much: the error rate stayed at 0.1 percent and the cycle at one microsecond. The runtime went up, from hours to under a week, because fewer qubits mean less parallelism. This tradeoff between space and time is a standard feature of estimates, and it is why one should always ask whether a quoted figure is for the fastest or the smallest implementation.",
+        ] },
+      { heading: "Limits of the exercise", paragraphs: [
+          "Estimates also have limits that are rarely stated. They assume that a machine can run a computation of billions of operations without a catastrophic failure, such as a burst of errors from a cosmic ray, and many do not include the cost of verifying the result or of restarting after a failure. They assume that error rates measured on small devices extend to large ones, which has been true so far but is not guaranteed. They treat classical control as free or fast, and they rarely include the cost of cooling or the floor space.",
+          "For these reasons, we recommend treating an estimate as a lower bound on difficulty and as a compass for research, not as a schedule. A claim that a problem will be solved by a specific year because an estimate has fallen below a number is stronger than the evidence supports.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect estimates to keep falling, though not as dramatically as in the last decade, because the largest savings, such as better magic states and denser codes, are now being absorbed. Moving to qLDPC and cat-qubit architectures could reduce the physical qubits for cryptanalysis by another factor of two to ten by 2030, in our judgment, and algorithmic improvements might add more. Estimates for chemistry will keep falling as algorithms improve. Independent of the exact numbers, the direction is clear, and the practical implication is that timelines should be revised downward more often than upward. High confidence applies to the direction, not to any specific number.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Estimates incorporating cultivation, qLDPC codes, and cat qubits; RSA-2048 estimates move toward a few hundred thousand qubits in some architectures." },
+      { label: "2029 to 2031", value: "Resource estimates based on measured hardware parameters, not assumed ones; chemistry estimates below a million physical qubits." },
+      { label: "2032 to 2035", value: "Estimates converge as hardware matures; remaining uncertainty is about the pace of hardware scaling." },
+    ], signals: [
+      "New papers lowering the Toffoli counts or qubits for cryptanalysis.",
+      "Estimates with qubit counts below 300,000 for RSA-2048 under realistic assumptions.",
+      "Hardware parameters that match the assumptions of estimates.",
+      "Estimates that include decoder and control overhead.",
+    ], risks: [
+      "Real devices may not reach assumed error rates.",
+      "Correlated errors may raise overheads.",
+      "Hidden classical overheads may be underestimated.",
+    ], faq: [
+      { q: "Are resource estimates predictions?", a: "No. They say what a machine would need, not when one will exist." },
+      { q: "Why do estimates keep falling?", a: "Because researchers keep finding better algorithms, codes, and layouts." },
+      { q: "What should security planners do with them?", a: "Treat them as a reason to migrate early and to assume that estimates may fall further." },
+    ], references: [
+      "Fowler, A. G., Mariantoni, M., Martinis, J. M., & Cleland, A. N. (2012). Surface codes: Towards practical large-scale quantum computation. Physical Review A, 86, 032324.",
+      "Gidney, C., & Ekerå, M. (2021). How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits. Quantum, 5, 433.",
+      "Gidney, C. (2025). How to factor 2048 bit RSA integers with less than a million noisy qubits. arXiv:2505.15917.",
+      "Litinski, D. (2023). How to compute a 256-bit elliptic curve private key with only 50 million Toffoli gates. arXiv:2306.08585.",
+      "Gouzien, E., Ruiz, D., Le Régent, F.-M., Guillaud, J., & Sangouard, N. (2023). Performance analysis of a repetition cat code architecture: Computing 256-bit elliptic curve logarithm in 9 hours with 126,133 cat qubits. Physical Review Letters, 131, 040602.",
+      "Reiher, M., Wiebe, N., Svore, K. M., Wecker, D., & Troyer, M. (2017). Elucidating reaction mechanisms on quantum computers. PNAS, 114, 7555-7560.",
+      "Lee, J., et al. (2021). Even more efficient quantum computations of chemistry through tensor hypercontraction. PRX Quantum, 2, 030305.",
+      "Beverland, M. E., et al. (2022). Assessing requirements to scale to practical quantum advantage. arXiv:2211.07629.",
+    ], links: [
+      { label: "Paper: How to Factor 2048 Bit RSA Integers with Less than a Million Noisy Qubits", href: "/research/gidney-rsa-million-qubits-2025" },
+      { label: "Paper: How to Factor 2048 Bit RSA Integers in 8 Hours Using 20 Million Noisy Qubits", href: "/research/gidney-ekera-rsa-20-million-qubits-2019" },
+      { label: "Paper: Surface Codes: Towards Practical Large-Scale Quantum Computation", href: "/research/fowler-surface-codes-2012" },
+      { label: "Paper: Even More Efficient Quantum Computations of Chemistry Through Tensor Hypercontraction", href: "/research/lee-tensor-hypercontraction-chemistry-2021" },
+      { label: "Paper: Elucidating Reaction Mechanisms on Quantum Computers", href: "/research/reiher-reaction-mechanisms-quantum-computers-2017" },
+      { label: "Term: Surface Code", href: "/dictionary/surface-code" },
+    ], words: 1135 },
+  { slug: "benchmarking-verification-future", title: "Benchmarks and Verification: How We Will Know a Quantum Computer Is Better", category: "error-correction", horizon: "2026 to 2032", confidence: "Medium", summary: "Every advantage claim is followed by classical rebuttals, so the field is building better benchmarks and verification methods. Expect more public trackers, application-level tests, and a shift toward results that can be checked classically.", sections: [
+      { heading: "The problem with proving advantage", paragraphs: [
+          "Quantum advantage means a quantum computer doing something better than the best classical alternative. Proving it is harder than it sounds, because the baseline keeps moving. When Google reported in 2019 that its processor sampled random circuits in about 200 seconds, versus an estimated 10,000 years on a supercomputer, IBM argued within days that a better algorithm would take days, and later work with tensor networks cut the classical cost further. The pattern repeated with Jiuzhang and Borealis, IBM's utility experiment, and D-Wave's 2025 simulation claim, each followed by classical groups reproducing the results with cleverer methods.",
+          "This is not a failure of the experiments, and it is how science should work. But it means that a single announcement is weak evidence, and that the field needs standing infrastructure for testing claims: open data, transparent baselines, and independent verification.",
+        ] },
+      { heading: "Types of benchmarks", paragraphs: [
+          "Several families of benchmarks exist. Hardware-level metrics, such as gate fidelity measured by randomized benchmarking, readout error, and coherence times, tell you about the components. System-level metrics combine many aspects: quantum volume, introduced by IBM in 2019, measures the largest random square circuit a machine can run successfully, and IonQ's algorithmic qubits measure the size of application circuits that pass a threshold. Each has limits: quantum volume saturates near 40 to 50 qubits because verification needs classical simulation, and vendor-defined metrics invite doubts.",
+          "Application-level benchmarks test circuits resembling real workloads. Lubinski and coauthors in 2023 proposed a suite from the Quantum Economic Development Consortium, and mirror-circuit methods described by Proctor and coauthors in 2022 test a device on circuits whose ideal output is known without heavy simulation. Sampling benchmarks such as random circuit sampling and boson sampling test whether a device can produce a distribution that is hard to simulate, using cross-entropy or related scores, with the caveat that noisy versions can be classically easy, as Aharonov and coauthors showed in 2023.",
+        ] },
+      { heading: "Verifiable advantage", paragraphs: [
+          "A strong trend is toward tasks whose results can be checked efficiently. Factoring is the classic example: the answer can be verified by multiplying, though no machine can yet run it at scale. Certified randomness, demonstrated in 2025 by JPMorgan Chase, Quantinuum, and national laboratories on a 56-qubit trapped-ion machine, produces bits whose randomness can be verified using classical supercomputers, at a cost that is feasible for the verifier but not for a cheater. Google's Quantum Echoes experiment of 2025 measured an out-of-time-order correlator, a physical quantity whose value can in principle be compared across different devices and with theory, and was presented as a verifiable step.",
+          "Verification by cross-checking is another route: the same quantity is computed on independent quantum devices of different types, and agreement in a regime where classical methods fail is strong evidence that the results are right. This has not yet been done at scale, but it is an obvious goal for the next few years.",
+        ] },
+      { heading: "Trackers, programs, and standards", paragraphs: [
+          "Institutions are building structures to test claims. IBM, together with Algorithmiq, the Flatiron Institute, and BlueQubit, launched a public quantum advantage tracker in 2025 where candidate experiments are posted and classical groups are invited to challenge them, and IBM has said it expects the first verified advantage by the end of 2026. DARPA's Quantum Benchmarking Initiative, begun in 2025, evaluates whether companies' plans can reach a utility-scale machine, with a feasibility test by 2033, and uses independent evaluators who check hardware claims. Standards bodies, including the new ISO and IEC joint technical committee on quantum technologies, are working on terminology and performance metrics.",
+          "These efforts should make claims more comparable, and they may also discourage hype, since claims that fail under review are visible. We expect the tracker model to spread, and for major journals to require more complete data and classical baselines for advantage claims.",
+        ] },
+      { heading: "What good reporting looks like", paragraphs: [
+          "A useful announcement states the task precisely, the best classical method tried and its cost, the hardware's measured fidelity, the sample size, the verification method, and the uncertainty. It releases data and code so that others can attempt to reproduce or spoof it. It separates three claims that are often blurred: that the device works as intended, that the task is hard for known classical methods, and that the task is useful. Many results succeed on the first, some on the second, and few on the third.",
+          "Readers can apply the same standard. If a press release says a quantum computer solved in minutes what would take a supercomputer thousands of years, ask for the classical baseline details. If it says a quantum computer improved a business metric by a percentage, ask for the baseline model and the statistical significance.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect the next five years to bring several more advantage claims, an increasing share of them on verifiable or scientifically meaningful tasks, and a steady cycle of classical responses. By 2030, we expect at least one claim in quantum simulation or a related task to survive sustained scrutiny, and the benchmark ecosystem to include trackers, application suites, and logical-qubit metrics such as logical error per operation. The clearest and least contestable advantage will be cryptanalysis with Shor's algorithm, which requires fault-tolerant machines.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "IBM and partners test candidate advantage claims on the tracker; more certified randomness and verifiable physics experiments." },
+      { label: "2028 to 2030", value: "Standardized application benchmarks; logical-qubit metrics adopted; at least one scientific advantage survives scrutiny." },
+      { label: "2031 to 2032", value: "DARPA QBI feasibility assessments inform national plans; benchmarking shifts to logical operations and error-corrected workloads." },
+    ], signals: [
+      "Independent groups failing to reproduce an advantage claim classically over a year or more.",
+      "Cross-validation of one quantity on two different quantum platforms.",
+      "Journals requiring classical baselines and data release.",
+      "Participation of independent evaluators in vendor programs.",
+    ], risks: [
+      "Vendor-defined metrics may confuse comparisons.",
+      "Classical methods may keep improving.",
+      "Verification may lag behind claims.",
+    ], faq: [
+      { q: "Why are advantage claims so often disputed?", a: "Because classical algorithms keep improving, and claims depend on the best known classical method at the time." },
+      { q: "What is quantum volume?", a: "A benchmark that measures the largest random square circuit a device can run successfully." },
+      { q: "What is verifiable advantage?", a: "A task where the quantum computer's answer can be checked efficiently by a classical computer." },
+    ], references: [
+      "Arute, F., et al. (2019). Quantum supremacy using a programmable superconducting processor. Nature, 574, 505-510.",
+      "Cross, A. W., et al. (2019). Validating quantum computers using randomized model circuits. Physical Review A, 100, 032328.",
+      "Proctor, T., Rudinger, K., Young, K., Nielsen, E., & Blume-Kohout, R. (2022). Measuring the capabilities of quantum computers. Nature Physics, 18, 75-79.",
+      "Lubinski, T., et al. (2023). Application-oriented performance benchmarks for quantum computing. IEEE Transactions on Quantum Engineering, 4, 3100332.",
+      "Hangleiter, D., & Eisert, J. (2023). Computational advantage of quantum random sampling. Reviews of Modern Physics, 95, 035001.",
+      "Aharonov, D., Gao, X., Landau, Z., Liu, Y., & Vazirani, U. (2023). A polynomial-time classical algorithm for noisy random circuit sampling. STOC '23, 945-957.",
+      "Liu, M., et al. (2025). Certified randomness using a trapped-ion quantum processor. Nature, 640, 343-348.",
+      "Tech Wire Asia (2025). IBM introduces new processor as it targets quantum advantage by 2026. https://techwireasia.com/2025/11/ibm-introduces-new-processor-as-it-targets-quantum-advantage-by-2026/",
+    ], links: [
+      { label: "Paper: Quantum Supremacy Using a Programmable Superconducting Processor", href: "/research/arute-quantum-supremacy-2019" },
+      { label: "Paper: Validating Quantum Computers Using Randomized Model Circuits", href: "/research/cross-quantum-volume-2019" },
+      { label: "Paper: A Polynomial-Time Classical Algorithm for Noisy Random Circuit Sampling", href: "/research/aharonov-noisy-random-circuit-sampling-2023" },
+      { label: "Paper: Efficient Tensor Network Simulation of IBM's Eagle Kicked Ising Experiment", href: "/research/tindall-tensor-network-eagle-kicked-ising-2024" },
+      { label: "Term: Quantum Volume", href: "/dictionary/quantum-volume" },
+      { label: "Term: Quantum Advantage", href: "/dictionary/quantum-advantage" },
+      { label: "Term: Cross-Entropy Benchmarking", href: "/dictionary/cross-entropy-benchmarking" },
+    ], words: 1008 },
+  { slug: "quantum-advantage-2030-future", title: "Quantum Advantage by 2030: What to Expect and What Not To", category: "applications", horizon: "2026 to 2032", confidence: "Medium", summary: "Several kinds of quantum advantage are being pursued at once, and they will arrive at different times. We expect verified scientific advantage in simulation first, with commercial advantage in chemistry, materials, or optimization later and less certain.", sections: [
+      { heading: "Four meanings of advantage", paragraphs: [
+          "Advantage is used for at least four different things. Computational advantage on an artificial task, such as random circuit sampling, has been claimed since 2019. Scientific advantage means a quantum device computes a quantity of scientific interest, such as the dynamics of a magnet, beyond what known classical methods can do. Commercial advantage means a quantum solution is better than the best classical one on a problem a customer pays for, once cost, time, and accuracy are counted. Cryptographic advantage means breaking encryption, which requires fault-tolerant machines.",
+          "The four will not arrive together. Mixing them is the main source of misleading headlines: a claim of the first kind is often reported as if it were the third.",
+        ] },
+      { heading: "Where we stand in 2026", paragraphs: [
+          "The first kind is established, though contested in detail. Google's Willow benchmark, Zuchongzhi, Jiuzhang, and Borealis showed devices sampling distributions that were expensive to simulate, and classical algorithms have since reduced several of the estimated costs. The second kind has candidates: D-Wave's 2025 simulation of magnetic quench dynamics, Google's Quantum Echoes measurement, IBM's utility experiment, and analog atom-array experiments. Each has been challenged by classical simulation to some degree, the IBM and D-Wave results most clearly, with tensor-network and belief-propagation methods reproducing key outputs.",
+          "No commercial advantage has been demonstrated. Reports such as HSBC and IBM's 2025 claim of a 34 percent improvement in predicting bond trades, or optimization pilots on annealers, are interesting but not proof, because the classical baselines were limited or the improvement is modest and sensitive to the data. No claim of cryptographic advantage exists, and the largest number factored by a real quantum algorithm remains tiny.",
+        ] },
+      { heading: "What to expect by 2030", paragraphs: [
+          "Scientific advantage is the most likely first robust result. Analog and digital quantum simulators on atoms, ions, and superconducting circuits can study quantum dynamics, and the classical methods for the hardest regimes are limited. Daley and coauthors argued in 2022 that practical advantage in quantum simulation is within reach in the near term, with problems chosen so that results can be verified. We think it is more likely than not that by 2028 to 2030 at least one scientifically meaningful simulation will be accepted by the community as beyond classical methods, and the first such results will probably involve dynamics of spin or lattice systems.",
+          "Commercial advantage is less likely by 2030. The candidate areas are chemistry for strongly correlated molecules, materials, and some optimization or sampling tasks, and most need fault-tolerant machines with at least dozens to hundreds of logical qubits and low logical error. If the roadmaps for 2029 and 2030 are met, early commercial uses could appear at the end of the decade, but we would put the probability of a widely accepted commercial advantage before 2031 at well below one in four. Cryptanalysis is not expected before the mid 2030s on the central estimates, though the date is uncertain.",
+        ] },
+      { heading: "How claims will be tested", paragraphs: [
+          "Claims will be tested in public. The IBM advantage tracker, independent classical groups, and benchmarking programs such as DARPA's will probe results. We expect each major claim to survive or fail within months, which is a healthy pace compared with earlier years. A result that survives a serious classical effort, includes data release, and is reproduced on another device will be taken seriously.",
+          "One implication is that companies will aim for tasks that favor verification, even if they are less commercially exciting. Another is that disputes will continue, since the definition of the best classical method is flexible. Readers should look for the consensus of independent experts and not the first announcement.",
+        ] },
+      { heading: "What would change our minds", paragraphs: [
+          "We would raise our forecast for commercial advantage if logical error rates near one in a million were demonstrated with dozens of logical qubits and logical gates, if resource estimates for a specific valuable calculation fell below the capacity of announced machines, or if a classical method that matched a claimed advantage proved impossible after serious attempts. We would lower it if error-correction scaling broke down at larger distances, if correlated errors proved intractable, or if classical algorithms, including machine-learned ones, closed the gap for the leading candidate applications.",
+        ] },
+      { heading: "Why the timeline is hard to predict", paragraphs: [
+          "Predicting advantage is hard because it depends on two moving targets at once. Quantum hardware improves along several axes at different rates, qubit number, error rates, speed, and connectivity, and a breakthrough on one can matter more than steady gains on the others. Classical methods improve as well, through better algorithms, machine learning, and hardware such as GPUs, and the improvements are often discovered in response to quantum claims. A date for advantage is therefore the meeting point of two uncertain curves.",
+          "This is why we express forecasts as probabilities and ranges and why we prefer to look at leading indicators, such as logical error rates and decoder speed, over vendor dates. If the indicators improve at the pace implied by the roadmaps, the central forecasts above hold. If they slow, the dates move out, and the cost of being wrong in either direction is real: overinvestment wastes money, and underinvestment, especially in security, creates risk.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "A reasonable summary is that advantage is coming in stages. The first stage is already contested but real, the second is likely within the next four years, the third is possible late in the decade and more likely in the 2030s, and the fourth is a mid-2030s question. For decision-makers, the implication is to invest in learning and in readiness, such as post-quantum migration and skills, and to be skeptical of claims that commercial advantage is imminent.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "More advantage claims on simulation and verifiable tasks; classical rebuttals; no accepted commercial advantage." },
+      { label: "2028 to 2030", value: "At least one scientific simulation advantage widely accepted; early logical-qubit machines tested on chemistry and optimization." },
+      { label: "2031 to 2035", value: "Possible commercial advantage in chemistry or materials; cryptographic advantage becomes a live possibility." },
+    ], signals: [
+      "A claim surviving more than a year of classical challenges.",
+      "Agreement between different quantum platforms on a hard quantity.",
+      "Customers repeating workloads in production after pilots.",
+      "Resource estimates matching announced machine sizes.",
+    ], risks: [
+      "Classical algorithms may close the gaps.",
+      "Error-correction scaling may stall.",
+      "Hype may lead to premature claims and backlash.",
+    ], faq: [
+      { q: "Has quantum advantage been achieved?", a: "Advantage on artificial tasks has been claimed and debated. Commercial advantage has not been shown." },
+      { q: "What is the most likely first useful advantage?", a: "Simulating quantum systems, such as materials and magnets, with results that can be verified." },
+      { q: "Will quantum computers break encryption by 2030?", a: "We think it unlikely, though migration to post-quantum cryptography should proceed regardless." },
+    ], references: [
+      "Daley, A. J., et al. (2022). Practical quantum advantage in quantum simulation. Nature, 607, 667-676.",
+      "Hangleiter, D., & Eisert, J. (2023). Computational advantage of quantum random sampling. Reviews of Modern Physics, 95, 035001.",
+      "King, A. D., et al. (2025). Beyond-classical computation in quantum simulation. Science, 388, 199-204.",
+      "Kim, Y., et al. (2023). Evidence for the utility of quantum computing before fault tolerance. Nature, 618, 500-505.",
+      "Tindall, J., Fishman, M., Stoudenmire, E. M., & Sels, D. (2024). Efficient tensor network simulation of IBM's Eagle kicked Ising experiment. PRX Quantum, 5, 010308.",
+      "Google Quantum AI (2025). Observation of constructive interference at the edge of quantum ergodicity. Nature (October 2025).",
+      "Preskill, J. (2018). Quantum computing in the NISQ era and beyond. Quantum, 2, 79.",
+      "Babbush, R., et al. (2021). Focus beyond quadratic speedups for error-corrected quantum advantage. PRX Quantum, 2, 010103.",
+    ], links: [
+      { label: "Paper: Quantum Supremacy Using a Programmable Superconducting Processor", href: "/research/arute-quantum-supremacy-2019" },
+      { label: "Paper: Evidence for the Utility of Quantum Computing Before Fault Tolerance", href: "/research/kim-utility-before-fault-tolerance-2023" },
+      { label: "Paper: Beyond-Classical Computation in Quantum Simulation", href: "/research/king-beyond-classical-quantum-simulation-2025" },
+      { label: "Paper: Quantum Computing in the NISQ Era and Beyond", href: "/research/preskill-nisq-era-2018" },
+      { label: "Term: Quantum Advantage", href: "/dictionary/quantum-advantage" },
+      { label: "Term: Quantum Supremacy", href: "/dictionary/quantum-supremacy" },
+    ], words: 1068 },
+  { slug: "quantum-optimization-logistics-future", title: "Quantum Optimization and Logistics: Promise Versus Proof", category: "applications", horizon: "2026 to 2040", confidence: "Low", summary: "Optimization is the most advertised use of quantum computers in business, and the evidence for advantage is the weakest. Quadratic speedups are hard to exploit, variational methods struggle, and strong classical solvers set a high bar.", sections: [
+      { heading: "Why optimization is attractive", paragraphs: [
+          "Companies face optimization problems everywhere: routing vehicles, scheduling shifts and machines, packing containers, assigning crews, balancing power grids, and selecting portfolios. Many such problems are NP-hard, meaning that no efficient exact algorithm is known, and the cost of better solutions can be large: a few percent saved on a delivery network or a factory schedule is worth millions of dollars. Quantum computers are often presented as a way to explore many solutions at once, which is a misleading picture, but there are real algorithmic ideas behind the hope.",
+          "Three families of quantum methods target optimization: Grover-type search and amplitude amplification, which give quadratic speedups; variational and annealing methods, such as QAOA and quantum annealers, which are heuristics with no proven speedups; and structured algorithms that exploit specific features, such as quantum walks on graphs, with polynomial speedups for some problems.",
+        ] },
+      { heading: "What the theory says", paragraphs: [
+          "The best proven generic result is a quadratic speedup for unstructured search. Montanaro showed in 2020 that backtracking and branch-and-bound algorithms can be accelerated quadratically, and the survey by Dalzell and coauthors in 2023 lists end-to-end resource requirements for many such algorithms. The difficulty is that a quadratic speedup on an error-corrected machine is easily consumed by overhead, as Babbush and coauthors argued in 2021: logical operations are thousands of times slower than classical ones, so the crossover happens only at problem sizes that take a classical computer weeks to years to solve.",
+          "For variational methods, the evidence is weaker. QAOA has proven performance guarantees only for low depth, and the guarantees are below those of the best classical approximation algorithms for problems such as maximum cut. Bravyi and coauthors showed in 2020 that low-depth QAOA is limited on certain problems by symmetry, and the barren plateau problem makes training hard at scale. For quantum annealers, the question of advantage over specialized classical solvers is contested, as discussed in the annealing topic of this series.",
+        ] },
+      { heading: "What industry pilots show", paragraphs: [
+          "Industrial pilots are numerous. Volkswagen explored traffic flow optimization with a quantum annealer, as described by Neukart and coauthors in 2017, Airbus ran a challenge on aircraft loading, and logistics firms, airlines, and energy companies have tested scheduling and routing on annealers and gate-model devices. These have produced learning and some interesting hybrid workflows, but few have moved to production, usually because the classical solver was as good or better, or because the quantum part was a small piece of a larger pipeline.",
+          "A recurring finding is that formulating the problem in a form suitable for quantum hardware improves classical solutions as well, since it forces a clean model. This is a real benefit but not a quantum one. Quantum-inspired classical algorithms, such as simulated bifurcation and digital annealers, often match the quantum hardware at lower cost, and they are sold commercially.",
+        ] },
+      { heading: "The classical bar is high", paragraphs: [
+          "Classical optimization has benefited from decades of engineering. Commercial solvers such as those based on mixed-integer programming, along with constraint programming and local search heuristics, routinely solve problems with millions of variables, and machine learning is now used to guide them. A quantum method must beat these, not a textbook baseline. The competition also improves quickly, so a result that looks like an advantage in one year may vanish in the next.",
+          "Abbas and coauthors reviewed the situation in 2024 and concluded that clear evidence of a quantum advantage for optimization is still lacking, and that identifying structured problems where a superquadratic speedup exists is an important research direction.",
+        ] },
+      { heading: "Where advantage might appear", paragraphs: [
+          "Possible niches include problems with special structure that fault-tolerant algorithms can exploit, such as some portfolio and risk calculations that reduce to estimation tasks, tasks that combine optimization with simulation of quantum systems, and large unstructured search problems where quadratic speedups, with very fast logical clocks, might pay off. Hybrid approaches that use a quantum subroutine for sampling or for solving a subproblem inside a classical solver are another possibility.",
+          "Photonic and atom-based machines have proposed natural mappings, such as maximum independent set on Rydberg arrays, which have attracted attention because the hardware realizes the problem directly. Whether it can beat classical solvers at large sizes is unknown.",
+        ] },
+      { heading: "Questions to ask a vendor", paragraphs: [
+          "A few questions help in conversations with vendors. What exactly is the problem size, number of variables and constraints, and how does it compare with the production problem? What classical solvers were run, with what settings and time limits, and by whom? Was the same data used, and were results repeated over many instances and random seeds? What was the total cost including problem formulation and embedding, and what would it be at production scale?",
+          "How does the solution quality compare, not only the time? Does the quantum method scale as the problem grows, or only work on small instances? Is the quantum part essential, or does the hybrid pipeline work as well with a classical subroutine in its place? Answers to these questions separate pilots that teach something from pilots that only demonstrate that a quantum device can be called from a program.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We have low confidence in quantum advantage for industrial optimization before 2035. A sensible approach for companies is to build optimization models, benchmark them against strong classical solvers, and run small quantum pilots to learn, while expecting returns from the modeling work itself. If a vendor claims an advantage, ask for a comparison with a tuned commercial solver on the customer's real data at production size. We expect the first credible quantum optimization advantage to come, if at all, from fault-tolerant machines applying structured algorithms to specific problems in the 2030s.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2029", value: "Pilots continue; quantum-inspired classical solvers often match quantum hardware; no verified advantage on industrial problems." },
+      { label: "2030 to 2034", value: "Fault-tolerant prototypes test structured algorithms; possible niche advantages in sampling and estimation tasks." },
+      { label: "2035 to 2040", value: "Optimization may be a use case for large machines if structured speedups and fast logical clocks arrive." },
+    ], signals: [
+      "A peer-reviewed result beating a tuned commercial solver on a real industrial instance.",
+      "New superquadratic quantum algorithms for combinatorial problems.",
+      "Logical clock rates above tens of kilohertz.",
+      "Production deployments that persist beyond pilots.",
+    ], risks: [
+      "Classical solvers and machine-learning heuristics will keep improving.",
+      "Quadratic speedups may never beat overheads.",
+      "Variational methods may not scale.",
+    ], faq: [
+      { q: "Can quantum computers solve NP-hard problems quickly?", a: "No evidence suggests they can solve them in polynomial time. The best generic speedup is quadratic." },
+      { q: "Are quantum annealers good for logistics?", a: "They can find good solutions, but classical solvers are usually as good, and advantage is not proven." },
+      { q: "What should a company do now?", a: "Model the problem well, benchmark classical solvers, and run small pilots for learning." },
+    ], references: [
+      "Montanaro, A. (2016). Quantum algorithms: an overview. npj Quantum Information, 2, 15023.",
+      "Montanaro, A. (2020). Quantum speedup of branch-and-bound algorithms. Physical Review Research, 2, 013056.",
+      "Dalzell, A. M., et al. (2023). Quantum algorithms: A survey of applications and end-to-end complexities. arXiv:2310.03011.",
+      "Babbush, R., et al. (2021). Focus beyond quadratic speedups for error-corrected quantum advantage. PRX Quantum, 2, 010103.",
+      "Farhi, E., Goldstone, J., & Gutmann, S. (2014). A quantum approximate optimization algorithm. arXiv:1411.4028.",
+      "Bravyi, S., Kliesch, A., Koenig, R., & Tang, E. (2020). Obstacles to variational quantum optimization from symmetry protection. Physical Review Letters, 125, 260505.",
+      "Abbas, A., et al. (2024). Challenges and opportunities in quantum optimization. Nature Reviews Physics, 6, 718-735.",
+      "Neukart, F., et al. (2017). Traffic flow optimization using a quantum annealer. Frontiers in ICT, 4, 29.",
+    ], links: [
+      { label: "Paper: A Quantum Approximate Optimization Algorithm", href: "/research/farhi-qaoa-2014" },
+      { label: "Paper: Focus Beyond Quadratic Speedups for Error-Corrected Quantum Advantage", href: "/research/babbush-beyond-quadratic-speedups-2021" },
+      { label: "Algorithm: Quantum Approximate Optimization Algorithm (QAOA)", href: "/algorithms/qaoa" },
+      { label: "Industry: Quantum Computing for Logistics", href: "/industries/logistics" },
+      { label: "Industry: Quantum Computing for Transportation", href: "/industries/transportation" },
+      { label: "Term: Quantum Annealing", href: "/dictionary/quantum-annealing" },
+    ], words: 1080 },
+  { slug: "quantum-simulation-science-future", title: "Quantum Simulation: The Most Likely Early Scientific Payoff", category: "applications", horizon: "2026 to 2035", confidence: "High", summary: "Using quantum devices to simulate other quantum systems was the original goal, and it is where a first verified advantage is most likely. Analog simulators already study magnets and exotic phases beyond easy classical reach.", sections: [
+      { heading: "The original use case", paragraphs: [
+          "Richard Feynman proposed quantum computers in 1981 so that quantum systems could be simulated without the exponential cost that classical computers face. Seth Lloyd proved in 1996 that a quantum computer can efficiently simulate any system with local interactions. Today simulation is again the application with the strongest scientific case, because it needs no data loading, its output is physical and checkable, and the classical alternatives, while good, break down for strongly correlated systems and for real-time dynamics.",
+          "Two styles exist. Analog simulators realize a model Hamiltonian directly in a controllable system, such as cold atoms in optical lattices, Rydberg atom arrays, trapped ions, and superconducting circuits. Digital simulators run the time evolution as a sequence of gates, which is more general but needs more resources.",
+        ] },
+      { heading: "What analog simulators have achieved", paragraphs: [
+          "Analog simulators have studied phenomena that classical methods struggle with. A Harvard and MIT team's 256-atom Rydberg array in 2021 explored ordered phases on two-dimensional lattices, and the same platform provided evidence of a topological spin liquid. Trapped-ion simulators with 53 ions studied dynamical phase transitions in 2017, and cold-atom experiments in optical lattices have realized Hubbard models and measured their properties for years. D-Wave's 2025 simulation of quench dynamics used an annealer as an analog simulator of magnetic materials, and Google's Quantum Echoes experiment measured a quantity linked to quantum chaos on a digital superconducting processor.",
+          "Many such experiments sit near the edge of classical capability, and some have been matched by improved classical methods, notably tensor networks, which work well when entanglement is limited. The frontier moves with each side's progress.",
+        ] },
+      { heading: "Where digital simulation fits", paragraphs: [
+          "Digital simulation promises generality: arbitrary Hamiltonians, programmable evolution, and the ability to prepare initial states and measure observables flexibly. On noisy devices without error correction, circuit depth limits the dynamics that can be simulated, as in IBM's 2023 utility experiment on a spin model, where mitigation extended the reach. For longer times and higher accuracy, error-corrected machines are needed, and resource estimates by Childs and coauthors for simple spin models and by many others for lattice gauge theories and electronic structure show that useful simulations need hundreds to thousands of logical qubits.",
+          "Topics under study include condensed matter models such as the Hubbard model, which may bear on high-temperature superconductivity, nuclear and high-energy physics, where lattice gauge theories challenge classical methods, and quantum chemistry. Bauer and coauthors reviewed the prospects for high-energy physics in 2023, and Altman and coauthors outlined architectures and opportunities for quantum simulators in 2021.",
+        ] },
+      { heading: "The verification question", paragraphs: [
+          "A distinctive challenge for simulation is knowing whether the result is right. If the answer cannot be computed classically, how can it be checked? Strategies include comparing different simulators on the same model, checking limits where theory gives exact answers, testing conserved quantities, and using results to make predictions that experiments on real materials can confirm. Daley and coauthors argued that the community should design simulation tasks with such checks built in. Verifiable quantities such as the out-of-time-order correlators used by Google fit this goal.",
+          "The credibility of a claimed advantage in simulation will depend on this verification and on persistent attempts by classical groups to match it. We expect the next few years to see a number of claims and rebuttals.",
+        ] },
+      { heading: "Impact beyond physics", paragraphs: [
+          "If simulation advantage is achieved, the first impacts will be in science: new understanding of correlated materials, spin liquids, and nuclear matter, and benchmarks for approximate classical methods. Industrial value would follow if the methods can handle realistic materials and molecules with enough accuracy to guide design, which needs fault-tolerant machines. There is also a feedback effect: better simulators will help to test and calibrate quantum hardware, and models of noise and error correction may use them.",
+        ] },
+      { heading: "Specific scientific targets", paragraphs: [
+          "Several targets show what a successful simulation advantage could look like. In condensed matter, the two-dimensional Hubbard model is the standard minimal model of strongly correlated electrons and is believed to capture aspects of high-temperature superconductors, but its phase diagram at the relevant doping is not settled. Cold-atom simulators of the Hubbard model have reached low temperatures but not yet the regime where the question is decided, and fault-tolerant digital simulation is another route. In nuclear and high-energy physics, simulating the real-time dynamics of gauge theories, for example in heavy-ion collisions or the early universe, is a problem on which classical Monte Carlo fails because of the sign problem.",
+          "In chemistry, the targets are photochemical processes and strongly correlated catalysts, where dynamics and excited states matter. In quantum information itself, simulators help to study how quantum information scrambles in black holes and chaotic systems, an area that Google's out-of-time-order experiments address. A result that settled a long-standing question in one of these areas, in a way that was confirmed independently, would be the most persuasive demonstration of advantage that one could ask for.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We are confident that simulation will be the first area where quantum devices provide scientifically valuable results beyond classical reach, and we expect an accepted case by about 2028 to 2030. We expect analog and digital approaches to converge, with programmable arrays and error-detected digital circuits used together. Commercial value from simulation is more distant and depends on error-corrected machines. The risk is that classical methods, including machine learning wavefunctions, continue to push the boundary, so the target keeps moving.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2027", value: "More simulation claims on atoms, ions, and superconducting platforms, each with classical challenges." },
+      { label: "2028 to 2030", value: "At least one simulation result accepted as beyond classical; digital simulations on early error-corrected devices." },
+      { label: "2031 to 2035", value: "Simulation of lattice gauge theories and correlated materials at scales relevant to science and some industry problems." },
+    ], signals: [
+      "Agreement between independent quantum simulators on a hard quantity.",
+      "Classical methods failing to reproduce a result after sustained effort.",
+      "Logical-qubit machines running dynamics with controlled error.",
+      "New experiments testing predictions about real materials.",
+    ], risks: [
+      "Tensor networks and neural-network methods may close the gap.",
+      "Noise may limit digital simulations.",
+      "Verification may remain contested.",
+    ], faq: [
+      { q: "What is a quantum simulator?", a: "A controllable quantum system used to mimic another quantum system that is hard to compute classically." },
+      { q: "What is analog versus digital simulation?", a: "Analog realizes the target Hamiltonian directly, while digital runs the evolution as a sequence of quantum gates." },
+      { q: "Why is simulation the likely first advantage?", a: "Because the output is physical, needs no data loading, and classical methods struggle with strongly correlated dynamics." },
+    ], references: [
+      "Feynman, R. P. (1982). Simulating physics with computers. International Journal of Theoretical Physics, 21, 467-488.",
+      "Lloyd, S. (1996). Universal quantum simulators. Science, 273, 1073-1078.",
+      "Georgescu, I. M., Ashhab, S., & Nori, F. (2014). Quantum simulation. Reviews of Modern Physics, 86, 153-185.",
+      "Daley, A. J., et al. (2022). Practical quantum advantage in quantum simulation. Nature, 607, 667-676.",
+      "Altman, E., et al. (2021). Quantum simulators: Architectures and opportunities. PRX Quantum, 2, 017003.",
+      "Bauer, C. W., et al. (2023). Quantum simulation for high-energy physics. PRX Quantum, 4, 027001.",
+      "Ebadi, S., et al. (2021). Quantum phases of matter on a 256-atom programmable quantum simulator. Nature, 595, 227-232.",
+      "Childs, A. M., Maslov, D., Nam, Y., Ross, N. J., & Su, Y. (2018). Toward the first quantum simulation with quantum speedup. PNAS, 115, 9456-9461.",
+    ], links: [
+      { label: "Paper: Simulating Physics with Computers", href: "/research/feynman-simulating-physics-1982" },
+      { label: "Paper: Universal Quantum Simulators", href: "/research/lloyd-universal-quantum-simulators-1996" },
+      { label: "Paper: Quantum Phases of Matter on a 256-Atom Programmable Quantum Simulator", href: "/research/ebadi-256-atom-quantum-simulator-2021" },
+      { label: "Paper: Beyond-Classical Computation in Quantum Simulation", href: "/research/king-beyond-classical-quantum-simulation-2025" },
+      { label: "Term: Quantum Simulator", href: "/dictionary/quantum-simulator" },
+      { label: "Industry: Quantum Computing for Materials Science", href: "/industries/materials-science" },
+    ], words: 1042 },
+  { slug: "quantum-sensing-future", title: "Quantum Sensing: Clocks, Navigation, and Imaging", category: "applications", horizon: "2026 to 2035", confidence: "High", summary: "Quantum sensors are the part of quantum technology already reaching customers. Optical clocks, atom interferometers, diamond magnetometers, and squeezed-light detectors improve measurement, and the next decade is about turning laboratory instruments into rugged products.", sections: [
+      { heading: "What quantum sensing is", paragraphs: [
+          "Quantum sensing uses quantum systems, such as atoms, ions, spins in diamond, superconducting loops, or squeezed light, as the measuring element. The measured quantity changes the quantum state, for example by shifting a frequency or rotating a spin, and the change is read out. Because quantum states are exquisitely sensitive to their environment, they can detect tiny magnetic fields, accelerations, rotations, gravity, time, and electric fields, with precision limited by fundamental physics. Degen, Reinhard, and Cappellaro's 2017 review is the standard introduction.",
+          "Unlike quantum computing, sensing does not require large fault-tolerant machines or error correction, so several kinds are commercial. A sensor can be a single atom cloud, a diamond chip, or a pulse of light, and it works on small volumes of data, which makes the technology easier to scale than computing.",
+        ] },
+      { heading: "The main technologies and their status", paragraphs: [
+          "Optical atomic clocks have reached fractional uncertainties near 10 to the minus 18, as in the strontium lattice clock of Bloom and coauthors in 2014, good enough to detect height differences of a centimeter through gravitational time dilation. The international metrology community has been discussing a redefinition of the second based on optical clocks around 2030. Clocks matter for navigation, finance, networks, and tests of fundamental physics, and compact versions are being built.",
+          "Atom interferometers measure acceleration, rotation, and gravity with cold atoms, and Bongs and coauthors described in 2019 how they are moving from laboratories to field instruments for gravity mapping, navigation, and tests of general relativity. Nitrogen-vacancy diamond sensors map magnetic fields and temperatures at the micrometer scale at room temperature, with uses in electronics inspection and biology. Optically pumped magnetometers allow wearable magnetoencephalography, as Boto and coauthors showed in 2018. Squeezed light is already used in LIGO and Virgo to reduce quantum noise in gravitational wave detection, as Tse and coauthors reported in 2019.",
+        ] },
+      { heading: "Navigation without GPS", paragraphs: [
+          "A major driver is navigation that does not rely on satellites, which can be jammed or spoofed. Quantum inertial sensors based on atom interferometry could keep position errors small over hours, and quantum magnetometers could match measured magnetic anomalies to maps for positioning. Several militaries and companies have run field tests, including flights and ship trials, and the sector has government funding in the United States, the United Kingdom, and Europe. The engineering challenges are size, power, robustness to vibration, and measurement rate, since many cold-atom sensors measure slowly, and hybrid designs that combine a quantum sensor with a conventional inertial unit are the likely first products.",
+          "We expect early adoption in defense, aviation, and maritime markets, with civilian uses following if prices fall. The time to products with strong performance in rugged environments is a few years for magnetic navigation and the end of the decade for full inertial systems.",
+        ] },
+      { heading: "Medicine, geoscience, and industry", paragraphs: [
+          "Wearable brain imaging with optically pumped magnetometers is entering research hospitals, and diamond sensors support studies of cells and materials. Gravimeters and gradiometers based on atoms or other sensors can map underground structures, aquifers, and mineral deposits, and may help with infrastructure inspection and tunnel detection. In industry, quantum sensors are used for inspecting semiconductor chips and batteries, and for precise timing in telecommunications and data centers. These markets are modest but real.",
+          "Claims need scrutiny in areas such as quantum radar and quantum lidar, where theoretical advantages exist in specific noise conditions but practical systems must beat strong classical ones, and many proposals have not shown clear gains. Quantum illumination, for example, offers an advantage in principle at low signal levels, as shown in laboratory experiments, but real-world benefits are uncertain.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "Quantum sensing will probably produce the most commercial value from quantum technology in the next five years, because the technologies are mature enough for products and the advantages are concrete. We expect growth in atomic clocks for timing and networks, magnetometers for medicine and inspection, and early quantum navigation products for defense. The central challenge is engineering: making instruments small, robust, and affordable, and proving the benefit against improving conventional sensors, such as MEMS inertial units. Government funding will remain important.",
+        ] },
+      { heading: "A buyer's guide to quantum sensors", paragraphs: [
+          "For an organization considering quantum sensors, the first question is whether a conventional sensor already meets the need. MEMS accelerometers, fiber-optic gyroscopes, and fluxgate magnetometers are cheap and rugged and improving, and a quantum sensor must offer a clear gain in sensitivity, stability, or drift, not just novelty. The second question is how the claim was measured: laboratory sensitivity under ideal conditions differs from field performance under temperature changes, vibration, and electromagnetic noise, so ask for data from field tests.",
+          "Third, consider the system. A quantum sensor often needs lasers, vacuum, shielding, and electronics, and size, power, and maintenance matter as much as the sensing element. Fourth, check the supply chain and service: many suppliers are startups, and support and calibration matter for a device that must run for years. Fifth, consider data processing: a sensitive sensor produces data that needs good algorithms, and integration with existing systems is often the larger part of the project.",
+          "For those starting out, a pilot in a defined application, with a clear metric and a conventional baseline, is the sensible route. Standards for performance and testing are emerging through national metrology institutes, and engaging with them early helps ensure that results are comparable. We expect procurement to become easier over the next five years as products mature and independent test data accumulate.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Commercial atomic clocks and magnetometers expand; navigation field trials; wearable MEG in more hospitals." },
+      { label: "2029 to 2031", value: "Compact atom-interferometer navigation units in defense and aviation; discussion of redefining the second." },
+      { label: "2032 to 2035", value: "Broader civilian adoption in geoscience, medicine, and infrastructure if costs fall." },
+    ], signals: [
+      "Field-tested quantum navigation systems with defined performance over hours.",
+      "Cost and size of atomic clocks and atom interferometers.",
+      "Regulatory approvals for medical sensing devices.",
+      "Replication of quantum illumination and radar advantages in realistic conditions.",
+    ], risks: [
+      "Conventional sensors may keep up for most uses.",
+      "Ruggedization may be harder than expected.",
+      "Markets may stay small.",
+    ], faq: [
+      { q: "Is quantum sensing real?", a: "Yes. Atomic clocks, magnetometers, and gravimeters are commercial, and many are in use." },
+      { q: "Can quantum sensors replace GPS?", a: "They can complement it by keeping position accurate when GPS is unavailable, though full replacement is not expected." },
+      { q: "Do quantum sensors need cooling?", a: "Some do, but several types, including diamond and many atomic sensors, work at room temperature." },
+    ], references: [
+      "Degen, C. L., Reinhard, F., & Cappellaro, P. (2017). Quantum sensing. Reviews of Modern Physics, 89, 035002.",
+      "Bloom, B. J., et al. (2014). An optical lattice clock with accuracy and stability at the 10^-18 level. Nature, 506, 71-75.",
+      "Bongs, K., et al. (2019). Taking atom interferometric quantum sensors from the laboratory to real-world applications. Nature Reviews Physics, 1, 731-739.",
+      "Boto, E., et al. (2018). Moving magnetoencephalography towards real-world applications with a wearable system. Nature, 555, 657-661.",
+      "Tse, M., et al. (2019). Quantum-enhanced Advanced LIGO detectors in the era of gravitational-wave astronomy. Physical Review Letters, 123, 231107.",
+      "Giovannetti, V., Lloyd, S., & Maccone, L. (2004). Quantum-enhanced measurements: beating the standard quantum limit. Science, 306, 1330-1336.",
+      "Pirandola, S., et al. (2018). Advances in photonic quantum sensing. Nature Photonics, 12, 724-733.",
+      "McKinsey and Company (2025). Quantum Technology Monitor.",
+    ], links: [
+      { label: "Term: Quantum Sensing", href: "/dictionary/quantum-sensing" },
+      { label: "Term: Nitrogen-Vacancy Center", href: "/dictionary/nitrogen-vacancy-center" },
+      { label: "Industry: Quantum Technology for Space and National Security", href: "/industries/space-defense" },
+      { label: "Industry: Quantum Computing for Healthcare", href: "/industries/healthcare" },
+      { label: "Industry: Quantum Computing for Oil, Gas, and Mining", href: "/industries/oil-gas-mining" },
+    ], words: 1042 },
 ];
 
 export function getFutureTopic(slug: string) {
