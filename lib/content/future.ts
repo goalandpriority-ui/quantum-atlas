@@ -1810,6 +1810,574 @@ export const futureTopics: FutureTopic[] = [
       { label: "Industry: Quantum Computing for Healthcare", href: "/industries/healthcare" },
       { label: "Industry: Quantum Computing for Oil, Gas, and Mining", href: "/industries/oil-gas-mining" },
     ], words: 1042 },
+  { slug: "qkd-future", title: "Quantum Key Distribution: Where It Fits Beside Post-Quantum Cryptography", category: "security-networks", horizon: "2026 to 2040", confidence: "Medium", summary: "Quantum key distribution is proven technology with real networks, but intelligence agencies favor post-quantum cryptography for general use. QKD's future is in specific high-assurance links, satellite services, and as a complement to software-based security.", sections: [
+      { heading: "What QKD offers and what it does not", paragraphs: [
+          "Quantum key distribution lets two parties create a shared secret key by sending quantum states, usually single photons, whose disturbance by an eavesdropper can be detected. Security rests on physics, namely the no-cloning theorem and the uncertainty principle, and not on the assumption that a mathematical problem is hard. Shor and Preskill proved in 2000 that the BB84 protocol is secure against any attack allowed by quantum mechanics, in the ideal model, when the error rate is below about 11 percent.",
+          "QKD does not by itself provide secure communication. It produces keys that must then be used with symmetric encryption, it needs an authenticated classical channel, which in practice relies on pre-shared secrets or classical signatures, and it protects only the key exchange, not endpoints, software, or people. It also needs dedicated hardware and a quantum channel, usually fiber or free space.",
+        ] },
+      { heading: "What exists today", paragraphs: [
+          "Networks are operating. China's backbone between Beijing and Shanghai exceeds 2,000 kilometers and uses trusted relay nodes, and it has been linked with the Micius satellite to span intercontinental distances, as in the 2017 key exchange with Austria. The European Union is building EuroQCI, a quantum communication infrastructure with terrestrial and satellite parts, and national networks exist or are planned in the United Kingdom, South Korea, Japan, Singapore, and India. Commercial vendors include ID Quantique, Toshiba, QuantumCTek, and QNu Labs, and they sell systems to governments, banks, and telecom operators.",
+          "Technical advances have extended reach and robustness. Decoy-state methods, proposed in 2003 and 2005, made weak-laser-pulse systems secure against photon-number-splitting attacks. Measurement-device-independent QKD, from Lo, Curty, and Qi in 2012, removes detector vulnerabilities. Twin-field QKD, proposed by Lucamarini and coauthors in 2018, scales better with distance, and experiments have reached more than 500 kilometers of fiber in field conditions and over 800 kilometers in laboratory spools. Continuous-variable QKD uses standard telecom components and is attractive for integration. Chip-based transmitters promise lower cost.",
+        ] },
+      { heading: "The policy debate", paragraphs: [
+          "Agencies are divided from industry advocates. The US National Security Agency and the UK National Cyber Security Centre have published positions that do not recommend QKD for general use, citing limited scope, the need for special hardware, the reliance on trusted nodes for long distances, authentication needs, and implementation vulnerabilities. They favor post-quantum cryptography, which runs on existing hardware and addresses key exchange and signatures. The European Union and China, by contrast, invest heavily in QKD infrastructure, and several security agencies allow QKD as a complement.",
+          "Practical attacks on real devices explain some of the caution. Lydersen and coauthors in 2010 showed how to blind detectors in commercial systems, and other attacks exploit imperfections in sources and timing. These have been countered by countermeasures and by protocols that do not rely on trusted devices, but they underline that security depends on implementation, and that certification matters. Standards work includes ETSI protection profiles and ISO/IEC 23837 on security evaluation of QKD, published in 2023.",
+        ] },
+      { heading: "Where QKD may thrive", paragraphs: [
+          "We see four niches. The first is government and military links with very long-term secrecy needs and the resources for dedicated infrastructure, where defense in depth, using both post-quantum cryptography and QKD, is attractive. The second is critical infrastructure operators, such as financial clearing, power grid control, and data center interconnects, where fiber links already exist and a quantum layer can be added. The third is satellite-based services for countries that want secure links across large territories without trusting foreign infrastructure. The fourth is research networks that serve as testbeds for the quantum internet.",
+          "The economics depend on cost per key and per link. Systems have cost tens to hundreds of thousands of dollars per link, and key rates are modest, from kilobits to megabits per second over metropolitan distances, falling rapidly with distance. Photonic integration may lower costs, and satellite constellations may spread them across many users.",
+        ] },
+      { heading: "Interplay with post-quantum cryptography", paragraphs: [
+          "The two approaches address different threats. Post-quantum cryptography defends against attacks by quantum computers on the math of public-key systems and can be deployed through software updates. QKD defends against any adversary, including those with unlimited computing power, for the key exchange, but depends on hardware. Hybrid designs, in which a session key is derived from both a post-quantum key exchange and a QKD key, give security if either holds, and several vendors and standards bodies are developing them.",
+          "The risk of overselling is real. Presenting QKD as the quantum-safe solution for everything misleads buyers and may delay the less glamorous work of migrating software. A balanced view treats QKD as a specialized tool within a broader security architecture.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect QKD to continue growing slowly in government and critical infrastructure, with satellite services expanding in the late 2020s, and for post-quantum cryptography to carry the bulk of the internet's migration. Entanglement-based and device-independent protocols will remain research topics with niche products by the 2030s. If quantum repeaters mature, QKD may become the first application of a quantum internet, but that is unlikely before the mid 2030s. A plausible outcome is a global QKD market in the low billions of dollars by 2035, concentrated in a few countries.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "More metropolitan networks and satellite launches; hybrid QKD plus post-quantum products; certification under ISO/IEC 23837." },
+      { label: "2029 to 2032", value: "Satellite constellations offering regular key service; twin-field links over 500 to 1,000 km in field networks." },
+      { label: "2033 to 2040", value: "Repeater-based links possible; QKD remains a niche within broader quantum-safe architectures." },
+    ], signals: [
+      "Cost per link and per secure key bit.",
+      "Certification and acceptance of QKD by agencies such as NSA, NCSC, and ANSSI.",
+      "Field demonstrations of repeater or twin-field links beyond 500 km.",
+      "Successful commercial satellite QKD services.",
+    ], risks: [
+      "Implementation attacks could undermine trust.",
+      "Post-quantum cryptography may make QKD unnecessary for most customers.",
+      "Costs may stay too high for broad deployment.",
+    ], faq: [
+      { q: "Is QKD unhackable?", a: "The protocols are secure in theory. Real devices can have flaws that attackers exploit, so implementation security matters." },
+      { q: "Does QKD replace post-quantum cryptography?", a: "No. Agencies recommend post-quantum cryptography for general use, with QKD for special high-assurance links." },
+      { q: "How far can QKD reach?", a: "A few hundred kilometers in fiber without relays, and thousands with trusted nodes or satellites." },
+    ], references: [
+      "Bennett, C. H., & Brassard, G. (1984). Quantum cryptography: Public key distribution and coin tossing. Proceedings of IEEE International Conference on Computers, Systems and Signal Processing, 175-179.",
+      "Shor, P. W., & Preskill, J. (2000). Simple proof of security of the BB84 quantum key distribution protocol. Physical Review Letters, 85, 441-444.",
+      "Lo, H.-K., Ma, X., & Chen, K. (2005). Decoy state quantum key distribution. Physical Review Letters, 94, 230504.",
+      "Lo, H.-K., Curty, M., & Qi, B. (2012). Measurement-device-independent quantum key distribution. Physical Review Letters, 108, 130503.",
+      "Lucamarini, M., Yuan, Z. L., Dynes, J. F., & Shields, A. J. (2018). Overcoming the rate-distance limit of quantum key distribution without quantum repeaters. Nature, 557, 400-403.",
+      "Lydersen, L., et al. (2010). Hacking commercial quantum cryptography systems by tailored bright illumination. Nature Photonics, 4, 686-689.",
+      "Xu, F., Ma, X., Zhang, Q., Lo, H.-K., & Pan, J.-W. (2020). Secure quantum key distribution with realistic devices. Reviews of Modern Physics, 92, 025002.",
+      "Pirandola, S., et al. (2020). Advances in quantum cryptography. Advances in Optics and Photonics, 12, 1012-1236.",
+      "Liao, S.-K., et al. (2017). Satellite-to-ground quantum key distribution. Nature, 549, 43-47.",
+    ], links: [
+      { label: "Paper: Quantum Cryptography: Public Key Distribution and Coin Tossing", href: "/research/bennett-brassard-bb84-1984" },
+      { label: "Paper: Simple Proof of Security of the BB84 Quantum Key Distribution Protocol", href: "/research/shor-preskill-bb84-security-proof-2000" },
+      { label: "Paper: Decoy State Quantum Key Distribution", href: "/research/lo-ma-chen-decoy-state-qkd-2005" },
+      { label: "Paper: Satellite-to-Ground Quantum Key Distribution", href: "/research/liao-satellite-to-ground-qkd-2017" },
+      { label: "Paper: Quantum Cryptography Based on Bell's Theorem", href: "/research/ekert-quantum-cryptography-bell-1991" },
+      { label: "Term: Quantum Key Distribution", href: "/dictionary/quantum-key-distribution" },
+      { label: "Industry: Quantum Computing for Telecommunications", href: "/industries/telecommunications" },
+    ], words: 1002 },
+  { slug: "blockchain-crypto-quantum-future", title: "Quantum Computers and Blockchains: What Is Really at Risk", category: "security-networks", horizon: "2026 to 2040", confidence: "Medium", summary: "Bitcoin, Ethereum, and most blockchains rely on elliptic-curve signatures that a large quantum computer could forge. The threat is not immediate, but the migration is a coordination problem that is slow for decentralized systems, so planning matters now.", sections: [
+      { heading: "What a quantum computer could break", paragraphs: [
+          "Most blockchains secure ownership with digital signatures. Bitcoin and Ethereum use the elliptic-curve signature scheme ECDSA over the curve secp256k1, and Bitcoin has added Schnorr signatures in its Taproot upgrade, which rely on the same mathematical problem, the elliptic-curve discrete logarithm. Shor's algorithm, run on a large fault-tolerant quantum computer, can derive a private key from a public key. An attacker who could do this could sign transactions that move funds from any address whose public key has been revealed.",
+          "Hash functions, used for mining and for building addresses, are much less affected. Grover's algorithm gives only a quadratic speedup against them, which affects mining difficulty modestly and does not allow shortcuts that would break the chain. The main exposure is therefore signatures, and secondarily the key exchange used in wallets and network communications.",
+        ] },
+      { heading: "Which coins are exposed", paragraphs: [
+          "Exposure depends on whether the public key is visible. Bitcoin addresses of the common pay-to-public-key-hash type publish only a hash of the key until the owner spends from the address, so an unspent, never-reused address hides its public key behind a hash and is protected against a pure long-range attack, although the key is revealed when a transaction is broadcast. Older pay-to-public-key outputs, used in the early years including many coins attributed to the earliest miners, expose the key directly, as do reused addresses and Taproot outputs, where a tweaked public key appears on chain. Aggarwal, Brennen, Lee, Santha, and Tomamichel analyzed these categories in 2018 and estimated that a substantial fraction of coins sits in addresses with exposed keys.",
+          "There is also a short-range attack. When a transaction is broadcast, the public key is revealed for the minutes until it is confirmed, so an attacker with a fast enough quantum computer could compute the private key and broadcast a competing transaction. That needs a machine that can break a key in minutes, which is much harder than one that takes days.",
+        ] },
+      { heading: "How big a machine is needed", paragraphs: [
+          "Resource estimates for breaking 256-bit elliptic curves are lower than for RSA-2048 in terms of logical qubits. Roetteler and coauthors estimated in 2017 that about 2,330 logical qubits suffice. Webber and coauthors estimated in 2022 that breaking Bitcoin's signatures within an hour would need hundreds of millions of physical qubits, and within a day about 13 million physical qubits, under assumptions of 0.1 percent error and a one-microsecond cycle. Litinski in 2023 reduced the gate count to about 50 million Toffoli gates, and Gouzien and coauthors estimated that a cat-qubit architecture could do a 256-bit elliptic curve logarithm in about nine hours with about 126,000 cat qubits. These are model-dependent figures and may fall further.",
+          "Today's machines are far from this. But the estimates show that the threshold for elliptic curves may be reached before that for RSA-2048, which is why some cryptographers regard them as the first targets.",
+        ] },
+      { heading: "The migration problem", paragraphs: [
+          "The technical fix exists: signatures based on lattices, hashes, or codes. NIST standardized ML-DSA and SLH-DSA in 2024, and the Falcon-based scheme is in preparation. The costs are size and speed: an ECDSA signature is 64 bytes, a Falcon-512 signature about 666 bytes, an ML-DSA-65 signature about 3,300 bytes, and a small SLH-DSA signature about 7,900 bytes, with public keys also larger. On a blockchain, where every node stores every transaction, larger signatures raise storage and fees, so designs that aggregate signatures or move verification off-chain are being studied.",
+          "The harder problem is governance. Changing a blockchain's signature scheme requires consensus among developers, miners or validators, exchanges, and users, and funds in lost or abandoned wallets cannot be migrated. Proposals for Bitcoin include new quantum-resistant output types, such as BIP-360, and discussions of deadlines after which old outputs would be frozen, which are contentious because of the principle that coins cannot be seized. Ethereum developers have discussed emergency hard forks and long-term plans to adopt post-quantum signatures, and account abstraction allows smart-contract wallets to switch signature schemes without changing the base protocol. Some chains, such as the Quantum Resistant Ledger, launched with hash-based signatures.",
+        ] },
+      { heading: "What users and builders can do", paragraphs: [
+          "For ordinary holders, the practical advice is modest. Avoid address reuse, keep up with wallet software that adopts quantum-resistant options, and follow community proposals. For developers of tokens and applications on existing chains, the signature layer belongs to the base chain or the wallet, so the main step is to design contracts so that they can adapt, for example by supporting smart-contract accounts and by avoiding hard-coded assumptions about signature types. Teams that handle large custody, such as exchanges, should plan key rotation and inventory exposed keys.",
+          "Another consideration is data: on-chain records are permanent, and transactions that reveal public keys can be recorded today and attacked later. Systems that encrypt sensitive data on chain or in off-chain storage with elliptic-curve key exchange face the harvest-now-decrypt-later risk, which is a reason to use hybrid or post-quantum key exchange for confidential data.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We believe the quantum threat to blockchains is real but not imminent. The central estimates place a machine capable of breaking elliptic curves in the 2030s at the earliest, with wide uncertainty, and the cost of waiting is that decentralized migration takes years. We expect major chains to adopt post-quantum signature options by around 2030, with adoption by users being slower. The danger is a surprise acceleration while migration is incomplete, and the scenario of frozen or stolen coins from abandoned wallets could be a lasting problem. Anyone building long-lived financial infrastructure should treat post-quantum readiness as part of the roadmap.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Proposals and testnets for post-quantum signatures on major chains; wallet and account-abstraction support appears." },
+      { label: "2029 to 2032", value: "Post-quantum signature options live on major chains; exchanges and custodians rotate keys; debate over freezing legacy outputs." },
+      { label: "2033 to 2040", value: "Migration mostly complete for active funds; legacy and lost wallets remain exposed if a machine appears." },
+    ], signals: [
+      "Resource estimates for elliptic-curve breaking below 100,000 physical qubits.",
+      "Merged proposals for post-quantum output types on Bitcoin and Ethereum.",
+      "Adoption of smart-contract wallets with upgradeable signatures.",
+      "Exchange and custodian migration announcements.",
+    ], risks: [
+      "Governance could stall migration.",
+      "A sudden advance in quantum hardware could outpace it.",
+      "Larger signatures could strain blockchain capacity.",
+    ], faq: [
+      { q: "Will quantum computers break Bitcoin soon?", a: "Not with current machines. Estimates suggest millions of physical qubits are needed, and the date is uncertain." },
+      { q: "Which coins are most at risk?", a: "Those held in addresses whose public keys are already visible on chain." },
+      { q: "Is mining at risk?", a: "Much less. Grover's algorithm gives only a quadratic speedup against hash functions." },
+    ], references: [
+      "Aggarwal, D., Brennen, G., Lee, T., Santha, M., & Tomamichel, M. (2018). Quantum attacks on Bitcoin, and how to protect against them. Ledger, 3, 68-90.",
+      "Roetteler, M., Naehrig, M., Svore, K. M., & Lauter, K. (2017). Quantum resource estimates for computing elliptic curve discrete logarithms. ASIACRYPT 2017, LNCS 10625, 241-270.",
+      "Webber, M., et al. (2022). The impact of hardware specifications on reaching quantum advantage in the fault tolerant regime. AVS Quantum Science, 4, 013801.",
+      "Litinski, D. (2023). How to compute a 256-bit elliptic curve private key with only 50 million Toffoli gates. arXiv:2306.08585.",
+      "Gouzien, E., Ruiz, D., Le Régent, F.-M., Guillaud, J., & Sangouard, N. (2023). Performance analysis of a repetition cat code architecture: Computing 256-bit elliptic curve logarithm in 9 hours with 126,133 cat qubits. Physical Review Letters, 131, 040602.",
+      "National Institute of Standards and Technology (2024). FIPS 204 and FIPS 205: Module-lattice-based digital signature standard; stateless hash-based digital signature standard.",
+      "Bernstein, D. J., & Lange, T. (2017). Post-quantum cryptography. Nature, 549, 188-194.",
+    ], links: [
+      { label: "Paper: How to Factor 2048 Bit RSA Integers with Less than a Million Noisy Qubits", href: "/research/gidney-rsa-million-qubits-2025" },
+      { label: "Paper: Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer", href: "/research/shor-prime-factorization-1997" },
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+      { label: "Term: Harvest Now, Decrypt Later", href: "/dictionary/harvest-now-decrypt-later" },
+      { label: "Industry: Quantum Computing for Finance", href: "/industries/finance" },
+    ], words: 1064 },
+  { slug: "quantum-randomness-future", title: "Quantum Random Numbers and Certified Randomness", category: "security-networks", horizon: "2026 to 2035", confidence: "High", summary: "Quantum random number generators are already in phones and servers, and a new class of certified randomness can prove that bits are fresh and unpredictable. This is a small but real use of quantum technology with verifiable benefits.", sections: [
+      { heading: "Why randomness matters", paragraphs: [
+          "Cryptography depends on unpredictable numbers. Keys, nonces, salts, and challenges must be random, and a weak source can break otherwise strong systems. Computers usually rely on pseudo-random generators seeded from physical noise, such as thermal noise, timing jitter, or hardware sources in the processor. These are good when the entropy source is sound, but they can fail silently, and several real-world breaches have traced to poor randomness. Lotteries, games, scientific simulations, auctions, and blockchain protocols also need randomness that others can trust.",
+          "Quantum mechanics offers randomness that is fundamentally unpredictable, because measuring a quantum system in a superposition gives a result that no hidden variable determines, according to the Born rule and the experimental violation of Bell inequalities. A quantum random number generator turns such a measurement into bits.",
+        ] },
+      { heading: "The commercial present", paragraphs: [
+          "Quantum random number generators come in several designs. Simple devices send photons to a beam splitter and record which of two detectors fires. Others measure the phase noise of a laser, the arrival times of photons, or the vacuum fluctuations of the electromagnetic field, and some use image sensors found in phones to detect shot noise. Herrero-Collantes and Garcia-Escartin reviewed the field in 2017, and Ma and coauthors in 2016. Output rates from megabits to gigabits per second have been shown.",
+          "Products are available. ID Quantique's chips powered a Samsung phone developed with SK Telecom in 2020, and quantum entropy sources are sold as cards and chips for servers and hardware security modules. Standards define how to test them: NIST SP 800-90B evaluates entropy sources, and certification schemes in Europe and Asia include quantum devices. The practical benefit is mainly assurance: a physical source with a clear model of its entropy, and a margin against some kinds of failure, though a conventional hardware source that is well tested is also adequate for most uses.",
+        ] },
+      { heading: "Certified and device-independent randomness", paragraphs: [
+          "A stronger idea is to certify randomness from the statistics of the output alone. In device-independent randomness, proposed by Colbeck and by Pironio and coauthors in 2010, a Bell test is used: if the devices violate a Bell inequality, then the outputs must contain fresh randomness, whatever the internals of the devices. Pironio and coauthors demonstrated the principle with trapped ions in 2010, Bierhorst and coauthors in 2018 certified randomness with photons using Bell tests that closed loopholes, and Liu and coauthors in 2021 showed randomness expansion against quantum side information.",
+          "In 2025, two results moved the field forward. A team at NIST and the University of Colorado launched a public randomness beacon, CURBy, whose bits are certified by a Bell test. And JPMorgan Chase, Quantinuum, and national laboratories published in Nature a protocol that uses a 56-qubit trapped-ion computer to produce random bits whose randomness can be verified by classical supercomputers, because producing the right kind of output is believed to be hard for a classical cheater. This is a verifiable use of a quantum computer on a task of practical relevance, even if narrow.",
+        ] },
+      { heading: "Applications", paragraphs: [
+          "Four groups of applications stand out. Cryptographic key generation in high-assurance settings is the direct use, where quantum sources add defense in depth. Public randomness beacons that publish unpredictable values at regular intervals support lotteries, audits, fair selection, and protocols that need a trusted source of randomness, such as verifiable random functions in blockchains and decentralized applications. Gaming and gambling regulators prefer sources with certified entropy. Scientific simulation and Monte Carlo methods benefit from high-quality random streams, though pseudo-random generators suffice in most cases.",
+          "Certified randomness could become a service: a cloud quantum computer that generates certified bits on demand for customers who need proof of freshness. Whether customers will pay for it depends on the cost compared with conventional sources, and on regulation that rewards proof.",
+        ] },
+      { heading: "What certified randomness cannot do", paragraphs: [
+          "Certified randomness has limits that are easy to forget. It proves that bits were unpredictable at the time they were produced under stated assumptions, but it does not protect them afterward: if an attacker steals the bits, or if the system that consumes them is compromised, certification does not help. Device-independent protocols also assume that the devices cannot communicate during the test and that a small amount of initial randomness is available, and they produce bits slowly, often at rates far below those of conventional generators, because Bell tests need many trials.",
+          "The verification method of the 2025 trapped-ion protocol relies on a computational assumption, namely that a classical computer cannot produce outputs of the required kind within the time limit, so its security is of a different kind from a Bell test. Users should therefore treat certified randomness as an additional layer of assurance for special uses and not as a replacement for sound system design, secure key handling, and well-tested conventional entropy sources.",
+          "Even so, certification creates a useful habit: asking whether randomness can be audited. Auditable randomness is valuable in elections, lotteries, clinical trial allocation, and decentralized protocols, where the cost of doubt is high, and we expect interest from regulators and standards bodies to grow as the technology matures.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect quantum random number generators to become routine components in phones, servers, and security modules over the next five years, because the cost is low and the benefit is simple to explain. Device-independent and certified randomness will remain specialized, with beacons and a few services, and may grow if regulators and financial institutions begin to require proof of randomness. It will not be a large market, but it is one of the few quantum applications that is already verifiable and useful. The main risk is that the benefits over good classical sources are small for most buyers.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "QRNG chips in more devices and security modules; more public beacons; first certified-randomness pilots in finance." },
+      { label: "2029 to 2032", value: "Standards for certified randomness; cloud services offering certified bits." },
+      { label: "2033 to 2035", value: "Routine use in high-assurance systems; certified randomness integrated into protocols that need public randomness." },
+    ], signals: [
+      "Standards that reference quantum or Bell-certified sources.",
+      "Phone makers adopting QRNG chips.",
+      "Regulators requiring auditable randomness.",
+      "Independent replication of certified randomness protocols on other hardware.",
+    ], risks: [
+      "Classical hardware sources may remain good enough.",
+      "Certification may be too costly for most users.",
+      "Hype may exaggerate the benefit.",
+    ], faq: [
+      { q: "Are quantum random numbers really random?", a: "If the source is well designed, the unpredictability is fundamental. Device-independent methods can certify it from statistics alone." },
+      { q: "Do I need a quantum random number generator?", a: "Most applications do not. High-assurance and auditing uses may benefit." },
+      { q: "What is certified randomness?", a: "Random bits whose unpredictability can be proven, for example by a Bell test or a verifiable computation." },
+    ], references: [
+      "Herrero-Collantes, M., & Garcia-Escartin, J. C. (2017). Quantum random number generators. Reviews of Modern Physics, 89, 015004.",
+      "Ma, X., Yuan, X., Cao, Z., Qi, B., & Zhang, Z. (2016). Quantum random number generation. npj Quantum Information, 2, 16021.",
+      "Pironio, S., et al. (2010). Random numbers certified by Bell's theorem. Nature, 464, 1021-1024.",
+      "Bierhorst, P., et al. (2018). Experimentally generated randomness certified by the impossibility of superluminal signals. Nature, 556, 223-226.",
+      "Liu, W.-Z., et al. (2021). Device-independent randomness expansion against quantum side information. Nature Physics, 17, 448-451.",
+      "Liu, M., et al. (2025). Certified randomness using a trapped-ion quantum processor. Nature, 640, 343-348.",
+      "National Institute of Standards and Technology (2018). NIST Special Publication 800-90B: Recommendation for the entropy sources used for random bit generation.",
+    ], links: [
+      { label: "Term: Quantum Random Number Generator", href: "/dictionary/quantum-random-number-generator" },
+      { label: "Term: Bell Inequality", href: "/dictionary/bell-inequality" },
+      { label: "Paper: Loophole-Free Bell Inequality Violation Using Electron Spins Separated by 1.3 Kilometres", href: "/research/hensen-loophole-free-bell-test-2015" },
+      { label: "Hardware: Quantinuum H2", href: "/hardware/quantinuum-h2" },
+    ], words: 1083 },
+  { slug: "pqc-migration-engineering-future", title: "Migrating to Post-Quantum Cryptography: The Engineering Reality", category: "security-networks", horizon: "2026 to 2035", confidence: "High", summary: "The algorithms are standardized, and the hard part is replacing them in billions of devices, certificates, and protocols. Larger keys and signatures, legacy hardware, and slow supply chains make the migration a multi-year engineering project.", sections: [
+      { heading: "What changes technically", paragraphs: [
+          "Post-quantum algorithms are not drop-in replacements. The key exchange standard ML-KEM, derived from Kyber, uses a public key of 1,184 bytes and a ciphertext of 1,088 bytes at the common 768 security level, compared with 32 bytes for X25519. The signature standard ML-DSA, derived from Dilithium, has public keys near 2,000 bytes and signatures near 3,300 bytes at the mid security level, versus 64-byte ECDSA signatures. The Falcon-based scheme has smaller signatures, about 666 bytes, but is harder to implement safely because of floating-point arithmetic, and SLH-DSA has tiny keys but signatures of several kilobytes. Computation is fast, since ML-KEM runs about as fast as elliptic-curve exchange, but the size of the messages affects protocols.",
+          "These sizes cause real problems. A TLS handshake with hybrid key exchange adds more than a kilobyte, which exceeds the packet size assumptions in some middleboxes and caused connection failures when browsers first enabled hybrid Kyber in 2023 and 2024. Certificate chains with post-quantum signatures could add tens of kilobytes to each handshake, which matters for latency on slow links. Sikeridis and coauthors studied the performance of post-quantum authentication in TLS in 2020 and showed that signature size is the main cost.",
+        ] },
+      { heading: "Key exchange first, signatures later", paragraphs: [
+          "The order of migration follows the threat. Harvest-now-decrypt-later attacks target key exchange, so hybrid key exchange that combines X25519 with ML-KEM has been deployed first, in Chrome, Cloudflare, and other services, and in messaging apps such as Signal and Apple's iMessage with their own post-quantum protocols. Signatures can be forged only by an attacker who has a quantum computer at the time of the attack, so the urgency is lower, except for long-lived signatures on software, firmware, and legal documents.",
+          "Code signing is the first signature use case, because firmware lives long. NIST approved stateful hash-based signatures, LMS and XMSS, in 2020 in SP 800-208, and the NSA's CNSA 2.0 requires them for firmware signing in national security systems on a near timeline. For the web, ideas such as Merkle tree certificates aim to reduce the size cost of post-quantum certificates by changing how certificates are issued and validated, and IETF work on hybrid and post-quantum TLS continues.",
+        ] },
+      { heading: "The long tail: embedded systems and legacy", paragraphs: [
+          "The hardest part is not browsers but everything else. Industrial control systems, medical devices, vehicles, smart meters, satellites, and payment terminals have service lives of 10 to 30 years, limited memory and processing power, and slow update paths. Some cannot be updated in the field. Hardware security modules, smart cards, and secure elements need new firmware or new chips, and certification of those products takes years. Supply chains for such products are long, so decisions made now determine what is in service in 2040.",
+          "Organizations face the further problem of knowing what they use. Cryptography is embedded in libraries, protocols, and vendor products, often undocumented. Guidance from CISA, NSA, and NIST in 2023 and NIST's NCCoE migration project recommend building an inventory, sometimes called a cryptographic bill of materials, as the first step, then prioritizing by data lifetime and system criticality.",
+        ] },
+      { heading: "Crypto-agility and hybrids", paragraphs: [
+          "The lesson of the SIKE break in 2022 is to expect surprises. Systems should be built so that algorithms can be replaced without redesign: negotiated algorithms, modular libraries, configurable key sizes, and the ability to update certificates and trust anchors. Hybrid constructions that combine a classical and a post-quantum algorithm hedge against failure of either, at the cost of extra size and complexity, and are recommended by many agencies for the transition, although some, like the NSA, accept pure post-quantum use in national security systems under CNSA 2.0.",
+          "Agility has costs, since negotiation introduces downgrade attack risks, and support for many algorithms enlarges the attack surface. Good practice is to support a small number of well-reviewed options and to retire old ones on schedule.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We have high confidence that migration of public-facing web and cloud services will be largely done for key exchange by 2028 to 2030, and that signatures and certificates will follow by the early 2030s. Government and regulated sectors will meet deadlines of 2030 to 2035, with extensions and exceptions. The long tail of embedded and legacy systems will extend beyond 2035, which is why early inventory and procurement requirements matter. Costs will be significant, and organizations that treat migration as a normal part of lifecycle management will spend less than those that treat it as an emergency.",
+        ] },
+      { heading: "A practical migration plan in phases", paragraphs: [
+          "A practical plan has four phases. In the first, discovery, the organization builds the inventory of cryptographic use, covering protocols, libraries, certificates, hardware, and third-party services, and identifies data with long confidentiality needs. In the second, risk ranking and planning, it assigns priority to systems whose data must stay secret the longest or whose replacement takes the longest, and sets target dates aligned with regulatory deadlines. In the third, pilots, it tests hybrid key exchange and post-quantum certificates in controlled environments, measuring performance, compatibility with middleboxes, and effects on operations.",
+          "In the fourth, rollout, it deploys in waves, starting with externally facing services and key exchange, then internal systems, then signatures and devices, with monitoring and fallback plans. Throughout, it engages vendors and asks for post-quantum roadmaps in contracts, because many systems cannot be fixed by the customer alone. Budgeting should include testing and certification, which are often larger costs than the cryptographic change itself, and training for engineers who may never have worked with the new algorithms.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Hybrid key exchange default across major services; inventories completed in large organizations; post-quantum code signing for firmware." },
+      { label: "2029 to 2032", value: "Post-quantum certificates and signatures in browsers and operating systems; HSM and smart card products certified." },
+      { label: "2033 to 2035", value: "Deadlines hit in regulated sectors; legacy and embedded systems partially migrated." },
+    ], signals: [
+      "Share of web traffic using post-quantum key exchange.",
+      "Certificate authorities issuing post-quantum certificates.",
+      "Procurement rules requiring post-quantum support.",
+      "New attacks on lattice-based schemes.",
+    ], risks: [
+      "A flaw in a standardized algorithm could force rework.",
+      "Long-lived devices may stay vulnerable for years.",
+      "Large signatures may hurt performance on constrained networks.",
+    ], faq: [
+      { q: "What is the first step for an organization?", a: "Build an inventory of where and how cryptography is used, and rank systems by how long their data must stay secret." },
+      { q: "What is a hybrid key exchange?", a: "A method that combines a classical and a post-quantum algorithm, so that security holds if either one is broken." },
+      { q: "Why are signatures slower to migrate?", a: "Post-quantum signatures are much larger, and certificate infrastructure has many dependencies." },
+    ], references: [
+      "National Institute of Standards and Technology (2024). FIPS 203, FIPS 204, and FIPS 205.",
+      "National Institute of Standards and Technology (2020). NIST Special Publication 800-208: Recommendation for stateful hash-based signature schemes.",
+      "National Institute of Standards and Technology (2024). NIST IR 8547 (initial public draft): Transition to post-quantum cryptography standards.",
+      "Sikeridis, D., Kampanakis, P., & Devetsikiotis, M. (2020). Post-quantum authentication in TLS 1.3: A performance study. NDSS Symposium 2020.",
+      "National Security Agency (2022). Commercial National Security Algorithm Suite 2.0 advisory.",
+      "CISA, NSA, and NIST (2023). Quantum-readiness: Migration to post-quantum cryptography.",
+      "Bernstein, D. J., & Lange, T. (2017). Post-quantum cryptography. Nature, 549, 188-194.",
+      "Castryck, W., & Decru, T. (2023). An efficient key recovery attack on SIDH. EUROCRYPT 2023, LNCS 14008, 423-447.",
+    ], links: [
+      { label: "Paper: Cybersecurity in an Era with Quantum Computers: Will We Be Ready?", href: "/research/mosca-cybersecurity-quantum-computers-2018" },
+      { label: "Paper: An Efficient Key Recovery Attack on SIDH", href: "/research/castryck-decru-sidh-break-2022" },
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+      { label: "Term: Harvest Now, Decrypt Later", href: "/dictionary/harvest-now-decrypt-later" },
+      { label: "Industry: Quantum Computing for Cybersecurity", href: "/industries/cybersecurity" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+    ], words: 1055 },
+  { slug: "quantum-market-funding-future", title: "The Quantum Market: Funding, Valuations, and Bubble Risk", category: "industry-policy", horizon: "2026 to 2040", confidence: "Low", summary: "Quantum companies have raised billions and trade at high valuations while revenue stays small and mostly comes from governments and research. Market forecasts range from tens to hundreds of billions of dollars, so it pays to know how those numbers are built.", sections: [
+      { heading: "The size of the market today", paragraphs: [
+          "Quantum computing revenue is small. Industry analysts such as McKinsey estimated the revenue of quantum computing companies at roughly 650 to 750 million dollars in 2024 and expected it to pass one billion dollars in 2025, and the wider quantum technology market, including sensing and communication, is larger but still in the low single-digit billions. Most customers are governments, national laboratories, universities, and a smaller number of large corporations running pilots. Hardware companies sell on-premises systems for millions to tens of millions of dollars, cloud access by the hour or by the task, and services.",
+          "This is a research-stage market with product-like pricing. Many of the largest contracts are tied to public programs, such as national quantum initiatives and defense research, and a few come from companies buying systems to build expertise. Few customers use quantum computers in production for something they could not do otherwise.",
+        ] },
+      { heading: "Forecasts and how they are built", paragraphs: [
+          "Forecasts of the future market are large and vary widely. McKinsey's 2025 Quantum Technology Monitor suggested that the combined market for quantum computing, communication, and sensing could reach up to about 97 billion dollars by 2035 in an optimistic scenario. Boston Consulting Group's 2024 analysis estimated that quantum computing could create 450 to 850 billion dollars of economic value by 2040, with vendors capturing 90 to 170 billion dollars of revenue, and noted that much of the value would come after fault-tolerant machines arrive.",
+          "These numbers should be read as scenarios, not predictions. They multiply assumed adoption rates, value per use case, and the timing of technical milestones, each of which is uncertain, and small changes in the date of fault-tolerant machines move the totals by large factors. History offers caution: Mohseni and coauthors wrote in Nature in 2017 that quantum technologies could be commercialized within five years, an expectation that did not come true, and market forecasts for emerging technologies often overshoot in the near term and undershoot in the long term.",
+        ] },
+      { heading: "Funding and valuations", paragraphs: [
+          "Capital has flowed in. Venture investment in quantum technology startups was on the order of two billion dollars in 2024, according to industry trackers, and 2025 saw even larger rounds. PsiQuantum raised about a billion dollars in September 2025, Quantinuum raised about 600 million dollars at a valuation of about 10 billion dollars, QuEra raised more than 230 million dollars, Alice and Bob about 100 million euros, and IQM a large round as well. Public pure-play companies such as IonQ, Rigetti, D-Wave, and Quantum Computing Inc. saw their share prices rise sharply in 2024 and 2025, giving some of them multi-billion dollar valuations on revenues of tens of millions of dollars or less. Governments have joined: in May 2026 the US Department of Commerce announced letters of intent with nine companies for about two billion dollars, reported to include equity stakes.",
+          "Valuations reflect expectations of a very large future market, and they depend on continued progress and on investor sentiment. Many companies burn cash faster than they earn revenue, and rely on raising new money or on government contracts to continue.",
+        ] },
+      { heading: "Bubble risk", paragraphs: [
+          "There are signs of exuberance: valuations far above revenue, share prices that moved on announcements, and companies adopting the word quantum in their names or strategies. There are also reasons the picture differs from a pure bubble: the technology advances measurably, large technology companies are investing, governments treat it as strategic, and real progress in error correction has occurred. The risk is not that quantum computing is fake, but that timelines are longer than market prices assume.",
+          "A shakeout is plausible. Technology cycles often include a period of disappointment when promised applications fail to arrive, with consolidation and failures, before the surviving companies mature. The failure of Zapata AI, a quantum software company that reportedly ceased operations in 2024, illustrates that software-only business models can struggle before hardware is ready. Investors and customers should distinguish companies with strong technical teams and enough cash to reach milestones from those that rely on narratives.",
+        ] },
+      { heading: "Where revenue may come from", paragraphs: [
+          "The near-term revenue pools are government programs and defense, post-quantum cryptography and quantum-safe services, quantum sensing products such as clocks and magnetometers, cloud access and research collaborations, and component sales such as cryogenics, lasers, and control electronics. The suppliers of picks and shovels, including cryogenic companies, optical component makers, and electronics vendors, may see steadier revenue than the full-stack vendors, since they sell to many customers.",
+          "Large revenue from quantum computing applications such as chemistry, materials, and optimization depends on fault-tolerant machines and on advantage over classical methods, and we expect it to emerge after 2030. The path from billions of revenue to tens of billions probably runs through that transition.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We rate our confidence as low because market outcomes depend on technical, financial, and political factors that interact. Our central view is that revenue will grow steadily, reaching several billion dollars by 2030 across computing, sensing, and communication, that a funding correction at some point in the late 2020s is more likely than not, and that a handful of leaders with strong technology and capital will emerge with larger shares. For individuals, we caution against treating quantum stocks as simple bets on a technology; they are bets on specific companies, timelines, and capital markets, and this page is not investment advice.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Revenue passes a few billion dollars across quantum technology; large rounds continue; first signs of consolidation." },
+      { label: "2029 to 2032", value: "A possible funding correction; leaders with fault-tolerant roadmaps raise capital; revenue from error-corrected machines begins." },
+      { label: "2033 to 2040", value: "Market growth tied to advantage in chemistry, materials, and cryptanalysis; wide range of outcomes." },
+    ], signals: [
+      "Revenue from commercial customers, not only governments.",
+      "Repeat purchases of systems and recurring cloud contracts.",
+      "Cash runway relative to technical milestones.",
+      "Gaps between valuations and revenue in public companies.",
+    ], risks: [
+      "Technical delays could cause a funding downturn.",
+      "Government funding could change with politics.",
+      "Forecasts may be overly optimistic.",
+    ], faq: [
+      { q: "How big is the quantum computing market today?", a: "Roughly a billion dollars of annual revenue in the mid-2020s, according to analysts, mostly from governments and research." },
+      { q: "Are quantum stocks a bubble?", a: "Valuations are high relative to revenue and depend on future progress. This page is not investment advice." },
+      { q: "Which forecast should I trust?", a: "None individually. Treat market forecasts as scenarios and look at their assumptions." },
+    ], references: [
+      "McKinsey and Company (2025). Quantum Technology Monitor.",
+      "Boston Consulting Group (2024). Where will quantum computing create value, and when?",
+      "Mohseni, M., et al. (2017). Commercialize quantum technologies in five years. Nature, 543, 171-174.",
+      "U.S. Department of Commerce (2026). Department of Commerce announces letters of intent with 9 companies for $2 billion to accelerate U.S. leadership in quantum computing. https://www.quantum.gov/department-of-commerce-announces-letters-of-intent-with-9-companies-for-2-billion-to-accelerate-u-s-leadership-in-quantum-computing/",
+      "EE News Europe (2025). QuEra advances fault tolerant quantum roadmap with $230M industrial push.",
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+    ], links: [
+      { label: "Company: IonQ", href: "/companies/ionq" },
+      { label: "Company: Rigetti Computing", href: "/companies/rigetti" },
+      { label: "Company: D-Wave Quantum", href: "/companies/d-wave" },
+      { label: "Company: Quantinuum", href: "/companies/quantinuum" },
+      { label: "Company: QuEra Computing", href: "/companies/quera" },
+      { label: "Industry: Quantum Computing for Finance", href: "/industries/finance" },
+    ], words: 1030 },
+  { slug: "quantum-business-landscape-future", title: "Who Will Win: Big Tech, Startups, and Consolidation", category: "industry-policy", horizon: "2026 to 2035", confidence: "Low", summary: "The quantum industry mixes technology giants, public pure-plays, and well-funded startups, each with different strengths. Expect acquisitions, partnerships with chipmakers and cloud providers, and a shakeout among companies without a path to fault tolerance.", sections: [
+      { heading: "The cast of players", paragraphs: [
+          "Four groups compete. Technology giants include IBM, Google, Microsoft, Amazon, and Intel, which have research programs, cloud platforms, and balance sheets, and sell access to hardware and software. NVIDIA is a different kind of player: it does not build qubits but supplies the classical computing, software, and links, such as CUDA-Q and NVQLink, that hybrid systems need, and has invested in several quantum startups. Public pure-plays such as IonQ, Rigetti, D-Wave, and Quantum Computing Inc. raised money in public markets. Well-funded private companies include Quantinuum, majority-owned by Honeywell, PsiQuantum, QuEra, Pasqal, Alice and Bob, IQM, Atom Computing, Infleqtion, and Xanadu, along with many smaller firms in software, control systems, sensing, and networking.",
+          "Each group has strengths. Giants bring capital, manufacturing know-how, cloud customers, and patience, but are exposed to internal priorities. Startups are focused and agile but need capital and customers. Public pure-plays have access to equity but face market pressure. The question of who wins depends on which technical approach reaches fault tolerance first and on who can fund the long path.",
+        ] },
+      { heading: "Business models", paragraphs: [
+          "Hardware companies sell in three ways. On-premises systems for national laboratories and corporations, priced from millions to tens of millions of dollars, give revenue and credibility. Cloud access, through their own platforms or through marketplaces such as Amazon Braket and Azure Quantum, gives recurring revenue at smaller scale. Government research contracts and partnerships provide the largest share for many. Software and tools companies, such as Classiq, Q-CTRL, Phasecraft, and others, sell compilers, error suppression, and algorithm services, and face the problem that their market depends on the hardware reaching useful scale. Component suppliers sell cryogenics, lasers, and electronics to many customers.",
+          "Full-stack integration is a strategy for some, such as IBM and Quantinuum, and a risk for others who must master many technologies at once. Specialization and partnerships are the alternative: a company that does a single thing well, such as control electronics or decoders, can serve multiple platforms.",
+        ] },
+      { heading: "Consolidation has begun", paragraphs: [
+          "Acquisitions have started. IonQ, using its public stock and cash, reportedly acquired Qubitekk, took a controlling stake in ID Quantique, and bought Lightsynq, Capella Space, Vector Atomic, and, for about 1.08 billion dollars, Oxford Ionics in 2025, building a position across computing, networking, sensing, and space. Quantinuum was formed in 2021 by merging Honeywell's quantum unit with Cambridge Quantum. Partnerships tie hardware makers to cloud and chip companies: Microsoft works with Atom Computing and Quantinuum, Google has invested in QuEra, and NVIDIA has invested in several companies.",
+          "We expect more of these. Companies with strong technology but limited capital will be acquired or merge, and big technology firms may buy platforms that prove out. Failures will also occur, and the end of the cycle will leave fewer, larger players. Customers should consider the survival of a vendor when committing to a platform, and prefer open software standards that reduce lock-in.",
+        ] },
+      { heading: "How to judge durability", paragraphs: [
+          "Several indicators help. Cash runway relative to the milestones the company says it will reach is the first: a company that must raise money before it can show the next milestone is fragile. Technical credibility is second, measured by peer-reviewed results, independent verification, and a track record of meeting roadmap dates. Third is the revenue mix, in particular the share from repeat commercial customers as opposed to one-time government grants. Fourth is the team's depth in the hard problems, such as error correction, fabrication, and control systems, not only in physics.",
+          "Finally, a plausible path to fault tolerance with credible resource estimates matters. A company whose roadmap needs a million qubits but whose current device has a hundred, and which has no published plan for the intervening steps, is taking a larger risk than one with a staged plan and demonstrated components.",
+        ] },
+      { heading: "What customers should ask before committing", paragraphs: [
+          "Customers choosing a platform should ask practical questions. Can the software run on more than one vendor's hardware, or is it tied to a proprietary toolchain? What happens to access and data if the vendor is acquired or ceases operations? Are prices predictable, and are the terms for cloud time, support, and system upgrades clear? Is the roadmap supported by results that independent experts have reviewed, and does the vendor publish error rates and benchmark data?",
+          "A sensible policy for large organizations is to work with two or three vendors on different technologies at modest scale, to keep skills portable by using open frameworks and standards, and to avoid prepaying for long contracts based on roadmap promises. For small organizations, cloud marketplaces offer flexibility. In all cases, the purchase should be tied to a learning goal or a concrete project, not to the fear of missing out, since the field will change repeatedly in the next decade.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We have low confidence about which companies and technologies will lead, and we expect surprises. A reasonable central scenario is that by 2030, three to five full-stack leaders remain across superconducting, ion, and atom platforms, that photonic and topological approaches either demonstrate critical milestones or fade, and that a larger group of component, software, and service companies serve the ecosystem. Big technology firms will remain important as capital providers and cloud channels. Individuals and organizations should avoid betting on a single winner and should favor skills and interfaces that transfer across platforms.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "More acquisitions and strategic investments; a few startups fail or are absorbed; chipmakers and cloud providers deepen ties." },
+      { label: "2029 to 2032", value: "Leaders emerge on error-corrected machines; funding concentrates; platform shakeout." },
+      { label: "2033 to 2035", value: "A smaller set of established vendors with fault-tolerant products, plus a specialized supplier ecosystem." },
+    ], signals: [
+      "Acquisitions and mergers among hardware makers.",
+      "Independent verification of vendor milestones.",
+      "Cloud marketplaces dropping or adding platforms.",
+      "Cash runway disclosures and funding rounds.",
+    ], risks: [
+      "A technology surprise could upset the leaders.",
+      "Capital markets could close for the sector.",
+      "Vendor lock-in could hurt customers if a platform fails.",
+    ], faq: [
+      { q: "Which company is ahead?", a: "It depends on the measure: Google on demonstrated surface-code scaling, IBM on roadmaps and access, Quantinuum on trapped-ion accuracy, QuEra on neutral-atom logical qubits." },
+      { q: "Should I worry about vendor lock-in?", a: "Yes. Prefer open standards and software that runs on several platforms." },
+      { q: "Will big tech buy the startups?", a: "Some acquisitions are likely, especially for companies with key technology." },
+    ], references: [
+      "McKinsey and Company (2025). Quantum Technology Monitor.",
+      "IonQ (2025). IonQ to acquire Oxford Ionics. IonQ press release, June 2025.",
+      "Quantinuum (2021). Honeywell and Cambridge Quantum announce the formation of Quantinuum. Press release, 29 November 2021.",
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+      "NVIDIA (2025). NVQLink announcement. NVIDIA press release, October 2025.",
+      "Mohseni, M., et al. (2017). Commercialize quantum technologies in five years. Nature, 543, 171-174.",
+    ], links: [
+      { label: "Company: IBM", href: "/companies/ibm" },
+      { label: "Company: Google (Google Quantum AI)", href: "/companies/google" },
+      { label: "Company: Microsoft", href: "/companies/microsoft" },
+      { label: "Company: IonQ", href: "/companies/ionq" },
+      { label: "Company: Quantinuum", href: "/companies/quantinuum" },
+      { label: "Company: Classiq", href: "/companies/classiq" },
+    ], words: 1020 },
+  { slug: "quantum-export-controls-supply-chain-future", title: "Export Controls and the Quantum Supply Chain", category: "industry-policy", horizon: "2026 to 2035", confidence: "Medium", summary: "Quantum technology depends on specialized parts, rare materials, and a few suppliers, and governments are restricting exports of key items. These controls and supply bottlenecks will shape who can build quantum machines and how fast.", sections: [
+      { heading: "A supply chain with few suppliers", paragraphs: [
+          "A quantum computer is a system of specialized components, and many have only a handful of suppliers. Superconducting machines need dilution refrigerators, mostly from companies in Finland, the United States, and the United Kingdom, plus cryogenic amplifiers, superconducting cables, and filters. Trapped-ion and neutral-atom machines need narrow-linewidth lasers, optical modulators, vacuum systems, and cameras or detectors. Photonic machines depend on foundries, single-photon sources, and superconducting nanowire detectors. Silicon spin qubits depend on isotopically enriched silicon-28, historically supplied by a small number of sources. All need control electronics, such as fast arbitrary waveform generators and FPGAs.",
+          "Many of these items are produced in small volumes by specialized firms, and lead times are long. A fast-growing market meets a thin supply chain, which can cause delays and price increases, and this is a reason that expanding production capacity has become a priority for governments and companies.",
+        ] },
+      { heading: "Helium-3 and other scarce inputs", paragraphs: [
+          "Dilution refrigerators run on helium-3, a rare isotope produced mainly as a byproduct of the decay of tritium used in nuclear weapons programs, and its supply is limited, as the US Congressional Research Service documented in 2010. Demand from quantum computing, medical imaging, and neutron detection has grown, prices have risen, and each large system uses significant quantities. Alternatives under study include more efficient recycling, adiabatic demagnetization refrigerators, and, more speculatively, extraction of helium-3 from lunar soil, which some startups have proposed. We treat the lunar route as long-term and uncertain.",
+          "Other scarce inputs include ytterbium and strontium isotopes for atomic qubits, rare-earth materials for certain memories, high-purity niobium and tantalum for superconducting circuits, and sapphire and silicon substrates of high quality. Dependence on a few countries for some of these raises resilience concerns similar to those in semiconductors.",
+        ] },
+      { heading: "Export controls", paragraphs: [
+          "Governments have begun to control exports. In September 2024, the US Bureau of Industry and Security issued rules restricting exports of certain quantum computers above defined qubit counts and error-rate thresholds, and of key items such as dilution refrigerators, cryogenic control electronics, parametric amplifiers, and some fabrication and testing equipment, with license requirements for many destinations, and allied governments adopted parallel or complementary measures. The Netherlands, Spain, and France introduced national controls in 2024, the United Kingdom has its own list, and the European Union has been updating its dual-use list to include quantum items.",
+          "The aims are to slow the acquisition of capabilities by countries seen as adversaries, mainly for cryptanalysis and military uses, while keeping trade among allies open. China has its own export rules on some materials and technologies and has invested in domestic substitutes for cryogenic and control equipment. The effect on science is complex: controls can complicate collaboration, hinder access to equipment, and affect the movement of researchers, because transfers of controlled technology to foreign nationals can require licenses.",
+        ] },
+      { heading: "Effects on the industry", paragraphs: [
+          "For companies, controls mean compliance costs, restrictions on markets, and encouragement to localize supply chains. Hardware vendors that sell abroad must track the thresholds, and customers may find that certain systems are unavailable. For countries without domestic suppliers, controls create dependence on allies, which has driven national programs to build capabilities in cryogenics, lasers, and chip fabrication, including in India, Japan, South Korea, and the European Union. For researchers, the practical effect is more paperwork and the need to check whether a collaboration or a purchase triggers a license requirement.",
+          "There are also industrial policy effects. Governments are funding fabrication facilities for superconducting and photonic chips, pilot lines, and testbeds, and tying funding to domestic manufacturing, as in the 2026 US Commerce Department announcement. This can speed progress by solving bottlenecks but can also duplicate effort and fragment standards.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect controls to broaden and become more detailed as technology matures, with thresholds updated to reflect new capabilities, and for allied alignment to improve. Supply bottlenecks will ease in some areas as volume rises, for example in dilution refrigerators and lasers, and persist in others, such as isotopes and specialized foundry capacity. Helium-3 will remain a constraint for cryogenic systems, favoring platforms that avoid dilution refrigerators or require less cooling power, and encouraging recycling. Companies should map their supply chains, dual-source critical components where possible, and build export compliance into planning. Policymakers should aim for controls that are targeted and clear, since broad or unpredictable rules harm legitimate research and industry.",
+        ] },
+      { heading: "What companies and researchers can do", paragraphs: [
+          "Practical steps are straightforward. Companies should map their bill of materials to identify single-source components and items that may fall under export rules, keep records of classification and licensing decisions, and build relationships with several suppliers where possible. They should plan for lead times, since dilution refrigerators and specialized lasers can take many months to deliver, and consider the location of facilities when hiring international staff or sharing technical data.",
+          "Researchers should check with their institution's export compliance office before ordering controlled equipment or sharing controlled technical data with collaborators abroad, and should be aware that fundamental research is often exempt under many regimes while specific technology transfers are not. Funders and universities can help by providing clear guidance and by supporting shared facilities, such as national cryogenic and fabrication centers, which reduce duplication and give smaller groups access to scarce equipment.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "More export-control rules, including allied updates; supply bottlenecks for fridges and lasers ease; domestic pilot lines announced." },
+      { label: "2029 to 2032", value: "Regional supply chains develop; helium-3 recycling and alternatives mature; controls track fault-tolerant capabilities." },
+      { label: "2033 to 2035", value: "Quantum treated like semiconductors in trade policy, with routine licensing regimes and allied supply networks." },
+    ], signals: [
+      "New or revised thresholds in US, EU, and allied export rules.",
+      "Helium-3 prices and supply announcements.",
+      "Domestic dilution refrigerator and laser production in India, Japan, and Europe.",
+      "Delays in system deliveries attributed to supply issues.",
+    ], risks: [
+      "Overbroad controls could harm science.",
+      "Supply shortages could slow scaling.",
+      "Fragmented standards could raise costs.",
+    ], faq: [
+      { q: "Why are dilution refrigerators controlled?", a: "Because they are essential for superconducting quantum computers and hard to substitute." },
+      { q: "Is helium-3 running out?", a: "Supply is limited and demand has grown, so price and availability are concerns." },
+      { q: "Do export controls affect researchers?", a: "They can, through licensing for equipment and for sharing controlled technology with foreign nationals." },
+    ], references: [
+      "U.S. Bureau of Industry and Security (2024). Export controls on quantum computing items, interim final rule, September 2024.",
+      "Shea, D. A., & Morgan, D. (2010). The helium-3 shortage: Supply, demand, and options for Congress. Congressional Research Service Report R41419.",
+      "Krinner, S., et al. (2019). Engineering cryogenic setups for 100-qubit scale superconducting circuit systems. EPJ Quantum Technology, 6, 2.",
+      "U.S. Department of Commerce (2026). Department of Commerce announces letters of intent with 9 companies for $2 billion to accelerate U.S. leadership in quantum computing. https://www.quantum.gov/department-of-commerce-announces-letters-of-intent-with-9-companies-for-2-billion-to-accelerate-u-s-leadership-in-quantum-computing/",
+      "European Commission (2025). Quantum Europe Strategy.",
+    ], links: [
+      { label: "Industry: Quantum Computing and the Semiconductor Industry", href: "/industries/semiconductors-electronics" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+      { label: "Term: Dilution Refrigerator", href: "/dictionary/dilution-refrigerator" },
+      { label: "Term: Cryogenic CMOS Control", href: "/dictionary/cryo-cmos" },
+    ], words: 1007 },
+  { slug: "quantum-standards-regulation-future", title: "Standards and Regulation for Quantum Technology", category: "industry-policy", horizon: "2026 to 2035", confidence: "High", summary: "Standards bodies and regulators are moving from post-quantum cryptography to broader quantum technology. Expect firm deadlines for cryptographic migration, formal terminology and benchmarks for quantum computers, and certification schemes for quantum communication.", sections: [
+      { heading: "Why standards matter now", paragraphs: [
+          "A young technology needs shared definitions before markets can work. Without agreed terms and tests, a qubit count or a speedup claim cannot be compared across vendors, and customers cannot judge performance or security. Standards also support procurement, regulation, and interoperability: programming languages, hardware interfaces, and cryptographic algorithms that work together. In quantum technology, standardization has progressed fastest where urgency is greatest, in cryptography, and is now spreading to computing, communication, and sensing.",
+        ] },
+      { heading: "Cryptography: the most advanced area", paragraphs: [
+          "NIST published the first post-quantum standards in August 2024 and selected HQC in March 2025. Governments have attached deadlines. The US NSM-10 of 2022 and the Quantum Computing Cybersecurity Preparedness Act require agencies to inventory cryptography and prepare for migration, with an overall target around 2035, and the Office of Management and Budget issued a memorandum in 2022 on the inventory. NSA's CNSA 2.0 sets algorithm and timing requirements for national security systems, with most categories exclusive by 2033. The UK NCSC has milestones at 2028, 2031, and 2035, the European Commission issued a recommendation in 2024 and a coordinated implementation roadmap in 2025 calling for national plans by 2026, high-risk systems by 2030, and as many systems as feasible by 2035, and Australia and Canada have published comparable timelines. In finance, the G7 Cyber Expert Group and the Bank for International Settlements have published statements and projects on quantum readiness.",
+          "These instruments are moving from guidance to requirements in procurement and sector rules. Organizations that sell to governments or operate critical infrastructure will face contract clauses that require post-quantum support, and auditors will ask about inventories and migration plans.",
+        ] },
+      { heading: "Quantum computing: terminology, performance, and software", paragraphs: [
+          "Work on computing standards is earlier. The IEEE has projects on quantum computing definitions and terminology and on performance metrics and benchmarking, and the joint technical committee of ISO and IEC on quantum technologies, created in 2024, is developing a program of standards. In Europe, CEN and CENELEC have a joint technical committee on quantum technologies. The Quantum Economic Development Consortium in the United States publishes application-oriented benchmarks and use-case guidance.",
+          "Software interfaces matter too. OpenQASM 3, described by Cross and coauthors in 2022, is a widely used circuit language, the Quantum Intermediate Representation, hosted by the QIR Alliance under the Linux Foundation, offers a common compiler target, and cloud providers support several kits. These are de facto standards from industry, and formal standardization may follow.",
+        ] },
+      { heading: "Quantum communication and sensing", paragraphs: [
+          "For quantum key distribution, ETSI has produced specifications and protection profiles, and the ISO and IEC standard 23837 on security evaluation of QKD systems was published in 2023, with certification schemes emerging in Europe and Asia. The International Telecommunication Union has study groups on quantum key distribution networks and a focus on terminology and architecture. The IETF's Quantum Internet Research Group produced RFC 9340 on architectural principles in 2023.",
+          "For quantum sensing, national metrology institutes work on traceability, calibration, and performance testing, since customers need to know that a quantum magnetometer or clock meets a specification. The international discussions on redefining the second using optical clocks are a notable example of metrology shaping standards.",
+        ] },
+      { heading: "Regulation beyond cryptography", paragraphs: [
+          "Regulation is likely to extend to export controls, as discussed elsewhere in this series, to data protection concerns about harvest-now-decrypt-later, to safety rules for products using quantum sensors in medicine and aviation, and to procurement rules for critical infrastructure. Questions of liability, for example when a system relying on weak cryptography is breached years after data was collected, are open. Privacy regulators have begun to note that encryption must protect data for the length of time it needs to be confidential, which implies quantum-safe measures for sensitive long-lived data.",
+          "There is little regulation specific to quantum computing as a computing technology, and we do not expect much in this decade, because the machines are not yet widely deployed. Safety and ethics questions will arise with applications, such as the use of quantum-enhanced methods in medicine or finance, and would be handled under existing sectoral rules.",
+        ] },
+      { heading: "Practical steps for organizations", paragraphs: [
+          "Organizations can take concrete steps. Assign someone to track standards and regulatory developments in cryptography and in the sectors they operate in, and map internal policies to the deadlines of the main regulators that affect them. Join industry groups that participate in standards work, since early involvement helps shape practical requirements and gives early notice of changes. When procuring products, ask suppliers whether they follow the relevant standards, for example the NIST post-quantum algorithms, and request evidence of testing and certification.",
+          "For quantum computing and sensing projects, document benchmarks and methods in ways that follow emerging conventions, so that results can be compared and audited, and prefer open interfaces, such as OpenQASM and the common intermediate representations, that reduce dependence on a single vendor. Standards work is slow, but organizations that engage with it usually find that compliance later is cheaper and easier than retrofitting.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect standards and regulation in cryptography to tighten steadily and to be the most consequential for organizations in this decade. Performance and terminology standards for quantum computers will mature by about 2030, helping to make claims comparable, and certification for QKD and quantum sensing will follow. Organizations should follow their sector regulators, join industry consortia that shape standards, and treat compliance deadlines as planning anchors, not as the finish line, because a cryptographic transition takes years.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "National migration plans due; procurement clauses require post-quantum support; first ISO/IEC and IEEE quantum standards drafts." },
+      { label: "2029 to 2031", value: "Deadlines for high-risk systems; performance and benchmarking standards published; QKD certification matures." },
+      { label: "2032 to 2035", value: "Quantum-safe cryptography required in most regulated sectors; standards for fault-tolerant computing metrics." },
+    ], signals: [
+      "Procurement rules requiring post-quantum algorithms.",
+      "Publication of ISO and IEC quantum standards.",
+      "Sector regulators issuing quantum-readiness requirements.",
+      "Adoption of common benchmarks across vendors.",
+    ], risks: [
+      "Fragmented national standards could raise costs.",
+      "Deadlines could be pushed back.",
+      "Standards could lag technology.",
+    ], faq: [
+      { q: "What are the main quantum security standards?", a: "NIST's FIPS 203, 204, and 205, with HQC selected as a backup, and national deadlines such as NSA's CNSA 2.0." },
+      { q: "Is there a standard for quantum computer performance?", a: "Work is under way at IEEE, ISO and IEC, and industry groups, but no single standard is widely adopted yet." },
+      { q: "Will quantum computing be regulated?", a: "Mostly indirectly, through export controls, cryptography rules, and sector regulations." },
+    ], references: [
+      "National Institute of Standards and Technology (2024). FIPS 203, FIPS 204, and FIPS 205.",
+      "The White House (2022). National Security Memorandum 10 (NSM-10).",
+      "United States Congress (2022). Quantum Computing Cybersecurity Preparedness Act, Public Law 117-260.",
+      "National Security Agency (2022). Commercial National Security Algorithm Suite 2.0 advisory.",
+      "European Commission (2024). Recommendation on a coordinated implementation roadmap for the transition to post-quantum cryptography.",
+      "UK National Cyber Security Centre (2025). Timelines for migration to post-quantum cryptography.",
+      "Cross, A., et al. (2022). OpenQASM 3: A broader and deeper quantum assembly language. ACM Transactions on Quantum Computing, 3, 12.",
+      "Kozlowski, W., Wehner, S., Van Meter, R., et al. (2023). Architectural principles for a quantum internet. IETF RFC 9340.",
+    ], links: [
+      { label: "Paper: Cybersecurity in an Era with Quantum Computers: Will We Be Ready?", href: "/research/mosca-cybersecurity-quantum-computers-2018" },
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+      { label: "Term: Quantum SDK", href: "/dictionary/quantum-sdk" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+      { label: "Industry: Quantum Computing for Cybersecurity", href: "/industries/cybersecurity" },
+    ], words: 1027 },
+  { slug: "quantum-india-future", title: "India and Quantum Technology: The National Quantum Mission and Beyond", category: "industry-policy", horizon: "2026 to 2038", confidence: "Medium", summary: "India's National Quantum Mission funds computing, communication, sensing, and materials hubs, and a growing set of startups and institutions is building hardware and software. The country has strong talent, and its challenges are fabrication, supply chains, and scale of funding.", sections: [
+      { heading: "The National Quantum Mission", paragraphs: [
+          "India's Union Cabinet approved the National Quantum Mission on 19 April 2023, with a budget of about 6,003 crore rupees for the period from 2023 to 2024 through 2030 to 2031, to be implemented by the Department of Science and Technology. The mission aims to build intermediate-scale quantum computers with 50 to 1,000 physical qubits in five to eight years, to establish satellite-based secure quantum communication between ground stations over distances up to 2,000 kilometers within India and long-distance quantum key distribution with other countries, to develop inter-city quantum key distribution over fiber networks of about 2,000 kilometers, and to build advanced quantum sensing and metrology devices, including magnetometers with high sensitivity, atomic clocks, and quantum materials and devices.",
+          "The mission organizes work in four thematic hubs, announced in 2024: quantum computing at the Indian Institute of Science in Bengaluru, quantum communication at IIT Madras together with C-DOT, quantum sensing and metrology at IIT Bombay, and quantum materials and devices at IIT Delhi. The hubs link universities, national laboratories, and industry, and the mission funds fellowships, startups, and infrastructure.",
+        ] },
+      { heading: "What exists and who is building", paragraphs: [
+          "India has a long record in quantum theory and experiment. The Tata Institute of Fundamental Research, the Raman Research Institute, IISc, IIT groups, and the Physical Research Laboratory have worked on superconducting circuits, trapped ions, cold atoms, quantum optics, and quantum information, and several groups have built small superconducting qubit devices. The Indian Space Research Organisation demonstrated free-space quantum key distribution over a few hundred meters in 2021, and DRDO and IIT Delhi reported longer free-space links, which are steps toward satellite communication.",
+          "A startup ecosystem has formed. QpiAI in Bengaluru has reported building a 25-qubit superconducting processor and plans for larger ones, QNu Labs sells quantum-safe security products including quantum key distribution and post-quantum solutions, BosonQ Psi works on quantum software for engineering simulation, and other firms build tools, sensors, and services. Large Indian IT services companies, including TCS, Infosys, Wipro, and HCL, have quantum practices, often in partnership with IBM, Microsoft, and others, and the state of Andhra Pradesh has announced the Amaravati Quantum Valley initiative with plans to host a large IBM quantum system and attract companies and researchers. Details of some of these programs have been announced through press releases and should be treated as plans until delivered.",
+        ] },
+      { heading: "Strengths and constraints", paragraphs: [
+          "India's main strengths are talent and software. The country produces large numbers of engineers and scientists, has strong computer science and mathematics, and a services industry that can build software, compilers, and applications on top of hardware from others. These strengths suit areas such as algorithms, error-correction software, post-quantum cryptography migration, and quantum-safe security for the country's large digital public infrastructure, including payments and identity systems.",
+          "Constraints are significant. Fabrication of superconducting and photonic chips needs cleanroom facilities and processes that are still limited, supply chains for dilution refrigerators, lasers, and cryogenic electronics rely on imports, and funding, though substantial for India, is smaller than the programs of the United States, China, or the European Union. Retaining talent is a challenge, since many researchers move abroad. Export controls by other countries could complicate access to equipment, an additional reason for domestic capacity building.",
+        ] },
+      { heading: "Opportunities for students, developers, and companies", paragraphs: [
+          "For students, the mission funds research positions, fellowships, and new courses at IITs, IISc, and other institutes, and open resources and cloud access make it possible to learn quantum programming from anywhere. For software developers, opportunities exist in quantum software tools, hybrid algorithms, error-correction decoders, and simulators, as well as in post-quantum cryptography engineering, where demand from banks and government is growing. For companies, the security market is the nearest, since regulators and large institutions, including financial services, will need to migrate to quantum-safe cryptography, and quantum sensing and communication products fit the government's priorities.",
+          "For ventures in the digital economy, including web and blockchain developers, the practical connection is cryptographic readiness. Systems that handle identity, payments, and long-lived records should plan for post-quantum signatures and key exchange, and Indian developers building on global platforms will follow the schedules of those platforms.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect India to establish credible capabilities in quantum communication and sensing and in software during the next five years, and to demonstrate a domestic processor in the range of tens to a hundred or so physical qubits within the mission period, which would be a significant achievement but far from fault tolerance. India is unlikely to lead in hardware scale this decade, and its greatest opportunities are likely to be in applications, security, services, and specialized components. Progress will depend on fabrication infrastructure, sustained funding beyond the mission, and the ability to keep talent in the country. Meeting the mission's 2,000-kilometer communication goals would depend on satellite launches and ground infrastructure that take time.",
+        ] },
+      { heading: "What to watch in the next three years", paragraphs: [
+          "Several milestones will show how the mission is progressing. The first is the publication of data from hub-built processors, including coherence times and gate fidelities, which will indicate whether domestic devices are competitive for their size. The second is the launch and operation of the first satellite and fiber quantum communication links that connect cities, with measured key rates and uptime. The third is the formation of domestic supply capacity for cryogenic systems, lasers, and control electronics, since dependence on imports is the main bottleneck.",
+          "Policy milestones matter as much. Regulators in finance and telecommunications may issue post-quantum migration requirements, which would create a market for local security products and services. Funding announcements beyond 2031, procurement policies that favor domestic suppliers, and programs that connect research groups to industry will determine whether early progress turns into an industry. These are signals that students, developers, and entrepreneurs can follow to decide where to invest their time.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Hubs deliver prototypes; domestic processors of tens of qubits; Amaravati and other facilities start operations; more startups and services contracts." },
+      { label: "2029 to 2031", value: "Mission targets of intermediate-scale machines and long-distance QKD tested; national post-quantum migration policies develop." },
+      { label: "2032 to 2038", value: "India as a strong player in applications, security, and components; hardware scale depends on fabrication and funding." },
+    ], signals: [
+      "Delivery of domestic processors with published fidelity data.",
+      "Satellite QKD missions and inter-city fiber networks.",
+      "Follow-on funding after 2031.",
+      "Indian regulators issuing post-quantum migration requirements.",
+    ], risks: [
+      "Fabrication and supply-chain limits could slow hardware.",
+      "Talent migration could weaken capacity.",
+      "Announced programs may be delayed.",
+    ], faq: [
+      { q: "What is the National Quantum Mission?", a: "A program approved in April 2023 with about 6,000 crore rupees to build quantum computers, communication networks, sensors, and materials in India by 2031." },
+      { q: "Which Indian companies work on quantum?", a: "QpiAI, QNu Labs, BosonQ Psi, and others, plus IT services companies with quantum practices." },
+      { q: "How can I start a quantum career in India?", a: "Learn the foundations, use cloud platforms and open tools, and look for research and fellowship opportunities in the mission hubs." },
+    ], references: [
+      "Government of India, Press Information Bureau (2023). Cabinet approves National Quantum Mission, 19 April 2023.",
+      "Department of Science and Technology, Government of India (2024). National Quantum Mission: announcement of thematic hubs.",
+      "Nielsen, M. A., & Chuang, I. L. (2010). Quantum computation and quantum information (10th anniversary ed.). Cambridge University Press.",
+      "Hughes, C., et al. (2022). Assessing the needs of the quantum industry. IEEE Transactions on Education, 65, 592-601.",
+      "McKinsey and Company (2025). Quantum Technology Monitor.",
+    ], links: [
+      { label: "Paper: Quantum Cryptography: Public Key Distribution and Coin Tossing", href: "/research/bennett-brassard-bb84-1984" },
+      { label: "Term: Quantum Key Distribution", href: "/dictionary/quantum-key-distribution" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+      { label: "Industry: Quantum Computing for Telecommunications", href: "/industries/telecommunications" },
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+    ], words: 1117 },
+  { slug: "quantum-enterprise-readiness-future", title: "A Practical Roadmap for Companies: How to Prepare for Quantum", category: "industry-policy", horizon: "2026 to 2035", confidence: "High", summary: "Most organizations need to act on quantum security now and on quantum computing applications later. A staged plan, with clear owners, small experiments, and decision points tied to measurable signals, avoids both panic and neglect.", sections: [
+      { heading: "Separate the two questions", paragraphs: [
+          "Executives often hear two stories about quantum at once: the threat to cryptography and the promise of new computing capabilities. They have different timelines, owners, and urgency. The security question is a risk-management task with deadlines from regulators and a clear action list, and it applies to almost every organization that uses encryption. The computing question is a strategic option relevant to a smaller set of industries, such as pharmaceuticals, chemicals, materials, finance, logistics, and energy, and its timeline is longer and less certain.",
+          "Treat them as separate programs with separate budgets. Mixing them leads to either overspending on quantum computing pilots while neglecting migration, or underinvesting in both because the promise looks distant.",
+        ] },
+      { heading: "The security program", paragraphs: [
+          "The security program should start now. Appoint an owner, usually in the security or architecture function, and a sponsor in senior management. Build an inventory of cryptographic assets: protocols, libraries, certificates, hardware security modules, data stores, and third-party services. Classify data by how long it must remain confidential, and identify systems with long service lives. Set target dates aligned with regulators and customers. Require vendors to provide post-quantum roadmaps, and include quantum-readiness in procurement. Pilot hybrid key exchange and test post-quantum certificates in a lab. Plan for crypto-agility, so that algorithms can be swapped.",
+          "Budget for the long tail. Legacy systems, embedded devices, and external dependencies will take years. Mosca's inequality is a useful framing for executives: if the time data must stay secret plus the time to migrate exceeds the time until a quantum computer can break current cryptography, action is overdue.",
+        ] },
+      { heading: "The computing program: stage it", paragraphs: [
+          "For organizations in industries where quantum computing could matter, a staged approach works. In the learning stage, now through about 2028, a small team builds literacy, follows the field, runs tutorials on simulators and cloud hardware, and identifies two or three candidate problems with potentially high value, such as strongly correlated chemistry, certain simulation workloads, or optimization problems where classical methods struggle. The team estimates, using public resource estimates, what scale of machine each problem would need.",
+          "In the readiness stage, from about 2028 to 2032, the organization prepares data and workflows so that high-accuracy quantum calculations could be used when available: curated datasets, hybrid classical-quantum pipelines, vendor relationships, and partnerships with universities or national laboratories. It watches for the signals that fault-tolerant machines with enough logical qubits are arriving. In the adoption stage, after about 2032 and only if the signals are met, it runs production pilots on fault-tolerant hardware and decides on scaling.",
+        ] },
+      { heading: "How to run pilots well", paragraphs: [
+          "Good pilots have a defined business question, a baseline using the best classical method, a time limit, and a decision rule. Insist on comparing against a strong classical approach, including GPU-accelerated and machine-learning methods, and measure cost and quality, not only speed. Avoid problems chosen because they fit a quantum circuit. Treat results honestly: a negative result that shows the classical method is better is a useful outcome. Keep pilots small, because the value is learning and relationships, not production results in the near term.",
+          "Vendor selection deserves care. Look for peer-reviewed results, independent benchmarks, a credible hardware roadmap, access to experts, and open software interfaces that reduce lock-in. Consider cloud access before purchasing a system, and consider the financial stability of the vendor.",
+        ] },
+      { heading: "People and governance", paragraphs: [
+          "A small cross-functional group is usually enough: a technical lead with quantum knowledge, a domain expert in the target application, a security architect, and a business sponsor. Training should be proportional: broad awareness for managers and engineers, deeper skills for a few. Hiring should focus on strong engineers and scientists who can learn quantum, since the market for experienced quantum specialists is tight. External advisors and academic partnerships can fill gaps. Report progress to the board in terms of risk and options, with a short list of signals that would trigger a change in investment.",
+        ] },
+      { heading: "A one-page checklist", paragraphs: [
+          "For quick use, the plan can be reduced to a checklist. For security: name an owner, build the cryptographic inventory within the next year, classify data by confidentiality lifetime, require vendor roadmaps, pilot hybrid key exchange, adopt crypto-agility, and schedule migration of the highest-risk systems first. For computing: name a small team, choose two or three candidate problems, estimate the machine size they need from public resource estimates, run one or two time-limited pilots with strong classical baselines, and set decision signals for escalating or stopping.",
+          "For governance: report to senior management twice a year with a short list of signals, keep budgets small and tied to milestones, and review the plan whenever a major result appears, such as an independent demonstration of low logical error rates or a change in regulatory deadlines. This level of effort will not be expensive for most companies, and it positions them to act quickly if the field moves faster than expected.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "The organizations that will benefit most are those that did the unglamorous work early: security migration, data readiness, and a small team with good judgment. They will be able to move quickly when machines arrive and will have avoided the cost of crisis responses and hype-driven spending. The signals that should change the plan are logical qubit counts and error rates from independent sources, resource estimates for the organization's chosen problems falling within announced machine capabilities, and verified advantage on tasks like theirs. Until then, a modest and steady program is the right size for most.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Inventory and pilots for post-quantum migration; small quantum literacy teams; hybrid key exchange in production." },
+      { label: "2029 to 2031", value: "Migration of high-risk systems; data and workflow readiness for chemistry, materials, and simulation users." },
+      { label: "2032 to 2035", value: "Production pilots on fault-tolerant machines for organizations whose signals are met; broad completion of cryptographic migration." },
+    ], signals: [
+      "Independent logical qubit results with low error rates.",
+      "Resource estimates for your target problems below announced machine sizes.",
+      "Peer-reviewed advantage on tasks similar to yours.",
+      "Regulatory deadlines for quantum-safe cryptography in your sector.",
+    ], risks: [
+      "Overspending on pilots without a decision rule.",
+      "Underestimating the long tail of security migration.",
+      "Vendor lock-in or vendor failure.",
+    ], faq: [
+      { q: "What should a company do first about quantum?", a: "Start the cryptographic inventory and plan the migration to post-quantum algorithms." },
+      { q: "Do all companies need a quantum computing strategy?", a: "No. Only a subset of industries have likely applications, and for them a staged, low-cost approach is enough." },
+      { q: "How big should a quantum team be?", a: "Small. A few people with clear goals and external partners are enough for most organizations." },
+    ], references: [
+      "Mosca, M. (2018). Cybersecurity in an era with quantum computers: Will we be ready? IEEE Security and Privacy, 16(5), 38-41.",
+      "CISA, NSA, and NIST (2023). Quantum-readiness: Migration to post-quantum cryptography.",
+      "National Institute of Standards and Technology (2024). FIPS 203, FIPS 204, and FIPS 205.",
+      "Dalzell, A. M., et al. (2023). Quantum algorithms: A survey of applications and end-to-end complexities. arXiv:2310.03011.",
+      "Alexeev, Y., et al. (2021). Quantum computer systems for scientific discovery. PRX Quantum, 2, 017001.",
+      "Beverland, M. E., et al. (2022). Assessing requirements to scale to practical quantum advantage. arXiv:2211.07629.",
+      "Boston Consulting Group (2024). Where will quantum computing create value, and when?",
+    ], links: [
+      { label: "Paper: Cybersecurity in an Era with Quantum Computers: Will We Be Ready?", href: "/research/mosca-cybersecurity-quantum-computers-2018" },
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+      { label: "Term: Quantum Cloud Computing", href: "/dictionary/quantum-cloud-computing" },
+      { label: "Industry: Quantum Computing for Pharmaceuticals and Drug Discovery", href: "/industries/pharmaceuticals" },
+      { label: "Industry: Quantum Computing for Finance", href: "/industries/finance" },
+    ], words: 1058 },
 ];
 
 export function getFutureTopic(slug: string) {
