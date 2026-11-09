@@ -2378,6 +2378,596 @@ export const futureTopics: FutureTopic[] = [
       { label: "Industry: Quantum Computing for Pharmaceuticals and Drug Discovery", href: "/industries/pharmaceuticals" },
       { label: "Industry: Quantum Computing for Finance", href: "/industries/finance" },
     ], words: 1058 },
+  { slug: "quantum-skeptics-case-future", title: "The Skeptic's Case: What Critics Get Right and Wrong", category: "science-outlook", horizon: "2026 to 2035", confidence: "Medium", summary: "Skeptics of quantum computing make several distinct arguments, from physics to economics. The claim that large quantum computers are impossible in principle is losing ground to experiments, while doubts about timelines and usefulness remain reasonable.", sections: [
+      { heading: "Four kinds of skepticism", paragraphs: [
+          "People who doubt quantum computing do not all doubt the same thing. The first kind is physical: the argument that noise, especially correlated noise, will always overwhelm large quantum systems, so scalable fault tolerance cannot be achieved. The second is about usefulness: even if machines are built, they may be good at few problems that matter, and classical methods may keep up. The third is about timing: the machines may arrive, but decades later than promised. The fourth is about business: the sector may be overhyped, overfunded, and prone to a bust.",
+          "These are separate, and the evidence bears on each differently. Conflating them leads to unproductive debates in which a critique of the hype is mistaken for a claim that the physics is wrong, or the reverse.",
+        ] },
+      { heading: "The physical argument and the evidence", paragraphs: [
+          "The strongest physical skeptics have been Gil Kalai, a mathematician at the Hebrew University, who argued from 2011 that correlated noise in realistic systems would defeat the assumptions of the threshold theorem and cap quantum computation at small scales, and Mikhail Dyakonov, a physicist, who argued in articles and a 2020 book that the number of continuous parameters of a large quantum state makes control impossible in practice. Their positions deserve credit for forcing the field to examine assumptions about noise.",
+          "Experiments have been unkind to the strong form of the argument. The threshold theorem assumes that errors are not too correlated, and the experiments test exactly that. Google's 2024 result showed logical error falling by a factor of about 2.14 per increase in code distance from 3 to 5 to 7, which is what the theory predicts when errors are sufficiently local and uncorrelated, and repetition-code experiments up to distance 29 showed error suppression until rare correlated bursts from cosmic rays appeared at a level near one in ten billion. Quantinuum and QuEra experiments on other platforms support the picture in smaller form. This does not prove that scaling will continue to the million-qubit level, but it moves the burden: a skeptic must now explain why the observed scaling would stop, and at what scale.",
+        ] },
+      { heading: "The usefulness argument", paragraphs: [
+          "This argument is stronger. Only a few problems have known large quantum speedups: factoring and discrete logarithms, simulating quantum systems, and some structured problems. For many popular applications, speedups are quadratic or unproven, and Babbush and coauthors showed that quadratic speedups are hard to exploit on error-corrected machines. Dequantization results, starting with Tang's in 2018, showed that some claimed exponential speedups in machine learning vanish when classical algorithms are given comparable data access. Noisy-device results by Aharonov and coauthors and by Quek and coauthors show limits on what unprotected machines can do.",
+          "A reasonable view is that quantum computers will be powerful tools for a narrow but important set of problems, such as cryptanalysis and the simulation of quantum matter, and perhaps for a few others, not general accelerators. Many proponents agree. Where skeptics and proponents differ is on how valuable the narrow set will be, and on whether verified advantage will appear soon.",
+        ] },
+      { heading: "The timing and business arguments", paragraphs: [
+          "Timing skepticism is well founded in history. Mohseni and coauthors wrote in 2017 that quantum technologies could be commercialized in five years, and that did not happen; roadmaps have slipped; and the engineering of millions of components with low error is hard. At the same time, the field has met several intermediate targets, such as below-threshold error correction, ahead of or near predictions made a decade ago. A fair summary is that dates should be treated with wide error bars and that the direction of progress is real.",
+          "Business skepticism points to valuations far above revenue, reliance on government funding, and the risk of a correction. We discussed this in the market topic of this series. It is a reason for caution by investors and customers, not a reason to doubt the science.",
+        ] },
+      { heading: "What skeptics have contributed", paragraphs: [
+          "Skeptics and careful critics have improved the field. Aaronson's essay Read the Fine Print set standards for describing speedups, Tang's dequantization showed how to question input assumptions, classical simulation groups have forced advantage claims to be more rigorous, and critiques of noise models led to better experiments on correlated errors. A healthy field needs this pressure. The best proponents welcome it, and the worst hype is exposed by it.",
+        ] },
+      { heading: "Questions both sides should answer", paragraphs: [
+          "A productive debate would ask each side for predictions that can fail. Proponents should say at what scale logical error would stop falling, and how they would respond if it did. Skeptics should say what scaling result would change their minds, for example logical error falling for three consecutive increases of code distance with correlated errors measured and found small. Both should agree on the data to be collected, such as burst rates and leakage statistics, and on a time frame, so that disputes end in evidence instead of repetition.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We take the in-principle impossibility argument to be increasingly unlikely, because experiments keep passing the tests it predicts will fail, but we do not rule out a surprise at larger scales. We think the usefulness and timing critiques are fair and that readers should expect delays and narrow initial applications. A balanced position is that quantum computing is a real long-term technology with uncertain timing and scope. Over the next five years, the experiments that most inform the debate are tests of whether logical error continues to fall at larger distances, whether logical gates have the same scaling, and whether decoders keep up.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Experiments extend below-threshold scaling to larger codes and to logical gates; skeptics focus on correlated noise and scale." },
+      { label: "2029 to 2031", value: "Tens to hundreds of logical qubits tested; the in-principle debate fades if scaling holds; usefulness debate intensifies." },
+      { label: "2032 to 2035", value: "Evidence on real applications decides between the narrow-tool and broad-accelerator views." },
+    ], signals: [
+      "Logical error decreasing at distances above 11 on hardware.",
+      "Correlated error rates measured at the million-qubit scale.",
+      "Independent confirmation of advantage on a useful task.",
+      "Failures of scaling that cannot be fixed by engineering.",
+    ], risks: [
+      "Correlated noise could emerge at larger scales.",
+      "Classical methods could stay ahead on most problems.",
+      "Overhype could provoke a backlash that harms funding.",
+    ], faq: [
+      { q: "Are quantum computers impossible?", a: "Experiments show error correction working as theory predicts at small scales, so impossibility in principle looks unlikely, though scaling to large machines is unproven." },
+      { q: "Is quantum computing overhyped?", a: "Parts of it are, especially claims about near-term business value and universal speedups." },
+      { q: "Who are the main critics?", a: "Gil Kalai and Mikhail Dyakonov on physical grounds, and many scientists on hype and usefulness." },
+    ], references: [
+      "Kalai, G. (2011). How quantum computers fail: Quantum codes, correlations in physical systems, and noise accumulation. arXiv:1106.0485.",
+      "Dyakonov, M. (2018). The case against quantum computing. IEEE Spectrum, 15 November 2018.",
+      "Dyakonov, M. (2020). Will we ever have a quantum computer? Springer.",
+      "Aaronson, S. (2015). Read the fine print. Nature Physics, 11, 291-293.",
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+      "McEwen, M., et al. (2022). Resolving catastrophic error bursts from cosmic rays in large arrays of superconducting qubits. Nature Physics, 18, 107-111.",
+      "Babbush, R., et al. (2021). Focus beyond quadratic speedups for error-corrected quantum advantage. PRX Quantum, 2, 010103.",
+      "Mohseni, M., et al. (2017). Commercialize quantum technologies in five years. Nature, 543, 171-174.",
+      "Quek, Y., et al. (2024). Exponentially tighter bounds on limitations of quantum error mitigation. Nature Physics, 20, 1648-1658.",
+    ], links: [
+      { label: "Paper: Quantum Error Correction Below the Surface Code Threshold", href: "/research/google-below-threshold-2024" },
+      { label: "Paper: A Quantum-Inspired Classical Algorithm for Recommendation Systems", href: "/research/tang-quantum-inspired-recommendation-2019" },
+      { label: "Paper: Fault-Tolerant Quantum Computation with Constant Error Rate", href: "/research/aharonov-ben-or-fault-tolerant-constant-error-1997" },
+      { label: "Paper: Exponentially Tighter Bounds on Limitations of Quantum Error Mitigation", href: "/research/quek-limits-of-error-mitigation-2024" },
+      { label: "Term: Threshold Theorem", href: "/dictionary/threshold-theorem" },
+      { label: "Term: Fault Tolerance", href: "/dictionary/fault-tolerance" },
+    ], words: 1070 },
+  { slug: "quantum-scenarios-2035-future", title: "Three Scenarios for 2030, 2035, and 2040", category: "science-outlook", horizon: "2030 to 2040", confidence: "Low", summary: "Instead of one forecast, we sketch three plausible futures: fast, base, and slow. Each has different milestones in logical qubits, advantage, and cryptographic risk, and the branch points can be observed in the next few years.", sections: [
+      { heading: "Why scenarios", paragraphs: [
+          "A single date for a technology milestone creates false precision. Scenario thinking lays out coherent alternative futures, assigns rough likelihoods, and identifies the observations that would tell us which one is unfolding. For quantum computing, three scenarios cover the plausible range. The probabilities below are our judgment, not measurements, and they are meant to be revised as evidence arrives.",
+          "The variables that separate the scenarios are the scaling of logical error with code size, the speed and cost of decoding and magic states, the ability to link modules, and the economics of building and running large systems. A surprise in any of them can move the world from one scenario to another.",
+        ] },
+      { heading: "Scenario A: fast (about 20 percent)", paragraphs: [
+          "In the fast scenario, roadmaps are met or nearly met. By 2029 to 2030, several platforms demonstrate error-corrected machines with 100 to 200 logical qubits and logical error rates near one in a million, and logical gates and magic states work at scale. By 2030, verified scientific advantage in simulation is accepted, and early industrial use in chemistry appears. By 2033 to 2035, machines with about 1,000 logical qubits run chemistry calculations such as FeMoco, and RSA-2048 and elliptic-curve cryptography become breakable around 2034 to 2036, which requires post-quantum migration to be complete.",
+          "This scenario requires several things to go right at once: no new error floors, fast decoders, successful modular links, and sustained funding. It is plausible mainly because estimates for useful machines keep falling and because several well-resourced teams are on similar paths.",
+        ] },
+      { heading: "Scenario B: base (about 50 percent)", paragraphs: [
+          "In the base scenario, progress is real but slower than roadmaps. Logical qubit counts reach the tens by about 2028 and 100 to 200 around 2031 to 2033, with logical error near 10 to the minus 4 to 10 to the minus 6. Scientific advantage in simulation is established around 2028 to 2031. Commercial advantage in chemistry and materials appears in the mid-2030s, in narrow cases. Machines with about a thousand logical qubits arrive around 2035 to 2038. Cryptographically relevant machines are plausible in the late 2030s, with large uncertainty, and migration deadlines of 2030 to 2035 are met mostly on time.",
+          "This scenario assumes that engineering difficulties, such as wiring, cryogenics, decoding, and manufacturing yield, add a few years to each stage but do not block it. It is our central expectation.",
+        ] },
+      { heading: "Scenario C: slow (about 30 percent)", paragraphs: [
+          "In the slow scenario, something fundamental slows progress. A new source of correlated errors at larger scales, a materials or yield limit, a decoder bottleneck, or a funding collapse after disappointing results could extend timelines by a decade or more. Logical qubit counts stagnate in the tens through the early 2030s, advantage remains limited to a few scientific tasks, commercial applications do not appear before 2040, and cryptographic threats move beyond 2040. Quantum sensing and communication continue to grow and provide most commercial revenue, and the field consolidates around a few companies and government programs.",
+          "This scenario does not mean failure. Even in it, post-quantum cryptography migration is worthwhile, since the risk remains, and quantum sensing and simulation deliver value.",
+        ] },
+      { heading: "Branch points to watch", paragraphs: [
+          "We would move probability toward the fast scenario if logical error continues to fall at distances of 11 and above with logical gates and without post-selection, if fast decoders and cheap magic states are demonstrated at scale, if modular links work with high fidelity, and if resource estimates for key problems keep falling. We would move toward the slow scenario if error floors appear at larger distances, if leakage or correlated bursts resist mitigation, if the cost per logical qubit stays high, or if funding falls sharply.",
+          "Because these observations will arrive over the next three to five years, the scenarios will become clearer by around 2029. Decisions with long lead times, such as cryptographic migration and workforce development, should not wait for that clarity, since they pay off in all three scenarios.",
+        ] },
+      { heading: "How to use scenarios in decisions", paragraphs: [
+          "Scenarios are most useful for deciding under uncertainty. An action is robust if it pays off in all three scenarios, such as migrating cryptography, building a small team of skilled people, and adopting open software standards. An action is a bet if it pays off in one scenario only, such as committing to a specific vendor's roadmap date or building production systems that assume fault-tolerant machines in 2030. Robust actions should be done now, and bets should be sized so that a loss does not threaten the organization.",
+          "It also helps to define triggers. For example, an organization might decide to raise its quantum budget if two independent groups show logical error falling at code distance 11 or above on different platforms, or to lower exposure if error floors prevent scaling. Triggers convert abstract uncertainty into decisions that can be reviewed once or twice a year, and they prevent both overreaction to single announcements and neglect of real changes.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "The scenarios share a common feature: in all of them, the next five years are about error correction, not about applications. The practical advice is to prepare for the base case, hedge for the fast case by moving cryptographic migration forward, and not to bet an organization's strategy on any particular year. If you must pick one number to remember, it is that the most important changes in cryptography and chemistry are more likely to occur in the 2030s than in the 2020s, with the spread of dates from about 2030 to beyond 2040.",
+        ] },
+    ], forecast: [
+      { label: "By 2030", value: "Fast: 100 to 200 logical qubits. Base: tens of logical qubits, simulation advantage. Slow: small logical systems, contested advantage." },
+      { label: "By 2035", value: "Fast: chemistry and cryptanalysis within reach. Base: first narrow commercial advantage. Slow: still tens of logical qubits." },
+      { label: "By 2040", value: "Fast: broad use in science and industry. Base: thousand-logical-qubit machines in use. Slow: limited to niches, with key milestones still ahead." },
+    ], signals: [
+      "Logical error scaling at distances above 11.",
+      "Cost per logical qubit and per logical operation.",
+      "Decoder latency and magic state costs at scale.",
+      "Funding and policy trends.",
+    ], risks: [
+      "Probabilities are subjective and may be miscalibrated.",
+      "Unknown unknowns could create a scenario we have not considered.",
+      "Scenarios may differ by platform.",
+    ], faq: [
+      { q: "Which scenario is most likely?", a: "We put about 50 percent on the base case, 20 percent on fast, and 30 percent on slow. These are judgments and will change." },
+      { q: "What should I do in all scenarios?", a: "Migrate cryptography, build skills, and track the leading indicators." },
+      { q: "When will we know?", a: "Around 2029, when logical qubit scaling at larger sizes will be clear." },
+    ], references: [
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+      "Quantinuum (2025). Quantinuum launches Helios and publishes its roadmap to a fault-tolerant machine. Press release, November 2025.",
+      "Gidney, C. (2025). How to factor 2048 bit RSA integers with less than a million noisy qubits. arXiv:2505.15917.",
+      "Mosca, M., & Piani, M. Quantum threat timeline report. Global Risk Institute (annual).",
+      "Preskill, J. (2018). Quantum computing in the NISQ era and beyond. Quantum, 2, 79.",
+      "Dalzell, A. M., et al. (2023). Quantum algorithms: A survey of applications and end-to-end complexities. arXiv:2310.03011.",
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+    ], links: [
+      { label: "Paper: How to Factor 2048 Bit RSA Integers with Less than a Million Noisy Qubits", href: "/research/gidney-rsa-million-qubits-2025" },
+      { label: "Paper: Quantum Computing in the NISQ Era and Beyond", href: "/research/preskill-nisq-era-2018" },
+      { label: "Term: Fault Tolerance", href: "/dictionary/fault-tolerance" },
+      { label: "Term: NISQ", href: "/dictionary/nisq" },
+      { label: "Term: Logical Qubit", href: "/dictionary/logical-qubit" },
+    ], words: 1059 },
+  { slug: "quantum-failure-modes-future", title: "What Could Go Wrong: Failure Modes of Large Quantum Computers", category: "science-outlook", horizon: "2026 to 2035", confidence: "Medium", summary: "Scaling quantum computers can fail in specific, identifiable ways: correlated error bursts, leakage, decoder backlogs, cryogenic and wiring limits, yield, and economic shocks. Knowing them helps interpret roadmaps and spot warning signs early.", sections: [
+      { heading: "Why catalog failure modes", paragraphs: [
+          "Every engineering field has a list of ways large systems fail, and quantum computing has its own. Cataloging them is not pessimism but a way to understand which results matter. Roadmaps tend to emphasize successes; the failure modes tell you what could slow them. Most have identified mitigations, and the question is whether the mitigations will work at scale.",
+        ] },
+      { heading: "Correlated errors and rare events", paragraphs: [
+          "The threshold theorem assumes that errors are local or weakly correlated. Real devices have events that break this assumption. McEwen and coauthors showed in 2021 that cosmic-ray impacts on a superconducting chip create bursts in which many qubits fail at once, and Google's long repetition-code experiments found a floor on logical error near one in ten billion cycles from such events. Other sources include stray radiation, thermal fluctuations of defects, and fluctuations of control electronics that affect many qubits together.",
+          "Mitigations include shielding, placing devices underground, engineering the substrate to absorb phonons, detecting bursts and excluding affected regions, and decoders that account for correlations. A larger machine has more area exposed to such events, so the rate of bursts per computation rises with size, and an algorithm that runs for days needs the burst rate to be low enough that the machine rarely fails mid-run.",
+        ] },
+      { heading: "Leakage, defects, and drift", paragraphs: [
+          "Qubits can leave the computational states, a problem called leakage, and leaked qubits cause correlated errors for many cycles until detected and reset. Leakage reduction circuits and erasure-based designs reduce the problem, but they add complexity. Material defects, such as two-level systems in superconducting circuits, change over time and can move a qubit out of its working range, so calibrations drift. Large machines need automated calibration that runs continuously without disturbing computation, and a failure of that infrastructure would degrade performance across the chip.",
+          "Yield is a related concern. If a fabrication process yields working qubits with some probability, large chips will contain bad qubits and bad couplers. Architectures must tolerate defects, by routing around them or by using modular designs with tested components.",
+        ] },
+      { heading: "Decoding and control bottlenecks", paragraphs: [
+          "A decoder that cannot keep up creates a backlog, as Terhal pointed out in 2015, and the delay grows exponentially in the number of operations that depend on decoded results. Real-time decoders have been shown for moderate codes, but scaling to hundreds of logical qubits with qLDPC codes and fast cycles is not yet demonstrated. Classical control electronics must also scale: millions of channels of precise timing and signal generation are needed, and their power and noise can limit performance. A failure here would show up as a logical clock rate far below the promised value.",
+        ] },
+      { heading: "Cryogenic, supply, and manufacturing limits", paragraphs: [
+          "Superconducting systems depend on dilution refrigerators with limited cooling power, and wiring heat loads scale with qubit number. If cryo-CMOS, optical links, and multiplexing do not deliver, machines will be limited to hundreds of thousands of qubits at most, or will require many refrigerators linked by lossy interconnects. Helium-3 supply, specialized lasers, enriched isotopes, and foundry capacity are further constraints, discussed in the supply chain topic of this series. For photonic machines, loss is the equivalent: if component losses stay above the thresholds, large machines cannot work.",
+        ] },
+      { heading: "Algorithmic, economic, and social failure modes", paragraphs: [
+          "Not all failures are technical. If algorithmic overheads stay high, or if classical methods keep up, the machines may be too slow or too expensive to be worth using for most problems, even if they work. If funding falls after disappointing results, as happened in earlier technology cycles, progress could slow for years. Security missteps, such as a premature claim of cryptographic breakthrough or a flawed post-quantum standard, could damage trust. Talent shortages and fragmented standards can slow integration.",
+          "A different failure is complacency: organizations that assume the threat or opportunity is far away and do not prepare, then face a rush when it arrives.",
+        ] },
+      { heading: "Early warning signs", paragraphs: [
+          "Several indicators could reveal trouble before a roadmap date is missed. If published logical error rates stop improving when code distance rises, or improve less than the theory predicts, correlated errors may be the cause. If vendors report physical qubit counts but stop reporting error rates, or report logical qubits with small codes and post-selection while avoiding strict definitions, the underlying scaling may be weak. If decoder latency is not mentioned in announcements of logical clock rates, it may be a bottleneck.",
+          "Other warning signs include delays in delivery of announced chips, repeated changes of roadmap emphasis, a shift from qubit count to other metrics without data, and departures of key technical staff. None of these is proof of failure, and companies sometimes change plans for good reasons, but a pattern of several signs together deserves attention. Conversely, regular publication of detailed data, including negative results, is a good sign of an engineering culture that finds and fixes problems.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We think the most likely sources of delay, in order, are decoding and control scaling, correlated errors and leakage at large sizes, wiring and cryogenic limits, and manufacturing yield. Each has plausible mitigations in progress, and most are engineering problems with known directions. The least predictable are rare events that appear only at scale, which is why large demonstrations, rather than small ones, are the most valuable evidence. We rate our confidence as medium, since the list is based on current knowledge, and unknown unknowns are likely.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Tests of burst mitigation, leakage removal, and real-time decoders on hundreds of qubits." },
+      { label: "2029 to 2031", value: "Evidence on whether wiring, cryogenics, and decoders scale to hundreds of logical qubits." },
+      { label: "2032 to 2035", value: "Large-scale effects, such as rare events and yield, determine practical limits." },
+    ], signals: [
+      "Measured rate of correlated error bursts per qubit-hour as chips grow.",
+      "Decoder latency at the largest codes.",
+      "Cost per qubit and power per logical qubit.",
+      "Yield data from fabrication lines.",
+    ], risks: [
+      "New failure modes may appear only at larger scale.",
+      "Mitigations may be costly.",
+      "Several failure modes could occur together.",
+    ], faq: [
+      { q: "What is a correlated error burst?", a: "An event, such as a cosmic-ray impact, that causes many qubits to fail at the same time." },
+      { q: "What is leakage?", a: "A qubit leaving its two computational states and ending up in another energy level." },
+      { q: "Why does decoder speed matter?", a: "Because syndrome data arrive every microsecond, and a slow decoder causes a backlog that slows or stops the computation." },
+    ], references: [
+      "McEwen, M., et al. (2022). Resolving catastrophic error bursts from cosmic rays in large arrays of superconducting qubits. Nature Physics, 18, 107-111.",
+      "Google Quantum AI and collaborators (2025). Quantum error correction below the surface code threshold. Nature, 638, 920-926.",
+      "Terhal, B. M. (2015). Quantum error correction for quantum memories. Reviews of Modern Physics, 87, 307-346.",
+      "Krinner, S., et al. (2019). Engineering cryogenic setups for 100-qubit scale superconducting circuit systems. EPJ Quantum Technology, 6, 2.",
+      "Bartolucci, S., et al. (2023). Fusion-based quantum computation. Nature Communications, 14, 912.",
+      "Babbush, R., et al. (2021). Focus beyond quadratic speedups for error-corrected quantum advantage. PRX Quantum, 2, 010103.",
+      "Shea, D. A., & Morgan, D. (2010). The helium-3 shortage: Supply, demand, and options for Congress. Congressional Research Service Report R41419.",
+    ], links: [
+      { label: "Paper: Quantum Error Correction Below the Surface Code Threshold", href: "/research/google-below-threshold-2024" },
+      { label: "Paper: Learning High-Accuracy Error Decoding for Quantum Processors", href: "/research/bausch-alphaqubit-decoder-2024" },
+      { label: "Term: Leakage Error", href: "/dictionary/leakage-error" },
+      { label: "Term: Crosstalk", href: "/dictionary/crosstalk" },
+      { label: "Term: Syndrome Measurement", href: "/dictionary/syndrome-measurement" },
+    ], words: 1021 },
+  { slug: "quantum-energy-sustainability-future", title: "The Energy and Environmental Footprint of Quantum Computing", category: "science-outlook", horizon: "2026 to 2040", confidence: "Low", summary: "Quantum computers use modest power today, mostly for cooling and control, but scaling to millions of qubits changes the picture. Whether quantum computing is green depends on whether it solves problems with far less energy than classical machines, which is plausible for some tasks and unproven for most.", sections: [
+      { heading: "Where the energy goes today", paragraphs: [
+          "A superconducting quantum computer draws power mainly for its cryogenic system and its classical control electronics. A dilution refrigerator with its pulse-tube cooler, compressors, and pumps typically uses on the order of ten to a few tens of kilowatts, and control racks and room-temperature electronics add to that, so a current system uses power comparable to a few households up to a small commercial building. Trapped-ion and neutral-atom systems use lasers, vacuum pumps, and electronics, with power in a similar range of tens of kilowatts depending on the design, and they avoid dilution refrigerators. Photonic systems use lasers and cryogenic detectors.",
+          "These numbers are small compared with supercomputers. The Frontier exascale system at Oak Ridge uses about 20 megawatts, and AI data centers draw tens to hundreds of megawatts or more. Today's quantum computers are therefore minor consumers in absolute terms, though their computational output is also small.",
+        ] },
+      { heading: "The energy problem at scale", paragraphs: [
+          "Scaling changes the arithmetic. A fault-tolerant machine with a million physical qubits needs control electronics for millions of channels, decoders processing terabits per second, and cooling for a much larger heat load. Fellous-Asiani and coauthors analyzed in 2023 the resource efficiency of full-stack quantum computers and found that for a given computation, the energy depends strongly on how the physical error rate trades against the number of qubits and the cooling and control overheads, and that optimized designs can reduce consumption significantly. Auffèves argued in 2022 that the field needs a quantum energy initiative to include energy as a design metric alongside speed and accuracy.",
+          "A rough view is that large machines could draw megawatts, similar to a supercomputer. If so, the energy cost per computation depends on how fast the machine runs and how much work it does.",
+        ] },
+      { heading: "Could quantum computing save energy?", paragraphs: [
+          "The hope is that quantum computers will solve some problems with far less energy than classical ones. Jaschke and Montangero estimated in 2023 that for certain tasks, quantum computers could achieve an energy-efficiency advantage at large problem sizes, since the energy of the quantum computation grows more slowly with problem size than that of classical supercomputing for those tasks. If a calculation that would require a classical supercomputer running for months can be done by a quantum computer in hours, the energy saving could be large.",
+          "This is conditional on advantage existing for the task, which is not yet established for useful problems. For tasks without advantage, a quantum computer uses more energy than a classical one for the same result. The quantum cost is also dominated by overheads, such as error correction and cooling, that can erase the benefit for modest speedups. In that respect, energy follows the same logic as time: only large advantages pay.",
+        ] },
+      { heading: "Materials, manufacturing, and helium", paragraphs: [
+          "The environmental footprint includes more than electricity. Manufacturing cryogenic systems, superconducting chips, and lasers uses energy and materials, and some inputs are scarce or have environmental costs: helium-3 and helium-4, high-purity metals such as niobium, rare isotopes, and electronic-grade silicon. Helium is a nonrenewable resource that is lost to the atmosphere when released, and quantum computing is a small but growing consumer. Systems that recycle helium and designs that avoid dilution refrigerators reduce this.",
+          "A full life-cycle accounting is rare. As the industry grows, customers and regulators may ask for it, in the way they do for data centers.",
+        ] },
+      { heading: "Comparison with AI", paragraphs: [
+          "A fashionable claim is that quantum computers will relieve the energy crisis in AI. The evidence does not support it. Training and running large neural networks involves massive matrix operations on classical data, for which known quantum algorithms offer no advantage, and loading large data sets into a quantum computer is itself costly. Quantum computers may help design better chips or materials for energy use in the long term, but that is a separate and distant benefit. For now, the largest energy question in computing is about AI data centers, not quantum computers.",
+        ] },
+      { heading: "Metrics that would make energy claims meaningful", paragraphs: [
+          "A useful metric would be energy per logical operation, measured at the wall socket, including cooling, control electronics, and decoding, and reported together with the logical error rate and the code used. A second would be energy per solved instance of a benchmark problem, compared with the energy of the best classical solution on the same problem. These measurements are rarely published today, partly because systems are experimental and partly because the numbers may be unflattering.",
+          "Standardizing such metrics would let buyers compare platforms and would reveal whether claims of efficiency hold up. It would also encourage design choices that save energy, such as cryo-CMOS that reduces cable heat, efficient pulse tubes, higher operating temperatures for spin qubits, and architectures that need fewer physical qubits per logical qubit. Several research groups have called for energy to be treated as a first-class design metric, and we expect this to become part of benchmarking in the early 2030s.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect the absolute energy use of quantum computing to stay small relative to classical computing through the 2020s, and to grow with fault-tolerant machines in the 2030s to the scale of large supercomputers, where energy efficiency per logical operation becomes a design target. Whether quantum computing turns out to save energy depends on advantage, which we discussed elsewhere. Vendors should publish energy per logical operation as a standard metric, and buyers should ask for it. We give low confidence to the claim of a net environmental benefit before 2040.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Vendors begin to report power and energy per task; cryo-CMOS and efficient cooling reduce overhead." },
+      { label: "2029 to 2032", value: "Energy per logical operation becomes a design metric; first studies of energy advantage on real workloads." },
+      { label: "2033 to 2040", value: "Fault-tolerant machines consume megawatts; net benefit depends on advantage for high-value tasks." },
+    ], signals: [
+      "Published energy per logical operation or per task.",
+      "Cooling power and wiring heat per qubit in new designs.",
+      "Helium use and recycling reports.",
+      "Studies comparing energy of quantum and classical solutions for the same task.",
+    ], risks: [
+      "Cooling and control overheads could grow faster than expected.",
+      "Lack of advantage would make quantum less efficient than classical.",
+      "Resource constraints such as helium could add costs.",
+    ], faq: [
+      { q: "How much power does a quantum computer use?", a: "Tens of kilowatts for current systems, mostly for cooling and control, far less than supercomputers." },
+      { q: "Is quantum computing green?", a: "It could be for tasks with large advantage, but that is not yet shown." },
+      { q: "Will quantum computers fix AI's energy use?", a: "No evidence suggests so. Quantum algorithms do not speed up standard deep learning." },
+    ], references: [
+      "Jaschke, D., & Montangero, S. (2023). Is quantum computing green? An estimate for an energy-efficiency quantum advantage. Quantum Science and Technology, 8, 025001.",
+      "Auffèves, A. (2022). Quantum technologies need a quantum energy initiative. PRX Quantum, 3, 020101.",
+      "Fellous-Asiani, M., et al. (2023). Optimizing resource efficiencies for scalable full-stack quantum computers. PRX Quantum, 4, 040319.",
+      "Krinner, S., et al. (2019). Engineering cryogenic setups for 100-qubit scale superconducting circuit systems. EPJ Quantum Technology, 6, 2.",
+      "Shea, D. A., & Morgan, D. (2010). The helium-3 shortage: Supply, demand, and options for Congress. Congressional Research Service Report R41419.",
+      "Aaronson, S. (2015). Read the fine print. Nature Physics, 11, 291-293.",
+    ], links: [
+      { label: "Term: Dilution Refrigerator", href: "/dictionary/dilution-refrigerator" },
+      { label: "Term: Cryogenic CMOS Control", href: "/dictionary/cryo-cmos" },
+      { label: "Industry: Quantum Computing, AI, and Data Centers", href: "/industries/artificial-intelligence-data-centers" },
+      { label: "Industry: Quantum Computing for Energy and Utilities", href: "/industries/energy" },
+    ], words: 1057 },
+  { slug: "quantum-ethics-society-future", title: "Ethics, Equity, and Society in the Quantum Age", category: "industry-policy", horizon: "2026 to 2040", confidence: "Medium", summary: "Quantum technology raises questions about security, privacy, military use, access, and public trust. Responsible innovation frameworks are emerging, and the earliest ethical issues come from cryptography and the concentration of capability.", sections: [
+      { heading: "Why ethics matters for quantum", paragraphs: [
+          "Every general-purpose technology brings benefits and risks that are unevenly shared. Quantum technology differs from many predecessors in two ways. First, its most certain early consequence is a security risk: the potential to break cryptography that protects everyone's data. Second, it is expensive and concentrated in a few countries and companies, which raises questions of access and power. Researchers have begun to develop responsible innovation approaches for the field, including the Ten Principles for Responsible Quantum Innovation published by Kop and coauthors in 2024 and the Quantum Computing Governance Principles of the World Economic Forum from 2022.",
+        ] },
+      { heading: "Security, privacy, and the harvest problem", paragraphs: [
+          "The most immediate ethical issue is the exposure of data to future decryption. Information collected today by governments, companies, or criminals can be stored and decrypted when quantum computers arrive. For individuals, this affects medical records, communications, and personal histories. For societies, it affects the confidentiality of whistleblowers, journalists, dissidents, and diplomatic exchanges. The obligation to protect long-lived sensitive data, by using post-quantum or hybrid encryption, falls mainly on organizations that hold it, and regulators are beginning to treat it as part of data protection duties.",
+          "There is also an asymmetry. A state with an early quantum capability for cryptanalysis could read others' traffic without their knowing, which creates incentives for secrecy and for arms-race dynamics. Transparent migration timelines and international norms on responsible disclosure could reduce the risk, but there are no binding rules.",
+        ] },
+      { heading: "Access and equity", paragraphs: [
+          "Quantum computing hardware is concentrated in the United States, China, and a few other countries, and in a handful of companies. Cloud access broadens participation, and open-source software and free tiers help students and researchers worldwide, but the infrastructure, skills, and capital are unevenly distributed. If quantum advantage in drug discovery, materials, and finance materializes, countries and firms without access could fall behind, extending existing digital divides. Programs such as India's National Quantum Mission and regional initiatives in Africa, Latin America, and Southeast Asia aim to build local capacity, and educational outreach by vendors and universities helps.",
+          "Within countries, concentration of expertise raises similar concerns: the benefits of quantum-enabled products may accrue to large firms, while workers and smaller companies lack the skills to take part. Education, open tools, and public research funding that is not tied to a single vendor can help spread benefits.",
+        ] },
+      { heading: "Military and dual-use issues", paragraphs: [
+          "Quantum technologies have dual uses. Quantum sensing for navigation and detection, secure communication, and cryptanalysis all have military value. Export controls and national security policies shape the field, as discussed elsewhere in this series. Ethical questions include whether researchers have responsibilities regarding potential military applications, how to maintain scientific openness while limiting proliferation of sensitive capabilities, and how to avoid a destabilizing race. Some researchers have called for international dialogue on norms for quantum technologies analogous to those for other emerging technologies, but progress is slow.",
+        ] },
+      { heading: "Public understanding and trust", paragraphs: [
+          "Misleading claims harm public trust. Hype about quantum computers curing diseases or solving climate change sets expectations that cannot be met, and pseudo-scientific uses of the word quantum in products and wellness claims confuse the public. Honest communication by scientists, companies, and journalists, including clear statements of uncertainty, is an ethical duty in a field where the public cannot easily judge claims. Education about what quantum computers can and cannot do helps people make sensible choices, as consumers, workers, and citizens.",
+        ] },
+      { heading: "Practical steps for organizations", paragraphs: [
+          "Organizations that develop or use quantum technology can adopt practical measures. They can inventory long-lived sensitive data and protect it with quantum-safe encryption now, publish honest descriptions of what their systems can and cannot do, and avoid marketing that implies capabilities they do not have. They can include diverse voices in design and governance, support education and access programs, and consider how their products affect workers and communities. Companies working with defense or intelligence customers can establish review processes for sensitive uses.",
+          "Researchers can follow responsible research practices: clear communication of uncertainty, careful handling of dual-use findings, and openness consistent with legal requirements. Funders can require data management and ethics statements in quantum projects and support interdisciplinary work with social scientists and ethicists, who can help anticipate effects that technical teams might miss.",
+          "Citizens and consumers can contribute by asking organizations about their plans for quantum-safe security, by being skeptical of exaggerated claims, and by supporting public education. The aim is not to slow progress but to make sure that its benefits and risks are shared more fairly than in earlier technology waves.",
+        ] },
+      { heading: "Questions for the next decade", paragraphs: [
+          "Several questions deserve public discussion before they become urgent. Who decides how quantum-enabled capabilities, such as large-scale cryptanalysis, are used, and under what oversight? How should the benefits of quantum-designed drugs and materials be shared, especially with countries that did not take part in the research? What obligations do companies have to disclose weaknesses in cryptographic products that they know are vulnerable? Early, open debate on such questions is cheaper and better than reacting after harm has occurred.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect ethical and governance questions to grow in importance as the technology matures, starting with cryptography and security, and extending to access, competition, and international norms. A practical approach for organizations is to adopt responsible innovation principles, such as transparency about capabilities and limits, attention to security and privacy by design, consideration of the effects on workers and communities, and engagement with stakeholders. For policymakers, priorities include timely migration to quantum-safe cryptography, support for broad education and open tools, and international cooperation to avoid avoidable arms-race dynamics.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Privacy and data-protection regulators address long-lived data and quantum-safe encryption; responsible innovation frameworks adopted by some companies." },
+      { label: "2029 to 2032", value: "International discussions on quantum norms and export policy; equity programs expand through national missions and global partnerships." },
+      { label: "2033 to 2040", value: "If advantage appears, debates on access, competition, and concentration of capability intensify." },
+    ], signals: [
+      "Privacy regulators referencing harvest-now-decrypt-later risks.",
+      "International agreements or norms on quantum technology.",
+      "Funding programs for access and education in lower-income regions.",
+      "Adoption of responsible innovation principles by major vendors.",
+    ], risks: [
+      "Unequal access could widen divides.",
+      "Secrecy and arms-race dynamics could grow.",
+      "Hype could damage public trust.",
+    ], faq: [
+      { q: "Is quantum computing a threat to privacy?", a: "Indirectly, because recorded encrypted data could be decrypted later unless it is protected with quantum-safe methods." },
+      { q: "Who will benefit from quantum technology?", a: "Early benefits go to organizations with access and expertise, so education and open tools matter for wider participation." },
+      { q: "Are there ethical guidelines for quantum technology?", a: "Yes, such as the Ten Principles for Responsible Quantum Innovation and the World Economic Forum's governance principles." },
+    ], references: [
+      "Kop, M., Aboy, M., De Jong, E., et al. (2024). Ten principles for responsible quantum innovation. Quantum Science and Technology, 9, 035013.",
+      "World Economic Forum (2022). Quantum Computing Governance Principles.",
+      "Mosca, M. (2018). Cybersecurity in an era with quantum computers: Will we be ready? IEEE Security and Privacy, 16(5), 38-41.",
+      "Government of India, Press Information Bureau (2023). Cabinet approves National Quantum Mission, 19 April 2023.",
+      "Fox, M. F. J., Zwickl, B. M., & Lewandowski, H. J. (2020). Preparing for the quantum revolution: What is the role of higher education? Physical Review Physics Education Research, 16, 020131.",
+    ], links: [
+      { label: "Paper: Cybersecurity in an Era with Quantum Computers: Will We Be Ready?", href: "/research/mosca-cybersecurity-quantum-computers-2018" },
+      { label: "Term: Harvest Now, Decrypt Later", href: "/dictionary/harvest-now-decrypt-later" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+      { label: "Industry: Quantum Computing for Cybersecurity", href: "/industries/cybersecurity" },
+    ], words: 1064 },
+  { slug: "quantum-ip-open-source-future", title: "Patents, Open Source, and the Quantum Software Commons", category: "industry-policy", horizon: "2026 to 2035", confidence: "Medium", summary: "Quantum technology combines a patent race in hardware with a strong open-source culture in software. How these coexist will shape competition, standards, and who can participate.", sections: [
+      { heading: "Two cultures", paragraphs: [
+          "Quantum computing grew from academic physics and computer science, where publishing and sharing are the norm, and has attracted large companies and venture-funded startups, for whom intellectual property is a strategic asset. The result is a mix: open-source software frameworks and public preprints sit alongside patent portfolios on hardware, control methods, and error correction, and trade secrets around fabrication processes and calibration techniques.",
+        ] },
+      { heading: "The open-source ecosystem", paragraphs: [
+          "Open-source software is central. IBM's Qiskit, released in 2017 and described by Javadi-Abhari and coauthors in 2024, is widely used. Google's Cirq, Xanadu's PennyLane described by Bergholm and coauthors in 2018, NVIDIA's CUDA-Q, Amazon's Braket SDK, Quantinuum's tket, and many others are available under permissive licenses such as Apache 2.0. Simulators and tools such as Stim for stabilizer circuits, described by Gidney in 2021, and decoders such as PyMatching are open, and the community shares code through repositories and foundations, including the Linux Foundation's QIR Alliance and the Unitary Fund, which supports open-source projects.",
+          "The openness has accelerated learning and made research reproducible. It has also given companies a way to attract developers to their platforms, since users of a framework tend to use that vendor's hardware. This is a business strategy as well as an altruistic act, and it creates a mild form of lock-in, which standards such as OpenQASM 3 and the common intermediate representations aim to loosen.",
+        ] },
+      { heading: "Patents and the hardware race", paragraphs: [
+          "Companies and universities file patents on qubit designs, control schemes, error-correcting codes and decoders, cryogenic and packaging technology, and applications. Patent filing has risen sharply in the past decade, and landscapes published by patent offices and consultancies show the United States and China as leading in different segments: the United States in computing hardware and software, and China strongly in quantum communication, with Japan, Canada, and Europe also active. Counts depend on how fields are defined, so numbers vary by source.",
+          "Patents may affect the field in several ways. They can protect investment and give companies incentives to develop hardware. They can also create thickets, in which many overlapping patents complicate entry, and the risk of litigation. So far, quantum patent litigation has been limited, and cross-licensing and defensive patenting are common. Some universities and companies have made patents available under open terms or pledged not to assert them against open-source users, and the Open Quantum Initiative-style efforts have been discussed.",
+        ] },
+      { heading: "Standards, openness, and competition", paragraphs: [
+          "Standards touch intellectual property: if a standard depends on patented technology, the holders may need to license it on fair terms. Cryptographic standards are an example. NIST's post-quantum selection process considered patent issues, and one of the algorithms, the code-based HQC, and others, were examined for patent encumbrances before selection. Open standards for circuit languages and benchmarks help competition by letting users move between vendors, and openness in error-correction research benefits the field, since improvements to codes and decoders can be used by all hardware teams.",
+        ] },
+      { heading: "Challenges", paragraphs: [
+          "Several tensions deserve attention. Researchers who publish openly may find their ideas patented by others, and companies may keep key advances secret, such as calibration methods, which slows scientific progress. Government funding creates expectations that results will be shared, while national security considerations limit what can be published. Open-source projects depend on contributions from a small number of companies, whose priorities can change, and some tools have been deprecated, such as the removal of pulse-level interfaces from a major framework, which affects users who depended on them.",
+          "For startups, the choice between patenting and open publication is strategic: patents help in fundraising and acquisition, while open contributions build community and credibility.",
+        ] },
+      { heading: "Advice for developers and founders", paragraphs: [
+          "For developers, the practical advice is to build on open frameworks that support more than one backend, to read licenses before including code in products, and to contribute improvements back when appropriate, since contributions build reputation and reduce maintenance. For researchers, depositing code and data in public repositories alongside papers improves reproducibility and citation. Using standard interchange formats, such as OpenQASM and common intermediate representations, protects against vendor changes.",
+          "For founders, intellectual property strategy should match the business. A hardware company with a distinctive device design will typically file patents on core inventions, while keeping process know-how as a trade secret and contributing to open standards where interoperability helps the market. A software company may rely on open source for adoption and sell services, hosted products, or proprietary extensions. Investors will ask about freedom to operate and the origin of the technology, so clean records of university and employer rights are important. Seeking advice early from a patent attorney experienced in quantum technology saves money later.",
+        ] },
+      { heading: "A note on university research", paragraphs: [
+          "Universities play a special role, since much foundational work in quantum technology comes from academic laboratories, and the rules for patenting and licensing university inventions influence the field. Policies that make licensing quick and flexible, and that allow open release of research tools, help startups and collaborations. Policies that are slow or restrictive can push researchers to publish without protection or to move work to other settings. Clear, predictable rules for technology transfer are a quiet but important part of the ecosystem.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect the combination of open-source software and proprietary hardware to continue, with growing standardization at the software layer and more patent activity in hardware and error correction. A major patent dispute is possible as the market grows, but cross-licensing and the cooperative culture may limit it. Policymakers can support the commons by funding open tools and benchmarks, encouraging interoperable standards, and ensuring that publicly funded results are available. Developers should prefer open frameworks with active communities and check licenses when building products.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Continued growth in patent filings; software standards converge; more companies release tools under open licenses." },
+      { label: "2029 to 2032", value: "Larger licensing deals and defensive pools in hardware; open decoders and codes become shared infrastructure." },
+      { label: "2033 to 2035", value: "Mature IP landscape with cross-licensing; occasional litigation as products reach market." },
+    ], signals: [
+      "Patent litigation involving quantum hardware or software.",
+      "New open-source standards adopted by several vendors.",
+      "Licensing pledges or patent pools.",
+      "Deprecations or relicensing of major open-source frameworks.",
+    ], risks: [
+      "Patent thickets could raise barriers to entry.",
+      "Vendor-controlled open source could change direction.",
+      "Secrecy could slow scientific progress.",
+    ], faq: [
+      { q: "Is quantum software open source?", a: "Much of it is. Qiskit, Cirq, PennyLane, and many other tools are open under permissive licenses." },
+      { q: "Can I patent a quantum algorithm?", a: "Rules vary by country and are complicated. Consult a patent attorney, since abstract algorithms face limits in many jurisdictions." },
+      { q: "Does open source lock me into a vendor?", a: "It can influence which hardware you use, so prefer standards such as OpenQASM and portable frameworks." },
+    ], references: [
+      "Javadi-Abhari, A., et al. (2024). Quantum computing with Qiskit. arXiv:2405.08810.",
+      "Bergholm, V., et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. arXiv:1811.04968.",
+      "Gidney, C. (2021). Stim: a fast stabilizer circuit simulator. Quantum, 5, 497.",
+      "Cross, A., et al. (2022). OpenQASM 3: A broader and deeper quantum assembly language. ACM Transactions on Quantum Computing, 3, 12.",
+      "Higgott, O., & Gidney, C. (2025). Sparse blossom: correcting a million errors per core second with minimum-weight matching. Quantum.",
+    ], links: [
+      { label: "Term: Quantum SDK", href: "/dictionary/quantum-sdk" },
+      { label: "Term: Transpilation", href: "/dictionary/transpilation" },
+      { label: "Company: IBM", href: "/companies/ibm" },
+      { label: "Company: Xanadu Quantum Technologies", href: "/companies/xanadu" },
+      { label: "Industry: Quantum Computing and the Public Sector", href: "/industries/government-public-sector" },
+    ], words: 1076 },
+  { slug: "quantum-consumer-future", title: "Quantum in Everyday Life: What Ordinary People Will Actually Use", category: "applications", horizon: "2026 to 2035", confidence: "High", summary: "No one will own a home quantum computer. Consumers will meet quantum technology through quantum-safe messaging, better clocks and sensors, and cloud services, and should be wary of products that use the word quantum as marketing.", sections: [
+      { heading: "What will not happen", paragraphs: [
+          "Quantum computers are not a consumer product and will not be. They need cryogenic or vacuum systems, specialized control, and expert operation, and the problems they solve are not tasks that individuals face. Claims that a future phone or laptop will contain a quantum processor for everyday computing are not supported by the technology or the economics. If you use a quantum computer, you will do it through a cloud service, like a scientist or an engineer, and for specialized tasks.",
+        ] },
+      { heading: "Where consumers already meet quantum technology", paragraphs: [
+          "Several applications are present or near. Quantum-safe messaging is the most visible. Signal introduced a post-quantum key agreement protocol, PQXDH, in 2023, and Apple announced the PQ3 protocol for iMessage in 2024, both combining classical and post-quantum algorithms, and browsers began using hybrid post-quantum key exchange by default in 2024. Users get this protection without doing anything, and it defends against harvest-now-decrypt-later attacks.",
+          "Quantum random number generators have appeared in phones: Samsung and SK Telecom released a phone with a quantum random number chip in 2020. Everyday devices already depend on quantum effects, including lasers, LEDs, flash memory, and MRI scanners, but those are classical devices built on quantum physics, not quantum computers. Quantum-enhanced sensors may appear in navigation and health devices over the next decade, for example in more precise inertial measurement or magnetometers, and optical atomic clocks will support timing for networks and finance in the background.",
+        ] },
+      { heading: "Services behind the scenes", paragraphs: [
+          "Many people will benefit indirectly. Pharmaceutical and materials companies may use quantum computers to design better drugs and batteries, and the results would reach consumers as products, not as quantum devices. Banks and payment networks will migrate to quantum-safe cryptography. Telecom operators may use quantum key distribution for specific links. Wearable brain imaging could improve diagnostics. These are slow-moving, and consumers would rarely notice the quantum part.",
+        ] },
+      { heading: "Education and entertainment", paragraphs: [
+          "Consumers can learn about quantum computing at home. Cloud services give free access to small devices and simulators, games and interactive tutorials teach concepts, and many courses are free. For students, this is a real opportunity to learn by doing, with a laptop and an internet connection. Games that use quantum random numbers or quantum ideas exist, but they are novelties, and the best use of consumer interest is education.",
+        ] },
+      { heading: "Quantum marketing and scams", paragraphs: [
+          "The word quantum is used on products that have nothing to do with quantum technology, from wellness devices and supplements to software and investment schemes. Some are harmless, and some are fraudulent, such as trading systems said to use quantum computers to guarantee profits, or cryptocurrency schemes that claim quantum protection. A good rule is that a consumer product claiming a quantum computer inside, or a quantum advantage for ordinary tasks, is probably misleading. Genuine quantum technologies in consumer settings are specific and checkable, such as a post-quantum protocol in a messaging app, with published specifications.",
+        ] },
+      { heading: "What to do as a consumer", paragraphs: [
+          "There are a few concrete things worth doing. Keep operating systems, browsers, and apps up to date, since post-quantum protections arrive through updates and not through purchases. Use messaging services that publish their post-quantum protocols and prefer those that adopt them early. For passwords and accounts, use a password manager and enable multi-factor authentication, which matter far more for personal security today than any quantum threat. For sensitive long-term data, such as documents you want to stay private for decades, consider strong symmetric encryption with long keys, which is considered resistant to quantum attacks.",
+          "If you want to explore quantum computing, use the free cloud tiers and tutorials from major providers, and try a few small programs on simulators and real devices. If a product, service, or investment pitch claims to use a quantum computer for profit or health benefits, ask for independent evidence, and treat requests for upfront payment with great caution. Regulators in several countries have warned about fraud that exploits interest in new technologies, and quantum is no exception.",
+          "For parents and teachers, the best use of consumer interest is to encourage foundations in mathematics, physics, and programming, which prepare students for quantum and for many other fields. Quantum concepts can be taught at an introductory level using visual tools and simple circuits, and curiosity at that level is a healthy starting point.",
+        ] },
+      { heading: "Frequently confused ideas", paragraphs: [
+          "A few ideas get mixed up in consumer conversations. Quantum computing is not the same as quantum cryptography: the first threatens current encryption, while the second, key distribution, is a defense that uses quantum physics. Post-quantum cryptography is not quantum: it is ordinary software that runs on ordinary computers and resists attacks from quantum computers. A device that uses quantum physics, such as a laser or a flash memory chip, is not a quantum computer. And quantum random numbers are not required for most everyday security, because good conventional sources are adequate.",
+          "Keeping these distinctions in mind makes news easier to read. When you see an announcement, ask which of these it concerns. Is it a computer that processes quantum information, a communication system that uses quantum states, a sensor that uses quantum effects, or software that defends against quantum computers? Each has a different timeline, different benefits, and different relevance to everyday life, and most consumers will meet the last one first.",
+          "Finally, a note on timing. Consumers should not expect sudden changes. Security upgrades arrive quietly through updates, sensors arrive inside other products, and scientific advances reach consumers years later through new materials and medicines. The visible signs will be small, and the real effects will be gradual.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "Over the next decade, consumers will see more quantum-safe security in their apps and devices, perhaps a few quantum-based sensors in specialized products, and heavy marketing using the word quantum. The right response is to keep devices and apps updated, prefer services that adopt post-quantum protections, and be skeptical of unverified claims. We have high confidence in this forecast because it rests on technologies that are already deployed and on the structural reasons that quantum computers are not personal devices.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "Post-quantum protection becomes common in browsers and messaging; QRNG chips appear in more devices; more quantum branding in marketing." },
+      { label: "2029 to 2032", value: "Quantum-enhanced sensors in some navigation and medical devices; quantum-safe payments and identity systems." },
+      { label: "2033 to 2035", value: "Consumers benefit indirectly from quantum-designed materials and drugs, if advantage arrives." },
+    ], signals: [
+      "Messaging apps and operating systems adopting post-quantum signatures.",
+      "Phone makers integrating quantum sensors or random number chips.",
+      "Regulator warnings about quantum-branded scams.",
+    ], risks: [
+      "Hype could mislead consumers.",
+      "Fraud could exploit interest in quantum.",
+      "Benefits may be slower to reach consumers than expected.",
+    ], faq: [
+      { q: "Will I have a quantum computer at home?", a: "No. Quantum computers need specialized equipment, and you would use them through the cloud if at all." },
+      { q: "Is my phone quantum?", a: "It uses quantum physics in its chips, but it is not a quantum computer. Some phones include quantum random number chips." },
+      { q: "How can I protect myself against the quantum threat?", a: "Keep software updated and use services that adopt post-quantum encryption." },
+    ], references: [
+      "Kret, E., & Schmidt, R. (2023). The PQXDH key agreement protocol. Signal specification.",
+      "Apple Security Engineering and Architecture (2024). iMessage with PQ3: The new state of the art in quantum-secure messaging at scale. Apple Security Research blog, February 2024.",
+      "Herrero-Collantes, M., & Garcia-Escartin, J. C. (2017). Quantum random number generators. Reviews of Modern Physics, 89, 015004.",
+      "Degen, C. L., Reinhard, F., & Cappellaro, P. (2017). Quantum sensing. Reviews of Modern Physics, 89, 035002.",
+      "National Institute of Standards and Technology (2024). FIPS 203, FIPS 204, and FIPS 205.",
+    ], links: [
+      { label: "Term: Post-Quantum Cryptography", href: "/dictionary/post-quantum-cryptography" },
+      { label: "Term: Quantum Random Number Generator", href: "/dictionary/quantum-random-number-generator" },
+      { label: "Term: Quantum Sensing", href: "/dictionary/quantum-sensing" },
+      { label: "Term: Quantum Cloud Computing", href: "/dictionary/quantum-cloud-computing" },
+    ], words: 1141 },
+  { slug: "judging-quantum-claims-future", title: "A Reader's Guide to Judging Quantum Claims", category: "science-outlook", horizon: "Ongoing", confidence: "High", summary: "Quantum announcements come fast and are often exaggerated. A short checklist, an evidence ladder, and a few worked examples can help readers separate real progress from marketing.", sections: [
+      { heading: "Why this guide", paragraphs: [
+          "Quantum computing news mixes real scientific advances, corporate marketing, and speculation, and journalists often lack the expertise to tell them apart. Readers who want to understand the field, whether as students, managers, or investors, need practical tools for judging claims. The tools below do not require physics expertise, only a habit of asking specific questions.",
+        ] },
+      { heading: "The evidence ladder", paragraphs: [
+          "It helps to place a claim on a ladder. At the bottom is a press release or conference talk, with no data. Next is a preprint, which gives data but has not been reviewed. Then comes a peer-reviewed paper, which has passed expert scrutiny but is not guaranteed correct. Higher is independent replication by another group, ideally on different hardware. Higher still is survival of attempts to reproduce the result classically, and at the top is adoption by customers who repeat the use because it delivers value. Most announcements are on the first or second rung, and claims should be weighed accordingly. Retractions and failed replications in the field, such as the 2018 Majorana paper retracted in 2021, show why higher rungs matter.",
+        ] },
+      { heading: "Ten questions to ask", paragraphs: [
+          "First, what exactly was done: what task, on how many qubits, with what error rates? Second, compared with what: was the classical baseline the best available method, tuned by experts, and what was its cost? Third, how was it measured: is the result verified, and by whom? Fourth, what are the error bars and how many runs were done? Fifth, was post-selection used, and what fraction of runs was discarded? Sixth, are data and code available for others to check?",
+          "Seventh, is the claim about the device working, about the task being hard for classical computers, or about usefulness, and are these separated? Eighth, does the result scale, or does it work only at the size shown? Ninth, who funded and wrote it, and do they gain from the claim? Tenth, what do independent experts say, particularly those with no stake? These questions apply to any technology claim, and they work well for quantum.",
+        ] },
+      { heading: "Worked examples", paragraphs: [
+          "Consider Google's 2019 supremacy claim. The device performed the task, as shown by the verification, but the classical estimate of 10,000 years was challenged by IBM within days and by later algorithms, and the task was artificial. A fair reading is that it showed a regime hard to simulate exactly and was not evidence of useful advantage. IBM's 2023 utility experiment is a second example: the authors claimed utility, not advantage, and classical groups reproduced the results within weeks. The claim of utility was modest and accurate, while press coverage sometimes called it advantage.",
+          "A third example is Microsoft's Majorana announcements. The 2025 and 2026 claims describe measurements on devices that may host topological states, with company statements of large improvements, while independent physicists asked for more evidence and an editorial note on the 2025 paper said it did not by itself show Majorana modes. The right position is to wait for replication. A fourth example is the HSBC and IBM 2025 claim of a 34 percent improvement in predicting bond trade fills: it is a result on a specific prediction task against a specific baseline, and does not show general advantage.",
+        ] },
+      { heading: "Red flags and green flags", paragraphs: [
+          "Red flags include the use of the word revolutionary without data, comparisons to a weak or unspecified classical baseline, results shown only at sizes that classical computers handle easily, extrapolations from small experiments to commercial value, a lack of error bars, secrecy about methods, and claims that quantum computers explore all possibilities at once. Be wary of announcements timed with funding rounds or stock offerings. Green flags include peer review, open data, independent replication, honest discussion of limitations, clear definitions of metrics, and acknowledgments of classical competition. Trusted voices include researchers with track records who publicly engage with critiques, though even experts can disagree.",
+        ] },
+      { heading: "A one-minute version", paragraphs: [
+          "If you have only a minute, ask four things. What was actually measured, and on how many qubits? What was it compared against, and was that the best classical method? Has anyone independent checked it, either by repeating it or by trying to match it classically? And what would it take for this to matter in practice, such as scale, cost, and error rates? If a story cannot answer these, treat it as a promise and not as a result.",
+          "It also helps to keep a few base rates in mind. Most advantage claims on artificial tasks have been narrowed by classical rebuttals. Most roadmap dates have slipped, though intermediate milestones in error correction have been met. Few, if any, business applications of quantum computing have moved from pilot to production. Cryptography is the exception: the risk is real, the standards exist, and the advice to migrate is sound. Holding these base rates in mind makes it easier to read new announcements with proportion.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "Judging claims well is a skill that improves with practice. The field is real and moving, which makes it all the more important to discount overstatement. A reader who keeps the evidence ladder in mind, asks for the baseline, and waits for replication will be right more often than one who reacts to headlines. We hope the references and the other pages on this site help readers apply these habits.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2028", value: "More trackers and replication efforts; journals demand fuller data; still many exaggerated press claims." },
+      { label: "2029 to 2032", value: "Standard benchmarks and verification practices reduce ambiguity." },
+      { label: "2033 onward", value: "Customer adoption becomes the main test of value." },
+    ], signals: [
+      "Independent replication of major claims.",
+      "Journals and agencies requiring classical baselines and data release.",
+      "Reduced use of loaded terms in press releases.",
+    ], risks: [
+      "Hype cycles could return with new technology waves.",
+      "Even experts may be misled by subtle errors.",
+      "Information overload can make checking hard.",
+    ], faq: [
+      { q: "How can I tell if a quantum announcement is real?", a: "Look for peer-reviewed data, an honest classical baseline, independent replication, and clear statements of limits." },
+      { q: "Is a preprint reliable?", a: "It is useful but unreviewed. Treat it as a claim that needs checking." },
+      { q: "Who can I trust?", a: "Researchers with track records who engage openly with critics, and sources that cite data." },
+    ], references: [
+      "Aaronson, S. (2015). Read the fine print. Nature Physics, 11, 291-293.",
+      "Arute, F., et al. (2019). Quantum supremacy using a programmable superconducting processor. Nature, 574, 505-510.",
+      "Kim, Y., et al. (2023). Evidence for the utility of quantum computing before fault tolerance. Nature, 618, 500-505.",
+      "Tindall, J., Fishman, M., Stoudenmire, E. M., & Sels, D. (2024). Efficient tensor network simulation of IBM's Eagle kicked Ising experiment. PRX Quantum, 5, 010308.",
+      "Microsoft Azure Quantum (2025). Interferometric single-shot parity measurement in InAs-Al hybrid devices. Nature, 638, 651-655.",
+      "Hangleiter, D., & Eisert, J. (2023). Computational advantage of quantum random sampling. Reviews of Modern Physics, 95, 035001.",
+      "Mohseni, M., et al. (2017). Commercialize quantum technologies in five years. Nature, 543, 171-174.",
+    ], links: [
+      { label: "Paper: Quantum Supremacy Using a Programmable Superconducting Processor", href: "/research/arute-quantum-supremacy-2019" },
+      { label: "Paper: Evidence for the Utility of Quantum Computing Before Fault Tolerance", href: "/research/kim-utility-before-fault-tolerance-2023" },
+      { label: "Paper: Efficient Tensor Network Simulation of IBM's Eagle Kicked Ising Experiment", href: "/research/tindall-tensor-network-eagle-kicked-ising-2024" },
+      { label: "Term: Quantum Advantage", href: "/dictionary/quantum-advantage" },
+      { label: "Term: Quantum Supremacy", href: "/dictionary/quantum-supremacy" },
+    ], words: 1003 },
+  { slug: "quantum-2040-long-term-future", title: "Looking Toward 2040 and Beyond", category: "science-outlook", horizon: "2035 to 2050", confidence: "Low", summary: "If error-corrected machines arrive in the 2030s, quantum computing could become a standard scientific and industrial tool by 2040 and beyond. We sketch plausible outcomes, with the caveat that forecasts this far out are mostly informed imagination.", sections: [
+      { heading: "A note on long-range forecasting", paragraphs: [
+          "Predictions about technology twenty years ahead are usually wrong in detail, and often wrong in kind. The transistor, the laser, and the internet all changed the world in ways their inventors did not foresee. Our long-range picture is therefore a set of plausible patterns based on what we know about the technology, not a prediction. We rate confidence as low and present it for thinking, not planning.",
+        ] },
+      { heading: "Computing in 2040", paragraphs: [
+          "If the base scenario holds, by 2040 fault-tolerant quantum computers with thousands of logical qubits will exist in a few facilities, run by governments, major vendors, and large institutions. They will be accessed through the cloud and through HPC centers, working with classical supercomputers and AI systems. Typical tasks would include simulating molecules and materials with high accuracy, solving certain scientific and engineering problems, and, for governments, cryptanalysis of legacy systems. Machines may not be faster for ordinary tasks, so classical computing will remain dominant by volume.",
+          "Quantum computing may become a standard tool in computational chemistry and physics, much like GPUs are in machine learning, used by specialists and embedded in software that most users do not see. The measure of success would be that a new drug, battery, or catalyst design depends in a documented way on a quantum calculation.",
+        ] },
+      { heading: "Networks and sensing", paragraphs: [
+          "By 2040 specialized quantum networks may link data centers, government sites, and research facilities with entanglement-based links and quantum memories, enabling secure communication and distributed quantum computing. Satellite constellations could provide quantum links between continents. Quantum sensors may be common in navigation, geophysics, medical diagnostics, and infrastructure monitoring, and optical clocks may underpin a redefined second and the timing of global networks. These areas have lower barriers and are likely to be more widespread than quantum computers themselves.",
+        ] },
+      { heading: "Science", paragraphs: [
+          "Quantum technology may change science itself. Quantum simulators and computers could settle open questions in condensed matter, nuclear physics, and chemistry. Sensors and networks could improve tests of fundamental physics, including searches for dark matter and gravitational waves. Experiments with large quantum systems may test the limits of quantum mechanics at macroscopic scales. Machine learning and quantum computing may combine in new ways, for example in learning about quantum systems from experiments. These are speculative but consistent with current research programs.",
+        ] },
+      { heading: "Society and economy", paragraphs: [
+          "Economically, quantum technology is likely to be a significant but not dominant sector, with revenue in the tens to hundreds of billions of dollars in optimistic forecasts, spread across computing, sensing, communication, and the supporting supply chain. Its largest effect may be defensive: the cost of migrating cryptography and the resilience it brings to digital infrastructure. Geopolitically, quantum capability will be one of several strategic technologies, along with semiconductors and AI, and countries will compete and cooperate in complicated ways.",
+          "The workforce will include more engineers and technicians than physicists, and education will integrate quantum concepts into engineering and computer science. Public understanding will probably remain limited, which makes honest communication important.",
+        ] },
+      { heading: "Questions that will shape the long term", paragraphs: [
+          "Several open questions will determine the long-term outcome. Will the cost per logical qubit fall far enough to make large machines affordable for universities and companies, not only for governments? Will new algorithms emerge that give speedups for problems of broad commercial importance, as Shor's algorithm did for cryptography? Will platforms converge on a standard architecture, or will several coexist for specialized roles? Will quantum networks become a global infrastructure or remain a niche? How will classical computing and AI evolve, and will they close or widen the gap?",
+          "The answers depend on research that is under way and on economic and political choices. They also depend on how well the community communicates with the public and with decision makers, since support for long-term research relies on trust. If the field delivers real value in the 2030s, public and private investment will continue, and the long-term picture above becomes more likely. If it does not, funding may fall, and quantum technology may settle into narrower roles. We think the first is more probable than the second, but neither is certain.",
+        ] },
+      { heading: "What stays the same", paragraphs: [
+          "It is worth remembering what is unlikely to change by 2040. Classical computers will still do most computing, because quantum computers are specialized. The need for good engineering, security hygiene, and honest evaluation of claims will remain. The physics of noise and error correction will still impose costs, and progress will still come from careful experiments, mathematics, and engineering. People will still need to be educated and trained, and societies will still need to decide how to use powerful tools. These continuities provide a stable base for planning even when specific technologies change.",
+        ] },
+      { heading: "What could surprise us", paragraphs: [
+          "Several surprises are possible. A breakthrough in error correction, qubit design, or algorithms could bring capabilities much earlier. A fundamental obstacle could limit scale, ending the pursuit of general-purpose machines but leaving specialized devices. New applications that we have not imagined could emerge, as happened with classical computing. Classical algorithms and hardware may improve, including AI-driven methods that make some quantum targets less valuable. Any of these would change the picture, and the main lesson of the history of technology is to hold forecasts loosely.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "The outline above is a plausible and not a certain outcome. What we can say with more confidence is that the next decade will answer the main open questions about scaling, and that preparations that make sense in all scenarios, such as cryptographic migration, skills, and open standards, are worth doing now. After that, the path will depend on evidence that has not yet been gathered. We will revise these pages as it arrives.",
+        ] },
+    ], forecast: [
+      { label: "By 2035", value: "First fault-tolerant machines with hundreds to a thousand logical qubits; early chemistry and cryptanalysis uses." },
+      { label: "By 2040", value: "Quantum computing a standard tool in several scientific fields; specialized quantum networks and sensors widespread." },
+      { label: "By 2050", value: "Mature quantum technologies in science, security, and some industries; unknown applications." },
+    ], signals: [
+      "Evidence of logical qubit scaling and costs in the next five years.",
+      "Verified advantage in chemistry or materials.",
+      "Adoption of quantum networks and sensors outside research.",
+    ], risks: [
+      "Long-range forecasts are unreliable.",
+      "A fundamental barrier could change the path.",
+      "Classical technology may advance faster than expected.",
+    ], faq: [
+      { q: "Will quantum computers be common by 2040?", a: "Not as personal devices. They are likely to exist as shared scientific and industrial tools if scaling succeeds." },
+      { q: "What will matter most by 2040?", a: "Probably security (post-quantum cryptography), sensing, and quantum simulation in science and materials." },
+      { q: "How reliable are these forecasts?", a: "Not very. Treat them as scenarios and watch the leading indicators." },
+    ], references: [
+      "Preskill, J. (2018). Quantum computing in the NISQ era and beyond. Quantum, 2, 79.",
+      "Feynman, R. P. (1982). Simulating physics with computers. International Journal of Theoretical Physics, 21, 467-488.",
+      "Wehner, S., Elkouss, D., & Hanson, R. (2018). Quantum internet: A vision for the road ahead. Science, 362, eaam9288.",
+      "Daley, A. J., et al. (2022). Practical quantum advantage in quantum simulation. Nature, 607, 667-676.",
+      "Degen, C. L., Reinhard, F., & Cappellaro, P. (2017). Quantum sensing. Reviews of Modern Physics, 89, 035002.",
+      "McKinsey and Company (2025). Quantum Technology Monitor.",
+      "IBM (2025). IBM sets the course to build world's first large-scale, fault-tolerant quantum computer. IBM press release, 10 June 2025.",
+    ], links: [
+      { label: "Paper: Simulating Physics with Computers", href: "/research/feynman-simulating-physics-1982" },
+      { label: "Paper: Quantum Internet: A Vision for the Road Ahead", href: "/research/wehner-quantum-internet-vision-2018" },
+      { label: "Paper: Quantum Computing in the NISQ Era and Beyond", href: "/research/preskill-nisq-era-2018" },
+      { label: "Term: Fault Tolerance", href: "/dictionary/fault-tolerance" },
+      { label: "Term: Quantum Internet", href: "/dictionary/quantum-internet" },
+    ], words: 1062 },
+  { slug: "quantum-foundations-physics-future", title: "Fundamental Physics: Testing Quantum Mechanics and Probing Nature", category: "science-outlook", horizon: "2026 to 2040", confidence: "Low", summary: "Quantum technology is also a laboratory for fundamental physics: tests of quantum mechanics with larger objects, searches for dark matter with quantum sensors, and simulations of exotic physics. Some claims, such as quantum gravity in a chip, are controversial.", sections: [
+      { heading: "Technology that doubles as a physics experiment", paragraphs: [
+          "The same control of quantum systems that makes quantum computing possible lets physicists ask questions that were thought to be philosophical. How large can a system be and still show quantum interference? Does gravity behave quantum mechanically? What is the dark matter? Can a quantum computer simulate aspects of quantum gravity? Because experiments are becoming precise and large, some of these questions are now within reach, though others remain speculative, and the field needs care to separate solid results from hype.",
+        ] },
+      { heading: "Pushing the quantum-classical boundary", paragraphs: [
+          "Quantum mechanics predicts that any isolated system can be in a superposition, but we do not see superpositions of everyday objects, which decoherence explains in part. Some theories, called collapse models, propose that wavefunctions collapse spontaneously above some size, a possibility that experiments can bound, as Bassi and coauthors reviewed in 2013. Interference experiments with molecules have reached about 25,000 atomic mass units, as reported by Fein and coauthors in 2019. Levitated nanoparticles, cooled to their motional ground state by Delić and coauthors in 2020 and by Magrini and coauthors in 2021, are a platform for preparing superpositions of larger masses, and superconducting circuits and mechanical resonators also push the limits.",
+          "Over the next decade, these experiments may test collapse models decisively or extend quantum superpositions to masses where gravitational effects might matter. A positive result for a modification of quantum mechanics would be revolutionary, and a null result would tighten limits.",
+        ] },
+      { heading: "Gravity and quantum mechanics", paragraphs: [
+          "A long-standing puzzle is whether gravity is quantum. In 2017, Bose and coauthors, and independently Marletto and Vedral, proposed that if two massive objects in superposition become entangled through gravity alone, then gravity must be a quantum entity, by an argument based on information theory. The experiment requires keeping two micron-scale masses in superposition, close together, isolated from other interactions, which is extremely demanding. Progress in levitated systems, optomechanics, and diamond spin sensors makes the experiment conceivable on a decade timescale, though no one has done it, and theoretical debates about the interpretation continue.",
+        ] },
+      { heading: "Quantum sensors in the search for new physics", paragraphs: [
+          "Precision measurement is a tool for discovering new physics. Atomic clocks, atom interferometers, and magnetometers constrain or search for variation of fundamental constants, violations of Lorentz symmetry, and dark matter, as Safronova and coauthors reviewed in 2018. Networks of clocks and sensors could detect dark matter candidates passing through the Earth, and space-based atom interferometers could probe the equivalence principle and gravitational waves in new frequency bands. Squeezed light already improves gravitational wave detectors, and quantum techniques will help future ones. These projects are among the most solid applications of quantum technology to fundamental science.",
+        ] },
+      { heading: "Quantum simulation of exotic physics", paragraphs: [
+          "Quantum computers and simulators can probe theories that are hard to simulate classically, including lattice gauge theories relevant to the strong force, models of quantum matter, and toy models of quantum gravity. A prominent example is the 2022 experiment by Jafferis and coauthors, which used Google's processor to simulate dynamics related to a traversable wormhole in a simplified model, a claim that drew criticism about whether the experiment shows more than a classical simulation of a small system would, as Kobrin and coauthors argued. Such experiments are valuable as tests of simulation methods, and claims about creating gravitational physics in a lab should be treated cautiously.",
+          "A deeper link between quantum information and gravity comes from the realization that spacetime in some models behaves like an error-correcting code, as Almheiri, Dong, and Harlow proposed in 2015. These ideas guide theory and may eventually guide experiments on quantum simulators.",
+        ] },
+      { heading: "How to read foundational claims", paragraphs: [
+          "Fundamental physics claims need extra care because the interpretation is often as contested as the data. When an experiment is reported to show a quantum effect in a new regime, ask which alternative explanations the authors have ruled out and what the control experiments were. When a simulation is said to reproduce gravitational or cosmological physics, ask whether the simulated model is a faithful analog or a loose analogy, and whether a classical computer could produce the same output. When a new bound is announced on a theory, ask how the bound depends on model assumptions.",
+          "Foundational experiments also tend to take longer than technology demonstrations and to produce incremental bounds more often than dramatic discoveries. A decade of progress might narrow a parameter range of collapse models by a factor of ten without settling anything, and that is the normal course of science. The excitement of the field comes from the possibility, not the certainty, of a surprise, and the best reporting conveys both.",
+        ] },
+      { heading: "Our assessment", paragraphs: [
+          "We expect quantum technology to contribute steadily to fundamental physics through precision sensing, tests of quantum mechanics at larger scales, and simulation. The most likely achievements by 2035 are tighter bounds on collapse models and dark matter candidates, improved tests of relativity with clocks and interferometers, and simulations that explore regimes of many-body and gauge theories beyond classical reach. A demonstration of gravity-mediated entanglement is possible but uncertain. Readers should be cautious about claims of discoveries from quantum computers about the nature of spacetime. We hold this forecast with low confidence because fundamental discoveries are unpredictable by nature.",
+        ] },
+    ], forecast: [
+      { label: "2026 to 2029", value: "Levitated and optomechanical systems reach larger superposition masses; improved clock and interferometer bounds." },
+      { label: "2030 to 2035", value: "Decisive tests of some collapse models; space and ground sensor networks search for dark matter; larger simulations of gauge theories." },
+      { label: "2036 to 2040", value: "Possible tests of gravity-mediated entanglement; quantum simulators contribute to theory of quantum matter and gravity." },
+    ], signals: [
+      "Superpositions of objects with masses far above current records.",
+      "Atomic clock networks reporting bounds on dark matter couplings.",
+      "Experiments approaching gravity-mediated entanglement.",
+      "Independent replication of quantum gravity simulations.",
+    ], risks: [
+      "Experiments may find nothing new.",
+      "Claims may be overinterpreted.",
+      "Funding competes with other priorities.",
+    ], faq: [
+      { q: "Can quantum computers test quantum gravity?", a: "They can simulate toy models, but claims about creating real gravitational physics are controversial." },
+      { q: "Can we test whether gravity is quantum?", a: "Proposed experiments could, by checking whether gravity can entangle two masses. They are very hard and not yet done." },
+      { q: "How do quantum sensors search for dark matter?", a: "By looking for tiny shifts in clocks, interferometers, or magnetometers caused by dark matter fields." },
+    ], references: [
+      "Bassi, A., Lochan, K., Satin, S., Singh, T. P., & Ulbricht, H. (2013). Models of wave-function collapse, underlying theories, and experimental tests. Reviews of Modern Physics, 85, 471-527.",
+      "Fein, Y. Y., et al. (2019). Quantum superposition of molecules beyond 25 kDa. Nature Physics, 15, 1242-1245.",
+      "Delić, U., et al. (2020). Cooling of a levitated nanoparticle to the motional quantum ground state. Science, 367, 892-895.",
+      "Magrini, L., et al. (2021). Real-time optimal quantum control of mechanical motion at room temperature. Nature, 595, 373-377.",
+      "Bose, S., et al. (2017). Spin entanglement witness for quantum gravity. Physical Review Letters, 119, 240401.",
+      "Marletto, C., & Vedral, V. (2017). Gravitationally induced entanglement between two massive particles is sufficient evidence of quantum effects in gravity. Physical Review Letters, 119, 240402.",
+      "Safronova, M. S., et al. (2018). Search for new physics with atoms and molecules. Reviews of Modern Physics, 90, 025008.",
+      "Jafferis, D., et al. (2022). Traversable wormhole dynamics on a quantum processor. Nature, 612, 51-55.",
+      "Almheiri, A., Dong, X., & Harlow, D. (2015). Bulk locality and quantum error correction in AdS/CFT. Journal of High Energy Physics, 2015(4), 163.",
+    ], links: [
+      { label: "Term: Decoherence", href: "/dictionary/decoherence" },
+      { label: "Term: Quantum Sensing", href: "/dictionary/quantum-sensing" },
+      { label: "Term: Entanglement", href: "/dictionary/entanglement" },
+      { label: "Term: Bell Inequality", href: "/dictionary/bell-inequality" },
+    ], words: 1001 },
 ];
 
 export function getFutureTopic(slug: string) {
