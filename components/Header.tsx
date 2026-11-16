@@ -87,7 +87,7 @@ const nav: NavItem[] = [
       ],
       [
         { href: "/future", label: "Future Predictions" },
-        { href: "/myths", label: "Myths Debunked", desc: "30 myths fact-checked" },
+        { href: "/myths", label: "Myths Debunked", desc: "50 myths fact-checked" },
         { href: "/faq", label: "FAQ", desc: "62 questions answered" },
         { href: "/pop-culture", label: "Quantum in Pop Culture" },
         { href: "/industry-readiness", label: "Industry Readiness" },
