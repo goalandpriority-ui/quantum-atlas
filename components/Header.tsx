@@ -99,7 +99,8 @@ const nav: NavItem[] = [
     label: "Tools",
     dropdown: [
       [
-        { href: "/tools", label: "Calculators", desc: "10 interactive tools" },
+        { href: "/tools", label: "Quick Tools", desc: "10 interactive tools" },
+        { href: "/calculators", label: "Calculators", desc: "In-depth interactive calculators" },
         { href: "/circuit-builder", label: "Circuit Builder" },
         { href: "/grovers-builder", label: "Build Grover's" },
         { href: "/race", label: "Quantum vs Classical Race" },
